@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using VendaDeAutomoveis.DAO;
+using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Models;
+
+namespace VendaDeAutomoveis.Controllers
+{
+    public class ClienteController : Controller
+    {
+        private ClienteDAO clienteDAO;
+        private VendaDAO vendaDAO;
+        public ClienteController(ClienteDAO clienteDAO, VendaDAO vendaDAO)
+        {
+            this.clienteDAO = clienteDAO;
+            this.vendaDAO = vendaDAO;
+        }
+        public ActionResult Form()
+        {
+            return View();
+        }
+
+        public ActionResult AdicionarCliente(Cliente cliente)
+        {
+            if (ModelState.IsValid )
+            {
+                bool cpfExistente = clienteDAO.VerificarCPFExistente(cliente);
+
+               if (cpfExistente == false)
+               {
+                    clienteDAO.AdicionarCliente(cliente);
+                    return RedirectToAction("Index");
+               }
+               else
+               {
+                   ModelState.AddModelError("CPF", "O CPF já existe no sistema!");                                 
+                   return View("Form", cliente);
+               }            
+            }
+            else
+            {                
+                return View("Form", cliente);
+            }
+        }
+        
+        public ActionResult Index()
+        {
+            IList<Cliente> clientes = clienteDAO.Lista();
+            return View(clienteDAO.Lista());
+        }
+
+<<<<<<< HEAD
+        public ActionResult MudarClienteComunParaVip(Cliente cliente , VendaDAO vendaDAO)
+        {
+            if (cliente.TipoDoCliente == TipoCliente.Comum && vendaDAO.TotalPorCliente(cliente.IdCliente) > 2000000)
+            {          
+              cliente.TipoDoCliente = TipoCliente.Vip;
+              clienteDAO.EditarCliente(cliente);
+              return View("Form", cliente);             
+            }
+            else
+            {
+                return View("Form", cliente);
+            }
+        }   
+=======
+      
+        
+     
+>>>>>>> 5d512baf9183676b5f260353d401bcf01c1b82fc
+    }
+}

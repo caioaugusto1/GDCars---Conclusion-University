@@ -1,0 +1,13 @@
+﻿@model VendaDeAutomoveis.Entidades.Upload
+
+<br />
+<br />
+
+@Html.LabelFor(u => u.Cliente, "Adicionar")
+@Html.TextBoxFor(u => u.Cliente, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.Cliente)
+<br />
+<br />
+@Html.LabelFor(u => u.NomeArquivo, "Adicionar")
+@Html.TextBoxFor(u => u.NomeArquivo, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.NomeArquivo)

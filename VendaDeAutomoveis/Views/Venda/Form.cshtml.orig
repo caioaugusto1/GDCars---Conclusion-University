@@ -1,0 +1,180 @@
+﻿@model VendaDeAutomoveis.Entidades.Venda
+
+@using (Html.BeginForm("AdicionarVenda", "Venda", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    
+    @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
+    @Html.DropDownListFor(m => m.IdCliente,
+        new SelectList(ViewBag.Cliente, "IdCliente", "Nome"), "Nome do Cliente",
+        new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.IdCliente)
+
+    <br />
+
+    @Html.LabelFor(u => u.DataCompra, "Data da Compra*")
+    @Html.TextBoxFor(u => u.DataCompra, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.DataCompra)
+
+    <br />
+
+    @Html.LabelFor(m => m.IdProduto, "Modelo do Produto*")
+    @Html.DropDownListFor(m => m.IdProduto,
+        new SelectList(ViewBag.Produto, "IdProduto", "ModeloVeiculo"), "Modelo do Produto",
+            new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.IdProduto)
+
+    <br />
+
+    @Html.LabelFor(m => m.Valor, "Valor da Compra*")
+    @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Valor)
+
+    <br/>
+    
+    <div id="ViewParcialFormaDePagamento">
+
+    </div>
+
+    <br />
+
+    @Html.LabelFor(m => m.TipoEntrega, "Tipo de Entrega*")
+    @Html.EnumDropDownListFor(m => m.TipoEntrega, "Tipo de Entrega", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.TipoEntrega)
+
+    <br />
+
+    <div id="viewParcial">
+
+    </div>
+
+
+    <br />
+    @Html.LabelFor(m => m.Observacoes, "Observação*")
+    @Html.TextBoxFor(m => m.Observacoes, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Observacoes)
+
+    <br />
+
+    <input type="submit" value="Vender" />
+
+    @section Scripts {
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(function () {
+                
+                @if(ViewBag.ExibirCampo != null)
+                {
+                    @:PegarvalorEnderecoAjax();
+                } 
+
+                $("#IdProduto").change(function () {
+                    
+                    PegarvalorVeiculoAjax();
+                });
+
+                $("#IdCliente").change(function () {
+
+                    PegarvalorEnderecoAjax();
+                });
+
+                $("#TipoEntrega").change(function () {
+
+                    PegarvalorEnderecoAjax();
+
+                });
+
+<<<<<<< HEAD
+                $("#atualizar").click(function () {
+
+                    AtualizarEnderecoAja();
+=======
+                $("#IdCliente").change(function () {
+
+                    PegarFormaDePagamento();
+>>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
+
+                });
+
+            });
+          
+
+            function PegarvalorVeiculoAjax() {
+                $.ajax({
+                    url: '@Url.Action("PegarPrecoProduto")',
+                    type: "post",
+                    dataType: "html",
+                    data: { IdProduto: $("#IdProduto").val() },
+
+                    success: function (data) {
+
+                        $("#Valor").val(data);
+
+                    }
+                });
+            }
+
+            function PegarvalorEnderecoAjax() {
+
+                if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 1) {
+
+                    $.ajax({
+                        url: '@Url.Action("PegarEndereco")',
+                        type: "post",
+                        dataType: "html",
+                        data: { IdCliente: $("#IdCliente").val() },
+
+                        success: function (data) {
+
+                            $('#viewParcial').html(data);
+
+                        }
+                    });
+                }
+          
+            }
+
+<<<<<<< HEAD
+
+            function AtualizarEnderecoAjax() {
+
+                if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 1) {
+
+                    $.ajax({
+                        url: '@Url.Action("AtualizarEndereco")',
+=======
+            function PegarFormaDePagamento() {
+
+                    $.ajax({
+                        url: '@Url.Action("PegarFormaDePagamento")', //Metodo da minha controller
+>>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
+                        type: "post",
+                        dataType: "html",
+                        data: { IdCliente: $("#IdCliente").val() },
+
+                        success: function (data) {
+
+<<<<<<< HEAD
+                            $('#viewParcial').html(data);
+
+                        }
+                    });
+                }
+
+            }
+
+         
+=======
+                            $('#ViewParcialFormaDePagamento').html(data); //div para renderizar 
+
+                        }
+                    });
+            }
+
+>>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
+        </script>
+    }
+}

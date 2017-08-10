@@ -1,0 +1,62 @@
+﻿@model VendaDeAutomoveis.Entidades.Cliente
+
+@using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post))
+{
+    <br />
+    
+    @Html.HiddenFor(u => u.IdCliente, new { @class = "form-control" })
+    
+    @Html.LabelFor(u => u.Endereco, "Endereço*")
+    @Html.TextBoxFor(u => u.Endereco, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco)
+
+    <br />
+
+    @Html.LabelFor(u => u.NumeroDaCasa, "Número da casa*")
+    @Html.TextBoxFor(u => u.NumeroDaCasa, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.NumeroDaCasa)
+
+    <br />
+
+    @Html.LabelFor(u => u.Complemento, "Complemento*")
+    @Html.TextBoxFor(u => u.Complemento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Complemento)
+
+    <br />
+
+    @Html.LabelFor(u => u.CEP, "CEP*")
+    @Html.TextBoxFor(u => u.CEP, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.CEP)
+
+    <br />
+
+    @Html.LabelFor(u => u.Bairro, "Bairro*")
+    @Html.TextBoxFor(u => u.Bairro, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Bairro)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cidade, "Cidade*")
+    @Html.TextBoxFor(u => u.Cidade, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cidade)
+
+    <br />
+
+    @Html.LabelFor(u => u.Estado, "Estado*")
+    @Html.TextBoxFor(u => u.Estado, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Estado)
+
+    <br />
+    
+    <input id="atualizar" type="button" value="atualizar" />
+    
+    @section Scripts {
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+
+    }
+  
+}
+

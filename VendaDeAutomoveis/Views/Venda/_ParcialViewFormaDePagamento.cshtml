@@ -1,0 +1,13 @@
+﻿@model IList<VendaDeAutomoveis.Entidades.FormaDePagamento>
+
+@using (Html.BeginForm("AdicionarVenda", "Venda", FormMethod.Post))
+{
+    
+    @Html.Label("Forma de Pagamento")
+    @Html.DropDownList("IdFormaDePagamento",
+                new SelectList(Model, "IdFormaDePagamento", "ModeloFormaDePagamento"), "Forma de Pagamento",
+        new { @class = "form-control" })
+    @Html.ValidationMessage("FormaDePagamentoModel")
+
+}
+

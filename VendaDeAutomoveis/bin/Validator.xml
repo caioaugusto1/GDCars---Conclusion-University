@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Validator</name>
+    </assembly>
+    <members>
+        <member name="T:Validator.Attributes.ByteValidateAttribute">
+            <summary>Specifies <see cref="T:System.Byte"/> property that needs to be validated</summary>
+        </member>
+        <member name="T:Validator.Attributes.ValidateAttribute">
+            <summary>Parent class for all validation attributes</summary>
+        </member>
+        <member name="M:Validator.Attributes.ValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.ValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.ValidateAttribute.Message">
+            <summary>Validation message</summary>
+        </member>
+        <member name="P:Validator.Attributes.ValidateAttribute.Key">
+            <summary>Validation key</summary>
+        </member>
+        <member name="M:Validator.Attributes.ByteValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.ByteValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.ByteValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.ByteValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="T:Validator.Attributes.ComplexTypeValidateAttribute">
+            <summary>Specifies complex type property that needs to be validated</summary>
+            <remarks>This attribute shows that property type has properties with validation attributes</remarks>
+        </member>
+        <member name="T:Validator.Attributes.DecimalValidateAttribute">
+            <summary>Specifies <see cref="T:System.Decimal"/> property that needs to be validated</summary>
+        </member>
+        <member name="F:Validator.Attributes.DecimalValidateAttribute.NumberFormatInfo">
+            <summary><see cref="F:Validator.Attributes.DecimalValidateAttribute.NumberFormatInfo"/> to format values for <see cref="P:Validator.Attributes.DecimalValidateAttribute.MinValueString"/> and <see cref="P:Validator.Attributes.DecimalValidateAttribute.MaxValueString"/> properties</summary>
+        </member>
+        <member name="M:Validator.Attributes.DecimalValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.DecimalValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.DecimalValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.DecimalValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.DecimalValidateAttribute.MinValueString">
+            <summary>Minimum value string with '.' as decimal point</summary>
+            <remarks>Use <see cref="F:Validator.Attributes.DecimalValidateAttribute.NumberFormatInfo"/> property to format value</remarks>
+        </member>
+        <member name="P:Validator.Attributes.DecimalValidateAttribute.MaxValueString">
+            <summary>Maximum value string with '.' as decimal point</summary>
+            <remarks>Use <see cref="F:Validator.Attributes.DecimalValidateAttribute.NumberFormatInfo"/> property to format value</remarks>
+        </member>
+        <member name="T:Validator.Attributes.DoubleValidateAttribute">
+            <summary>Specifies <see cref="T:System.Double"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.DoubleValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.DoubleValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.DoubleValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.DoubleValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="T:Validator.Attributes.EnumStringValidateAttribute">
+            <summary>Specifies string enumeration property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.EnumStringValidateAttribute.#ctor(System.String,System.Type)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+            <param name="enumType"><see cref="T:System.Enum"/> type</param>
+        </member>
+        <member name="M:Validator.Attributes.EnumStringValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.EnumStringValidateAttribute.EnumType">
+            <summary><see cref="T:System.Enum"/> type</summary>
+        </member>
+        <member name="P:Validator.Attributes.EnumStringValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.IntValidateAttribute">
+            <summary>Specifies <see cref="T:System.Int32"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.IntValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.IntValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.IntValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.IntValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="T:Validator.Attributes.LongValidateAttribute">
+            <summary>Specifies <see cref="T:System.Int64"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.LongValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.LongValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.LongValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.LongValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="T:Validator.Attributes.NotNullValidateAttribute">
+            <summary>Specifies non-nullable property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NotNullValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NotNullValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableByteValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Byte"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableByteValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableByteValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableByteValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableDecimalValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Decimal"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableDecimalValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableDecimalValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableDecimalValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableDoubleValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Double"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableDoubleValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableDoubleValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableDoubleValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableIntValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Int32"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableIntValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableIntValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableIntValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableLongValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Int64"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableLongValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableLongValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableLongValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.NullableShortValidateAttribute">
+            <summary>Specifies nullable <see cref="T:System.Int16"/> property that needs to be validated</summary>
+        </member>
+        <member name="T:Validator.Attributes.ShortValidateAttribute">
+            <summary>Specifies <see cref="T:System.Int16"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.ShortValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.ShortValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.ShortValidateAttribute.MinValue">
+            <summary>Minimum value</summary>
+        </member>
+        <member name="P:Validator.Attributes.ShortValidateAttribute.MaxValue">
+            <summary>Maximum value</summary>
+        </member>
+        <member name="M:Validator.Attributes.NullableShortValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.NullableShortValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.NullableShortValidateAttribute.CanBeNull">
+            <summary>Can be null</summary>
+        </member>
+        <member name="T:Validator.Attributes.StringValidateAttribute">
+            <summary>Specifies <see cref="T:System.String"/> property that needs to be validated</summary>
+        </member>
+        <member name="M:Validator.Attributes.StringValidateAttribute.#ctor(System.String)">
+            <summary>Constructor</summary>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.Attributes.StringValidateAttribute.IsValid(System.Object)">
+            <summary>Checks whether value is valid</summary>
+        </member>
+        <member name="P:Validator.Attributes.StringValidateAttribute.MinLength">
+            <summary>Minimum string length</summary>
+        </member>
+        <member name="P:Validator.Attributes.StringValidateAttribute.MaxLength">
+            <summary>Maximum string length</summary>
+        </member>
+        <member name="P:Validator.Attributes.StringValidateAttribute.CanBeNull">
+            <summary>Can string be null</summary>
+        </member>
+        <member name="P:Validator.Attributes.StringValidateAttribute.CanBeEmpty">
+            <summary>Can string be empty</summary>
+        </member>
+        <member name="P:Validator.Attributes.StringValidateAttribute.RegEx">
+            <summary>String regular expression</summary>
+        </member>
+        <member name="T:Validator.Attributes.MethodValidateAttribute">
+            <summary>Specifies validation method that returns <see cref="T:Validator.ValidationError"/></summary>
+        </member>
+        <member name="T:Validator.Helpers.StringValidator">
+            <summary>Validation helper that is used in <see cref="T:Validator.Attributes.StringValidateAttribute"/></summary>
+        </member>
+        <member name="M:Validator.Helpers.StringValidator.ValidateString(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean,System.String)">
+            <summary>Checks whether <see cref="T:System.String"/> is valid</summary>
+            <param name="str">String to validate</param>
+            <param name="minLength">Minimum string length</param>
+            <param name="maxLength">Maximum string length</param>
+            <param name="canBeNull">Can string be null</param>
+            <param name="canBeEmpty">Can string be empty</param>
+            <param name="regEx">String regular expression</param>
+        </member>
+        <member name="T:Validator.IValidationErrors">
+            <summary>Object validation errors</summary>
+        </member>
+        <member name="P:Validator.IValidationErrors.Errors">
+            <summary>Validation errors</summary>
+        </member>
+        <member name="P:Validator.IValidationErrors.Object">
+            <summary>Validated object</summary>
+        </member>
+        <member name="T:Validator.IValidationErrorsOfT`1">
+            <summary>Object validation errors</summary>
+        </member>
+        <member name="P:Validator.IValidationErrorsOfT`1.Object">
+            <summary>Validated object</summary>
+        </member>
+        <member name="T:Validator.IValidator">
+            <summary>Validator that validates types with validation attributes</summary>
+        </member>
+        <member name="M:Validator.IValidator.Validate``1(``0)">
+            <summary>Validates object and returns errors if validation failed</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+        <member name="M:Validator.IValidator.IsValid``1(``0)">
+            <summary>Checks whether object is valid</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+        <member name="M:Validator.IValidator.CheckIsValid``1(``0)">
+            <summary>Validates object and throw <see cref="T:Validator.ValidationExceptionOfT`1"/> exception if validation failed</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+        <member name="T:Validator.ValidationError">
+            <summary>Validation error</summary>
+        </member>
+        <member name="M:Validator.ValidationError.#ctor(System.String,System.String)">
+            <summary>Constructor</summary>
+            <param name="key">Validation key</param>
+            <param name="message">Validation message</param>
+        </member>
+        <member name="M:Validator.ValidationError.Equals(System.Object)">
+            <summary>Determines whether the specified System.Object is equal to the current System.Object</summary>
+        </member>
+        <member name="M:Validator.ValidationError.GetHashCode">
+            <summary>Serves as a hash function for thr type</summary>
+        </member>
+        <member name="M:Validator.ValidationError.Equals(Validator.ValidationError)">
+            <summary>Indicates whether the current object is equal to another object of the same type</summary>
+        </member>
+        <member name="P:Validator.ValidationError.Key">
+            <summary>Validation key</summary>
+        </member>
+        <member name="P:Validator.ValidationError.Message">
+            <summary>Validation message</summary>
+        </member>
+        <member name="T:Validator.ValidationErrors`1">
+            <summary>Object validation errors</summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Validator.ValidationErrors`1.#ctor(`0,Validator.ValidationError[])">
+            <summary>Constructor</summary>
+            <param name="obj">Validated object</param>
+            <param name="errors">Validation errors</param>
+        </member>
+        <member name="P:Validator.ValidationErrors`1.Object">
+            <summary>Validated object</summary>
+        </member>
+        <member name="P:Validator.ValidationErrors`1.Errors">
+            <summary>Validation errors</summary>
+        </member>
+        <member name="T:Validator.ValidationException">
+            <summary>Validation exception</summary>
+        </member>
+        <member name="M:Validator.ValidationException.#ctor(Validator.IValidationErrors)">
+            <summary>Constructor</summary>
+            <param name="errors">Validation errors</param>
+        </member>
+        <member name="P:Validator.ValidationException.Errors">
+            <summary>Validation errors</summary>
+        </member>
+        <member name="T:Validator.ValidationExceptionOfT`1">
+            <summary>Validation exception</summary>
+            <typeparam name="T">Validated object type</typeparam>
+        </member>
+        <member name="M:Validator.ValidationExceptionOfT`1.#ctor(Validator.IValidationErrorsOfT{`0})">
+            <summary>Constructor</summary>
+            <param name="errors">Validation errors</param>
+        </member>
+        <member name="P:Validator.ValidationExceptionOfT`1.Errors">
+            <summary>Validation errors</summary>
+        </member>
+        <member name="T:Validator.Validator">
+            <summary>Validator that validates types with validation attributes</summary>
+        </member>
+        <member name="M:Validator.Validator.Validate``1(``0)">
+            <summary>Validates object and returns errors if validation failed</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+        <member name="M:Validator.Validator.IsValid``1(``0)">
+            <summary>Checks whether object is valid</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+        <member name="M:Validator.Validator.CheckIsValid``1(``0)">
+            <summary>Validates object and throw <see cref="T:Validator.ValidationExceptionOfT`1"/> exception if validation failed</summary>
+            <typeparam name="T">Object type to be validated</typeparam>
+            <param name="obj">Object to be validated</param>
+        </member>
+    </members>
+</doc>

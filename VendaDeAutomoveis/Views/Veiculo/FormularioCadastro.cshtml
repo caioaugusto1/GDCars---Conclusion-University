@@ -1,0 +1,76 @@
+﻿@model VendaDeAutomoveis.Entidades.Veiculo
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/fileinput.js"></script>
+<link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
+
+<br />
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post))
+{
+    @Html.LabelFor(u => u.Fabricante, "Nome do fabricante*")
+    @Html.TextBoxFor(u => u.Fabricante, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Fabricante)
+
+    <br />
+
+    @Html.LabelFor(u => u.ModeloVeiculo, "Modelo do veículo*")
+    @Html.TextBoxFor(u => u.ModeloVeiculo, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.ModeloVeiculo)
+
+    @*<br />
+
+    @Html.LabelFor(u => u.Ano, "Ano de Fabricação do veículo*")
+    @Html.TextBoxFor(u => u.Ano, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Ano)*@
+
+    <br />
+
+    @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de portas do veículo*")
+    @Html.TextBoxFor(u => u.QuantidadeDePortas, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.QuantidadeDePortas)
+
+    <br />
+
+    @Html.LabelFor(u => u.Valor, "Valor do veículo*")
+    @Html.TextBoxFor(u => u.Valor, new { @id = "preco", @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Valor)
+
+    <br />
+
+    @Html.LabelFor(u => u.TipoVeiculo, "Tipo do veículo*")
+    @Html.EnumDropDownListFor(u => u.TipoVeiculo, "Tipo do veiculo", new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.TipoVeiculo)
+
+    <br />
+
+    <input type="submit" class="btn-success" value="Cadastrar" />
+}
+<br />
+
+<form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Produto")" method="post" enctype="multipart/form-data">
+    <label class="control-label">Selecione a imagem do veículo</label>
+    <input type="file" name="file" class="file">
+</form>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("#input-id").fileinput();
+
+            // with plugin options
+            $("#input-id").fileinput({ 'showUpload': false, 'previewFileType': 'any' });
+        });
+
+        $('.btn btn-default fileinput-upload fileinput-upload-button').click(function () {
+            $('#formUploadArquivo').submit();
+        });
+       
+    </script>
+}
+

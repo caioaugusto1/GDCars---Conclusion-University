@@ -1,0 +1,190 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using VendaDeAutomoveis.DAO;
+using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Models;
+
+namespace VendaDeAutomoveis.Controllers
+{
+    public class VendaController : Controller
+    {
+        private VendaDAO vendaDAO;
+        private ClienteDAO clienteDAO;
+        private ProdutoDAO produtoDAO;
+        private PagamentosDAO pagamentoDAO;
+        public VendaController(VendaDAO vendaDAO, ClienteDAO clienteDao, ProdutoDAO produtoDAO, PagamentosDAO pagamentoDAO)
+        {
+            this.vendaDAO = vendaDAO;
+            this.clienteDAO = clienteDao;
+            this.produtoDAO = produtoDAO;
+            this.pagamentoDAO = pagamentoDAO;
+        }
+        public ActionResult Form()
+        {
+            ViewBag.Cliente = clienteDAO.Lista();
+            ViewBag.Produto = produtoDAO.Lista();
+            ViewBag.FormaDePagamento = pagamentoDAO.Lista();
+            return View();
+        }
+        public ActionResult AdicionarVenda(Venda vendas)
+        {
+            if (ModelState.IsValid)
+            {              
+                FormaDePagamento formaDePagamento = pagamentoDAO.PegarPagamento(vendas.IdFormaDePagamento);
+                Cliente cliente = clienteDAO.PegarCliente(vendas.IdCliente);
+
+                if (vendas.TipoEntrega == 0)
+                {
+                    ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
+                    ViewBag.Cliente = clienteDAO.Lista();
+                    ViewBag.Produto = produtoDAO.Lista();
+                    return View("Form", vendas);
+                }
+                if (vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Endereco == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.NumeroDaCasa == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Estado == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Cidade == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.CEP == null)
+                {
+
+                    ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
+                    ViewBag.Cliente = clienteDAO.Lista();
+                    ViewBag.Produto = produtoDAO.Lista();
+                    ViewBag.ExibirCampo = true;
+                    return View("Form", vendas);
+                }
+                vendaDAO.AdicionarVenda(vendas);
+                MudarClienteComunParaVip(cliente);
+                Produto produto = produtoDAO.PegarProduto(vendas.IdProduto);
+                AumentarValorVeiculoEsportivo(vendas);
+                CalcularPagamento(vendas);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Cliente = clienteDAO.Lista();
+                ViewBag.Produto = produtoDAO.Lista();
+                return View("Form");
+            }
+        }
+        public ActionResult Index()
+        {
+            IList<Venda> vendas = vendaDAO.Lista();
+            return View(vendas);
+        }
+        public ActionResult HistoricoPedidos(HistoricoPedidosModel model)
+        {
+            model.Clientes = clienteDAO.Lista();
+            model.Vendas = vendaDAO.BuscaPorCliente(model.IdCliente);
+            return View(model);
+        }
+        private void MudarClienteComunParaVip(Cliente cliente)
+        {
+            if (cliente.TipoDoCliente == TipoCliente.Comum && vendaDAO.TotalPorCliente(cliente.IdCliente) >= 200000)
+            {
+                cliente.TipoDoCliente = TipoCliente.Vip;
+                clienteDAO.EditarCliente(cliente);
+            }
+        }
+        private decimal AumentarValorVeiculoEsportivo(Venda venda)
+        {
+            if (venda.Produto.TipoVeiculo == TipoVeiculo.Esportivo)
+            {
+                string recebendoObservacao = venda.Observacoes;
+                venda.Valor = (venda.Valor + 12000);
+                venda.Observacoes = recebendoObservacao + " Veiculo Esportivo : Acréscimo de R$12.000,00 referente ao período de 12 meses de seguro obrigatório";
+                vendaDAO.EditarVenda(venda);
+            }
+            return venda.Valor;
+        }
+        private decimal CalcularPagamento(Venda venda)
+        {
+            string recebendoObservacao = venda.Observacoes;
+
+            if (venda.FormaDePagamento.IdFormaDePagamento == 1)
+            {
+                venda.Observacoes = recebendoObservacao + " Financiamento com pagamento à vista";
+                vendaDAO.EditarVenda(venda);
+             }        
+            else if (venda.FormaDePagamento.IdFormaDePagamento == 2)
+            {
+                decimal parcela = venda.Valor;
+                parcela = parcela / 12;
+                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                vendaDAO.EditarVenda(venda);
+            }
+            else if (venda.FormaDePagamento.IdFormaDePagamento == 3)
+            {
+                decimal parcela = venda.Valor;
+                parcela = parcela / 60;
+                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                vendaDAO.EditarVenda(venda);
+            }
+            else if (venda.FormaDePagamento.IdFormaDePagamento == 4)
+            {
+                double juros = 0.03;
+                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
+                decimal parcela = venda.Valor;
+                parcela = parcela / 12;
+                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                vendaDAO.EditarVenda(venda);
+            }
+            else if (venda.FormaDePagamento.IdFormaDePagamento == 5)
+            {
+                double juros = 0.05;
+                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
+                decimal parcela = venda.Valor;
+                parcela = parcela / 60;
+                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                vendaDAO.EditarVenda(venda);
+            }
+            return venda.Valor;
+        }
+        public ActionResult PegarPrecoProduto(int IdProduto)
+        {
+            var produto = produtoDAO.PegarProduto(IdProduto);
+            return Content(produto.Preco.ToString());
+<<<<<<< HEAD
+        }
+     
+
+=======
+        } 
+>>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
+        public ActionResult PegarEndereco(int IdCliente)
+        {
+            var cliente = clienteDAO.PegarCliente(IdCliente);
+            return PartialView("_ParcialviewEndereco", cliente);
+        }
+        public ActionResult PegarFormaDePagamento(int IdCliente)
+        { 
+            var cliente = clienteDAO.PegarCliente(IdCliente);
+            if(cliente.TipoDoCliente == TipoCliente.Vip)
+            {
+                var pagamento = pagamentoDAO.ListaDePagamentosVip();
+                return PartialView("_ParcialViewFormaDePagamento", pagamento);
+            }
+            else
+            {
+                var pagamento = pagamentoDAO.ListaDePagamentosComum();
+                return PartialView("_ParcialViewFormaDePagamento", pagamento);
+            }
+        }
+<<<<<<< HEAD
+                        
+        public ActionResult AtualizarEndereco(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                clienteDAO.EditarCliente( cliente);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Index", cliente);
+            }     
+        }
+       
+=======
+>>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
+    }
+}

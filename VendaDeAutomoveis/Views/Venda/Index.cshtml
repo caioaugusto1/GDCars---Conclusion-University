@@ -1,0 +1,42 @@
+﻿@model IList<VendaDeAutomoveis.Entidades.Venda>
+
+<br />
+<br />
+<br />
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr id="trs"> 
+            <th>Nome do Cliente</th>
+            <th>Veículo</th>
+            <th>Valor da Comrpa</th>
+            <th>Data da Compra</th>
+            <th>Entrega</th>
+            <th>Forma de Pagamento</th>
+            <th>Observação</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                
+                <td>@m.Cliente.Nome</td>
+                <td>@m.Veiculo.ModeloVeiculo</td>
+                <td>@m.Valor.ToString("c")</td>
+                <td>@m.DataCompra.ToString("dd/MM/yyyy")</td>
+                <td>@m.TipoEntrega</td>
+                <td>@m.FormaDePagamento.ModeloFormaDePagamento</td>            
+                <td>@m.Observacoes</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    #trs th{
+        width: 120px;
+    }
+</style>

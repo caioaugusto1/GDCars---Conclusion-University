@@ -1,0 +1,86 @@
+﻿@model VendaDeAutomoveis.Entidades.Venda
+
+@using (Html.BeginForm("EditarClientes", "Venda", FormMethod.Post))
+{
+    @Html.HiddenFor(u => u.IdCliente, new { @class = "form-control" })
+
+    @Html.LabelFor(u => u.Cliente.Nome, "Nome")
+    @Html.TextBoxFor(u => u.Cliente.Nome, new { @class = "form-control" })
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.RG, "RG")
+    @Html.TextBoxFor(u => u.Cliente.RG, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.RG)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.CPF, "CPF/MF")
+    @Html.TextBoxFor(u => u.Cliente.CPF, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.CPF)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.TipoDoCliente, "Tipo do cliente")
+    @Html.EnumDropDownListFor(m => m.Cliente.TipoDoCliente, "Tipo do Cliente", new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.TipoDoCliente)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.DataNascimento, "Data de Nascimento")
+    @Html.TextBoxFor(u => u.Cliente.DataNascimento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.DataNascimento)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco, "Endereço")
+    @Html.TextBoxFor(u => u.Cliente.Endereco, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.Numero, "Número da casa")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.Numero, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.Numero)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.Complemento, "Complemento")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.Complemento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.Complemento)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.CEP, "CEP")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.CEP, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.CEP)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.Bairro, "Bairro")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.Bairro, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.Bairro)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.Cidade, "Cidade")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.Cidade, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.Cidade)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Endereco.Estado, "Estado")
+    @Html.TextBoxFor(u => u.Cliente.Endereco.Estado, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Endereco.Estado)
+
+    <br />
+
+    @Html.LabelFor(u => u.Cliente.Email, "E-mail")
+    @Html.TextBoxFor(u => u.Cliente.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Email)
+
+    <br />
+
+    <input type="submit" value="Salvar" />
+
+}

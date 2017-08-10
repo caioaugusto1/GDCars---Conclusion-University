@@ -1,0 +1,171 @@
+﻿@model VendaDeAutomoveis.Entidades.Venda
+
+<br />
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm("AdicionarVenda", "Venda", FormMethod.Post))
+{
+
+    @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
+    @Html.DropDownListFor(m => m.IdCliente,
+        new SelectList(ViewBag.Cliente, "IdCliente", "Nome"), "Nome do Cliente",
+        new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.IdCliente)
+
+    <br />
+
+    @Html.LabelFor(m => m.IdProduto, "Modelo do Produto*")
+    @Html.DropDownListFor(m => m.Veiculo.Id,
+        new SelectList(ViewBag.Veiculo, "IdProduto", "ModeloVeiculo"), "Modelo do Produto",
+            new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.IdProduto)
+
+    <br />
+
+    @Html.LabelFor(m => m.Valor, "Valor da Compra*")
+    @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Valor)
+
+    <br />
+
+    <div id="ViewParcialFormaDePagamento">
+
+    </div>
+
+    <br />
+
+    @Html.LabelFor(m => m.TipoEntrega, "Tipo de Entrega*")
+    @Html.EnumDropDownListFor(m => m.TipoEntrega, "Tipo de Entrega", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.TipoEntrega)
+
+    <br />
+
+    <div id="viewParcialEndereco">
+
+    </div>
+
+    <br />
+    @Html.LabelFor(m => m.Observacoes, "Observação*")
+    @Html.TextBoxFor(m => m.Observacoes, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Observacoes)
+
+    <br />
+
+    <input type="submit" value="Vender" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+
+            @if (ViewBag.ExibirCampo != null)
+                {
+                    @:PegarvalorEnderecoAjax();
+                                                            }
+
+            $("#IdProduto").change(function () {
+                PegarvalorVeiculoAjax();
+            });
+
+            $("#TipoEntrega").change(function () {
+                PegarvalorEnderecoAjax();
+            });
+
+            $("#IdCliente").change(function () {
+                PegarvalorEnderecoAjax();
+                PegarFormaDePagamento();
+            });
+        });
+
+
+        function PegarvalorVeiculoAjax() {
+            $.ajax({
+                url: '@Url.Action("PegarPrecoProduto")',
+                type: "post",
+                dataType: "html",
+                data: { IdProduto: $("#IdProduto").val() },
+
+                success: function (data) {
+
+                    $("#Valor").val(data);
+
+                }
+            });
+        }
+
+        function PegarvalorEnderecoAjax() {
+            
+            if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 2) {
+                $('#viewParcialEndereco').hide();
+            }
+
+            if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 1) {
+                $('#viewParcialEndereco').show();
+
+                $.ajax({
+                    url: '@Url.Action("PegarEndereco")',
+                    type: "post",
+                    dataType: "html",
+                    data: { IdCliente: $("#IdCliente").val() },
+
+                    success: function (data) {
+                        $('#viewParcialEndereco').html(data);
+                        $("#atualizar").click(function () {
+
+                            AtualizarEnderecoAjax()
+                        });
+                    }
+                });
+            }
+
+        }
+
+
+        function AtualizarEnderecoAjax() {
+
+            $.ajax({
+                url: '@Url.Action("AtualizarEnderecos")',
+                type: "post",
+                dataType: "html",
+                data: {
+                    IdCliente: $("#IdCliente").val(),
+                    Endereco: $("#Endereco").val(),
+                    Bairro: $("#Bairro").val(),
+                    NumeroDaCasa: $("#NumeroDaCasa").val(),
+                    CEP: $("#CEP").val(),
+                    Cidade: $("#Cidade").val(),
+                    Estado: $("#Estado").val(),
+                    Complemento: $("#Complemento").val()
+
+                },
+
+                success: function (data) {
+
+                    alert("Endereço Alterado");
+
+                }
+            });
+        }
+
+        function PegarFormaDePagamento() {
+
+            $.ajax({
+                url: '@Url.Action("PegarFormaDePagamento")', //Metodo da minha controller
+                type: "post",
+                dataType: "html",
+                data: { IdCliente: $("#IdCliente").val() },
+
+                success: function (data) {
+
+                    $('#ViewParcialFormaDePagamento').html(data); //div para renderizar
+
+                }
+            });
+        }
+
+    </script>
+}

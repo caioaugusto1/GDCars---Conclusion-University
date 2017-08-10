@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GDCarsContextStoreContainer" CdmEntityContainer="GDCarsEntities">
+    <EntitySetMapping Name="GDC_Bancos">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Bancos">
+        <MappingFragment StoreEntitySet="GDC_Bancos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Multimidia" ColumnName="Multimidia" />
+          <ScalarProperty Name="Cor" ColumnName="Cor" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="IdUpload" ColumnName="IdUpload" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Clientes">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Clientes">
+        <MappingFragment StoreEntitySet="GDC_Clientes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="RG" ColumnName="RG" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Cores_Externa">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Cores_Externa">
+        <MappingFragment StoreEntitySet="GDC_Cores_Externa">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Enderecos">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Enderecos">
+        <MappingFragment StoreEntitySet="GDC_Enderecos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Formas_Pagamentos">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Formas_Pagamentos">
+        <MappingFragment StoreEntitySet="GDC_Formas_Pagamentos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Tipo_Cliente" ColumnName="Tipo_Cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Logins">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Logins">
+        <MappingFragment StoreEntitySet="GDC_Logins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="SobreNome" ColumnName="SobreNome" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
+          <ScalarProperty Name="Tipo_Acesso" ColumnName="Tipo_Acesso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Perfomances">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Perfomances">
+        <MappingFragment StoreEntitySet="GDC_Perfomances">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+          <ScalarProperty Name="IdRoda" ColumnName="IdRoda" />
+          <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdCor" ColumnName="IdCor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Rodas">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Rodas">
+        <MappingFragment StoreEntitySet="GDC_Rodas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Cor" ColumnName="Cor" />
+          <ScalarProperty Name="Aro" ColumnName="Aro" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="IdUpload" ColumnName="IdUpload" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Uploads">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Uploads">
+        <MappingFragment StoreEntitySet="GDC_Uploads">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
+          <ScalarProperty Name="Nome_Arquivo" ColumnName="Nome_Arquivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Veiculos">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Veiculos">
+        <MappingFragment StoreEntitySet="GDC_Veiculos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Fabricante" ColumnName="Fabricante" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Ano" ColumnName="Ano" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="IdUpload" ColumnName="IdUpload" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GDC_Vendas">
+      <EntityTypeMapping TypeName="GDCarsContext.GDC_Vendas">
+        <MappingFragment StoreEntitySet="GDC_Vendas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Tipo_Entrega" ColumnName="Tipo_Entrega" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Termo_Autorizacao" ColumnName="Termo_Autorizacao" />
+          <ScalarProperty Name="IdPerformance" ColumnName="IdPerformance" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdFormaPagamento" ColumnName="IdFormaPagamento" />
+          <ScalarProperty Name="IdVeiculo" ColumnName="IdVeiculo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

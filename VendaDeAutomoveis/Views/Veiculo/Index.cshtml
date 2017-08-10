@@ -1,0 +1,34 @@
+﻿@model IList<VendaDeAutomoveis.Entidades.Veiculo>
+
+<br />
+<br />
+<br />
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            
+            <th>Nome do fabricante</th>
+            <th>Modelo do veículo</th>
+            <th>Ano de Fabricação do veículo</th>
+            <th>Valor do veículo</th>
+            <th>Tipo do veículo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+               
+                <td>@u.Fabricante</td>
+                <td>@u.ModeloVeiculo</td>
+                <td>@u.Ano</td>
+                <td>@u.Valor</td>
+                <td>@u.TipoVeiculo </td>
+                <td>@Html.ActionLink("Editar", "EditarProduto", new { idProduto = u.Id }, new { @class = "btn-success" })</td>
+                <td>@Html.ActionLink("Excluir", "Excluir", new { idProduto = u.Id }, new { @class = "bg-warning" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

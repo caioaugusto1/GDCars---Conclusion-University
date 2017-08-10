@@ -1,0 +1,26 @@
+﻿@model IList<VendaDeAutomoveis.Entidades.Login>
+
+<br />
+<br />
+<br />
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nome do Usuário</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+
+                <td>@u.Nome @u.SobreNome</td>
+                <td>@u.Email</td>
+                <td>@Html.ActionLink("Inativar", "Inativar", new { idProduto = u.IdLogin }, new { @class = "bg-warning" })</td>
+            </tr>
+        }
+    </tbody>
+</table>

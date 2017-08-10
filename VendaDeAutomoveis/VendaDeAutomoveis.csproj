@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29FFF786-8803-428B-8335-6AF8DED4FBCC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VendaDeAutomoveis</RootNamespace>
+    <AssemblyName>VendaDeAutomoveis</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DomainValidation.1.0.0\lib\net45\DomainValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlMapper, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlMapper.1.0.7\lib\net45\SqlMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="SqlMapper.Common, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlMapper.Common.1.0.7\lib\net45\SqlMapper.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Validator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Validator.1.0.0\lib\NET40\Validator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.css" />
+    <Content Include="Content\bootstrap-fileinput\css\fileinput.min.css" />
+    <Content Include="Content\bootstrap-fileinput\img\loading-sm.gif" />
+    <Content Include="Content\bootstrap-fileinput\img\loading.gif" />
+    <Content Include="Content\bootstrap-fileinput\themes\explorer\theme.css" />
+    <Content Include="Content\bootstrap-fileinput\themes\explorer\theme.js" />
+    <Content Include="Content\bootstrap-fileinput\themes\fa\theme.js" />
+    <Content Include="Content\bootstrap-fileinput\themes\gly\theme.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\creative.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\ferrari-vermelha.jpg" />
+    <Content Include="Content\images\golf-gti.jpg" />
+    <Content Include="Content\images\porsche-cinza.jpg" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\menu.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+      <LastGenOutput>GDCarsContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+      <LastGenOutput>GDCarsContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\autoNumeric.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
+    <EntityDeploy Include="Repository\ConnectionContext\Context\GDCarsContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GDCarsContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.edmx.diagram">
+      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fileinput.js" />
+    <Content Include="Scripts\fileinput.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.2.6.pack.js" />
+    <Content Include="Scripts\jquery.maskedinput-1.1.4.pack.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\jquery.maskMoney.js" />
+    <Content Include="Scripts\js\creative.js" />
+    <Content Include="Scripts\js\creative.min.js" />
+    <Content Include="Scripts\js\jquery.js" />
+    <Content Include="Scripts\js\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\js\jquery.min.js" />
+    <Content Include="Scripts\js\scrollreveal.js" />
+    <Content Include="Scripts\js\scrollreveal.min.js" />
+    <Content Include="Scripts\locales\ar.js" />
+    <Content Include="Scripts\locales\bg.js" />
+    <Content Include="Scripts\locales\ca.js" />
+    <Content Include="Scripts\locales\cr.js" />
+    <Content Include="Scripts\locales\cz.js" />
+    <Content Include="Scripts\locales\da.js" />
+    <Content Include="Scripts\locales\de.js" />
+    <Content Include="Scripts\locales\el.js" />
+    <Content Include="Scripts\locales\es.js" />
+    <Content Include="Scripts\locales\fa.js" />
+    <Content Include="Scripts\locales\fi.js" />
+    <Content Include="Scripts\locales\fr.js" />
+    <Content Include="Scripts\locales\hu.js" />
+    <Content Include="Scripts\locales\id.js" />
+    <Content Include="Scripts\locales\it.js" />
+    <Content Include="Scripts\locales\ja.js" />
+    <Content Include="Scripts\locales\kr.js" />
+    <Content Include="Scripts\locales\kz.js" />
+    <Content Include="Scripts\locales\LANG.js" />
+    <Content Include="Scripts\locales\nl.js" />
+    <Content Include="Scripts\locales\pl.js" />
+    <Content Include="Scripts\locales\pt-BR.js" />
+    <Content Include="Scripts\locales\pt.js" />
+    <Content Include="Scripts\locales\ro.js" />
+    <Content Include="Scripts\locales\ru.js" />
+    <Content Include="Scripts\locales\sk.js" />
+    <Content Include="Scripts\locales\sl.js" />
+    <Content Include="Scripts\locales\sv.js" />
+    <Content Include="Scripts\locales\th.js" />
+    <Content Include="Scripts\locales\tr.js" />
+    <Content Include="Scripts\locales\uk.js" />
+    <Content Include="Scripts\locales\vi.js" />
+    <Content Include="Scripts\locales\zh-TW.js" />
+    <Content Include="Scripts\locales\zh.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\numericInput.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.js" />
+    <Content Include="Scripts\plugins\canvas-to-blob.min.js" />
+    <Content Include="Scripts\plugins\purify.js" />
+    <Content Include="Scripts\plugins\purify.min.js" />
+    <Content Include="Scripts\plugins\sortable.js" />
+    <Content Include="Scripts\plugins\sortable.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PerformanceController.cs" />
+    <Compile Include="Controllers\VeiculoController.cs" />
+    <Compile Include="Controllers\VendaController.cs" />
+    <Compile Include="Repository\ClienteRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\ClienteAdapter.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\EnderecoAdapter.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\FormaPagamentoAdapter.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\LoginAdapter.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\VeiculoAdapter.cs" />
+    <Compile Include="Repository\ConnectionContext\Adapters\VendaAdappter.cs" />
+    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GDCarsContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Bancos.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Clientes.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Cores_Externa.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Enderecos.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Formas_Pagamentos.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Logins.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Perfomances.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Rodas.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Uploads.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Veiculos.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Vendas.cs">
+      <DependentUpon>GDCarsContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\ConnectionContext\GDCarsConnectionString.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IFormasPagamentosRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\ILoginRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IVendasRepository.cs" />
+    <Compile Include="Repository\EnderecoRepository.cs" />
+    <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\FormaPagamentoRepository.cs" />
+    <Compile Include="Repository\VeiculoRepository.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\VendaRepository.cs" />
+    <Compile Include="Repository\GDCarsContext.cs" />
+    <Compile Include="Entidades\Banco.cs" />
+    <Compile Include="Entidades\Cliente.cs" />
+    <Compile Include="Entidades\Cor.cs" />
+    <Compile Include="Entidades\Endereco.cs" />
+    <Compile Include="Entidades\Entity.cs" />
+    <Compile Include="Entidades\EntityUpload.cs" />
+    <Compile Include="Entidades\FormaDePagamento.cs" />
+    <Compile Include="Entidades\Logins.cs" />
+    <Compile Include="Entidades\Performance.cs" />
+    <Compile Include="Entidades\Roda.cs" />
+    <Compile Include="Entidades\Upload.cs" />
+    <Compile Include="Entidades\Veiculo.cs" />
+    <Compile Include="Entidades\Venda.cs" />
+    <Compile Include="Factory\Base\Upload\UploadArquivoFactory.cs" />
+    <Compile Include="Factory\EntidadesFactory\PagamentoAPrazo12xComJuros.cs" />
+    <Compile Include="Factory\EntidadesFactory\PagamentoAPrazo12xSemJuros.cs" />
+    <Compile Include="Factory\EntidadesFactory\PagamentoAPrazo60xComJuros.cs" />
+    <Compile Include="Factory\EntidadesFactory\PagamentoAPrazo60xSemJuros.cs" />
+    <Compile Include="Factory\EntidadesFactory\PagamentoAVista.cs" />
+    <Compile Include="Factory\Base\FormaDePagamentoFactory.cs" />
+    <Compile Include="Factory\Base\IFormaDePagamento.cs" />
+    <Compile Include="Filters\AutorizacaoAcesso.cs" />
+    <Compile Include="Filters\AutorizacaoFilterAttribute.cs" />
+    <Compile Include="Filters\ClaimsAuthorizeAttribute.cs" />
+    <Compile Include="Filters\SessionManager.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FormaDePagamentoModel.cs" />
+    <Compile Include="Models\HistoricoPedidosModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Criptografia.cs" />
+    <Compile Include="Specification\Clientes\ClienteDeveSerMaiorIdadeSpecification.cs" />
+    <Compile Include="Specification\Clientes\ClienteDeveTerCPFValidoSpecification.cs" />
+    <Compile Include="Specification\Clientes\ClienteDeveTerEmailValidoSpecification.cs" />
+    <Compile Include="Specification\ISpecification.cs" />
+    <Compile Include="Validation\Clientes\ClienteDeveTerEmailValidoValidation.cs" />
+    <Compile Include="Validation\Clientes\ClienteEstaConsistenteValidation.cs" />
+    <Compile Include="Validation\Clientes\CPFValidation.cs" />
+    <Compile Include="Validation\Clientes\EmailValidation.cs" />
+    <Compile Include="Validation\Clientes\MaiorIdadeValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Veiculo\FormularioCadastro.cshtml" />
+    <Content Include="Views\Veiculo\Index.cshtml" />
+    <Content Include="Views\Venda\FormularioCadastro.cshtml" />
+    <Content Include="Views\Venda\Index.cshtml" />
+    <Content Include="Views\Venda\HistoricoPedidos.cshtml" />
+    <Content Include="Views\Cliente\EditarCliente.cshtml" />
+    <Content Include="Views\Veiculo\EditarProduto.cshtml" />
+    <Content Include="Views\Venda\EditarClienteParcial.cshtml" />
+    <Content Include="Views\Venda\_ParcialviewEndereco.cshtml" />
+    <Content Include="Views\Venda\_ParcialViewFormaDePagamento.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Cliente\FormularioCadastro.cshtml" />
+    <Content Include="Views\Login\CriarAcesso.cshtml" />
+    <Content Include="Views\Login\ListarAcesso.cshtml" />
+    <Content Include="Views\Veiculo\_CadastroUpload.cshtml" />
+    <Content Include="Views\Veiculo\VerImagem.cshtml" />
+    <Content Include="Views\Performance\Index.cshtml" />
+    <Content Include="Views\Cliente\CadastrarEndereco.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Factory\EntidadesFactory\Upload\" />
+    <Folder Include="Factory\EntidadesFactory\Venda\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58849</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58849/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

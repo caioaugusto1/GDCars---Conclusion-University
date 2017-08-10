@@ -1,0 +1,252 @@
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Estag1\Documents\estagiarios\Projetos\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Fernando\Desktop\Caio\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.Migrations.Permission.resources
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csproj.GenerateResource.Cache
+C:\Users\Estag2\Documents\Caio\Caio Pen Drive\Projeto - ASP.NET C# MVC 5\Projetos Veiculos - Caio - Rodolfo\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.Migrations.Tabelas.resources
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csproj.GenerateResource.Cache
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\DotNetZip.dll
+C:\Users\Fernando\Documents\Caio Augusto\GDCars - TCC\VendaDeAutomoveis\bin\DotNetZip.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\DotNetZip.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\DotNetZip.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.Migrations.Tables.resources
+C:\Users\Fernando\Documents\GDCars - TCC\GDCars---TCC-\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csproj.GenerateResource.Cache
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DotNetZip.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DotNetZip.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Dapper.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\SqlMapper.Common.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\SqlMapper.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Dapper.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\AutoMapper.dll
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\AutoMapper.xml
+C:\Users\Estag2\Documents\Caio\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DomainValidation.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\AutoMapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Dapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\DomainValidation.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\DotNetZip.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\SqlMapper.Common.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\SqlMapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\AutoMapper.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Dapper.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\DotNetZip.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.xml

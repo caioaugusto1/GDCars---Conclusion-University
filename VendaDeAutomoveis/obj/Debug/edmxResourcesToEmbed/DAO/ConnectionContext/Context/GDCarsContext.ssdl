@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GDCarsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="GDC_Bancos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Modelo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Multimidia" Type="bit" Nullable="false" />
+    <Property Name="Cor" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IdUpload" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GDC_Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="RG" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="CPF" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="IdEndereco" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GDC_Cores_Externa">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estilo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GDC_Enderecos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Endereco" Type="varchar" MaxLength="30" />
+    <Property Name="Numero" Type="varchar" MaxLength="5" />
+    <Property Name="Complemento" Type="varchar" MaxLength="5" />
+    <Property Name="CEP" Type="int" />
+    <Property Name="Bairro" Type="varchar" MaxLength="30" />
+    <Property Name="Estado" Type="varchar" MaxLength="30" />
+    <Property Name="Cidade" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="GDC_Formas_Pagamentos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Modelo" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Tipo_Cliente" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GDC_Logins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SobreNome" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Senha" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Data_Inclusao" Type="datetime" Nullable="false" />
+    <Property Name="Tipo_Acesso" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GDC_Perfomances">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ValorTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IdRoda" Type="varchar" MaxLength="50" />
+    <Property Name="IdBanco" Type="varchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="varchar" MaxLength="50" />
+    <Property Name="IdCor" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GDC_Rodas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Modelo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Cor" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Aro" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+    <Property Name="IdUpload" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GDC_Uploads">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Data_Inclusao" Type="datetime" Nullable="false" />
+    <Property Name="Nome_Arquivo" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GDC_Veiculos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fabricante" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Modelo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Ano" Type="datetime" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Tipo" Type="char" MaxLength="1" />
+    <Property Name="IdUpload" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="GDC_Vendas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Tipo_Entrega" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="Termo_Autorizacao" Type="bit" Nullable="false" />
+    <Property Name="IdPerformance" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdCliente" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdFormaPagamento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdVeiculo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__GDC_Banco__IdUpl__1DE57479">
+    <End Role="GDC_Uploads" Type="Self.GDC_Uploads" Multiplicity="0..1" />
+    <End Role="GDC_Bancos" Type="Self.GDC_Bancos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Uploads">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Bancos">
+        <PropertyRef Name="IdUpload" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Clien__IdEnd__145C0A3F">
+    <End Role="GDC_Enderecos" Type="Self.GDC_Enderecos" Multiplicity="0..1" />
+    <End Role="GDC_Clientes" Type="Self.GDC_Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Enderecos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Clientes">
+        <PropertyRef Name="IdEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Perfo__IdBan__21B6055D">
+    <End Role="GDC_Bancos" Type="Self.GDC_Bancos" Multiplicity="0..1" />
+    <End Role="GDC_Perfomances" Type="Self.GDC_Perfomances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Bancos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Perfomances">
+        <PropertyRef Name="IdBanco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Perfo__IdCli__22AA2996">
+    <End Role="GDC_Clientes" Type="Self.GDC_Clientes" Multiplicity="0..1" />
+    <End Role="GDC_Perfomances" Type="Self.GDC_Perfomances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Clientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Perfomances">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Perfo__IdCor__239E4DCF">
+    <End Role="GDC_Cores_Externa" Type="Self.GDC_Cores_Externa" Multiplicity="0..1" />
+    <End Role="GDC_Perfomances" Type="Self.GDC_Perfomances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Cores_Externa">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Perfomances">
+        <PropertyRef Name="IdCor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Perfo__IdRod__20C1E124">
+    <End Role="GDC_Rodas" Type="Self.GDC_Rodas" Multiplicity="0..1" />
+    <End Role="GDC_Perfomances" Type="Self.GDC_Perfomances" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Rodas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Perfomances">
+        <PropertyRef Name="IdRoda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Rodas__IdUpl__1920BF5C">
+    <End Role="GDC_Uploads" Type="Self.GDC_Uploads" Multiplicity="0..1" />
+    <End Role="GDC_Rodas" Type="Self.GDC_Rodas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Uploads">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Rodas">
+        <PropertyRef Name="IdUpload" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Veicu__IdUpl__267ABA7A">
+    <End Role="GDC_Uploads" Type="Self.GDC_Uploads" Multiplicity="0..1" />
+    <End Role="GDC_Veiculos" Type="Self.GDC_Veiculos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Uploads">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Veiculos">
+        <PropertyRef Name="IdUpload" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Venda__IdCli__2C3393D0">
+    <End Role="GDC_Clientes" Type="Self.GDC_Clientes" Multiplicity="1" />
+    <End Role="GDC_Vendas" Type="Self.GDC_Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Clientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Vendas">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Venda__IdFor__2D27B809">
+    <End Role="GDC_Formas_Pagamentos" Type="Self.GDC_Formas_Pagamentos" Multiplicity="1" />
+    <End Role="GDC_Vendas" Type="Self.GDC_Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Formas_Pagamentos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Vendas">
+        <PropertyRef Name="IdFormaPagamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Venda__IdPer__2B3F6F97">
+    <End Role="GDC_Perfomances" Type="Self.GDC_Perfomances" Multiplicity="1" />
+    <End Role="GDC_Vendas" Type="Self.GDC_Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Perfomances">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Vendas">
+        <PropertyRef Name="IdPerformance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GDC_Venda__IdVei__2E1BDC42">
+    <End Role="GDC_Veiculos" Type="Self.GDC_Veiculos" Multiplicity="1" />
+    <End Role="GDC_Vendas" Type="Self.GDC_Vendas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GDC_Veiculos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GDC_Vendas">
+        <PropertyRef Name="IdVeiculo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GDCarsModelStoreContainer">
+    <EntitySet Name="GDC_Bancos" EntityType="Self.GDC_Bancos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Clientes" EntityType="Self.GDC_Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Cores_Externa" EntityType="Self.GDC_Cores_Externa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Enderecos" EntityType="Self.GDC_Enderecos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Formas_Pagamentos" EntityType="Self.GDC_Formas_Pagamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Logins" EntityType="Self.GDC_Logins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Perfomances" EntityType="Self.GDC_Perfomances" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Rodas" EntityType="Self.GDC_Rodas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Uploads" EntityType="Self.GDC_Uploads" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Veiculos" EntityType="Self.GDC_Veiculos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GDC_Vendas" EntityType="Self.GDC_Vendas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__GDC_Banco__IdUpl__1DE57479" Association="Self.FK__GDC_Banco__IdUpl__1DE57479">
+      <End Role="GDC_Uploads" EntitySet="GDC_Uploads" />
+      <End Role="GDC_Bancos" EntitySet="GDC_Bancos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Clien__IdEnd__145C0A3F" Association="Self.FK__GDC_Clien__IdEnd__145C0A3F">
+      <End Role="GDC_Enderecos" EntitySet="GDC_Enderecos" />
+      <End Role="GDC_Clientes" EntitySet="GDC_Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Perfo__IdBan__21B6055D" Association="Self.FK__GDC_Perfo__IdBan__21B6055D">
+      <End Role="GDC_Bancos" EntitySet="GDC_Bancos" />
+      <End Role="GDC_Perfomances" EntitySet="GDC_Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Perfo__IdCli__22AA2996" Association="Self.FK__GDC_Perfo__IdCli__22AA2996">
+      <End Role="GDC_Clientes" EntitySet="GDC_Clientes" />
+      <End Role="GDC_Perfomances" EntitySet="GDC_Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Perfo__IdCor__239E4DCF" Association="Self.FK__GDC_Perfo__IdCor__239E4DCF">
+      <End Role="GDC_Cores_Externa" EntitySet="GDC_Cores_Externa" />
+      <End Role="GDC_Perfomances" EntitySet="GDC_Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Perfo__IdRod__20C1E124" Association="Self.FK__GDC_Perfo__IdRod__20C1E124">
+      <End Role="GDC_Rodas" EntitySet="GDC_Rodas" />
+      <End Role="GDC_Perfomances" EntitySet="GDC_Perfomances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Rodas__IdUpl__1920BF5C" Association="Self.FK__GDC_Rodas__IdUpl__1920BF5C">
+      <End Role="GDC_Uploads" EntitySet="GDC_Uploads" />
+      <End Role="GDC_Rodas" EntitySet="GDC_Rodas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Veicu__IdUpl__267ABA7A" Association="Self.FK__GDC_Veicu__IdUpl__267ABA7A">
+      <End Role="GDC_Uploads" EntitySet="GDC_Uploads" />
+      <End Role="GDC_Veiculos" EntitySet="GDC_Veiculos" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Venda__IdCli__2C3393D0" Association="Self.FK__GDC_Venda__IdCli__2C3393D0">
+      <End Role="GDC_Clientes" EntitySet="GDC_Clientes" />
+      <End Role="GDC_Vendas" EntitySet="GDC_Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Venda__IdFor__2D27B809" Association="Self.FK__GDC_Venda__IdFor__2D27B809">
+      <End Role="GDC_Formas_Pagamentos" EntitySet="GDC_Formas_Pagamentos" />
+      <End Role="GDC_Vendas" EntitySet="GDC_Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Venda__IdPer__2B3F6F97" Association="Self.FK__GDC_Venda__IdPer__2B3F6F97">
+      <End Role="GDC_Perfomances" EntitySet="GDC_Perfomances" />
+      <End Role="GDC_Vendas" EntitySet="GDC_Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GDC_Venda__IdVei__2E1BDC42" Association="Self.FK__GDC_Venda__IdVei__2E1BDC42">
+      <End Role="GDC_Veiculos" EntitySet="GDC_Veiculos" />
+      <End Role="GDC_Vendas" EntitySet="GDC_Vendas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
