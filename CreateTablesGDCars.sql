@@ -89,7 +89,7 @@ create table GDC_Perfomances(
 )
 
 create table GDC_Veiculos(
-	Id iuniqueidentifiernt not null,
+	Id uniqueidentifier not null,
 	Fabricante varchar(20) not null,
 	Modelo varchar(20) not null,
 	Ano datetime not null, 
@@ -121,3 +121,10 @@ create table GDC_Vendas(
 
 	Primary Key(Id)
 )
+
+
+--Senha igual a 123
+insert into GDC_Logins(Id, Nome, SobreNome, Email, Senha, 
+Data_Inclusao, DataNascimento, Tipo_Acesso)
+values('61f87757-ac85-4929-8b79-acb7383cb457', 'Teste', 'GDCars', 'teste@gdcars.com', 
+'20-2c-b9-62-ac-59-07-5b-96-4b-07-15-2d-23-4b-70', GETDATE(), GETDATE(), 1)
