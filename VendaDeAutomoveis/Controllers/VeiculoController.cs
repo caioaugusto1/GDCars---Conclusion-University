@@ -34,7 +34,7 @@ namespace VendaDeAutomoveis.Controllers
                 UploadArquivoFactory.Upload(file, nomeArquivo);
             }
 
-            veiculo.IdUpload = Guid.Parse("5a998169-09e9-4016-bc7d-d86d87ee9926");
+            //veiculo.IdUpload = Guid.Parse("5a998169-09e9-4016-bc7d-d86d87ee9926");
             if (ModelState.IsValid)
             {
                 veiculoRepository.Adicionar(veiculo);

@@ -97,10 +97,13 @@ namespace VendaDeAutomoveis.Controllers
 
         private void MudarClienteComunParaVip(Cliente cliente)
         {
-            var calcularGastoCliente = vendaRepository.GastosPorCliente(cliente.IdCliente);
+            if(cliente.TipoDoCliente == TipoCliente.Comum)
+            {
+                var calcularGastoCliente = vendaRepository.GastosPorCliente(cliente.IdCliente);
 
-            if (calcularGastoCliente >= 200000)
-                MudarClienteParaVip(cliente);
+                if (calcularGastoCliente >= 200000)
+                    MudarClienteParaVip(cliente);
+            }
             
             //if (cliente.TipoDoCliente == TipoCliente.Comum && vendaRepository.GastosPorCliente(cliente.IdCliente) >= 200000)
             //{
@@ -114,7 +117,7 @@ namespace VendaDeAutomoveis.Controllers
             var objVenda = CalcularVeiculoEsportivo(venda);
             vendaRepository.Editar(objVenda);
             return objVenda.Valor;
-
+            
             //if (venda.Veiculo.TipoVeiculo == VeiculoTipo.Esportivo)
             //{
             //    string recebendoObservacao = venda.Observacoes;

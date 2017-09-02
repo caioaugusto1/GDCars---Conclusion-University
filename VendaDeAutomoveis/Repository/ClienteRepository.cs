@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.DAO.ConnectionContext;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;

@@ -9,8 +9,8 @@ namespace VendaDeAutomoveis.Entidades
     public class EntityUpload
     {
         //[Required(ErrorMessage = "Informe o Modelo do Produto")]
-        public Guid IdUpload { get; set; }
+        //public Guid IdUpload { get; set; }
 
-        public virtual Upload Upload { get; set; }
+        //public virtual Upload Upload { get; set; }
     }
 }

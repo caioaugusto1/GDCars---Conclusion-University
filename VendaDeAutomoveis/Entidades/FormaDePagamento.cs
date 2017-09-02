@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -21,10 +18,15 @@ namespace VendaDeAutomoveis.Entidades
 
     public enum ModelosDePagamento
     {
+        //Todos os clientes
         PagamentoAVista = 1,
+        //Não vips 3% ao mês
         PagamentoAPrazo12xComJuros = 2,
+        //Vips
         PagamentoAPrazo12xSemJuros = 3,
+        //Não vips 5% ao mes
         PagamentoAPrazo60xComJuros = 4,
+        //Vips
         PagamentoAPrazo60xSemJuros = 5
     }
 }

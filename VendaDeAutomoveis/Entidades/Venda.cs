@@ -58,10 +58,14 @@ namespace VendaDeAutomoveis.Entidades
 
             if (venda.FormaDePagamento.ModeloFormaDePagamento == ModelosDePagamento.PagamentoAVista.ToString())
             {
-                venda.Observacoes = recebendoObservacao + " Financiamento com pagamento à vista";
+                double desconto = 0.06;
+                venda.Valor = (venda.Valor - Convert.ToDecimal(desconto)) - venda.Valor;
+                venda.Observacoes = recebendoObservacao + " Pagamento à vista";
             }
             else if (venda.FormaDePagamento.ModeloFormaDePagamento == ModelosDePagamento.PagamentoAPrazo12xComJuros.ToString())
             {
+                double juros = 0.03;
+                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
                 decimal parcela = venda.Valor;
                 parcela = parcela / 12;
                 venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
@@ -82,13 +86,11 @@ namespace VendaDeAutomoveis.Entidades
             }
             else if (venda.FormaDePagamento.ModeloFormaDePagamento == ModelosDePagamento.PagamentoAPrazo60xSemJuros.ToString())
             {
-                double juros = 0.05;
-                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
                 decimal parcela = venda.Valor;
                 parcela = parcela / 60;
                 venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
             }
-
+            
             return venda;
         }
 

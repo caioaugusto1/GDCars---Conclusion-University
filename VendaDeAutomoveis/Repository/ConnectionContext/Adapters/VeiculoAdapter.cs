@@ -21,8 +21,8 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
                 ModeloVeiculo = dbVeiculos.Modelo,
                 Ano = dbVeiculos.Ano,
                 Valor = dbVeiculos.Valor,
-                TipoVeiculo = (VeiculoTipo)char.Parse(dbVeiculos.Tipo),
-                IdUpload = Guid.Parse(dbVeiculos.IdUpload)
+                TipoVeiculo = (VeiculoTipo)char.Parse(dbVeiculos.Tipo)
+                //IdUpload = Guid.Parse(dbVeiculos.IdUpload)
             };
         }
 
@@ -38,8 +38,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
                 Modelo = domain.ModeloVeiculo,
                 Ano = DateTime.Now,
                 Valor = Convert.ToDecimal(domain.Valor),
-                Tipo = domain.TipoVeiculo.ToString(),
-                IdUpload = domain.IdUpload.ToString()
+                Tipo = domain.TipoVeiculo.ToString()
             };
         }
 
