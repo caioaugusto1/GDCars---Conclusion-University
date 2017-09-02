@@ -14,15 +14,15 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
     
     public partial class GDC_Vendas
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public decimal Valor { get; set; }
         public string Tipo_Entrega { get; set; }
         public string Status { get; set; }
         public bool Termo_Autorizacao { get; set; }
-        public string IdPerformance { get; set; }
-        public string IdCliente { get; set; }
-        public string IdFormaPagamento { get; set; }
-        public string IdVeiculo { get; set; }
+        public Nullable<System.Guid> IdPerformance { get; set; }
+        public Nullable<System.Guid> IdCliente { get; set; }
+        public Nullable<System.Guid> IdFormaPagamento { get; set; }
+        public Nullable<System.Guid> IdVeiculo { get; set; }
     
         public virtual GDC_Clientes GDC_Clientes { get; set; }
         public virtual GDC_Formas_Pagamentos GDC_Formas_Pagamentos { get; set; }

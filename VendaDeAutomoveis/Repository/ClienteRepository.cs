@@ -10,7 +10,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class ClienteRepository : RepositoryBase<GDC_Clientes>, IRepository<Cliente>
     {
-        public ClienteRepository(GDCarsContext context)
+        public ClienteRepository(ContextGDCars context)
             : base(context)
         {
         }

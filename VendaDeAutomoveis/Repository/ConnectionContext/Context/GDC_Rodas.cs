@@ -20,12 +20,12 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
             this.GDC_Perfomances = new HashSet<GDC_Perfomances>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Modelo { get; set; }
         public string Cor { get; set; }
         public int Aro { get; set; }
         public int Valor { get; set; }
-        public string IdUpload { get; set; }
+        public Nullable<System.Guid> IdUpload { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GDC_Perfomances> GDC_Perfomances { get; set; }

@@ -12,7 +12,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class FormaPagamentoRepository : RepositoryBase<GDC_Formas_Pagamentos>, IFormasPagamentosRepository
     {
-        public FormaPagamentoRepository(GDCarsContext context)
+        public FormaPagamentoRepository(ContextGDCars context)
             : base(context)
         {
 
@@ -32,7 +32,7 @@ namespace VendaDeAutomoveis.Repository
             throw new NotImplementedException();
         }
 
-        public FormaDePagamento ObterPorId(string key)
+        public FormaDePagamento ObterPorId(Guid key)
         {
             var pagamento = _context.FormasPagamentos.Where(p => p.Id == key).FirstOrDefault();
             return pagamento.ToDomain();
@@ -80,10 +80,6 @@ namespace VendaDeAutomoveis.Repository
                 .ToList();
         }
 
-        public FormaDePagamento ObterPorId(Guid id)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Dispose()
         {

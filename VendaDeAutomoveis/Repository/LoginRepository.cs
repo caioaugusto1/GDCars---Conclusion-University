@@ -11,7 +11,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class LoginRepository : RepositoryBase<GDC_Logins>, ILoginRepository
     {
-        public LoginRepository(GDCarsContext context)
+        public LoginRepository(ContextGDCars context)
             : base(context)
         {
         }
@@ -57,7 +57,7 @@ namespace VendaDeAutomoveis.Repository
 
         public void BloquearAcesso(Guid id)
         {
-            var usuario = _context.Logins.Where(u => u.Id == id.ToString()).FirstOrDefault();
+            var usuario = _context.Logins.Where(u => u.Id == id).FirstOrDefault();
             usuario.Tipo_Acesso = NivelAcesso.Bloqueado.ToString();
             SaveChange();
         }

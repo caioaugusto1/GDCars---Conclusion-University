@@ -16,7 +16,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new Veiculo
             {
-                Id = Guid.Parse(dbVeiculos.Id),
+                Id = dbVeiculos.Id,
                 Fabricante = dbVeiculos.Fabricante,
                 ModeloVeiculo = dbVeiculos.Modelo,
                 Ano = dbVeiculos.Ano,
@@ -33,7 +33,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Veiculos
             {
-                Id = domain.Id.ToString(),
+                Id = domain.Id,
                 Fabricante = domain.Fabricante,
                 Modelo = domain.ModeloVeiculo,
                 Ano = DateTime.Now,

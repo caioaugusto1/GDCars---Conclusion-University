@@ -21,14 +21,14 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
             this.GDC_Vendas = new HashSet<GDC_Vendas>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Nome { get; set; }
         public string RG { get; set; }
         public string CPF { get; set; }
         public string Tipo { get; set; }
         public string Email { get; set; }
+        public Nullable<System.Guid> IdEndereco { get; set; }
         public System.DateTime DataNascimento { get; set; }
-        public string IdEndereco { get; set; }
     
         public virtual GDC_Enderecos GDC_Enderecos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

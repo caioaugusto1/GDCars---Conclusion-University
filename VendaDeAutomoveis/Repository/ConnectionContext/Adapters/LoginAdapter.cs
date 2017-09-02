@@ -12,7 +12,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new Login
             {
-                Id = Guid.Parse(dbLogin.Id),
+                Id = Guid.Parse(dbLogin.Id.ToString()),
                 Nome = dbLogin.Nome,
                 SobreNome = dbLogin.SobreNome,
                 Email = dbLogin.Email,
@@ -27,7 +27,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Logins
             {
-                Id = Convert.ToString(domain.Id),
+                Id = domain.Id,
                 Nome = domain.Nome,
                 SobreNome = domain.SobreNome,
                 Senha = domain.Senha,

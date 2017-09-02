@@ -3,10 +3,10 @@ using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class GDCarsContext : DbContext
+    public class ContextGDCars : DbContext
     {
-        public GDCarsContext()
-            : base ("GDCarsContext")
+        public ContextGDCars()
+            : base ("ContextGDCars")
         {
         }
 

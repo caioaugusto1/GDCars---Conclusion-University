@@ -11,7 +11,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class VendaRepository : RepositoryBase<GDC_Vendas>, IVendasRepository
     {
-        public VendaRepository(GDCarsContext context)
+        public VendaRepository(ContextGDCars context)
             : base(context)
         {
         }
@@ -51,7 +51,7 @@ namespace VendaDeAutomoveis.Repository
         
         public decimal GastosPorCliente(Guid id)
         {
-            return _context.Vendas.Where(c => c.Id == id.ToString()).Sum(c => c.Valor);
+            return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
         }
         
         public Venda ObterPorId(Guid id)

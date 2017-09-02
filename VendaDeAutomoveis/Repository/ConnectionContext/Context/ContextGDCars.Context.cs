@@ -13,10 +13,10 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GDCarsEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public GDCarsEntities()
-            : base("name=GDCarsEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     

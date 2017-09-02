@@ -11,7 +11,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class VeiculoRepository : RepositoryBase<GDC_Veiculos>, IRepository<Veiculo>
     {
-        public VeiculoRepository(GDCarsContext context)
+        public VeiculoRepository(ContextGDCars context)
             : base(context)
         {
         }
@@ -54,7 +54,7 @@ namespace VendaDeAutomoveis.Repository
 
         public Veiculo ObterPorId(Guid id)
         {
-            var veiculo = _context.Veiculos.Where(b => b.Id == id.ToString()).FirstOrDefault();
+            var veiculo = _context.Veiculos.Where(b => b.Id == id).FirstOrDefault();
             return veiculo.ToDomain();
         }
 

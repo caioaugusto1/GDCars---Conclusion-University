@@ -20,7 +20,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
             this.GDC_Perfomances = new HashSet<GDC_Perfomances>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string Estilo { get; set; }
         public decimal Valor { get; set; }
     

@@ -12,7 +12,7 @@ namespace VendaDeAutomoveis.Controllers
     [RoutePrefix("acesso-ao-sistema")]
     public class LoginController : Controller
     {
-        //private GDCarsContext db = new GDCarsContext();
+        //private ContextGDCars db = new ContextGDCars();
         private LoginRepository loginRepository;
         public LoginController(LoginRepository loginRepository)
         {

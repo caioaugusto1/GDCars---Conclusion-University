@@ -10,7 +10,7 @@ namespace VendaDeAutomoveis
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<GDCarsContext>(null);
+            Database.SetInitializer<ContextGDCars>(null);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 

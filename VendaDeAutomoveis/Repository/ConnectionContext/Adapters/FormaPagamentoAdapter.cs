@@ -17,7 +17,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new FormaDePagamento
             {
-                IdFormaDePagamento = Guid.Parse(dbFormaP.Id),
+                IdFormaDePagamento = Guid.Parse(dbFormaP.Id.ToString()),
                 ModeloFormaDePagamento = dbFormaP.Modelo,
                 TipoDoCliente = dbFormaP.Tipo_Cliente
             };
@@ -30,7 +30,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Formas_Pagamentos
             {
-                Id = domain.IdFormaDePagamento.ToString(),
+                Id = domain.IdFormaDePagamento,
                 Modelo = domain.ModeloFormaDePagamento,
                 Tipo_Cliente = domain.TipoDoCliente
             };

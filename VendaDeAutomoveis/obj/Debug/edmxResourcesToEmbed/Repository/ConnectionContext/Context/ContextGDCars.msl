@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="GDCarsModelStoreContainer" CdmEntityContainer="GDCarsEntities">
+  <EntityContainerMapping StorageEntityContainer="GDCarsModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="GDC_Bancos">
       <EntityTypeMapping TypeName="GDCarsModel.GDC_Bancos">
         <MappingFragment StoreEntitySet="GDC_Bancos">
@@ -22,8 +22,8 @@
           <ScalarProperty Name="CPF" ColumnName="CPF" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
           <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -62,12 +62,12 @@
     <EntitySetMapping Name="GDC_Logins">
       <EntityTypeMapping TypeName="GDCarsModel.GDC_Logins">
         <MappingFragment StoreEntitySet="GDC_Logins">
-          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Nome" ColumnName="Nome" />
           <ScalarProperty Name="SobreNome" ColumnName="SobreNome" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
           <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
           <ScalarProperty Name="Tipo_Acesso" ColumnName="Tipo_Acesso" />
         </MappingFragment>

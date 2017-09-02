@@ -16,7 +16,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new Endereco
             {
-                Id = Guid.Parse(dbEnderecos.Id),
+                Id = Guid.Parse(dbEnderecos.Id.ToString()),
                 EnderecoNome = dbEnderecos.Endereco,
                 Numero = dbEnderecos.Numero,
                 Complemento = dbEnderecos.Complemento,
@@ -34,7 +34,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Enderecos
             {
-                Id = domain.Id.ToString(),
+                Id = domain.Id,
                 Endereco = domain.EnderecoNome,
                 Numero = domain.Numero,
                 Complemento = domain.Complemento,

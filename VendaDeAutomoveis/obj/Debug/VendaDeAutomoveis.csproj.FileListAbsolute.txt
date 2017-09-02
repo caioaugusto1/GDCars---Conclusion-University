@@ -250,3 +250,45 @@ C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\b
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.xml
 C:\Users\caio.pereira\Documents\Caio Augusto\Projetos\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\AutoMapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Dapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\DomainValidation.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\DotNetZip.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\EntityFramework.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\SqlMapper.Common.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\SqlMapper.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Validator.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\WebActivatorEx.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\AutoMapper.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Dapper.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\DotNetZip.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\EntityFramework.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Validator.pdb
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\Validator.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+C:\Users\caio.pereira\Documents\Caio Augusto\Projetos - GitHub\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb

@@ -14,13 +14,13 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new Cliente
             {
-                IdCliente = Guid.Parse(dbClientes.Id),
+                IdCliente = Guid.Parse(dbClientes.Id.ToString()),
                 Nome = dbClientes.Nome,
                 CPF = dbClientes.CPF.ToString(),
                 RG = dbClientes.RG,
                 Email = dbClientes.Email,
                 TipoDoCliente = TipoCliente.Comum,
-                IdEndereco = Guid.Parse(dbClientes.IdEndereco)
+                IdEndereco = Guid.Parse(dbClientes.IdEndereco.ToString())
             };
         }
 
@@ -34,13 +34,13 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Clientes
             {
-                Id = domain.IdCliente.ToString(),
+                Id = domain.IdCliente,
                 Nome = domain.Nome,
                 CPF = domain.CPF,
                 RG = domain.RG,
                 Email = domain.Email,
                 Tipo = Convert.ToString(TipoCliente.Comum),
-                IdEndereco = domain.IdEndereco.ToString(),
+                IdEndereco = domain.IdEndereco,
             };
         }
     }

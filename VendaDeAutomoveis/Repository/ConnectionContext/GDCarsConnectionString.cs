@@ -8,7 +8,7 @@ namespace VendaDeAutomoveis.DAO.ConnectionContext
         {
             get
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["GDCarsContext"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["ContextGDCars"].ConnectionString;
                 return connectionString;
             }
         }

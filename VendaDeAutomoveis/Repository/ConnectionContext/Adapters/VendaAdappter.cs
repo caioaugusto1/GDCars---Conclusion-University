@@ -15,16 +15,16 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new Venda
             {
-                Id = Guid.Parse(dbVeiculos.Id),
+                Id = Guid.Parse(dbVeiculos.Id.ToString()),
                 Valor = dbVeiculos.Valor,
                 DataCompra = DateTime.Now,
                 TipoEntrega = (Entrega)char.Parse(dbVeiculos.Tipo_Entrega),
                 //Status = status
                 //TermoAutorizacao = termoautorizacao
-                IdCliente = Guid.Parse(dbVeiculos.IdCliente),
-                IdProduto = Guid.Parse(dbVeiculos.IdVeiculo),
-                IdFormaDePagamento = Guid.Parse(dbVeiculos.IdFormaPagamento),
-                IdPerfomance = Guid.Parse(dbVeiculos.IdPerformance)
+                IdCliente = Guid.Parse(dbVeiculos.IdCliente.ToString()),
+                IdProduto = Guid.Parse(dbVeiculos.IdVeiculo.ToString()),
+                IdFormaDePagamento = Guid.Parse(dbVeiculos.IdFormaPagamento.ToString()),
+                IdPerfomance = Guid.Parse(dbVeiculos.IdPerformance.ToString())
             };
         }
 
@@ -35,15 +35,15 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
 
             return new GDC_Vendas
             {
-                Id = domain.Id.ToString(),
+                Id = domain.Id,
                 Valor = Convert.ToDecimal(domain.Valor),
                 Tipo_Entrega = domain.TipoEntrega.ToString(),
                 //Status = status
                 //TermoAutorizacao = termoautorizacao
-                IdCliente = domain.IdCliente.ToString(),
-                IdVeiculo = domain.IdProduto.ToString(),
-                IdFormaPagamento = domain.IdFormaDePagamento.ToString(),
-                IdPerformance = domain.IdPerfomance.ToString()
+                IdCliente = domain.IdCliente,
+                IdVeiculo = domain.IdProduto,
+                IdFormaPagamento = domain.IdFormaDePagamento,
+                IdPerformance = domain.IdPerfomance
             };
         }
 

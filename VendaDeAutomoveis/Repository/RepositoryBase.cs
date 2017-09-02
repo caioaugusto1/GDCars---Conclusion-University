@@ -5,11 +5,11 @@ namespace VendaDeAutomoveis.Repository
     public class RepositoryBase<DBEntity>
         where DBEntity : class
     {
-        protected readonly GDCarsContext _context;
+        protected readonly ContextGDCars _context;
 
         string connectionString = GDCarsConnectionString.Connection;
 
-        public RepositoryBase(GDCarsContext context)
+        public RepositoryBase(ContextGDCars context)
         {
             _context = context;
         }

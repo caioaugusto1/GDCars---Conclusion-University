@@ -8,7 +8,7 @@ namespace VendaDeAutomoveis.Repository
 {
     public class EnderecoRepository : RepositoryBase<GDC_Enderecos>
     {
-        public EnderecoRepository(GDCarsContext context)
+        public EnderecoRepository(ContextGDCars context)
             : base(context)
         {
         }
@@ -21,7 +21,7 @@ namespace VendaDeAutomoveis.Repository
 
         public Endereco PegarEnderencoPorIdCliente(Guid IdCliente)
         {
-            var endereco = _context.Enderecos.Where(e => e.Id == IdCliente.ToString()).FirstOrDefault();
+            var endereco = _context.Enderecos.Where(e => e.Id == IdCliente).FirstOrDefault();
             return endereco.ToDomain();
         }
 

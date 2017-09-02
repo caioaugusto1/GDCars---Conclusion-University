@@ -20,12 +20,12 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
             this.GDC_Vendas = new HashSet<GDC_Vendas>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public decimal ValorTotal { get; set; }
-        public string IdRoda { get; set; }
-        public string IdBanco { get; set; }
-        public string IdCliente { get; set; }
-        public string IdCor { get; set; }
+        public Nullable<System.Guid> IdRoda { get; set; }
+        public Nullable<System.Guid> IdBanco { get; set; }
+        public Nullable<System.Guid> IdCliente { get; set; }
+        public Nullable<System.Guid> IdCor { get; set; }
     
         public virtual GDC_Bancos GDC_Bancos { get; set; }
         public virtual GDC_Clientes GDC_Clientes { get; set; }

@@ -143,15 +143,15 @@
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.Context.tt">
+    <Content Include="Repository\ConnectionContext\Context\ContextGDCars.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GDCarsContext.edmx</DependentUpon>
-      <LastGenOutput>GDCarsContext.Context.cs</LastGenOutput>
+      <DependentUpon>ContextGDCars.edmx</DependentUpon>
+      <LastGenOutput>ContextGDCars.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.tt">
+    <Content Include="Repository\ConnectionContext\Context\ContextGDCars.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GDCarsContext.edmx</DependentUpon>
-      <LastGenOutput>GDCarsContext.cs</LastGenOutput>
+      <DependentUpon>ContextGDCars.edmx</DependentUpon>
+      <LastGenOutput>ContextGDCars.cs</LastGenOutput>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -162,12 +162,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-fileinput\sass\fileinput.scss" />
-    <EntityDeploy Include="Repository\ConnectionContext\Context\GDCarsContext.edmx">
+    <EntityDeploy Include="Repository\ConnectionContext\Context\ContextGDCars.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GDCarsContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>ContextGDCars.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Repository\ConnectionContext\Context\GDCarsContext.edmx.diagram">
-      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+    <Content Include="Repository\ConnectionContext\Context\ContextGDCars.edmx.diagram">
+      <DependentUpon>ContextGDCars.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -239,8 +239,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
-    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
-    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="AutoMapper\ConfigMappingProfile.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -254,53 +253,53 @@
     <Compile Include="Repository\ConnectionContext\Adapters\LoginAdapter.cs" />
     <Compile Include="Repository\ConnectionContext\Adapters\VeiculoAdapter.cs" />
     <Compile Include="Repository\ConnectionContext\Adapters\VendaAdappter.cs" />
-    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.Context.cs">
+    <Compile Include="Repository\ConnectionContext\Context\ContextGDCars.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GDCarsContext.Context.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.cs">
+    <Compile Include="Repository\ConnectionContext\Context\ContextGDCars.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ConnectionContext\Context\GDCarsContext.Designer.cs">
+    <Compile Include="Repository\ConnectionContext\Context\ContextGDCars.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GDCarsContext.edmx</DependentUpon>
+      <DependentUpon>ContextGDCars.edmx</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Bancos.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Clientes.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Cores_Externa.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Enderecos.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Formas_Pagamentos.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Logins.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Perfomances.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Rodas.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Uploads.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Veiculos.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Vendas.cs">
-      <DependentUpon>GDCarsContext.tt</DependentUpon>
+      <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\GDCarsConnectionString.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IFormasPagamentosRepository.cs" />

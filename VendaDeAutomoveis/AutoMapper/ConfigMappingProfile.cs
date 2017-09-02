@@ -4,12 +4,12 @@ using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.AutoMapper
 {
-    public class ViewModelToDomainMappingProfile : Profile
+    public class ConfigMappingProfile : Profile
     {
         protected void Configure()
         {
-            CreateMap<Cliente, GDC_Clientes>();
-            CreateMap<Endereco, GDC_Enderecos>();
+            CreateMap<GDC_Clientes, Cliente>().ReverseMap();
+            CreateMap<GDC_Enderecos, Endereco>().ReverseMap();
         }
     }
 }

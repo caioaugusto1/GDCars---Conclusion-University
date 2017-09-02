@@ -22,7 +22,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
             this.GDC_Veiculos = new HashSet<GDC_Veiculos>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public System.DateTime Data_Inclusao { get; set; }
         public string Nome_Arquivo { get; set; }
     
