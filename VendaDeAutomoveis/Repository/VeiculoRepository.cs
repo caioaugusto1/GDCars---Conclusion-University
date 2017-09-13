@@ -47,6 +47,16 @@ namespace VendaDeAutomoveis.Repository
             throw new NotImplementedException();
         }
 
+        public void Insert(Veiculo obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertRange(Veiculo[] entities)
+        {
+            throw new NotImplementedException();
+        }
+
         public IQueryable<Veiculo> Obter(Func<Veiculo, bool> predicate)
         {
             throw new NotImplementedException();

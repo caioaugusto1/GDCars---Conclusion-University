@@ -85,5 +85,15 @@ namespace VendaDeAutomoveis.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void Insert(FormaDePagamento obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertRange(FormaDePagamento[] entities)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

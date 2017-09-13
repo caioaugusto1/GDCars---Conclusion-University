@@ -13,7 +13,7 @@ namespace VendaDeAutomoveis.Repository
         public ClienteRepository(ContextGDCars context)
             : base(context)
         {
-        }
+        }   
 
         public Cliente VerificarCPFExistente(string cpf)
         {
@@ -102,6 +102,16 @@ namespace VendaDeAutomoveis.Repository
                         Id = id
                     }).FirstOrDefault();
 
+        }
+
+        public void Insert(Cliente obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertRange(Cliente[] entities)
+        {
+            throw new NotImplementedException();
         }
     }
 }

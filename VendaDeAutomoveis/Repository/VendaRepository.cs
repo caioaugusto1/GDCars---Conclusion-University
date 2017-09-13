@@ -53,7 +53,17 @@ namespace VendaDeAutomoveis.Repository
         {
             return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
         }
-        
+
+        public void Insert(Venda obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InsertRange(Venda[] entities)
+        {
+            throw new NotImplementedException();
+        }
+
         public Venda ObterPorId(Guid id)
         {
             var sql = "SELECT * FROM GDC_Vendas where Id = @id ";

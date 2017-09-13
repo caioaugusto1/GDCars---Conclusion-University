@@ -1,8 +1,10 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Services;
 
 namespace VendaDeAutomoveis.Controllers
@@ -73,21 +75,26 @@ namespace VendaDeAutomoveis.Controllers
         [Route("novo-acesso")]
         [ClaimsAuthorize("CriarAcesso", "CA")]
         [ValidateAntiForgeryToken]
-        public ActionResult CriarAcesso([Bind(Include = "Id,Nome,SobreNome,Email,Senha,ConfirmarSenha")] Login login)
+        public ActionResult CriarAcesso([Bind(Include = "Id,Nome,SobreNome,Email,Senha,ConfirmarSenha, TipoAcesso")] Login login)
         {
             if (ModelState.IsValid)
             {
-                var verificarExistenciaEmail = loginRepository.VerificarEmailExistente(login.Email);
+                var verificarExistenciaEmail = loginRepository.BuscarPorEmail(login.Email);
 
-                if (verificarExistenciaEmail)
+                if (verificarExistenciaEmail == null)
                 {
                     ModelState.AddModelError("login.invalido", "Esse e-mail já está sendo utilizado, por favor, utilize um e-mail alternativo");
                     return View(login);
                 }
                 else
                 {
-                    login.Senha = Criptografia.CriptografaMd5(login.Senha);
-                    loginRepository.Adicionar(login);
+                    var loginDomain = Mapper.Map<Login, GDC_Logins>(login);
+
+                    loginDomain.Data_Inclusao = DateTime.Now;
+                    loginDomain.Senha = Criptografia.CriptografaMd5(login.Senha);
+
+                    //loginRepository.Adicionar(login);
+                    loginRepository.Insert(loginDomain);
                     return RedirectToAction("Index");
                 }
             }
