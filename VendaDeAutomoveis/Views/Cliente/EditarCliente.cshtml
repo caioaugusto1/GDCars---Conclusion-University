@@ -12,7 +12,7 @@
 @using (Html.BeginForm("EditarClientes", "Cliente", FormMethod.Post))
 {
    
-    @Html.HiddenFor(u => u.IdCliente, new { @class = "form-control" })
+    @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
     
     @Html.LabelFor(u => u.Nome, "Nome*")
     @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
@@ -31,9 +31,9 @@
 
     <br />
 
-    @Html.LabelFor(u => u.DataNascimento, "Data de Nascimento*")
-    @Html.TextBoxFor(u => u.DataNascimento, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.DataNascimento)
+    @Html.LabelFor(u => u.Data_Nascimento, "Data de Nascimento*")
+    @Html.TextBoxFor(u => u.Data_Nascimento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Data_Nascimento)
 
     <br />
 

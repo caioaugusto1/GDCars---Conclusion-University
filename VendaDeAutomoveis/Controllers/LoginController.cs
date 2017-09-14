@@ -39,10 +39,6 @@ namespace VendaDeAutomoveis.Controllers
                 {
                     ModelState.AddModelError("login.Invalido", "Usuário ou senha Inválido, tente novamente!");
                 }
-                else if(validarAcesso.TipoAcesso == NivelAcesso.Bloqueado)
-                {
-                    ModelState.AddModelError("login.Invalido", "Seu usuário está bloqueado, por favor, contate o administrador!");
-                }
                 else
                 {
                     SessionManager.UsuarioLogado = validarAcesso;
@@ -76,7 +72,7 @@ namespace VendaDeAutomoveis.Controllers
         [Route("novo-acesso")]
         [ClaimsAuthorize("CriarAcesso", "CA")]
         [ValidateAntiForgeryToken]
-        public ActionResult CriarAcesso([Bind(Include = "Id,Nome,SobreNome,Email,Senha,ConfirmarSenha, TipoAcesso")] Login login)
+        public ActionResult CriarAcesso([Bind(Include = "Id,Nome,SobreNome,Email,Senha,Confirmar_Senha")] Login login)
         {
             if (ModelState.IsValid)
             {

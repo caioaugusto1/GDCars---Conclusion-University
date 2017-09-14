@@ -13,11 +13,11 @@
 //        {
 //            IFormaDePagamento OpcaoDePagamento = null;
 
-//            public double ObterFormaDePagamento(TipoCliente TipoDoCliente)
+//            public double ObterFormaDePagamento(TipoCliente Tipo)
 //        {         
 //            IFormaDePagamento OpcaoDePagamento = null;
 
-//                switch (TipoDoCliente == TipoCliente.Comum)
+//                switch (Tipo == TipoCliente.Comum)
 //                {
 //                    case FormaPagamento.PagamentoAVista;
 //                        OpcaoDePagamento = new PagamentoAVista();
@@ -32,7 +32,7 @@
 //                        break;
 //                }
 
-//            switch(TipoDoCliente == TipoCliente.Vip)
+//            switch(Tipo == TipoCliente.Vip)
 //            {
 //                    case FormaPagamento.PagamentoAVista:
 //                        OpcaoDePagamento = new PagamentoAVista();

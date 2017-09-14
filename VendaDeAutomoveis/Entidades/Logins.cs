@@ -40,20 +40,9 @@ namespace VendaDeAutomoveis.Entidades
         [NotMapped]
         [Display(Name = "Confirme a senha")]
         [Compare("Senha", ErrorMessage = "As senhas devem ser iguais.")]
-        public string ConfirmarSenha { get; set; }
+        public string Confirmar_Senha { get; set; }
 
-        [Required(ErrorMessage = "Informe qual é o perfil de acesso")]
-        public NivelAcesso TipoAcesso { get; set; }
+        public DateTime Data_Inclusao { get; set; }
 
-    }
-
-    public enum NivelAcesso
-    {
-        [Display(Name = "Administrador")]
-        Admin = 1,
-        [Display(Name = "Ativo")]
-        Usuario = 2,
-        [Display(Name = "Bloqueado")]
-        Bloqueado = 3
     }
 }

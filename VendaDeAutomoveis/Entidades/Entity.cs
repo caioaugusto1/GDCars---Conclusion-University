@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -10,11 +11,8 @@ namespace VendaDeAutomoveis.Entidades
             Id = Guid.NewGuid();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
-        public DateTime Data_Cadastro { get; set; }
-
-        [Required]
-        public decimal Valor { get; set; }
     }
 }

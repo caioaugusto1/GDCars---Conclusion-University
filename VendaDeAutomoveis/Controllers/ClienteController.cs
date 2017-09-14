@@ -52,7 +52,7 @@ namespace VendaDeAutomoveis.Controllers
                 if (cpfExistente == null)
                 {
                     clienteRepository.Adicionar(cliente);
-                    ViewBag.IdCliente = cliente.IdCliente;
+                    ViewBag.IdCliente = cliente.Id;
 
                     return View("CadastrarEndereco");
                 }

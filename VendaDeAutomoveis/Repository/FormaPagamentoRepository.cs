@@ -19,7 +19,7 @@ namespace VendaDeAutomoveis.Repository
             var sql = "SELECT * FROM GDC_Formas_Pagamentos ";
 
             return _context.Database.Connection.Query<FormaDePagamento>(sql)
-                .OrderBy(c => c.TipoDoCliente)
+                .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }
 
@@ -28,7 +28,7 @@ namespace VendaDeAutomoveis.Repository
             var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'C' and Tipo_Cliente = 'A' ";
 
             return _context.Database.Connection.Query<FormaDePagamento>(sql)
-                .OrderBy(c => c.TipoDoCliente)
+                .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }
 
@@ -37,7 +37,7 @@ namespace VendaDeAutomoveis.Repository
             var sql = "SELECT * FROM GDC_Formas_Pagamentos where TipoCliente = 'V' and 'A' ";
 
             return _context.Database.Connection.Query<FormaDePagamento>(sql)
-                .OrderBy(c => c.TipoDoCliente)
+                .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }
     }

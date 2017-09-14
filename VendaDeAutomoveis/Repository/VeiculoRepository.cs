@@ -44,8 +44,7 @@ namespace VendaDeAutomoveis.Repository
             var sql = "SELECT * FROM GDC_Veiculos ";
 
             return _context.Database.Connection.Query<Veiculo>(sql)
-                .OrderBy(c => c.Data_Cadastro)
-                .ThenBy(c => c.ModeloVeiculo)
+                .OrderBy(c => c.Modelo)
                 .ToList();
         }
     }

@@ -21,15 +21,15 @@
 
     <br />
 
-    @Html.LabelFor(u => u.Cliente.TipoDoCliente, "Tipo do cliente")
-    @Html.EnumDropDownListFor(m => m.Cliente.TipoDoCliente, "Tipo do Cliente", new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Cliente.TipoDoCliente)
+    @Html.LabelFor(u => u.Cliente.Tipo, "Tipo do cliente")
+    @Html.EnumDropDownListFor(m => m.Cliente.Tipo, "Tipo do Cliente", new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Tipo)
 
     <br />
 
-    @Html.LabelFor(u => u.Cliente.DataNascimento, "Data de Nascimento")
-    @Html.TextBoxFor(u => u.Cliente.DataNascimento, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Cliente.DataNascimento)
+    @Html.LabelFor(u => u.Cliente.Data_Nascimento, "Data de Nascimento")
+    @Html.TextBoxFor(u => u.Cliente.Data_Nascimento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Cliente.Data_Nascimento)
 
     <br />
 

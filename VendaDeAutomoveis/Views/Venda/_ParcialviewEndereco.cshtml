@@ -1,4 +1,4 @@
-﻿@model VendaDeAutomoveis.Entidades.Cliente
+﻿@model VendaDeAutomoveis.Entidades.Endereco
 
 @using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post))
 {
@@ -6,15 +6,15 @@
     
     @Html.HiddenFor(u => u.IdCliente, new { @class = "form-control" })
     
-    @Html.LabelFor(u => u.Endereco, "Endereço*")
-    @Html.TextBoxFor(u => u.Endereco, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Endereco)
+    @Html.LabelFor(u => u.EnderecoNome, "Endereço*")
+    @Html.TextBoxFor(u => u.EnderecoNome, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.EnderecoNome)
 
     <br />
 
-    @Html.LabelFor(u => u.NumeroDaCasa, "Número da casa*")
-    @Html.TextBoxFor(u => u.NumeroDaCasa, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.NumeroDaCasa)
+    @Html.LabelFor(u => u.Numero, "Número da casa*")
+    @Html.TextBoxFor(u => u.Numero, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Numero)
 
     <br />
 

@@ -310,10 +310,9 @@
     <Compile Include="Repository\GDCarsContext.cs" />
     <Compile Include="Entidades\Banco.cs" />
     <Compile Include="Entidades\Cliente.cs" />
-    <Compile Include="Entidades\Cor.cs" />
+    <Compile Include="Entidades\Cor_Veiculo.cs" />
     <Compile Include="Entidades\Endereco.cs" />
     <Compile Include="Entidades\Entity.cs" />
-    <Compile Include="Entidades\EntityUpload.cs" />
     <Compile Include="Entidades\FormaDePagamento.cs" />
     <Compile Include="Entidades\Logins.cs" />
     <Compile Include="Entidades\Performance.cs" />

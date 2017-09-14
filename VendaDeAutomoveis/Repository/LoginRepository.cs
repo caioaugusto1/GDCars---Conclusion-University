@@ -18,8 +18,6 @@ namespace VendaDeAutomoveis.RepositoryW
         
         public void Adicionar(Login login)
         {
-            login.TipoAcesso = NivelAcesso.Usuario;
-
             var domain = Mapper.Map<Login, GDC_Logins>(login);
 
             _context.Logins.Add(domain);

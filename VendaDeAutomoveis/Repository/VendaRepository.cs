@@ -9,7 +9,7 @@ using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class VendaRepository : RepositoryBase<GDC_Vendas>, IVendasRepository
+    public class VendaRepository : RepositoryBase<Venda>, IVendasRepository
     {
         public VendaRepository(ContextGDCars context)
             : base(context)
@@ -19,9 +19,7 @@ namespace VendaDeAutomoveis.Repository
         public void Adicionar(Venda obj)
         {
             var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
-
-            obj.DataCompra = DateTime.Now;
-
+            
             _context.Vendas.Add(domain);
         }
 
@@ -58,17 +56,7 @@ namespace VendaDeAutomoveis.Repository
             return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
         }
 
-        public void Inserir(Venda obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertRange(Venda[] entities)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Venda ObterPorId(Guid id)
+        public override Venda ObterPorId(Guid id)
         {
             var sql = "SELECT * FROM GDC_Vendas where Id = @id ";
             
@@ -81,12 +69,12 @@ namespace VendaDeAutomoveis.Repository
             return e.FirstOrDefault();
         }
 
-        public IList<Venda> ObterTodos()
+        public override IList<Venda> ObterTodos()
         {
             var sql = "SELECT * FROM GDC_Vendas ";
 
             return _context.Database.Connection.Query<Venda>(sql)
-                .OrderBy(c => c.DataCompra)
+                .OrderBy(c => c.Cliente)
                 .ToList();
         }
     }

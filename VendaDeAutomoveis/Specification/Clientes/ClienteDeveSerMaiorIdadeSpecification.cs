@@ -7,7 +7,7 @@ namespace VendaDeAutomoveis.Specification.Clientes
     {
         public bool IsSatisfiedBy(Cliente cliente)
         {
-            return MaiorIdadeValidation.Validar(cliente.DataNascimento);
+            return MaiorIdadeValidation.Validar(cliente.Data_Nascimento);
         }
     }
 }

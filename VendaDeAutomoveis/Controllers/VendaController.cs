@@ -45,14 +45,14 @@ namespace VendaDeAutomoveis.Controllers
                 FormaDePagamento formaDePagamento = formaPagamentoRepository.ObterPorId(venda.IdFormaDePagamento);
                 Cliente cliente = clienteRepository.ObterPorId(venda.IdCliente);
 
-                if (venda.TipoEntrega == 0)
+                if (venda.Tipo_Entrega == 0)
                 {
                     ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
                     return View("FormularioCadastro", venda);
                 }
-                if (venda.TipoEntrega == Entrega.Domiciliar && cliente.Endereco == null || venda.TipoEntrega == Entrega.Domiciliar && cliente.Endereco.Numero == null
-                    || venda.TipoEntrega == Entrega.Domiciliar && cliente.Endereco.Estado == null || venda.TipoEntrega == Entrega.Domiciliar && cliente.Endereco.Cidade == null
-                    || venda.TipoEntrega == Entrega.Domiciliar && cliente.Endereco.CEP == null)
+                if (venda.Tipo_Entrega == Entrega.Domiciliar && cliente.Endereco == null || venda.Tipo_Entrega == Entrega.Domiciliar && cliente.Endereco.Numero == null
+                    || venda.Tipo_Entrega == Entrega.Domiciliar && cliente.Endereco.Estado == null || venda.Tipo_Entrega == Entrega.Domiciliar && cliente.Endereco.Cidade == null
+                    || venda.Tipo_Entrega == Entrega.Domiciliar && cliente.Endereco.CEP == null)
                 {
 
                     ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
@@ -97,22 +97,22 @@ namespace VendaDeAutomoveis.Controllers
 
         private void MudarClienteComunParaVip(Cliente cliente)
         {
-            if(cliente.TipoDoCliente == TipoCliente.Comum)
+            if(cliente.Tipo == TipoCliente.Comum)
             {
-                var calcularGastoCliente = vendaRepository.GastosPorCliente(cliente.IdCliente);
+                var calcularGastoCliente = vendaRepository.GastosPorCliente(cliente.Id);
 
                 if (calcularGastoCliente >= 200000)
                     MudarClienteParaVip(cliente);
             }
             
-            //if (cliente.TipoDoCliente == TipoCliente.Comum && vendaRepository.GastosPorCliente(cliente.IdCliente) >= 200000)
+            //if (cliente.Tipo == TipoCliente.Comum && vendaRepository.GastosPorCliente(cliente.IdCliente) >= 200000)
             //{
-            //    cliente.TipoDoCliente = TipoCliente.Vip;
+            //    cliente.Tipo = TipoCliente.Vip;
             //    clienteRepository.Editar(cliente);
             //}
         }
 
-        private decimal AumentarValorVeiculoEsportivo(Venda venda)
+        private double AumentarValorVeiculoEsportivo(Venda venda)
         {
             var objVenda = CalcularVeiculoEsportivo(venda);
             vendaRepository.Editar(objVenda);
@@ -128,7 +128,7 @@ namespace VendaDeAutomoveis.Controllers
             //return venda.Valor;
         }
 
-        private decimal CalcularPagamento(Venda venda)
+        private double CalcularPagamento(Venda venda)
         {
             var objVenda = CalcularPagamento(venda);
             //string recebendoObservacao = venda.Observacoes;
@@ -182,7 +182,7 @@ namespace VendaDeAutomoveis.Controllers
 
             IList<FormaDePagamento> formasPagamentos = new List<FormaDePagamento>();
 
-            if (cliente.TipoDoCliente == TipoCliente.Vip)
+            if (cliente.Tipo == TipoCliente.Vip)
                 formasPagamentos = formaPagamentoRepository.ObterListarFormaPagamentoVip();
             else
                 formasPagamentos = formaPagamentoRepository.ObterFormaPagamentoComum();

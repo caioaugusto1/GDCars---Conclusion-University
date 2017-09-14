@@ -22,12 +22,12 @@
             <tr>
                
                 <td>@u.Fabricante</td>
-                <td>@u.ModeloVeiculo</td>
+                <td>@u.Modelo</td>
                 <td>@u.Ano</td>
                 <td>@u.Valor</td>
-                <td>@u.TipoVeiculo </td>
-                <td>@Html.ActionLink("Editar", "EditarProduto", new { idProduto = u.Id }, new { @class = "btn-success" })</td>
-                <td>@Html.ActionLink("Excluir", "Excluir", new { idProduto = u.Id }, new { @class = "bg-warning" })</td>
+                <td>@u.Tipo </td>
+                <td>@Html.ActionLink("Editar", "EditarProduto", new { idVeiculo = u.Id }, new { @class = "btn-success" })</td>
+                <td>@Html.ActionLink("Excluir", "Excluir", new { idVeiculo = u.Id }, new { @class = "bg-warning" })</td>
             </tr>
         }
     </tbody>

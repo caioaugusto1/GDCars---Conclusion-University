@@ -7,6 +7,11 @@ namespace VendaDeAutomoveis.Factory.EntidadesFactory
 {
     internal class PagamentoAPrazo60xComJuros : IFormaDePagamento
     {
+        public double CalcularDesconto(double ValorTotal)
+        {
+            throw new NotImplementedException();
+        }
+
         public double CalculaValor(double ValorTotal)
         {
             double resultado = (ValorTotal / 12 * 0.05);

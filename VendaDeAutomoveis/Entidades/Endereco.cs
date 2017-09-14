@@ -3,16 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VendaDeAutomoveis.Entidades
 {
-    public class Endereco
+    public class Endereco : Entity
     {
-        public Endereco()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        [Key]
-        public Guid Id { get; set; }
-
         public string EnderecoNome { get; set; }
 
         [StringLength(6)]
@@ -26,16 +18,15 @@ namespace VendaDeAutomoveis.Entidades
         [StringLength(25)]
         public string Bairro { get; set; }
 
-        [StringLength(20)]
-        public string Cidade { get; set; }
-
         [StringLength(15)]
         public string Estado { get; set; }
 
-        public virtual Cliente Cliente { get; set; }
+        [StringLength(20)]
+        public string Cidade { get; set; }
 
         //[Required(ErrorMessage = "Informe o Cliente")]
         public Guid IdCliente { get; set; }
 
+        public virtual Cliente Cliente { get; set; }
     }
 }

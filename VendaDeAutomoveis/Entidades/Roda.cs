@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -10,20 +6,22 @@ namespace VendaDeAutomoveis.Entidades
     {
         public string Modelo { get; set; }
 
-        public int Aro { get; set; }
-
         public CorRoda Cor { get; set; }
+
+        public int Aro { get; set; }
+        
+        public double Valor { get; set; }
     }
 
     public enum CorRoda
     {
         [Display(Name = "Cinza")]
-        Cinza = 'C',
+        Cinza,
         [Display(Name = "Cromada")]
-        Cromada = 'O',
+        Cromada,
         [Display(Name = "Fosco")]
-        Fosco = 'F',
+        Fosco,
         [Display(Name = "Preta")]
-        Preta = 'P',
+        Preta,
     }
 }
