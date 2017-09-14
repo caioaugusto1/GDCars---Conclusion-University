@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -24,11 +25,6 @@ namespace VendaDeAutomoveis.Entidades
         public double Valor { get; set; }
 
         [Required(ErrorMessage = "Informe o Tipo do Veiculo")]
-        public Tipo Tipo { get; set; }
-    }
-
-    public enum Tipo
-    {
-        Esportivo, Hatch, Sedã, Picape, Perua,
+        public TipoVeiculo Tipo { get; set; }
     }
 }

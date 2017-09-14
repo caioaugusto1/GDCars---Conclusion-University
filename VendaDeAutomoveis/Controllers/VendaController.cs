@@ -7,6 +7,7 @@ using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
 using static VendaDeAutomoveis.Entidades.Cliente;
 using static VendaDeAutomoveis.Entidades.Venda;
+using VendaDeAutomoveis.Factory.EntidadesFactory;
 
 namespace VendaDeAutomoveis.Controllers
 {
@@ -130,7 +131,10 @@ namespace VendaDeAutomoveis.Controllers
 
         private double CalcularPagamento(Venda venda)
         {
-            var objVenda = CalcularPagamento(venda);
+            var e = new PagamentoAPrazo12xComJuros();
+
+            var objVenda = e.CalculaValor(venda.Valor);
+
             //string recebendoObservacao = venda.Observacoes;
 
             //if (venda.FormaDePagamento.ModeloFormaDePagamento == ModelosDePagamento.PagamentoAVista.ToString())

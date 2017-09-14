@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -11,17 +11,5 @@ namespace VendaDeAutomoveis.Entidades
         public int Aro { get; set; }
         
         public double Valor { get; set; }
-    }
-
-    public enum CorRoda
-    {
-        [Display(Name = "Cinza")]
-        Cinza,
-        [Display(Name = "Cromada")]
-        Cromada,
-        [Display(Name = "Fosco")]
-        Fosco,
-        [Display(Name = "Preta")]
-        Preta,
     }
 }

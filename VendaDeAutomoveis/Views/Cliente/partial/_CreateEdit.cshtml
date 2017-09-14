@@ -1,0 +1,52 @@
+﻿@model VendaDeAutomoveis.Entidades.Cliente
+
+@Html.AntiForgeryToken()
+
+<br />
+
+@Html.LabelFor(u => u.Nome, "Nome*")
+@Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.Nome)
+
+<br />
+
+@Html.LabelFor(u => u.RG, "RG*")
+@Html.TextBoxFor(u => u.RG, new { @id = "rg", @class = "form-control" })
+@Html.ValidationMessageFor(u => u.RG)
+
+<br />
+
+@Html.LabelFor(u => u.CPF, "CPF/MF*")
+@Html.TextBoxFor(u => u.CPF, new { @id = "cpf", @class = "form-control" })
+@Html.ValidationMessageFor(u => u.CPF)
+
+<br />
+
+@Html.LabelFor(u => u.Data_Nascimento, "Data de Nascimento*")
+@Html.TextBoxFor(u => u.Data_Nascimento, new { @id = "dtnascimento", @class = "form-control" })
+@Html.ValidationMessageFor(u => u.Data_Nascimento)
+
+<br />
+
+@Html.LabelFor(u => u.Email, "E-mail*")
+@Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+@Html.ValidationMessageFor(u => u.Email)
+
+<br />
+
+
+<input type="submit" value="Continuar" />
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+<script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#CPF").mask("999.999.999-99");
+            $("#RG").mask("99.999.999-*");
+            $("#Data_Nascimento").mask("99/99/9999");
+            //$("#cep").mask("99999-999");
+        });
+
+</script>

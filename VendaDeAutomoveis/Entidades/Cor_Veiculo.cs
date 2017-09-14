@@ -1,21 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
     public class Cor_Veiculo : Entity
     {
-        public Estilo Estilo { get; set; }
+        public EstiloCorVeiculo Estilo { get; set; }
 
         public double Valor { get; set; }
-    }
-
-    public enum Estilo
-    {
-        [Display(Name = "Brilhante")]
-        Brilhante,
-        [Display(Name = "Fosco")]
-        Fosco,
-        [Display(Name = "Normal")]
-        Normal
     }
 }

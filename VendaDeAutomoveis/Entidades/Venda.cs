@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using VendaDeAutomoveis.Factory.EntidadesFactory;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -14,7 +15,7 @@ namespace VendaDeAutomoveis.Entidades
         public string Observacoes { get; set; }
 
         [Required(ErrorMessage = "Informe o tipo de entrega")]
-        public Entrega Tipo_Entrega { get; set; }
+        public EntregaVenda Tipo_Entrega { get; set; }
 
         //[Required(ErrorMessage="Informe a data da compra")]
         //public DateTime DataCompra { get; set; }
@@ -42,19 +43,7 @@ namespace VendaDeAutomoveis.Entidades
 
         public virtual Performance Perfomance { get; set; }
 
-        public enum Status
-        {
-            PedidoEfetuado, 
-            Entregue,
-            AguardandoLiberacao
-        }
-        
-        public enum Entrega
-        {
-            Domiciliar,
-            Loja
-        }
-
+      
         public static Venda CalcularPagamento(Venda venda)
         {
             string recebendoObservacao = venda.Observacoes;
@@ -99,7 +88,7 @@ namespace VendaDeAutomoveis.Entidades
 
         public static Venda CalcularVeiculoEsportivo(Venda venda)
         {
-            if (venda.Veiculo.Tipo == Tipo.Esportivo)
+            if (venda.Veiculo.Tipo == TipoVeiculo.Esportivo)
             {
                 string recebendoObservacao = venda.Observacoes;
                 venda.Valor = (venda.Valor + 12000);

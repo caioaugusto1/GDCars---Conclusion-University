@@ -36,20 +36,15 @@ namespace VendaDeAutomoveis.Repository
             return e.FirstOrDefault();
         }
 
-        public void Dispose()
-        {
-            _context.Dispose();
-        }
+        //public void Editar(Venda obj)
+        //{
+        //    var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
 
-        public void Editar(Venda obj)
-        {
-            var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
-
-            _context.Vendas.Attach(domain);
-            var entry = _context.Entry(obj);
-            entry.State = System.Data.Entity.EntityState.Modified;
-            SaveChange();
-        }
+        //    _context.Vendas.Attach(domain);
+        //    var entry = _context.Entry(obj);
+        //    entry.State = System.Data.Entity.EntityState.Modified;
+        //    SaveChange();
+        //}
         
         public double GastosPorCliente(Guid id)
         {
