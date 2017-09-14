@@ -3,7 +3,7 @@ using VendaDeAutomoveis.Entidades;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
-    public interface IFormasPagamentosRepository : IRepository<FormaDePagamento>
+    public interface IFormasPagamentosRepository
     {
         IList<FormaDePagamento> ObterFormaPagamentoComum();
 

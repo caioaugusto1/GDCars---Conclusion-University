@@ -22,14 +22,14 @@
           <ScalarProperty Name="CPF" ColumnName="CPF" />
           <ScalarProperty Name="Tipo" ColumnName="Tipo" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Data_Nascimento" ColumnName="Data_Nascimento" />
           <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
-          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GDC_Cores_Externa">
-      <EntityTypeMapping TypeName="GDCarsModel.GDC_Cores_Externa">
-        <MappingFragment StoreEntitySet="GDC_Cores_Externa">
+    <EntitySetMapping Name="GDC_Cor_Veiculos">
+      <EntityTypeMapping TypeName="GDCarsModel.GDC_Cor_Veiculos">
+        <MappingFragment StoreEntitySet="GDC_Cor_Veiculos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Estilo" ColumnName="Estilo" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
@@ -67,9 +67,8 @@
           <ScalarProperty Name="SobreNome" ColumnName="SobreNome" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Senha" ColumnName="Senha" />
-          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="Confirmar_Senha" ColumnName="Confirmar_Senha" />
           <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
-          <ScalarProperty Name="Tipo_Acesso" ColumnName="Tipo_Acesso" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -78,10 +77,10 @@
         <MappingFragment StoreEntitySet="GDC_Perfomances">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="IdRoda" ColumnName="IdRoda" />
           <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
-          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-          <ScalarProperty Name="IdCor" ColumnName="IdCor" />
+          <ScalarProperty Name="IdCor_Veiculo" ColumnName="IdCor_Veiculo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -101,8 +100,8 @@
       <EntityTypeMapping TypeName="GDCarsModel.GDC_Uploads">
         <MappingFragment StoreEntitySet="GDC_Uploads">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
           <ScalarProperty Name="Nome_Arquivo" ColumnName="Nome_Arquivo" />
+          <ScalarProperty Name="Data_Inclusao" ColumnName="Data_Inclusao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -124,13 +123,14 @@
         <MappingFragment StoreEntitySet="GDC_Vendas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Observacao" ColumnName="Observacao" />
           <ScalarProperty Name="Tipo_Entrega" ColumnName="Tipo_Entrega" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Termo_Autorizacao" ColumnName="Termo_Autorizacao" />
-          <ScalarProperty Name="IdPerformance" ColumnName="IdPerformance" />
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="IdFormaPagamento" ColumnName="IdFormaPagamento" />
           <ScalarProperty Name="IdVeiculo" ColumnName="IdVeiculo" />
+          <ScalarProperty Name="IdPerformance" ColumnName="IdPerformance" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

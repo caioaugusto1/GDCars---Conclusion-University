@@ -24,7 +24,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         public string Modelo { get; set; }
         public string Cor { get; set; }
         public int Aro { get; set; }
-        public int Valor { get; set; }
+        public double Valor { get; set; }
         public Nullable<System.Guid> IdUpload { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

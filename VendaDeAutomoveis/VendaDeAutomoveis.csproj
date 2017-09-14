@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -143,6 +144,8 @@
     <Content Include="Content\magnific-popup.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
     <Content Include="Repository\ConnectionContext\Context\ContextGDCars.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ContextGDCars.edmx</DependentUpon>
@@ -153,8 +156,6 @@
       <DependentUpon>ContextGDCars.edmx</DependentUpon>
       <LastGenOutput>ContextGDCars.cs</LastGenOutput>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
     <Content Include="Scripts\autoNumeric.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -247,12 +248,6 @@
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\ClienteAdapter.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\EnderecoAdapter.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\FormaPagamentoAdapter.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\LoginAdapter.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\VeiculoAdapter.cs" />
-    <Compile Include="Repository\ConnectionContext\Adapters\VendaAdappter.cs" />
     <Compile Include="Repository\ConnectionContext\Context\ContextGDCars.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -274,7 +269,7 @@
     <Compile Include="Repository\ConnectionContext\Context\GDC_Clientes.cs">
       <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repository\ConnectionContext\Context\GDC_Cores_Externa.cs">
+    <Compile Include="Repository\ConnectionContext\Context\GDC_Cor_Veiculos.cs">
       <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\Context\GDC_Enderecos.cs">

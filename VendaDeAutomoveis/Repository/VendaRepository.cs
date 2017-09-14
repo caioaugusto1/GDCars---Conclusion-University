@@ -1,9 +1,9 @@
-﻿using Dapper;
+﻿using AutoMapper;
+using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Repository.ConnectionContext.Adapters;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
@@ -18,9 +18,11 @@ namespace VendaDeAutomoveis.Repository
 
         public void Adicionar(Venda obj)
         {
+            var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
+
             obj.DataCompra = DateTime.Now;
 
-            _context.Vendas.Add(obj.ToDbEntity());
+            _context.Vendas.Add(domain);
         }
 
         public IList<Venda> BuscarPorCliente(Guid? idCliente)
@@ -43,18 +45,20 @@ namespace VendaDeAutomoveis.Repository
 
         public void Editar(Venda obj)
         {
-            _context.Vendas.Attach(obj.ToDbEntity());
+            var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
+
+            _context.Vendas.Attach(domain);
             var entry = _context.Entry(obj);
             entry.State = System.Data.Entity.EntityState.Modified;
             SaveChange();
         }
         
-        public decimal GastosPorCliente(Guid id)
+        public double GastosPorCliente(Guid id)
         {
             return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
         }
 
-        public void Insert(Venda obj)
+        public void Inserir(Venda obj)
         {
             throw new NotImplementedException();
         }

@@ -19,8 +19,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         public string SobreNome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public string DataNascimento { get; set; }
+        public string Confirmar_Senha { get; set; }
         public System.DateTime Data_Inclusao { get; set; }
-        public string Tipo_Acesso { get; set; }
     }
 }

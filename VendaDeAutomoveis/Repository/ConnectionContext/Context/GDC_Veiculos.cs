@@ -23,8 +23,8 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         public System.Guid Id { get; set; }
         public string Fabricante { get; set; }
         public string Modelo { get; set; }
-        public System.DateTime Ano { get; set; }
-        public decimal Valor { get; set; }
+        public int Ano { get; set; }
+        public double Valor { get; set; }
         public string Tipo { get; set; }
         public Nullable<System.Guid> IdUpload { get; set; }
     

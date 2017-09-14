@@ -4,28 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f7f888776338466f99c8a5406b4808af" Name="Diagram1">
+      <Diagram DiagramId="e6286c17eddd434d868b59dc89089504" Name="Diagram1">
         <EntityTypeShape EntityType="GDCarsModel.GDC_Bancos" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Clientes" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Cores_Externa" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Enderecos" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Formas_Pagamentos" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Clientes" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Cor_Veiculos" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Enderecos" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Formas_Pagamentos" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GDCarsModel.GDC_Logins" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Perfomances" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Rodas" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Uploads" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GDCarsModel.GDC_Veiculos" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Perfomances" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Rodas" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Uploads" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GDCarsModel.GDC_Veiculos" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GDCarsModel.GDC_Vendas" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Banco__IdUpl__21B6055D" ManuallyRouted="false" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdBan__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Banco__IdUpl__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdBan__21B6055D" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Clien__IdEnd__145C0A3F" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdCli__22AA2996" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Venda__IdCli__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdCor__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Venda__IdFor__2A4B4B5E" ManuallyRouted="false" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdRod__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdCor__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Venda__IdFor__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Perfo__IdRod__20C1E124" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Venda__IdPer__2B3F6F97" ManuallyRouted="false" />
-        <AssociationConnector Association="GDCarsModel.FK__GDC_Rodas__IdUpl__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="GDCarsModel.FK__GDC_Rodas__IdUpl__1920BF5C" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Veicu__IdUpl__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="GDCarsModel.FK__GDC_Venda__IdVei__2E1BDC42" ManuallyRouted="false" />
       </Diagram>

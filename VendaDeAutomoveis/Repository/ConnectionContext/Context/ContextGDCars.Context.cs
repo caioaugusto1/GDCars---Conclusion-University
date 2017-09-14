@@ -27,7 +27,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
     
         public virtual DbSet<GDC_Bancos> GDC_Bancos { get; set; }
         public virtual DbSet<GDC_Clientes> GDC_Clientes { get; set; }
-        public virtual DbSet<GDC_Cores_Externa> GDC_Cores_Externa { get; set; }
+        public virtual DbSet<GDC_Cor_Veiculos> GDC_Cor_Veiculos { get; set; }
         public virtual DbSet<GDC_Enderecos> GDC_Enderecos { get; set; }
         public virtual DbSet<GDC_Formas_Pagamentos> GDC_Formas_Pagamentos { get; set; }
         public virtual DbSet<GDC_Logins> GDC_Logins { get; set; }

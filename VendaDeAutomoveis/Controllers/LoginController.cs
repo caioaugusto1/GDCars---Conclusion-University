@@ -5,6 +5,7 @@ using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.RepositoryW;
 using VendaDeAutomoveis.Services;
 
 namespace VendaDeAutomoveis.Controllers
@@ -94,7 +95,7 @@ namespace VendaDeAutomoveis.Controllers
                     loginDomain.Senha = Criptografia.CriptografaMd5(login.Senha);
 
                     //loginRepository.Adicionar(login);
-                    loginRepository.Insert(loginDomain);
+                    loginRepository.Inserir(loginDomain);
                     return RedirectToAction("Index");
                 }
             }

@@ -1,12 +1,13 @@
-﻿using Dapper;
+﻿using AutoMapper;
+using Dapper;
 using System;
 using System.Linq;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Repository.ConnectionContext.Adapters;
+using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
-namespace VendaDeAutomoveis.Repository
+namespace VendaDeAutomoveis.RepositoryW
 {
     public class LoginRepository : RepositoryBase<GDC_Logins>, ILoginRepository
     {
@@ -19,14 +20,15 @@ namespace VendaDeAutomoveis.Repository
         {
             login.TipoAcesso = NivelAcesso.Usuario;
 
-            _context.Logins.Add(login.ToDbEntity());
+            var domain = Mapper.Map<Login, GDC_Logins>(login);
+
+            _context.Logins.Add(domain);
             SaveChange();
         }
 
         public void BloquearAcesso(Guid id)
         {
             var usuario = _context.Logins.Where(u => u.Id == id).FirstOrDefault();
-            usuario.Tipo_Acesso = NivelAcesso.Bloqueado.ToString();
             SaveChange();
         }
 

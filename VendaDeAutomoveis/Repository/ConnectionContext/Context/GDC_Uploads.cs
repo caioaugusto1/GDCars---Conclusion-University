@@ -23,8 +23,8 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         }
     
         public System.Guid Id { get; set; }
-        public System.DateTime Data_Inclusao { get; set; }
         public string Nome_Arquivo { get; set; }
+        public System.DateTime Data_Inclusao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GDC_Bancos> GDC_Bancos { get; set; }

@@ -12,17 +12,17 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class GDC_Cores_Externa
+    public partial class GDC_Cor_Veiculos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GDC_Cores_Externa()
+        public GDC_Cor_Veiculos()
         {
             this.GDC_Perfomances = new HashSet<GDC_Perfomances>();
         }
     
         public System.Guid Id { get; set; }
         public string Estilo { get; set; }
-        public decimal Valor { get; set; }
+        public double Valor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GDC_Perfomances> GDC_Perfomances { get; set; }

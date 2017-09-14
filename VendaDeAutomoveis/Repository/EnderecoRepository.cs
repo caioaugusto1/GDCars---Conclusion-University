@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using VendaDeAutomoveis.Repository.ConnectionContext.Adapters;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
-using VendaDeAutomoveis.Entidades;
+﻿using AutoMapper;
 using System;
+using System.Linq;
+using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository
 {
@@ -15,19 +15,24 @@ namespace VendaDeAutomoveis.Repository
 
         public void Adicionar(Endereco endereco)
         {
-            _context.Enderecos.Add(endereco.ToDbEntity());
+            var domain = Mapper.Map<Endereco, GDC_Enderecos>(endereco); 
+
+            _context.Enderecos.Add(domain);
             SaveChange();
         }
 
         public Endereco PegarEnderencoPorIdCliente(Guid IdCliente)
         {
-            var endereco = _context.Enderecos.Where(e => e.Id == IdCliente).FirstOrDefault();
-            return endereco.ToDomain();
+            var enderecoViewMoel = Mapper.Map<GDC_Enderecos, Endereco>(_context.Enderecos.Where(e => e.Id == IdCliente).FirstOrDefault());
+
+            return enderecoViewMoel;
         }
 
         public void EditarEndereco(Endereco endereco)
         {
-            _context.Enderecos.Attach(endereco.ToDbEntity());
+            var domain = Mapper.Map<Endereco, GDC_Enderecos>(endereco);
+
+            _context.Enderecos.Attach(domain);
             var entry = _context.Entry(endereco);
             entry.State = System.Data.Entity.EntityState.Modified;
             SaveChange();

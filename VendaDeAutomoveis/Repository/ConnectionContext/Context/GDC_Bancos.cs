@@ -25,7 +25,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         public bool Multimidia { get; set; }
         public string Cor { get; set; }
         public decimal Valor { get; set; }
-        public Nullable<System.Guid> IdUpload { get; set; }
+        public System.Guid IdUpload { get; set; }
     
         public virtual GDC_Uploads GDC_Uploads { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

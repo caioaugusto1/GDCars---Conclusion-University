@@ -11,6 +11,7 @@ namespace VendaDeAutomoveis.AutoMapper
             CreateMap<GDC_Clientes, Cliente>().ReverseMap();
             CreateMap<GDC_Enderecos, Endereco>().ReverseMap();
             CreateMap<GDC_Logins, Login>().ReverseMap();
+            CreateMap<GDC_Vendas, Venda>().ReverseMap();
         }
     }
 }

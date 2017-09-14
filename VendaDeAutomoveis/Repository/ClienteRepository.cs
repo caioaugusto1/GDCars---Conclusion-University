@@ -104,7 +104,7 @@ namespace VendaDeAutomoveis.Repository
 
         }
 
-        public void Insert(Cliente obj)
+        public void Inserir(Cliente obj)
         {
             throw new NotImplementedException();
         }

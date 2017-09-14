@@ -1,65 +1,26 @@
-﻿using AutoMapper;
-using Dapper;
-using System;
+﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.Repository.ConnectionContext.Adapters;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
-using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class FormaPagamentoRepository : RepositoryBase<GDC_Formas_Pagamentos>, IFormasPagamentosRepository
+    public class FormaPagamentoRepository : RepositoryBase<FormaDePagamento>, IFormasPagamentosRepository
     {
         public FormaPagamentoRepository(ContextGDCars context)
             : base(context)
         {
 
         }
-    
-        public IList<FormaDePagamento> ObterTodos()
+
+        public override IList<FormaDePagamento> ObterTodos()
         {
             var sql = "SELECT * FROM GDC_Formas_Pagamentos ";
 
             return _context.Database.Connection.Query<FormaDePagamento>(sql)
                 .OrderBy(c => c.TipoDoCliente)
                 .ToList();
-        }
-
-        public IQueryable<FormaDePagamento> Obter(Func<FormaDePagamento, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public FormaDePagamento ObterPorId(Guid key)
-        {
-            var pagamento = _context.FormasPagamentos.Where(p => p.Id == key).FirstOrDefault();
-            return pagamento.ToDomain();
-        }
-
-        public void Atualizar(FormaDePagamento obj)
-        {
-            _context.FormasPagamentos.Add(obj.ToDbEntity());
-            SaveChange();
-        }
-
-        public void Adicionar(FormaDePagamento obj)
-        {
-            obj.IdFormaDePagamento = Guid.NewGuid();
-
-            _context.FormasPagamentos.Add(obj.ToDbEntity());
-            SaveChange();
-        }
-
-        public void Excluir(Func<FormaDePagamento, bool> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Editar(FormaDePagamento obj)
-        {
-            throw new NotImplementedException();
         }
 
         public IList<FormaDePagamento> ObterFormaPagamentoComum()
@@ -78,22 +39,6 @@ namespace VendaDeAutomoveis.Repository
             return _context.Database.Connection.Query<FormaDePagamento>(sql)
                 .OrderBy(c => c.TipoDoCliente)
                 .ToList();
-        }
-
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Insert(FormaDePagamento obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InsertRange(FormaDePagamento[] entities)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -27,8 +27,8 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Context
         public string CPF { get; set; }
         public string Tipo { get; set; }
         public string Email { get; set; }
+        public System.DateTime Data_Nascimento { get; set; }
         public Nullable<System.Guid> IdEndereco { get; set; }
-        public System.DateTime DataNascimento { get; set; }
     
         public virtual GDC_Enderecos GDC_Enderecos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -32,8 +32,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Adapters
                 SobreNome = domain.SobreNome,
                 Senha = domain.Senha,
                 Data_Inclusao = DateTime.Now,
-                Email = domain.Email,
-                Tipo_Acesso = Convert.ToString(domain.TipoAcesso),
+                Email = domain.Email
             };
         }
     }

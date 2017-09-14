@@ -21,23 +21,18 @@ namespace VendaDeAutomoveis.Repository
             _DbSet = _context.Set<TEntity>();
         }
 
-        public void Adicionar(TEntity obj)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Dispose()
         {
             _context.Dispose();
         }
 
-        public void Editar(TEntity obj)
+        public virtual void Editar(TEntity obj)
         {
             _DbSet.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
         }
         
-        public void Insert(TEntity obj)
+        public void Inserir(TEntity obj)
         {
             _context.Entry(obj).State = EntityState.Added;
             _DbSet.Add(obj);
@@ -49,12 +44,12 @@ namespace VendaDeAutomoveis.Repository
             _DbSet.AddRange(entities);
         }
 
-        public TEntity ObterPorId(Guid id)
+        public virtual TEntity ObterPorId(Guid id)
         {
             return _DbSet.Find(id);
         }
 
-        public IList<TEntity> ObterTodos()
+        public virtual IList<TEntity> ObterTodos()
         {
             throw new NotImplementedException();
         }

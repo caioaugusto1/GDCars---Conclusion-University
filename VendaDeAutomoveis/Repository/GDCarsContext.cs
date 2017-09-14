@@ -22,7 +22,7 @@ namespace VendaDeAutomoveis.Repository
         public virtual DbSet<GDC_Formas_Pagamentos> FormasPagamentos { get; set; }
         public virtual DbSet<GDC_Rodas> Rodas { get; set; }
         public virtual DbSet<GDC_Bancos> Bancos { get; set; }
-        public virtual DbSet<GDC_Cores_Externa> Cores { get; set; }
+        public virtual DbSet<GDC_Cor_Veiculos> Cores { get; set; }
         public virtual DbSet<GDC_Perfomances> Perfomances { get; set; }
         public virtual DbSet<GDC_Enderecos> Enderecos { get; set; }
         public virtual DbSet<GDC_Uploads> Uploads { get; set; }
