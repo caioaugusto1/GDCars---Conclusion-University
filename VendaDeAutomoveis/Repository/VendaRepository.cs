@@ -1,57 +1,25 @@
-﻿using AutoMapper;
-using Dapper;
+﻿using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class VendaRepository : RepositoryBase<Venda>, IVendasRepository
+    public class VendaRepository : RepositoryBase<GDC_Vendas>, IVendasRepository
     {
         public VendaRepository(ContextGDCars context)
             : base(context)
         {
         }
-
-        public void Adicionar(Venda obj)
-        {
-            var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
-            
-            _context.Vendas.Add(domain);
-        }
-
-        public IList<Venda> BuscarPorCliente(Guid? idCliente)
-        {
-            var sql = "SELECT * FROM GDC_Vendas where IdCliente = @idCliente ";
-
-            var e = _context.Database.Connection.Query(sql,
-                param: new
-                {
-                    idCliente = idCliente
-                });
-
-            return e.FirstOrDefault();
-        }
-
-        //public void Editar(Venda obj)
-        //{
-        //    var domain = Mapper.Map<Venda, GDC_Vendas>(obj);
-
-        //    _context.Vendas.Attach(domain);
-        //    var entry = _context.Entry(obj);
-        //    entry.State = System.Data.Entity.EntityState.Modified;
-        //    SaveChange();
-        //}
         
         public double GastosPorCliente(Guid id)
         {
             return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
         }
 
-        public override Venda ObterPorId(Guid id)
+        public override GDC_Vendas ObterPorId(Guid id)
         {
             var sql = "SELECT * FROM GDC_Vendas where Id = @id ";
             
@@ -64,13 +32,26 @@ namespace VendaDeAutomoveis.Repository
             return e.FirstOrDefault();
         }
 
-        public override IList<Venda> ObterTodos()
+        public override IList<GDC_Vendas> ObterTodos()
         {
             var sql = "SELECT * FROM GDC_Vendas ";
 
-            return _context.Database.Connection.Query<Venda>(sql)
-                .OrderBy(c => c.Cliente)
+            return _context.Database.Connection.Query<GDC_Vendas>(sql)
+                .OrderBy(c => c.GDC_Clientes.Nome)
                 .ToList();
+        }
+
+        public IList<GDC_Vendas> BuscarPorCliente(Guid? idCliente)
+        {
+            var sql = "SELECT * FROM GDC_Vendas where IdCliente = @idCliente ";
+
+            var e = _context.Database.Connection.Query(sql,
+                param: new
+                {
+                    idCliente = idCliente
+                });
+
+            return e.FirstOrDefault();
         }
     }
 }

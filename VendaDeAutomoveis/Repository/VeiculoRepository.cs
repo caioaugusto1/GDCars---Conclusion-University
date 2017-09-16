@@ -1,49 +1,23 @@
-﻿using AutoMapper;
-using Dapper;
-using System;
+﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class VeiculoRepository : RepositoryBase<Veiculo>
+    public class VeiculoRepository : RepositoryBase<GDC_Veiculos>, IVeiculoRepository
     {
         public VeiculoRepository(ContextGDCars context)
             : base(context)
         {
         }
 
-        public override void Editar(Veiculo obj)
-        {
-            var domain = Mapper.Map<Veiculo, GDC_Veiculos>(obj);
-
-            _context.Veiculos.Attach(domain);
-            var entry = _context.Entry(domain);
-            entry.State = System.Data.Entity.EntityState.Modified;
-            SaveChange();
-        }
-
-        public void Excluir(Guid id)
-        {
-            var domain = Mapper.Map<Veiculo, GDC_Veiculos>(ObterPorId(id));
-
-            _context.Veiculos.Remove(domain);
-            SaveChange();
-        }
-
-        public override Veiculo ObterPorId(Guid id)
-        {
-            var domain = Mapper.Map<GDC_Veiculos, Veiculo>(_context.Veiculos.Where(b => b.Id == id).FirstOrDefault());
-            return domain;
-        }
-
-        public override IList<Veiculo> ObterTodos()
+        public override IList<GDC_Veiculos> ObterTodos()
         {
             var sql = "SELECT * FROM GDC_Veiculos ";
 
-            return _context.Database.Connection.Query<Veiculo>(sql)
+            return _context.Database.Connection.Query<GDC_Veiculos>(sql)
                 .OrderBy(c => c.Modelo)
                 .ToList();
         }

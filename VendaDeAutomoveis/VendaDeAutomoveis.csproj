@@ -298,11 +298,14 @@
       <DependentUpon>ContextGDCars.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository\ConnectionContext\GDCarsConnectionString.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IEnderecoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IFormasPagamentosRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\ILoginRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IVeiculoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IVendasRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IClienteRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\FormaPagamentoRepository.cs" />
     <Compile Include="Repository\VeiculoRepository.cs" />

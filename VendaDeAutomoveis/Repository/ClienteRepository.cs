@@ -3,17 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class ClienteRepository : RepositoryBase<Cliente>
+    public class ClienteRepository : RepositoryBase<GDC_Clientes>, IClienteRepository
     {
         public ClienteRepository(ContextGDCars context)
             : base(context)
         {
         }   
 
-        public Cliente VerificarCPFExistente(string cpf)
+        public GDC_Clientes VerificarCPFExistente(string cpf)
         {
             var sql = "SELECT * FROM GDC_Clientes where CPF = @cpf ";
 
@@ -24,16 +26,6 @@ namespace VendaDeAutomoveis.Repository
                 });
 
             return e.FirstOrDefault();
-        }
-
-        public override IList<Cliente> ObterTodos()
-        {
-            var sql = "SELECT * FROM GDC_Clientes ";
-
-            return _context.Database.Connection.Query<Cliente>(sql)
-                .OrderBy(c => c.Nome)
-                .ThenBy(c => c.Tipo)
-                .ToList();
         }
 
         public void Atualizar(Guid idEndereco, Guid idCliente)
@@ -50,25 +42,25 @@ namespace VendaDeAutomoveis.Repository
             SaveChange();
         }
 
-        public void Adicionar(Cliente obj)
-        {
-            var sql = "Insert into GDC_Clientes (Id, Nome, CPF, RG, Tipo, Email, DataNascimento) " +
-                "Values(@IdCliente, @Nome, @CPF, @RG, @Tipo, @Email, @DataNascimento)";
+        //public void Adicionar(Cliente obj)
+        //{
+        //    var sql = "Insert into GDC_Clientes (Id, Nome, CPF, RG, Tipo, Email, DataNascimento) " +
+        //        "Values(@IdCliente, @Nome, @CPF, @RG, @Tipo, @Email, @DataNascimento)";
 
-            var e = _context.Database.Connection.Query<Cliente>(sql,
-                param: new
-                {
-                    IdCliente = obj.Id,
-                    Nome = obj.Nome,
-                    CPF = obj.CPF,
-                    RG = obj.RG,
-                    Tipo = obj.Tipo,
-                    Email = obj.Email,
-                    DataNascimento = obj.Data_Nascimento
-                });
-        }
+        //    var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
+        //        param: new
+        //        {
+        //            IdCliente = obj.Id,
+        //            Nome = obj.Nome,
+        //            CPF = obj.CPF,
+        //            RG = obj.RG,
+        //            Tipo = obj.Tipo,
+        //            Email = obj.Email,
+        //            DataNascimento = obj.Data_Nascimento
+        //        });
+        //}
 
-        public override void Editar(Cliente obj)
+        public void Editar(Cliente obj)
         {
             var sql = "update GDC_Clientes set Nome = @Nome, RG = @RG, CPF = @CPF, DataNascimento = @DataNascimento where Id = @IdCliente ";
 
@@ -85,11 +77,11 @@ namespace VendaDeAutomoveis.Repository
             SaveChange();
         }
 
-        public override Cliente ObterPorId(Guid id)
+        public override GDC_Clientes ObterPorId(Guid id)
         {
             var sql = "SELECT * FROM GDC_Clientes where Id = @id ";
 
-            return _context.Database.Connection.Query<Cliente>(sql,
+            return _context.Database.Connection.Query<GDC_Clientes>(sql,
                     param: new
                     {
                         Id = id

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
-    public interface IFormasPagamentosRepository
+    public interface IFormasPagamentosRepository : IRepositoryBase<GDC_Formas_Pagamentos>
     {
-        IList<FormaDePagamento> ObterFormaPagamentoComum();
+        IList<GDC_Formas_Pagamentos> ObterFormaPagamentoComum();
 
-        IList<FormaDePagamento> ObterListarFormaPagamentoVip();
+        IList<GDC_Formas_Pagamentos> ObterListarFormaPagamentoVip();
     }
 }

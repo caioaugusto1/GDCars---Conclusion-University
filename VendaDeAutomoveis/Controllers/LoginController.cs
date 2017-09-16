@@ -5,7 +5,6 @@ using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext.Context;
-using VendaDeAutomoveis.RepositoryW;
 using VendaDeAutomoveis.Services;
 
 namespace VendaDeAutomoveis.Controllers
@@ -32,8 +31,8 @@ namespace VendaDeAutomoveis.Controllers
             if (ModelState.IsValid)
             {
                 var senhaCripto = Criptografia.CriptografaMd5(senha);
-
-                var validarAcesso = loginRepository.AutenticarAcesso(email, senhaCripto);
+                
+                var validarAcesso = Mapper.Map<GDC_Logins, Login>(loginRepository.AutenticarAcesso(email, senhaCripto));
 
                 if (validarAcesso == null)
                 {
@@ -106,11 +105,6 @@ namespace VendaDeAutomoveis.Controllers
         {
             var usuarios = loginRepository.ObterTodos();
             return View(usuarios);
-        }
-
-        public void BloquearAcesso(Guid id)
-        {
-            loginRepository.BloquearAcesso(id);
         }
     }
 }

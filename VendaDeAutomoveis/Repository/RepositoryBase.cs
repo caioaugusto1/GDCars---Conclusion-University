@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using VendaDeAutomoveis.DAO.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class RepositoryBase<TEntity> : IRepository<TEntity>
-        where TEntity : class
+    public class RepositoryBase<DBSet> : IDisposable, IRepositoryBase<DBSet>
+        where DBSet : class
     {
         protected readonly ContextGDCars _context;
-
-        protected readonly DbSet<TEntity> _DbSet;
+        
+        protected ContextGDCars _DbSet = new ContextGDCars();
 
         string connectionString = GDCarsConnectionString.Connection;
 
         public RepositoryBase(ContextGDCars context)
         {
             _context = context;
-            _DbSet = _context.Set<TEntity>();
         }
 
         public void Dispose()
@@ -26,32 +26,31 @@ namespace VendaDeAutomoveis.Repository
             _context.Dispose();
         }
 
-        public virtual void Editar(TEntity obj)
+        public virtual void Editar(DBSet obj)
         {
-            _DbSet.Attach(obj);
             _context.Entry(obj).State = EntityState.Modified;
         }
         
-        public void Inserir(TEntity obj)
+        public void Inserir(DBSet obj)
         {
             _context.Entry(obj).State = EntityState.Added;
-            _DbSet.Add(obj);
+            _DbSet.Set<DBSet>().Add(obj);
             SaveChange();
         }
 
-        public void InsertRange(TEntity[] entities)
+        public void InsertRange(DBSet[] entities)
         {
-            _DbSet.AddRange(entities);
+            _DbSet.Set<DBSet>();
         }
 
-        public virtual TEntity ObterPorId(Guid id)
+        public virtual DBSet ObterPorId(Guid id)
         {
-            return _DbSet.Find(id);
+            return _DbSet.Set<DBSet>().Find(id);
         }
 
-        public virtual IList<TEntity> ObterTodos()
+        public virtual IList<DBSet> ObterTodos()
         {
-            throw new NotImplementedException();
+            return _DbSet.Set<DBSet>().ToList();
         }
 
         public void SaveChange()

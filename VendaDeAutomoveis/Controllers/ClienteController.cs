@@ -1,30 +1,34 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
     public class ClienteController : Controller
     {
-        private ClienteRepository clienteRepository;
-        private VendaRepository vendaRepository;
-        private EnderecoRepository enderecoRepository;
+        private ClienteRepository _clienteRepository;
+        private VendaRepository _vendaRepository;
+        private EnderecoRepository _enderecoRepository;
 
-        public ClienteController(ClienteRepository clienteRepository, VendaRepository vendaRepository, EnderecoRepository enderecoRepository)
+        public ClienteController(ClienteRepository _clienteRepository, VendaRepository _vendaRepository, EnderecoRepository _enderecoRepository)
         {
-            this.clienteRepository = clienteRepository;
-            this.vendaRepository = vendaRepository;
-            this.enderecoRepository = enderecoRepository;
+            this._clienteRepository = _clienteRepository;
+            this._vendaRepository = _vendaRepository;
+            this._enderecoRepository = _enderecoRepository;
         }
 
         public ActionResult Index()
         {
-            IList<Cliente> clientes = clienteRepository.ObterTodos();
-            return View(clientes);
+            var clienteViewModel = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
+
+            return View(clienteViewModel);
         }
 
         public ActionResult FormularioCadastro()
@@ -36,8 +40,8 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                enderecoRepository.Adicionar(endereco);
-                clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
+                _enderecoRepository.Inserir(_enderecoRepository.ObterPorId(endereco.Id));
+                _clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
             }
 
             return RedirectToAction("Index");
@@ -47,11 +51,15 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cpfExistente = clienteRepository.VerificarCPFExistente(cliente.CPF);
+                var cpfExistente = _clienteRepository.VerificarCPFExistente(cliente.CPF);
 
                 if (cpfExistente == null)
                 {
-                    clienteRepository.Adicionar(cliente);
+                    cliente.Tipo = TipoCliente.Comum;
+
+                    var clienteToDomain = Mapper.Map<Cliente, GDC_Clientes>(cliente);
+
+                    _clienteRepository.Inserir(clienteToDomain);
                     ViewBag.IdCliente = cliente.Id;
 
                     return View("CadastrarEndereco");
@@ -70,7 +78,7 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult EditarCliente(Guid id)
         {
-            var cliente = clienteRepository.ObterPorId(id);
+            var cliente = _clienteRepository.ObterPorId(id);
 
             //if (cliente == null)
             //    return Content("Erro");
@@ -82,7 +90,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                clienteRepository.Editar(cliente);
+                _clienteRepository.Editar(cliente);
                 return RedirectToAction("Index");
             }
             else

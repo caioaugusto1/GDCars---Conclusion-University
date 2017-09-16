@@ -27,6 +27,6 @@ namespace VendaDeAutomoveis.Entidades
         //[Required(ErrorMessage = "Informe o Cliente")]
         public Guid IdCliente { get; set; }
 
-        public virtual Cliente Cliente { get; set; }
+        //public virtual Cliente Cliente { get; set; }
     }
 }

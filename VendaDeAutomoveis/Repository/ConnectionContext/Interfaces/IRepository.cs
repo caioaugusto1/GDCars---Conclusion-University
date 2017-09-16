@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : class
+    public interface IRepositoryBase<DBSet> : IDisposable where DBSet : class
     {
-        IList<TEntity> ObterTodos();
-        
-        TEntity ObterPorId(Guid id);
-        
-        void Editar(TEntity obj);
+        IList<DBSet> ObterTodos();
 
-        void Inserir(TEntity obj);
+        DBSet ObterPorId(Guid id);
+        
+        void Editar(DBSet obj);
 
-        void InsertRange(TEntity[] entities);
+        void Inserir(DBSet obj);
+
+        void InsertRange(DBSet[] entities);
 
         void SaveChange();
     }

@@ -1,12 +1,12 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
 {
-    public class FormaPagamentoRepository : RepositoryBase<FormaDePagamento>, IFormasPagamentosRepository
+    public class FormaPagamentoRepository : RepositoryBase<GDC_Formas_Pagamentos>, IFormasPagamentosRepository
     {
         public FormaPagamentoRepository(ContextGDCars context)
             : base(context)
@@ -14,29 +14,29 @@ namespace VendaDeAutomoveis.Repository
 
         }
 
-        public override IList<FormaDePagamento> ObterTodos()
+        public override IList<GDC_Formas_Pagamentos> ObterTodos()
         {
             var sql = "SELECT * FROM GDC_Formas_Pagamentos ";
 
-            return _context.Database.Connection.Query<FormaDePagamento>(sql)
+            return _context.Database.Connection.Query<GDC_Formas_Pagamentos>(sql)
                 .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }
 
-        public IList<FormaDePagamento> ObterFormaPagamentoComum()
+        public IList<GDC_Formas_Pagamentos> ObterFormaPagamentoComum()
         {
-            var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'C' and Tipo_Cliente = 'A' ";
+            var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'Comum' ";
 
-            return _context.Database.Connection.Query<FormaDePagamento>(sql)
+            return _context.Database.Connection.Query<GDC_Formas_Pagamentos>(sql)
                 .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }
 
-        public IList<FormaDePagamento> ObterListarFormaPagamentoVip()
+        public IList<GDC_Formas_Pagamentos> ObterListarFormaPagamentoVip()
         {
-            var sql = "SELECT * FROM GDC_Formas_Pagamentos where TipoCliente = 'V' and 'A' ";
+            var sql = "SELECT * FROM GDC_Formas_Pagamentos where TipoCliente = 'Vip' ";
 
-            return _context.Database.Connection.Query<FormaDePagamento>(sql)
+            return _context.Database.Connection.Query<GDC_Formas_Pagamentos>(sql)
                 .OrderBy(c => c.Tipo_Cliente)
                 .ToList();
         }

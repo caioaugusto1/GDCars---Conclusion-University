@@ -1,14 +1,12 @@
-﻿using System;
-using VendaDeAutomoveis.Entidades;
+﻿using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
-    public interface ILoginRepository
+    public interface ILoginRepository : IRepositoryBase<GDC_Logins>
     {
-        void BloquearAcesso(Guid id);
+        GDC_Logins BuscarPorEmail(string email);
 
-        Login BuscarPorEmail(string email);
-
-        Login AutenticarAcesso(string email, string senha);
+        GDC_Logins AutenticarAcesso(string email, string senha);
     }
 }
+    

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
@@ -8,6 +9,7 @@ using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Factory.Base.Upload;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Controllers
 {
@@ -37,7 +39,11 @@ namespace VendaDeAutomoveis.Controllers
             //veiculo.IdUpload = Guid.Parse("5a998169-09e9-4016-bc7d-d86d87ee9926");
             if (ModelState.IsValid)
             {
-                veiculoRepository.Inserir(veiculo);
+                veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
+
+                var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
+
+                veiculoRepository.Inserir(toDomain);
                 return RedirectToAction("Index");
             }
             else
@@ -56,7 +62,9 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                veiculoRepository.Editar(veiculo);
+                var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
+
+                veiculoRepository.Editar(toDomain);
                 return RedirectToAction("Index");
             }
             else
@@ -67,13 +75,13 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult Excluir(Guid id)
         {
-            veiculoRepository.Excluir(id);
+/*            veiculoRepository.Excluir(id)*/;
             return RedirectToAction("Index");
         }
 
         public ActionResult Index()
         {
-            IList<Veiculo> veiculos = veiculoRepository.ObterTodos();
+            IList<GDC_Veiculos> veiculos = veiculoRepository.ObterTodos();
 
             return View(veiculos);
         }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
-    public interface IVendasRepository : IRepository<Venda>
+    public interface IVendasRepository : IRepositoryBase<GDC_Vendas>
     {
-        IList<Venda> BuscarPorCliente(Guid? id);
+        IList<GDC_Vendas> BuscarPorCliente(Guid? idCliente);
 
-        double GastosPorCliente(Guid id);
+        double GastosPorCliente(Guid idCliente);
     }
 }
