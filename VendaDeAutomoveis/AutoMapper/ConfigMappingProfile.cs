@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 
 namespace VendaDeAutomoveis.AutoMapper
 {

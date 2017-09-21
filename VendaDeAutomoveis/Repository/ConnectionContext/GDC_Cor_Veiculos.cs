@@ -1,0 +1,28 @@
+namespace VendaDeAutomoveis.Repository.ConnectionContext
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class GDC_Cor_Veiculos
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GDC_Cor_Veiculos()
+        {
+            GDC_Perfomances = new HashSet<GDC_Perfomances>();
+        }
+
+        public Guid Id { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Estilo { get; set; }
+
+        public double Valor { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GDC_Perfomances> GDC_Perfomances { get; set; }
+    }
+}

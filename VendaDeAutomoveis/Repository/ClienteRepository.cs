@@ -1,9 +1,8 @@
 ﻿using Dapper;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
@@ -30,48 +29,49 @@ namespace VendaDeAutomoveis.Repository
 
         public void Atualizar(Guid idEndereco, Guid idCliente)
         {
-            var sql = "update GDC_Clientes set IdEndereco = @idEndereco where Id = @idCliente ";
+            var sql = "update GDC_Clientes set IdEndereco = @idEndereco where Id = @Id ";
 
             var e = _context.Database.Connection.Execute(sql,
                 param: new
                 {
                     idEndereco = idEndereco,
-                    idCliente = idCliente
+                    Id = idCliente
                 });
 
             SaveChange();
         }
 
-        //public void Adicionar(Cliente obj)
-        //{
-        //    var sql = "Insert into GDC_Clientes (Id, Nome, CPF, RG, Tipo, Email, DataNascimento) " +
-        //        "Values(@IdCliente, @Nome, @CPF, @RG, @Tipo, @Email, @DataNascimento)";
+        public override void Inserir(GDC_Clientes obj)
+        {
+            var sql = "Insert into GDC_Clientes (Id, Nome, CPF, RG, Tipo, Email, Data_Nascimento) " +
+                "Values(@Id, @Nome, @CPF, @RG, @Tipo, @Email, @Data_Nascimento)";
 
-        //    var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
-        //        param: new
-        //        {
-        //            IdCliente = obj.Id,
-        //            Nome = obj.Nome,
-        //            CPF = obj.CPF,
-        //            RG = obj.RG,
-        //            Tipo = obj.Tipo,
-        //            Email = obj.Email,
-        //            DataNascimento = obj.Data_Nascimento
-        //        });
-        //}
+            var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
+                param: new
+                {
+                    Id = obj.Id,
+                    Nome = obj.Nome,
+                    CPF = obj.CPF,
+                    RG = obj.RG,
+                    Tipo = obj.Tipo,
+                    Email = obj.Email,
+                    Data_Nascimento = obj.Data_Nascimento
+                });
+        }
 
         public void Editar(Cliente obj)
         {
-            var sql = "update GDC_Clientes set Nome = @Nome, RG = @RG, CPF = @CPF, DataNascimento = @DataNascimento where Id = @IdCliente ";
+            var sql = "update GDC_Clientes set Nome = @Nome, RG = @RG, CPF = @CPF, Data_Nascimento = @Data_Nascimento, Email = @Email where Id = @Id ";
 
-            var e = _context.Database.Connection.Execute(sql,
+            var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
                 param: new
                 {
                     Id = obj.Id,
                     Nome = obj.Nome,
                     RG = obj.RG,
                     CPF = obj.CPF,
-                    DataNascimento = obj.Data_Nascimento
+                    Data_Nascimento = obj.Data_Nascimento,
+                    Email = obj.Email
                 });
 
             SaveChange();

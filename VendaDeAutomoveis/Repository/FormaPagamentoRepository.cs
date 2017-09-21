@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository

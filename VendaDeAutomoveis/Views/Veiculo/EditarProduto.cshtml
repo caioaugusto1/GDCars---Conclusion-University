@@ -1,52 +1,14 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-<br />
-<br />
-<br />
-<br />
-
-@using (Html.BeginForm("EditarProdutos", "Produto", FormMethod.Post))
+@using (Html.BeginForm("EditarClientes", "Cliente", FormMethod.Post))
 {
-    @*@Html.LabelFor(u => u.IdProduto, "Id produto*")*@
-    @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
+    Html.RenderPartial("_partial/_form_CadsEdit", Model);
 
-    @Html.LabelFor(u => u.Fabricante, "Nome do fabricante*")
-    @Html.TextBoxFor(u => u.Fabricante, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Fabricante)
-
-    <br />
-
-    @Html.LabelFor(u => u.Modelo, "Modelo do veículo*")
-    @Html.TextBoxFor(u => u.Modelo, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Modelo)
-
-    <br />
-
-    @Html.LabelFor(u => u.Ano, "Ano de Fabricação do veículo*")
-    @Html.TextBoxFor(u => u.Ano, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Ano)
-
-    <br />
-
-
-    @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de portas do veículo*")
-    @Html.TextBoxFor(u => u.QuantidadeDePortas, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.QuantidadeDePortas)
-
-    <br />
-
-    @Html.LabelFor(u => u.Valor, "Valor do veículo*")
-    @Html.TextBoxFor(u => u.Valor, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Valor)
-
-    <br />
-
-    @Html.LabelFor(u => u.Tipo, "Tipo do veículo*")
-    @Html.EnumDropDownListFor(u => u.Tipo, "Tipo do veiculo", new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Tipo)
-
-    <br />
-
-    <input type="submit" value="Salvar" />
-
+    <div class="form_submit clearfix">
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-2">
+                <button class="btn btn-primary btn-lg">Salvar</button>
+            </div>
+        </div>
+    </div>
 }

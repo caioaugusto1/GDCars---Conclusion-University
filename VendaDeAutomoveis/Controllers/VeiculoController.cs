@@ -9,7 +9,7 @@ using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Factory.Base.Upload;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 
 namespace VendaDeAutomoveis.Controllers
 {
@@ -52,13 +52,13 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
-        public ActionResult EditarProduto(Guid id)
+        public ActionResult Editar(Guid id)
         {
             var veiculo = veiculoRepository.ObterPorId(id);
             return View(veiculo);
         }
 
-        public ActionResult EditarProdutos(Veiculo veiculo)
+        public ActionResult Editar(Veiculo veiculo)
         {
             if (ModelState.IsValid)
             {

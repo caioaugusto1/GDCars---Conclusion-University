@@ -12,8 +12,10 @@
     <title>Edit</title>
 </head>
 <body>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Editar", "Veiculo"))
     {
+        @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
+
         Html.RenderPartial("_partial/_form_CadsEdit", Model);
 
         <div class="form_submit clearfix">

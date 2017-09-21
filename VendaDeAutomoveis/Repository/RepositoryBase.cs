@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using VendaDeAutomoveis.DAO.ConnectionContext;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
 namespace VendaDeAutomoveis.Repository
@@ -12,7 +13,7 @@ namespace VendaDeAutomoveis.Repository
     {
         protected readonly ContextGDCars _context;
         
-        protected ContextGDCars _DbSet = new ContextGDCars();
+        protected GDCarsContextDiagrama _DbSet = new GDCarsContextDiagrama();
 
         string connectionString = GDCarsConnectionString.Connection;
 
@@ -31,7 +32,7 @@ namespace VendaDeAutomoveis.Repository
             _context.Entry(obj).State = EntityState.Modified;
         }
         
-        public void Inserir(DBSet obj)
+        public virtual void Inserir(DBSet obj)
         {
             _context.Entry(obj).State = EntityState.Added;
             _DbSet.Set<DBSet>().Add(obj);

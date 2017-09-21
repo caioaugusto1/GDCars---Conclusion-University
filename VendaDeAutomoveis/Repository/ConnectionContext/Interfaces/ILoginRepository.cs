@@ -1,6 +1,4 @@
-﻿using VendaDeAutomoveis.Repository.ConnectionContext.Context;
-
-namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
+﻿namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
     public interface ILoginRepository : IRepositoryBase<GDC_Logins>
     {

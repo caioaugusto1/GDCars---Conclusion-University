@@ -1,16 +1,16 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Factory.EntidadesFactory;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using static VendaDeAutomoveis.Entidades.Cliente;
 using static VendaDeAutomoveis.Entidades.Venda;
-using VendaDeAutomoveis.Factory.EntidadesFactory;
 using static VendaDeAutomoveis.Enums.EnumsExtensions;
-using AutoMapper;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Controllers
 {

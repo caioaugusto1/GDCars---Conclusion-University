@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {

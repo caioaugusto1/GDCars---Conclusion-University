@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Services;
 
 namespace VendaDeAutomoveis.Controllers

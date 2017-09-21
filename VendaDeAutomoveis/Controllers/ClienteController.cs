@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
-using VendaDeAutomoveis.Repository.ConnectionContext.Context;
+using VendaDeAutomoveis.Repository.ConnectionContext;
 using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Controllers
@@ -40,7 +40,9 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                _enderecoRepository.Inserir(_enderecoRepository.ObterPorId(endereco.Id));
+                var enderecoDomain = Mapper.Map<GDC_Enderecos>(endereco);
+
+                _enderecoRepository.Inserir(enderecoDomain);
                 _clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
             }
 
@@ -78,12 +80,12 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult EditarCliente(Guid id)
         {
-            var cliente = _clienteRepository.ObterPorId(id);
+            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
+            
+            if (clienteViewModel == null)
+                return Content("Erro");
 
-            //if (cliente == null)
-            //    return Content("Erro");
-
-            return View(cliente);
+            return View(clienteViewModel);
         }
 
         public ActionResult EditarClientes(Cliente cliente)
@@ -91,7 +93,11 @@ namespace VendaDeAutomoveis.Controllers
             if (ModelState.IsValid)
             {
                 _clienteRepository.Editar(cliente);
-                return RedirectToAction("Index");
+
+                var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(cliente.Id);
+
+                return View("CadastrarEndereco", enderecoViewModel);
+                //return RedirectToAction("Index");
             }
             else
             {
