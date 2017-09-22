@@ -304,7 +304,7 @@
     <Content Include="Views\Venda\Index.cshtml" />
     <Content Include="Views\Venda\HistoricoPedidos.cshtml" />
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
-    <Content Include="Views\Veiculo\EditarProduto.cshtml" />
+    <Content Include="Views\Veiculo\Editar.cshtml" />
     <Content Include="Views\Venda\EditarClienteParcial.cshtml" />
     <Content Include="Views\Venda\_ParcialviewEndereco.cshtml" />
     <Content Include="Views\Venda\_ParcialViewFormaDePagamento.cshtml" />
@@ -317,8 +317,8 @@
     <Content Include="Views\Performance\Index.cshtml" />
     <Content Include="Views\Cliente\CadastrarEndereco.cshtml" />
     <Content Include="Views\Cliente\partial\_CreateEdit.cshtml" />
-    <Content Include="Views\Veiculo\Edit.cshtml" />
     <Content Include="Views\Veiculo\_partial\_CreateEdit.cshtml" />
+    <Content Include="Views\Venda\partial\_CreateEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

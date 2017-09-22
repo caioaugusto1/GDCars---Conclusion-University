@@ -22,13 +22,12 @@
         @foreach (var m in Model)
         {
             <tr>
-                
                 <td>@m.Cliente.Nome</td>
-                <td>@m.Veiculo.ModeloVeiculo</td>
+                <td>@m.Veiculo.Modelo</td>
                 <td>@m.Valor.ToString("c")</td>
-                <td>@m.DataCompra.ToString("dd/MM/yyyy")</td>
-                <td>@m.TipoEntrega</td>
-                <td>@m.FormaDePagamento.ModeloFormaDePagamento</td>            
+                @*<td>@m..ToString("dd/MM/yyyy")</td>*@
+                <td>@m.Tipo_Entrega</td>
+                <td>@m.FormaDePagamento.Modelo</td>            
                 <td>@m.Observacoes</td>
             </tr>
         }

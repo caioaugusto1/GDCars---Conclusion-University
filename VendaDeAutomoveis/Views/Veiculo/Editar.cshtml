@@ -1,8 +1,10 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-@using (Html.BeginForm("EditarClientes", "Cliente", FormMethod.Post))
+@using (Html.BeginForm("Editar", "Veiculo", FormMethod.Post))
 {
-    Html.RenderPartial("_partial/_form_CadsEdit", Model);
+    @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
+
+    Html.RenderPartial("_partial/_CreateEdit", Model);
 
     <div class="form_submit clearfix">
         <div class="row">

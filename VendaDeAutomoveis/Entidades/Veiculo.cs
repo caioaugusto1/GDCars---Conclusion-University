@@ -26,7 +26,7 @@ namespace VendaDeAutomoveis.Entidades
         [Required(ErrorMessage = "Informe o Tipo do Veiculo")]
         public TipoVeiculo Tipo { get; set; }
 
-        public Guid IdUpload { get; set; }
+        public Guid? IdUpload { get; set; }
 
         public virtual Upload Upload { get; set; }
     }

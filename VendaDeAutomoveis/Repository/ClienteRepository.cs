@@ -37,8 +37,6 @@ namespace VendaDeAutomoveis.Repository
                     idEndereco = idEndereco,
                     Id = idCliente
                 });
-
-            SaveChange();
         }
 
         public override void Inserir(GDC_Clientes obj)
@@ -73,8 +71,6 @@ namespace VendaDeAutomoveis.Repository
                     Data_Nascimento = obj.Data_Nascimento,
                     Email = obj.Email
                 });
-
-            SaveChange();
         }
 
         public override GDC_Clientes ObterPorId(Guid id)

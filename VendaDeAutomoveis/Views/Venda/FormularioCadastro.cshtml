@@ -10,17 +10,17 @@
 
     @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
     @Html.DropDownListFor(m => m.IdCliente,
-        new SelectList(ViewBag.Cliente, "IdCliente", "Nome"), "Nome do Cliente",
+        new SelectList(ViewBag.Cliente, "Id", "Nome"), "Nome do Cliente",
         new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.IdCliente)
 
     <br />
 
-    @Html.LabelFor(m => m.IdProduto, "Modelo do Produto*")
+    @Html.LabelFor(m => m.IdVeiculo, "Modelo do Veículo*")
     @Html.DropDownListFor(m => m.Veiculo.Id,
-        new SelectList(ViewBag.Veiculo, "IdProduto", "ModeloVeiculo"), "Modelo do Produto",
+        new SelectList(ViewBag.Veiculo, "Id", "Modelo"), "Modelo do Veículo",
             new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.IdProduto)
+    @Html.ValidationMessageFor(m => m.IdVeiculo)
 
     <br />
 
@@ -36,9 +36,9 @@
 
     <br />
 
-    @Html.LabelFor(m => m.TipoEntrega, "Tipo de Entrega*")
-    @Html.EnumDropDownListFor(m => m.TipoEntrega, "Tipo de Entrega", new { @class = "form-control" })
-    @Html.ValidationMessageFor(m => m.TipoEntrega)
+    @Html.LabelFor(m => m.Tipo_Entrega, "Tipo de Entrega*")
+    @Html.EnumDropDownListFor(m => m.Tipo_Entrega, "Tipo de Entrega", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Tipo_Entrega)
 
     <br />
 
@@ -63,47 +63,46 @@
         $(function () {
 
             @if (ViewBag.ExibirCampo != null)
-                {
-                    @:PegarvalorEnderecoAjax();
-                                                            }
-
-            $("#IdProduto").change(function () {
-                PegarvalorVeiculoAjax();
-            });
-
-            $("#TipoEntrega").change(function () {
-                PegarvalorEnderecoAjax();
-            });
-
-            $("#IdCliente").change(function () {
-                PegarvalorEnderecoAjax();
-                PegarFormaDePagamento();
-            });
+            {
+                @:PegarvalorEnderecoAjax();
+            }
         });
 
+        $('#Veiculo_Id').change(function () {
+            obterValorVeiculo();
+        });
 
-        function PegarvalorVeiculoAjax() {
+        $('#Tipo_Entrega').change(function () {
+            PegarvalorEnderecoAjax();
+        });
+
+        $('#IdCliente').change(function () {
+            PegarvalorEnderecoAjax();
+            obterFormaDePagamento();
+        });
+
+        function obterValorVeiculo() {
             $.ajax({
                 url: '@Url.Action("PegarPrecoProduto")',
                 type: "post",
                 dataType: "html",
-                data: { IdProduto: $("#IdProduto").val() },
-
+                data:
+                {
+                    idVeiculo: $("#Veiculo_Id").val()
+                },
                 success: function (data) {
-
                     $("#Valor").val(data);
-
                 }
             });
         }
 
         function PegarvalorEnderecoAjax() {
-            
-            if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 2) {
+
+            if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 2) {
                 $('#viewParcialEndereco').hide();
             }
 
-            if ($("#IdCliente").val() != '' && $("#TipoEntrega").val() == 1) {
+            if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
                 $('#viewParcialEndereco').show();
 
                 $.ajax({
@@ -121,7 +120,6 @@
                     }
                 });
             }
-
         }
 
 
@@ -142,17 +140,13 @@
                     Complemento: $("#Complemento").val()
 
                 },
-
                 success: function (data) {
-
                     alert("Endereço Alterado");
-
                 }
             });
         }
 
-        function PegarFormaDePagamento() {
-
+        function obterFormaDePagamento() {
             $.ajax({
                 url: '@Url.Action("PegarFormaDePagamento")', //Metodo da minha controller
                 type: "post",

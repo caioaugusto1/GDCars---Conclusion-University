@@ -14,6 +14,7 @@ namespace VendaDeAutomoveis.AutoMapper
             CreateMap<GDC_Vendas, Venda>().ReverseMap();
             CreateMap<GDC_Veiculos, Veiculo>().ReverseMap();
             CreateMap<GDC_Rodas, Roda>().ReverseMap();
+            CreateMap<GDC_Formas_Pagamentos, FormaDePagamento>().ReverseMap();
         }
     }
 }

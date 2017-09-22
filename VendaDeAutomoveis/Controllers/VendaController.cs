@@ -17,38 +17,41 @@ namespace VendaDeAutomoveis.Controllers
     [AutorizacaoFilter]
     public class VendaController : Controller
     {
-        private ClienteRepository clienteRepository;
-        private VendaRepository vendaRepository;
-        private VeiculoRepository veiculoRepository;
-        private FormaPagamentoRepository formaPagamentoRepository;
-        private EnderecoRepository enderecoRepository;
+        private ClienteRepository _clienteRepository;
+        private VendaRepository _vendaRepository;
+        private VeiculoRepository _veiculoRepository;
+        private FormaPagamentoRepository _formaPagamentoRepository;
+        private EnderecoRepository _enderecoRepository;
 
-        public VendaController(VendaRepository vendaRepository, ClienteRepository clienteRepository, VeiculoRepository veiculoRepository, FormaPagamentoRepository formaPagamentoRepository, EnderecoRepository enderecoRepository)
+        public VendaController(VendaRepository _vendaRepository, ClienteRepository _clienteRepository, VeiculoRepository _veiculoRepository, 
+            FormaPagamentoRepository _formaPagamentoRepository, EnderecoRepository _enderecoRepository)
         {
-            this.clienteRepository = clienteRepository;
-            this.vendaRepository = vendaRepository;
-            this.veiculoRepository = veiculoRepository;
-            this.formaPagamentoRepository = formaPagamentoRepository;
-            this.enderecoRepository = enderecoRepository;
+            this._clienteRepository = _clienteRepository;
+            this._vendaRepository = _vendaRepository;
+            this._veiculoRepository = _veiculoRepository;
+            this._formaPagamentoRepository = _formaPagamentoRepository;
+            this._enderecoRepository = _enderecoRepository;
         }
 
         public ActionResult FormularioCadastro()
         {
-            ViewBag.Cliente = clienteRepository.ObterTodos();
-            ViewBag.Veiculo = veiculoRepository.ObterTodos();
-            ViewBag.FormaDePagamento = formaPagamentoRepository.ObterTodos();
+            ViewBag.Cliente = _clienteRepository.ObterTodos();
+            ViewBag.Veiculo = _veiculoRepository.ObterTodos();
+            ViewBag.FormaDePagamento = _formaPagamentoRepository.ObterTodos();
+
             return View();
         }
+
         public ActionResult AdicionarVenda(Venda venda)
         {
-            ViewBag.Cliente = clienteRepository.ObterTodos();
-            ViewBag.Veiculo = veiculoRepository.ObterTodos();
+            ViewBag.Cliente = _clienteRepository.ObterTodos();
+            ViewBag.Veiculo = _veiculoRepository.ObterTodos();
 
             if (ModelState.IsValid)
             {
-                var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(formaPagamentoRepository.ObterPorId(venda.IdFormaDePagamento));
+                var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(venda.IdFormaDePagamento));
 
-                var cliente = Mapper.Map<GDC_Clientes, Cliente>(clienteRepository.ObterPorId(venda.IdCliente));
+                var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(venda.IdCliente));
 
                 var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
 
@@ -63,13 +66,13 @@ namespace VendaDeAutomoveis.Controllers
                 {
 
                     ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
-                    ViewBag.Cliente = clienteRepository.ObterTodos();
-                    ViewBag.Veiculo = clienteRepository.ObterTodos();
+                    ViewBag.Cliente = _clienteRepository.ObterTodos();
+                    ViewBag.Veiculo = _clienteRepository.ObterTodos();
                     ViewBag.ExibirCampo = true;
                     return View("FormularioCadastro", venda);
                 }
 
-                vendaRepository.Inserir(vendaToDomain);
+                _vendaRepository.Inserir(vendaToDomain);
                 MudarClienteComunParaVip(cliente);
                 //Veiculo veiculo = veiculoRepository.ObterPorId(venda.Id);
                 AumentarValorVeiculoEsportivo(venda);
@@ -84,7 +87,7 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult Index()
         {
-            var vendaViewModel = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(vendaRepository.ObterTodos());
+            var vendaViewModel = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(_vendaRepository.ObterTodos());
 
             return View(vendaViewModel);
         }
@@ -92,7 +95,7 @@ namespace VendaDeAutomoveis.Controllers
         public ActionResult HistoricoPedidos(HistoricoPedidosModel historicoPedido)
         {
             ViewBag.Clientes = new SelectList(
-                clienteRepository.ObterTodos(),
+                _clienteRepository.ObterTodos(),
                 "IdCliente",
                 "Nome"
                 );
@@ -110,12 +113,12 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (cliente.Tipo == TipoCliente.Comum)
             {
-                var calcularGastoCliente = vendaRepository.GastosPorCliente(cliente.Id);
+                var calcularGastoCliente = _vendaRepository.GastosPorCliente(cliente.Id);
 
                 if (calcularGastoCliente >= 200000)
                     MudarClienteParaVip(cliente);
 
-                clienteRepository.Editar(cliente);
+                _clienteRepository.Editar(cliente);
             }
         }
 
@@ -123,7 +126,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             var objVenda = Mapper.Map<Venda, GDC_Vendas>(CalcularVeiculoEsportivo(venda));
 
-            vendaRepository.Editar(objVenda);
+            _vendaRepository.Editar(objVenda);
 
             return objVenda.Valor;
         }
@@ -139,29 +142,29 @@ namespace VendaDeAutomoveis.Controllers
             return venda.Valor;
         }
 
-        public ActionResult PegarPrecoProduto(Guid id)
+        public ActionResult PegarPrecoProduto(Guid idVeiculo)
         {
-            var produto = veiculoRepository.ObterPorId(id);
-            return Content(produto.Valor.ToString());
+            var veiculo = _veiculoRepository.ObterPorId(idVeiculo);
+            return Content(veiculo.Valor.ToString());
         }
 
         public ActionResult PegarFormaDePagamento(Guid IdCliente)
         {
-            var cliente = clienteRepository.ObterPorId(IdCliente);
+            var cliente = _clienteRepository.ObterPorId(IdCliente);
 
             IList<FormaDePagamento> formaPagamentoViewModel = new List<FormaDePagamento>();
             
             if (cliente.Tipo == TipoCliente.Vip.ToString())
-                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(formaPagamentoRepository.ObterListarFormaPagamentoVip());
+                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip());
             else
-                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(formaPagamentoRepository.ObterFormaPagamentoComum());
+                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
 
             return PartialView("_ParcialViewFormaDePagamento", formaPagamentoViewModel);
         }
 
         public ActionResult PegarEndereco(Guid idCliente)
         {
-            var clienteEndereco = enderecoRepository.BuscarPorIdCliente(idCliente);
+            var clienteEndereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
             return PartialView("_ParcialviewEndereco", clienteEndereco);
         }
 
@@ -170,8 +173,8 @@ namespace VendaDeAutomoveis.Controllers
 
             if (ModelState.IsValid)
             {
-                var endereco = enderecoRepository.BuscarPorIdCliente(idCliente);
-                enderecoRepository.Editar(endereco);
+                var endereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
+                _enderecoRepository.Editar(endereco);
 
                 return null;
             }

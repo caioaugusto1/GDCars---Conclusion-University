@@ -16,11 +16,13 @@ namespace VendaDeAutomoveis.Repository
 
         public GDC_Enderecos BuscarPorIdCliente(Guid idCliente)
         {
-            var enderecos = _context.Enderecos.Where(e => e.IdCliente == idCliente).FirstOrDefault();
+            var sql = "SELECT * FROM GDC_Enderecos where IdCliente = @idCliente ";
 
-            var m = Mapper.Map<GDC_Enderecos>(enderecos);
-
-            return m;
+            return _context.Database.Connection.Query<GDC_Enderecos>(sql,
+                param: new
+                {
+                    idCliente = idCliente
+                }).FirstOrDefault();
         }
 
         public override void Inserir(GDC_Enderecos obj)

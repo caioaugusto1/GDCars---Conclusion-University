@@ -16,11 +16,18 @@ namespace VendaDeAutomoveis.Controllers
     [AutorizacaoFilter]
     public class VeiculoController : Controller
     {
-        private VeiculoRepository veiculoRepository;
+        private VeiculoRepository _veiculoRepository;
 
-        public VeiculoController(VeiculoRepository veiculoRepository)
+        public VeiculoController(VeiculoRepository _veiculoRepository)
         {
-            this.veiculoRepository = veiculoRepository;
+            this._veiculoRepository = _veiculoRepository;
+        }
+
+        public ActionResult Index()
+        {
+            var veiculosViewModel = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+
+            return View(veiculosViewModel);
         }
 
         public ActionResult FormularioCadastro()
@@ -36,14 +43,16 @@ namespace VendaDeAutomoveis.Controllers
                 UploadArquivoFactory.Upload(file, nomeArquivo);
             }
 
-            //veiculo.IdUpload = Guid.Parse("5a998169-09e9-4016-bc7d-d86d87ee9926");
+            if (veiculo.IdUpload.ToString() == "{00000000-0000-0000-0000-000000000000}")
+                veiculo.IdUpload = null;
+
             if (ModelState.IsValid)
             {
                 veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
 
                 var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
-                veiculoRepository.Inserir(toDomain);
+                _veiculoRepository.Inserir(toDomain);
                 return RedirectToAction("Index");
             }
             else
@@ -52,19 +61,22 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+
         public ActionResult Editar(Guid id)
         {
-            var veiculo = veiculoRepository.ObterPorId(id);
-            return View(veiculo);
+            var veiculoViewModel = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(id));
+
+            return View(veiculoViewModel);
         }
 
+        [HttpPost]
         public ActionResult Editar(Veiculo veiculo)
         {
             if (ModelState.IsValid)
             {
-                var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
+                var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
-                veiculoRepository.Editar(toDomain);
+                _veiculoRepository.Editar(veiculoDomain);
                 return RedirectToAction("Index");
             }
             else
@@ -73,22 +85,12 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        #region metodos de imagens
         public ActionResult Excluir(Guid id)
         {
-/*            veiculoRepository.Excluir(id)*/;
+            //_veiculoRepository.Excluir(id)
+
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Index()
-        {
-            IList<GDC_Veiculos> veiculos = veiculoRepository.ObterTodos();
-
-            return View(veiculos);
-        }
-
-        public ActionResult Teste()
-        {
-            return View();
         }
 
         public ActionResult VerImagem()
@@ -169,5 +171,7 @@ namespace VendaDeAutomoveis.Controllers
             //    return Json(new { Message = "Erro em Salvar o Arquivo" });
             //}
         }
+
+        #endregion
     }
 }
