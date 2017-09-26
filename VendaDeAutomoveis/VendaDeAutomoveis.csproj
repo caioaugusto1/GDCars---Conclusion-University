@@ -231,6 +231,8 @@
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Enums\EnumsExtensions.cs" />
+    <Compile Include="Models\RodaRepository.cs" />
+    <Compile Include="Repository\BancoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ConnectionContext\GDCarsConnectionString.cs" />
     <Compile Include="Repository\ConnectionContext\GDCarsContextDiagrama.cs" />
@@ -245,16 +247,22 @@
     <Compile Include="Repository\ConnectionContext\GDC_Uploads.cs" />
     <Compile Include="Repository\ConnectionContext\GDC_Veiculos.cs" />
     <Compile Include="Repository\ConnectionContext\GDC_Vendas.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IBancoRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\ICorVeiculoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IEnderecoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IFormasPagamentosRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\ILoginRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IPerfomanceRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\ConnectionContext\Interfaces\IRodaRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IVeiculoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IVendasRepository.cs" />
+    <Compile Include="Repository\CorVeiculoRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\ConnectionContext\Interfaces\IClienteRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
     <Compile Include="Repository\FormaPagamentoRepository.cs" />
+    <Compile Include="Repository\PerfomanceRepository.cs" />
     <Compile Include="Repository\VeiculoRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\VendaRepository.cs" />
@@ -306,8 +314,8 @@
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
     <Content Include="Views\Veiculo\Editar.cshtml" />
     <Content Include="Views\Venda\EditarClienteParcial.cshtml" />
-    <Content Include="Views\Venda\_ParcialviewEndereco.cshtml" />
-    <Content Include="Views\Venda\_ParcialViewFormaDePagamento.cshtml" />
+    <Content Include="Views\Venda\partial\_ParcialviewEndereco.cshtml" />
+    <Content Include="Views\Venda\partial\_ParcialViewFormaDePagamento.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cliente\FormularioCadastro.cshtml" />
     <Content Include="Views\Login\CriarAcesso.cshtml" />
@@ -319,6 +327,9 @@
     <Content Include="Views\Cliente\partial\_CreateEdit.cshtml" />
     <Content Include="Views\Veiculo\_partial\_CreateEdit.cshtml" />
     <Content Include="Views\Venda\partial\_CreateEdit.cshtml" />
+    <Content Include="Views\Performance\Passo1CadastroRoda.cshtml" />
+    <Content Include="Views\Performance\Passo2CadastroCor.cshtml" />
+    <Content Include="Views\Performance\Passo3CadastroCor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

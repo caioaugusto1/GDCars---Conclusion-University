@@ -1,4 +1,5 @@
-﻿using static VendaDeAutomoveis.Enums.EnumsExtensions;
+﻿using System;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -11,5 +12,7 @@ namespace VendaDeAutomoveis.Entidades
         public int Aro { get; set; }
         
         public double Valor { get; set; }
+
+        public Guid IdCliente { get; set; }
     }
 }

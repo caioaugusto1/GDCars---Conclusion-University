@@ -1,4 +1,5 @@
-﻿using static VendaDeAutomoveis.Enums.EnumsExtensions;
+﻿using System;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
 {
@@ -7,5 +8,7 @@ namespace VendaDeAutomoveis.Entidades
         public EstiloCorVeiculo Estilo { get; set; }
 
         public double Valor { get; set; }
+
+        public Guid IdPerformance { get; set; }
     }
 }

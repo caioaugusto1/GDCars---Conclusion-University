@@ -30,13 +30,13 @@
                                 <li>@Html.ActionLink("Movimentações", "HistoricoPedidos", "Venda", new { area = "" }, null)</li>
                             </ul>
                         </li>
-                        <li style="width:150px;">
+                        @*<li style="width:150px;">
                             <a href="#">Veículos</a>
                             <ul>
                                 <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Veiculo", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Lista", "Index", "Veiculo", new { area = "" }, null)</li>
                             </ul>
-                        </li>
+                        </li>*@
                         <li style="width:150px;">
                             <a href="#">Vendas</a>
                             <ul>
@@ -44,22 +44,26 @@
                                 <li>@Html.ActionLink("Lista", "Index", "Venda", new { area = "" }, null)</li>
                             </ul>
                         </li>
-                        @*@if (SessionManager.UsuarioLogado.TipoAcesso == VendaDeAutomoveis.Enum.NivelAcesso.Admin)
-                        {*@
-                            <li style="">
-                                <a href="#">Sistema</a>
-                                <ul>
-                                    <li>
-                                        <a href="#">Acesso</a>
-                                        <ul>
-                                            <li>@Html.ActionLink("Novo", "CriarAcesso", "Login", new { area = "" }, null)</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        //}
-                        <li><a href="#" style="margin-left:150px;"><span class="glyphicon glyphicon-user"></span> Olá @SessionManager.UsuarioLogado.Nome @SessionManager.UsuarioLogado.SobreNome</a></li>
-                        <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+                        <li style="width:150px;">
+                            <a href="#">Perfomance</a>
+                            <ul>
+                                <li>@Html.ActionLink("Cadastrar", "Passo1CadastroRoda", "Performance", new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Lista", "Index", "Performance", new { area = "" }, null)</li>
+                            </ul>
+                        </li>
+                        <li style="">
+                            <a href="#">Sistema</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Acesso</a>
+                                    <ul>
+                                        <li>@Html.ActionLink("Novo", "CriarAcesso", "Login", new { area = "" }, null)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                            <li><a href="#" style="margin-left:150px;"><span class="glyphicon glyphicon-user"></span> Olá @SessionManager.UsuarioLogado.Nome @SessionManager.UsuarioLogado.SobreNome</a></li>
+                            <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
                     }
                 </ul>
 

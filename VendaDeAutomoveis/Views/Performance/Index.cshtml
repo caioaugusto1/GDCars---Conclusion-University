@@ -1,4 +1,36 @@
-﻿@model VendaDeAutomoveis.Entidades.Roda
+﻿@model IList<VendaDeAutomoveis.Entidades.Performance>
 
-<h2>Olá</h2>
+<br />
+<br />
+<br />
+<br />
 
+<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+
+            <th>Nome</th>
+            <th width="110px">RG</th>
+            <th width="120px">CPF/MF</th>
+            <th>Data de Nascimento</th>
+            <th>Tipo do Cliente</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Cliente.Nome</td>
+                <td>@u.Cliente.CPF</td>
+                <td>@u.Banco.Modelo</td>
+                <td>@u.Banco.CorBanco</td>
+                <td>@u.Cor.Estilo</td>
+                <td>@u.Roda.Aro</td>
+                <td>@u.Roda.Cor</td>
+                <td>@Html.ActionLink("Editar", "EditarCliente", new { Id = u.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>
