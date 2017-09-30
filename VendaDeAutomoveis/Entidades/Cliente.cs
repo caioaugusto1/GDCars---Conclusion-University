@@ -31,20 +31,20 @@ namespace VendaDeAutomoveis.Entidades
 
         public virtual Endereco Endereco { get; set; }
 
-        //public ValidationResult ValidationResult { get; set; }
-
-        //public bool EhValido()
-        //{
-        //    ValidationResult = new ClienteEstaConsistenteValidation().Validate(this);
-        //    return ValidationResult.IsValid;
-        //}
-
         public static Cliente MudarClienteParaVip(Cliente cliente)
         {
             if (cliente.Tipo == TipoCliente.Comum)
                 cliente.Tipo = TipoCliente.Vip;
 
             return cliente;
+        }
+
+        public static bool ValidarIdadeMinima21Anos(Cliente cliente)
+        {
+            if (cliente.Data_Nascimento.AddYears(21) < DateTime.Now)
+                return true;
+            else
+                return false;
         }
     }
 }

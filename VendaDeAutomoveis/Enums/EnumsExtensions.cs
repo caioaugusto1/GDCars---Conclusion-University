@@ -10,6 +10,7 @@ namespace VendaDeAutomoveis.Enums
     {
         public enum TipoCliente
         {
+            Ambos,
             Vip,
             Comum
         }

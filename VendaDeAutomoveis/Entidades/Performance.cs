@@ -5,6 +5,14 @@ namespace VendaDeAutomoveis.Entidades
 {
     public class Performance  : Entity
     {
+        public Performance()
+        {
+            Cliente = new Cliente();
+            Cor = new Cor_Veiculo();
+            Roda = new Roda();
+            Banco = new Banco();
+        }
+
         public double ValorTotal { get; set; }
 
         [Required]

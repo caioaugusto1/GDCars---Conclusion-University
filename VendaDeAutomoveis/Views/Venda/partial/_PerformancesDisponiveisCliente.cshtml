@@ -1,0 +1,5 @@
+﻿@Html.Label("Performances Disponíveis")
+@Html.DropDownList("Id",
+                new SelectList(Model.Performance, "Id", "ValorTotal"), "Performances Disponíveis",
+        new { @class = "form-control" })
+@Html.ValidationMessage("FormaDePagamentoModel")

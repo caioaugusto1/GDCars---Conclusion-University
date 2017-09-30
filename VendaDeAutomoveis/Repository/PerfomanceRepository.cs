@@ -1,7 +1,9 @@
 ﻿using Dapper;
 using System;
+using System.Linq;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
+using System.Collections.Generic;
 
 namespace VendaDeAutomoveis.Repository
 {
@@ -69,6 +71,17 @@ namespace VendaDeAutomoveis.Repository
                     Id = id,
                     IdBanco = idBanco
                 });
+        }
+
+        public IList<GDC_Perfomances> ObterPorIdCliente(Guid idCliente)
+        {
+            var sql = "SELECT * FROM GDC_Perfomances where IdCliente = @IdCliente ";
+
+            return _context.Database.Connection.Query<GDC_Perfomances>(sql,
+                    param: new
+                    {
+                        IdCliente = idCliente
+                    }).ToList();
         }
     }
 }

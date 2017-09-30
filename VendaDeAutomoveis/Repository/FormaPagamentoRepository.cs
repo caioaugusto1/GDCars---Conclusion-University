@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Linq;
+using VendaDeAutomoveis.Enums;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
@@ -25,19 +26,19 @@ namespace VendaDeAutomoveis.Repository
 
         public IList<GDC_Formas_Pagamentos> ObterFormaPagamentoComum()
         {
-            var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'Comum' ";
+            var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'Comum' or Tipo_Cliente = 'Ambos' ";
 
             return _context.Database.Connection.Query<GDC_Formas_Pagamentos>(sql)
-                .OrderBy(c => c.Tipo_Cliente)
+                .OrderBy(c => c.Tipo_Cliente == EnumsExtensions.TipoCliente.Ambos.ToString())
                 .ToList();
         }
 
         public IList<GDC_Formas_Pagamentos> ObterListarFormaPagamentoVip()
         {
-            var sql = "SELECT * FROM GDC_Formas_Pagamentos where TipoCliente = 'Vip' ";
+            var sql = "SELECT * FROM GDC_Formas_Pagamentos where Tipo_Cliente = 'Vip' or Tipo_Cliente = 'Ambos' ";
 
             return _context.Database.Connection.Query<GDC_Formas_Pagamentos>(sql)
-                .OrderBy(c => c.Tipo_Cliente)
+                .OrderBy(c => c.Tipo_Cliente == EnumsExtensions.TipoCliente.Ambos.ToString())
                 .ToList();
         }
     }

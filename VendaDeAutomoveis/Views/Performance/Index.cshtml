@@ -1,4 +1,4 @@
-﻿@model IList<VendaDeAutomoveis.Entidades.Performance>
+﻿@model IList<VendaDeAutomoveis.Models.ListarPerformancesViewModel>
 
 <br />
 <br />
@@ -10,25 +10,30 @@
         <tr>
 
             <th>Nome</th>
-            <th width="110px">RG</th>
             <th width="120px">CPF/MF</th>
             <th>Data de Nascimento</th>
             <th>Tipo do Cliente</th>
-            <th>E-mail</th>
+            <th>Banco Modelo</th>
+            <th>Banco Cor</th>
+            <th>Veiculo Cor</th>
+            <th>Roda Aro</th>
+            <th>Roda Cor</th>
         </tr>
     </thead>
 
     <tbody>
-        @foreach (var u in Model)
+        @foreach (var item in Model)
         {
             <tr>
-                <td>@u.Cliente.Nome</td>
-                <td>@u.Cliente.CPF</td>
-                <td>@u.Banco.Modelo</td>
-                <td>@u.Banco.CorBanco</td>
-                <td>@u.Cor.Estilo</td>
-                <td>@u.Roda.Aro</td>
-                <td>@u.Roda.Cor</td>
+                <td>@item.Cliente.Nome</td>
+                <td>@item.Cliente.CPF</td>
+                <td>@item.Cliente.Data_Nascimento</td>
+                <td>@item.Cliente.Tipo</td>
+                <td>@item.Banco.Modelo</td>
+                <td>@item.Banco.CorBanco</td>
+                <td>@item.Cor.Estilo</td>
+                <td>@item.Roda.Aro</td>
+                <td>@item.Roda.Cor</td>
                 <td>@Html.ActionLink("Editar", "EditarCliente", new { Id = u.Id })</td>
             </tr>
         }

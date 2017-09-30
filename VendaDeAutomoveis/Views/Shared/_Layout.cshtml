@@ -22,7 +22,7 @@
                     @if (SessionManager.IsAuthenticated)
                     {
                         @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
-                        <li style="width:150px;">
+                        <li>
                             <a href="#">Clientes</a>
                             <ul>
                                 <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Cliente", new { area = "" }, null)</li>
@@ -30,28 +30,28 @@
                                 <li>@Html.ActionLink("Movimentações", "HistoricoPedidos", "Venda", new { area = "" }, null)</li>
                             </ul>
                         </li>
-                        @*<li style="width:150px;">
+                        <li>
                             <a href="#">Veículos</a>
                             <ul>
                                 <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Veiculo", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Lista", "Index", "Veiculo", new { area = "" }, null)</li>
                             </ul>
-                        </li>*@
-                        <li style="width:150px;">
+                        </li>
+                        <li>
                             <a href="#">Vendas</a>
                             <ul>
                                 <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Venda", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Lista", "Index", "Venda", new { area = "" }, null)</li>
                             </ul>
                         </li>
-                        <li style="width:150px;">
+                        <li>
                             <a href="#">Perfomance</a>
                             <ul>
                                 <li>@Html.ActionLink("Cadastrar", "Passo1CadastroRoda", "Performance", new { area = "" }, null)</li>
                                 <li>@Html.ActionLink("Lista", "Index", "Performance", new { area = "" }, null)</li>
                             </ul>
                         </li>
-                        <li style="">
+                        <li>
                             <a href="#">Sistema</a>
                             <ul>
                                 <li>

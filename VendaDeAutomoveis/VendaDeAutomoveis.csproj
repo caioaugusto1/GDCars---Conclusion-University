@@ -231,6 +231,8 @@
     <Compile Include="Controllers\VeiculoController.cs" />
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Enums\EnumsExtensions.cs" />
+    <Compile Include="Models\CadastrarVendaViewModel.cs" />
+    <Compile Include="Models\ListarPerformances.cs" />
     <Compile Include="Models\RodaRepository.cs" />
     <Compile Include="Repository\BancoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
@@ -294,7 +296,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\FormaDePagamentoModel.cs" />
+    <Compile Include="Models\ListarPerformancesViewModel.cs" />
     <Compile Include="Models\HistoricoPedidosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Criptografia.cs" />
@@ -330,6 +332,8 @@
     <Content Include="Views\Performance\Passo1CadastroRoda.cshtml" />
     <Content Include="Views\Performance\Passo2CadastroCor.cshtml" />
     <Content Include="Views\Performance\Passo3CadastroCor.cshtml" />
+    <Content Include="Views\Venda\partial\_PerformancesDisponiveisCliente.cshtml" />
+    <Content Include="Views\Shared\_partial\_BtnSubmitSave.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -342,6 +346,7 @@
     <Folder Include="Factory\EntidadesFactory\Upload\" />
     <Folder Include="Factory\EntidadesFactory\Venda\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Views\Performance\_partial\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Factory.EntidadesFactory;
@@ -22,24 +23,30 @@ namespace VendaDeAutomoveis.Controllers
         private VeiculoRepository _veiculoRepository;
         private FormaPagamentoRepository _formaPagamentoRepository;
         private EnderecoRepository _enderecoRepository;
+        private PerfomanceRepository _perfomanceRepository;
 
-        public VendaController(VendaRepository _vendaRepository, ClienteRepository _clienteRepository, VeiculoRepository _veiculoRepository, 
-            FormaPagamentoRepository _formaPagamentoRepository, EnderecoRepository _enderecoRepository)
+        public VendaController(VendaRepository _vendaRepository, ClienteRepository _clienteRepository, VeiculoRepository _veiculoRepository,
+            FormaPagamentoRepository _formaPagamentoRepository, EnderecoRepository _enderecoRepository, PerfomanceRepository _perfomanceRepository)
         {
             this._clienteRepository = _clienteRepository;
             this._vendaRepository = _vendaRepository;
             this._veiculoRepository = _veiculoRepository;
             this._formaPagamentoRepository = _formaPagamentoRepository;
             this._enderecoRepository = _enderecoRepository;
+            this._perfomanceRepository = _perfomanceRepository;
         }
 
         public ActionResult FormularioCadastro()
         {
-            ViewBag.Cliente = _clienteRepository.ObterTodos();
-            ViewBag.Veiculo = _veiculoRepository.ObterTodos();
-            ViewBag.FormaDePagamento = _formaPagamentoRepository.ObterTodos();
+            var vendaViewModel = new CadastrarVendaViewModel();
 
-            return View();
+            vendaViewModel.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
+            vendaViewModel.FormasDePagamentos = new List<FormaDePagamento>();
+            vendaViewModel.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+            vendaViewModel.Performance = new List<Performance>();
+            vendaViewModel.Endereco = new Endereco();
+
+            return View(vendaViewModel);
         }
 
         public ActionResult AdicionarVenda(Venda venda)
@@ -96,15 +103,12 @@ namespace VendaDeAutomoveis.Controllers
         {
             ViewBag.Clientes = new SelectList(
                 _clienteRepository.ObterTodos(),
-                "IdCliente",
+                "Id",
                 "Nome"
                 );
 
-            //historicoPedido.Clientes = clienteRepository.ObterTodos();
-
-            //var historicoPedidos = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(vendaRepository.ObterTodos());
-
-            //historicoPedido.Vendas = vendaRepository.BuscarPorCliente(historicoPedido.IdCliente);
+            historicoPedido.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
+            historicoPedido.Vendas = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(_vendaRepository.BuscarPorCliente(historicoPedido.IdCliente));
 
             return View(historicoPedido);
         }
@@ -142,35 +146,60 @@ namespace VendaDeAutomoveis.Controllers
             return venda.Valor;
         }
 
-        public ActionResult PegarPrecoProduto(Guid idVeiculo)
+        public JsonResult ObterInformacoesBasicasCliente(Guid idCliente)
+        {
+            var vendaViewModel = new CadastrarVendaViewModel();
+
+            vendaViewModel.Performance = Mapper.Map<IList<Performance>>(_perfomanceRepository.ObterPorIdCliente(idCliente));
+
+            var cliente = _clienteRepository.ObterPorId(idCliente);
+
+            if (cliente.Tipo == TipoCliente.Vip.ToString())
+                vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip());
+            else
+                vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
+
+            return Json(new { FormasPagamentos = vendaViewModel.FormasDePagamentos, Performances = vendaViewModel.Performance });
+        }
+
+        public ActionResult ObterValorVeiculo(Guid idVeiculo)
         {
             var veiculo = _veiculoRepository.ObterPorId(idVeiculo);
+            //return Json(new { success = true, veiculo.Valor });
             return Content(veiculo.Valor.ToString());
         }
 
-        public ActionResult PegarFormaDePagamento(Guid IdCliente)
+        //public PartialViewResult PegarFormaDePagamento(Guid IdCliente)
+        //{
+        //    var vendaViewModel = new CadastrarVendaViewModel();
+
+        //    var cliente = _clienteRepository.ObterPorId(IdCliente);
+
+        //    if (cliente.Tipo == TipoCliente.Vip.ToString())
+        //        vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip().ToList());
+        //    else
+        //        vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum().ToList());
+
+        //    return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
+        //}
+
+        public ActionResult ObterEnderecoCliente(Guid idCliente)
         {
-            var cliente = _clienteRepository.ObterPorId(IdCliente);
+            var obterCliente = _clienteRepository.ObterPorId(idCliente);
 
-            IList<FormaDePagamento> formaPagamentoViewModel = new List<FormaDePagamento>();
-            
-            if (cliente.Tipo == TipoCliente.Vip.ToString())
-                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip());
-            else
-                formaPagamentoViewModel = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
+            var clienteEndereco = new Endereco();
 
-            return PartialView("_ParcialViewFormaDePagamento", formaPagamentoViewModel);
-        }
+            //if (obterCliente.IdEndereco.HasValue)
+            //    clienteEndereco = _enderecoRepository.ObterPorId(obterCliente.IdEndereco);
+            //else
+            //    clienteEndereco = new Endereco();
 
-        public ActionResult PegarEndereco(Guid idCliente)
-        {
-            var clienteEndereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
+            //var clienteEndereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
             return PartialView("_ParcialviewEndereco", clienteEndereco);
         }
 
         public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa, string CEP, string Cidade, string Estado, string Complemento)
         {
-
             if (ModelState.IsValid)
             {
                 var endereco = _enderecoRepository.BuscarPorIdCliente(idCliente);

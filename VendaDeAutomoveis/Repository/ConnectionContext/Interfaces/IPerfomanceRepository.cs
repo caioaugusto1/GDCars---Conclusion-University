@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
 {
@@ -9,5 +10,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
         void InserirPasso2Cor(Guid id, Guid idCorVeiculo);
 
         void InserPasso3Banco(Guid id, Guid idBanco);
+
+        IList<GDC_Perfomances> ObterPorIdCliente(Guid idCliente);
     }
 }

@@ -1,4 +1,6 @@
-﻿@model VendaDeAutomoveis.Entidades.Venda
+﻿@*@model VendaDeAutomoveis.Entidades.Venda*@
+
+@model VendaDeAutomoveis.Models.CadastrarVendaViewModel
 
 <br />
 <br />
@@ -10,15 +12,15 @@
 
     @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
     @Html.DropDownListFor(m => m.IdCliente,
-        new SelectList(ViewBag.Cliente, "Id", "Nome"), "Nome do Cliente",
+        new SelectList(Model.Clientes, "Id", "Nome"), "Nome do Cliente",
         new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.IdCliente)
 
     <br />
 
     @Html.LabelFor(m => m.IdVeiculo, "Modelo do Veículo*")
-    @Html.DropDownListFor(m => m.Veiculo.Id,
-        new SelectList(ViewBag.Veiculo, "Id", "Modelo"), "Modelo do Veículo",
+    @Html.DropDownListFor(m => m.IdVeiculo,
+        new SelectList(Model.Veiculos, "Id", "Modelo"), "Modelo do Veículo",
             new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.IdVeiculo)
 
@@ -30,8 +32,18 @@
 
     <br />
 
-    <div id="ViewParcialFormaDePagamento">
+    @Html.Partial("~/Views/Venda/partial/_PerformancesDisponiveisCliente.cshtml", Model)
 
+    @*<div id="_PerformancesDisponiveisCliente">
+
+    </div>*@
+
+    <br />
+
+   
+
+    <div id="_ParcialViewFormaDePagamento">
+         @Html.Partial("~/Views/Venda/partial/_ParcialViewFormaDePagamento.cshtml", Model)
     </div>
 
     <br />
@@ -42,11 +54,14 @@
 
     <br />
 
-    <div id="viewParcialEndereco">
+    @*@Html.Partial("~/Views/Venda/partial/_ParcialviewEndereco.cshtml", Model)*@
 
-    </div>
+    @*<div id="viewParcialEndereco">
+
+    </div>*@
 
     <br />
+
     @Html.LabelFor(m => m.Observacoes, "Observação*")
     @Html.TextBoxFor(m => m.Observacoes, new { @class = "form-control" })
     @Html.ValidationMessageFor(m => m.Observacoes)
@@ -55,58 +70,59 @@
 
     <input type="submit" value="Vender" />
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.maskedinput.min.js"></script>
 
-    <script type="text/javascript">
+        <script type="text/javascript">
 
         $(function () {
 
             @if (ViewBag.ExibirCampo != null)
             {
-                @:PegarvalorEnderecoAjax();
+                @:pegarValorEndereco();
             }
         });
 
-        $('#Veiculo_Id').change(function () {
+            $('#IdVeiculo').change(function () {
             obterValorVeiculo();
         });
 
         $('#Tipo_Entrega').change(function () {
-            PegarvalorEnderecoAjax();
+            pegarValorEndereco();
         });
 
-        $('#IdCliente').change(function () {
-            PegarvalorEnderecoAjax();
-            obterFormaDePagamento();
+            $('#IdCliente').change(function () {
+                pegarValorEndereco();
+                obterInformacoesCliente();
         });
 
         function obterValorVeiculo() {
             $.ajax({
-                url: '@Url.Action("PegarPrecoProduto")',
+                url: '@Url.Action("ObterValorVeiculo")',
                 type: "post",
                 dataType: "html",
                 data:
                 {
-                    idVeiculo: $("#Veiculo_Id").val()
+                    idVeiculo: $("#IdVeiculo").val()
                 },
                 success: function (data) {
                     $("#Valor").val(data);
                 }
             });
         }
+            function pegarValorEndereco() {
 
-        function PegarvalorEnderecoAjax() {
-
-            if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 2) {
+                if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 2) {
+                    debugger;
                 $('#viewParcialEndereco').hide();
             }
 
-            if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
+                if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
+                    debugger;
                 $('#viewParcialEndereco').show();
 
                 $.ajax({
-                    url: '@Url.Action("PegarEndereco")',
+                    url: '@Url.Action("ObterEnderecoCliente")',
                     type: "post",
                     dataType: "html",
                     data: { IdCliente: $("#IdCliente").val() },
@@ -115,7 +131,7 @@
                         $('#viewParcialEndereco').html(data);
                         $("#atualizar").click(function () {
 
-                            AtualizarEnderecoAjax()
+                            AtualizarEndereco()
                         });
                     }
                 });
@@ -123,7 +139,7 @@
         }
 
 
-        function AtualizarEnderecoAjax() {
+        function AtualizarEndereco() {
 
             $.ajax({
                 url: '@Url.Action("AtualizarEnderecos")',
@@ -146,20 +162,19 @@
             });
         }
 
-        function obterFormaDePagamento() {
+            function obterInformacoesCliente() {
+
             $.ajax({
-                url: '@Url.Action("PegarFormaDePagamento")', //Metodo da minha controller
-                type: "post",
+                url: '@Url.Action("ObterInformacoesBasicasCliente")', //Metodo da minha controller
+                type: "POST",
                 dataType: "html",
                 data: { IdCliente: $("#IdCliente").val() },
-
                 success: function (data) {
-
-                    $('#ViewParcialFormaDePagamento').html(data); //div para renderizar
-
+                    $('#_ParcialViewFormaDePagamento').html(data.FormasPagamentos); //div para renderizar
+                    $('#_PerformancesDisponiveisCliente').html(data.Performances);
                 }
             });
         }
 
-    </script>
+        </script>
 }

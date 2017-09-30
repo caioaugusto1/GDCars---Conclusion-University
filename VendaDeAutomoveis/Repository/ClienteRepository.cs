@@ -14,7 +14,7 @@ namespace VendaDeAutomoveis.Repository
         {
         }   
 
-        public GDC_Clientes VerificarCPFExistente(string cpf)
+        public GDC_Clientes ObterPorCPF(string cpf)
         {
             var sql = "SELECT * FROM GDC_Clientes where CPF = @cpf ";
 

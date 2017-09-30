@@ -3,7 +3,7 @@ using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
-namespace VendaDeAutomoveis.Models
+namespace VendaDeAutomoveis.Repository
 {
     public class RodaRepository : RepositoryBase<GDC_Rodas>, IRodaRepository
     {

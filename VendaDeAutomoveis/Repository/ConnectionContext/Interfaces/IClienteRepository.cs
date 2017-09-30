@@ -2,6 +2,6 @@
 {
     public interface IClienteRepository : IRepositoryBase<GDC_Clientes>
     {
-        GDC_Clientes VerificarCPFExistente(string cpf);
+        GDC_Clientes ObterPorCPF(string cpf);
     }
 }

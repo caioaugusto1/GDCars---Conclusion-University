@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Enums;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
@@ -30,7 +32,21 @@ namespace VendaDeAutomoveis.Controllers
         // GET: Performance
         public ActionResult Index()
         {
-            var perfViewModel = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfoRepository.ObterTodos());
+            var obterPerformances = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
+
+            var perform = new ListarPerformancesViewModel();
+
+            List<ListarPerformancesViewModel> perfViewModel = new List<ListarPerformancesViewModel>();
+
+            foreach (var itemPerfor in obterPerformances)
+            {
+                perform.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemPerfor.IdCliente));
+                perform.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemPerfor.IdRoda));
+                perform.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemPerfor.IdBanco));
+                perform.Cor = Mapper.Map<Cor_Veiculo>(_corVeiculoRepository.ObterPorId(itemPerfor.IdCor));
+
+                perfViewModel.Add(perform);
+            }
 
             return View(perfViewModel);
         }
@@ -51,13 +67,15 @@ namespace VendaDeAutomoveis.Controllers
             _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(roda));
             _perfoRepository.InserirPasso1Roda(idPerformance, roda.IdCliente, roda.Id, roda.Valor);
             
-            return View("Passo2CadastroCor");
+            return RedirectToAction("Passo2CadastroCor", idPerformance);
         }
 
         [HttpGet]
-        public ActionResult Passo2CadastroCor()
+        public ActionResult Passo2CadastroCor(Guid idPerformance)
         {
-            return View();
+            ViewBag.IdPerformance = idPerformance;
+
+            return View("Passo2CadastroCor", idPerformance);
         }
 
         [HttpPost]

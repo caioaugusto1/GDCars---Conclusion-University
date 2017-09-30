@@ -36,6 +36,7 @@ namespace VendaDeAutomoveis.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult AdicionarEndereco(Endereco endereco)
         {
             if (ModelState.IsValid)
@@ -49,26 +50,37 @@ namespace VendaDeAutomoveis.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public ActionResult AdicionarCliente(Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                var cpfExistente = _clienteRepository.VerificarCPFExistente(cliente.CPF);
+                var temIdadeMinima21 = Cliente.ValidarIdadeMinima21Anos(cliente);
 
-                if (cpfExistente == null)
+                if (temIdadeMinima21)
                 {
-                    cliente.Tipo = TipoCliente.Comum;
+                    var cpfExistente = _clienteRepository.ObterPorCPF(cliente.CPF);
 
-                    var clienteToDomain = Mapper.Map<Cliente, GDC_Clientes>(cliente);
+                    if (cpfExistente == null)
+                    {
+                        cliente.Tipo = TipoCliente.Comum;
 
-                    _clienteRepository.Inserir(clienteToDomain);
-                    ViewBag.IdCliente = cliente.Id;
+                        var clienteToDomain = Mapper.Map<Cliente, GDC_Clientes>(cliente);
 
-                    return View("CadastrarEndereco");
+                        _clienteRepository.Inserir(clienteToDomain);
+                        ViewBag.IdCliente = cliente.Id;
+
+                        return View("CadastrarEndereco");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("CPF", "O CPF já existe no sistema!");
+                        return View("FormularioCadastro", cliente);
+                    }
                 }
                 else
                 {
-                    ModelState.AddModelError("CPF", "O CPF já existe no sistema!");
+                    ModelState.AddModelError("Data_Nascimento", "Cliente com idade menor que 21 anos!");
                     return View("FormularioCadastro", cliente);
                 }
             }
@@ -78,17 +90,19 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        [HttpGet]
         public ActionResult EditarCliente(Guid id)
         {
             var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
-            
+
             if (clienteViewModel == null)
                 return Content("Erro");
 
             return View(clienteViewModel);
         }
 
-        public ActionResult EditarClientes(Cliente cliente)
+        [HttpPost]
+        public ActionResult EditarCliente(Cliente cliente)
         {
             if (ModelState.IsValid)
             {

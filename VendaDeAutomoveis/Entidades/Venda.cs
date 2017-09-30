@@ -6,7 +6,6 @@ namespace VendaDeAutomoveis.Entidades
 {
     public class Venda : Entity
     {
-
         [Required(ErrorMessage = "Informe o valor do produto")]
         public double Valor { get; set; }
 
@@ -42,7 +41,6 @@ namespace VendaDeAutomoveis.Entidades
 
         public virtual Performance Perfomance { get; set; }
 
-      
         public static Venda CalcularPagamento(Venda venda)
         {
             string recebendoObservacao = venda.Observacoes;
