@@ -15,7 +15,7 @@ namespace VendaDeAutomoveis.Repository
         
         protected GDCarsContextDiagrama _DbSet = new GDCarsContextDiagrama();
 
-        string connectionString = GDCarsConnectionString.Connection;
+        public string connectionString = GDCarsConnectionString.Connection;
 
         public RepositoryBase(ContextGDCars context)
         {

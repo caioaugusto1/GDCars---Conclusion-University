@@ -9,6 +9,6 @@ namespace VendaDeAutomoveis.Entidades
 
         public double Valor { get; set; }
 
-        public Guid IdPerformance { get; set; }
+        //public Guid IdPerformance { get; set; }
     }
 }

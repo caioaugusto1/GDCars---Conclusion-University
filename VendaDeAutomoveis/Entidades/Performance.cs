@@ -8,7 +8,7 @@ namespace VendaDeAutomoveis.Entidades
         public Performance()
         {
             Cliente = new Cliente();
-            Cor = new Cor_Veiculo();
+            Cor_Veiculo = new Cor_Veiculo();
             Roda = new Roda();
             Banco = new Banco();
         }
@@ -33,6 +33,6 @@ namespace VendaDeAutomoveis.Entidades
         [Required]
         public Guid IdCor { get; set; }
 
-        public virtual Cor_Veiculo Cor { get; set; }
+        public virtual Cor_Veiculo Cor_Veiculo { get; set; }
     }
 }

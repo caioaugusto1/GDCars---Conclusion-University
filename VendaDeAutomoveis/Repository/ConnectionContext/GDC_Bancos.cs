@@ -28,7 +28,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext
 
         public decimal Valor { get; set; }
 
-        public Guid IdUpload { get; set; }
+        public Guid? IdUpload { get; set; }
 
         public virtual GDC_Uploads GDC_Uploads { get; set; }
 

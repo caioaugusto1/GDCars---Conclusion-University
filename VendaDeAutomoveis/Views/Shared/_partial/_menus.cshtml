@@ -1,0 +1,103 @@
+﻿@using VendaDeAutomoveis.Filters
+
+<header>
+    <div class="logo">
+        GD<span>Cars</span>
+    </div>
+
+    <div id="mini-nav" class="hidden-phone">
+        <ul>
+            @if (SessionManager.UsuarioLogado != null)
+            {
+                <li>
+                    <a href="login.html">
+                        <span class="text-label">@SessionManager.UsuarioLogado.Nome </span>
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe088;"></span>
+                    </a>
+                    <ul class="user-summary">
+                        <li>
+                            <div class="summary">
+                                <div class="user-pic">
+                                    <img style="width: 80px;" src="~/Content/bootstrap/img/ccn.png" />
+                                </div>
+                                <div class="basic-details" style="padding-left: 20px;">
+                                    <h4 class="no-margin">@SessionManager.UsuarioLogado.Nome </h4>
+                                    <h5 class="no-margin">@SessionManager.UsuarioLogado.SobreNome </h5>
+                                    <small>GDCars</small>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-xs btn-danger pull-right" onclick="location.href='@Url.Action("Logout", "Login")'">Sair</button>
+                            <span class="clearfix"></span>
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</header>
+<div class="main-container">
+    <div class="sidebar hidden-xs">
+        <div class="user-profile-pic">
+            @*<img src="~/Content/bootstrap/img/ccn.png">*@
+        </div>
+        <ul class="slick-menu">
+            <li>
+                <a href="@Url.Action("home", "pagina-principal-cola-com-nois")">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe0a2;"></span>
+                    <strong>Dashboard</strong>
+                </a>
+            </li>
+            <li class="drop-menu">
+                <a href="#">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe14c;"></span>
+                    <small>4</small>
+                    <strong>Clientes</strong>
+                </a>
+                <ul>
+                    <li><a href="@Url.Action("FormularioCadastro", "Cliente")"><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("Index", "Cliente")"><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                    <li><a href="@Url.Action("HistoricoPedidos", "Venda")"><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Movimentação</a></li>
+                </ul>
+            </li>
+
+            <li class="drop-menu">
+                <a href="#">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>
+                    <small>4</small>
+                    <strong>Veículos</strong>
+                </a>
+                <ul>
+                    <li><a href="@Url.Action("FormularioCadastro", "Veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("Index", "Veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                </ul>
+            </li>
+            <li class="drop-menu">
+                <a href="#">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span>
+                    <small>3</small>
+                    <strong>Customizações</strong>
+                </a>
+                <ul>
+                    <li><a href="@Url.Action("Create", "Performance")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("Index", "Performance")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                </ul>
+            </li>
+            <li class="drop-menu">
+                <a href="#">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe096;"></span>
+                    <small>3</small>
+                    <strong>Vendas</strong>
+                </a>
+                <ul>
+                    <li><a href="@Url.Action("FormularioCadastro", "Venda")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("Index", "Venda")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+

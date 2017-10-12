@@ -1,65 +1,74 @@
-﻿@model VendaDeAutomoveis.Entidades.Roda
+﻿@model VendaDeAutomoveis.Entidades.Performance
+
+<title>Cadastrar - Roda</title>
 
 @{
-    ViewBag.Title = "Passo1CadastroRoda";
+    ViewBag.Title = "Cadastrar - Roda";
+    Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
-<h2>Passo1CadastroRoda</h2>
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Roda</h4>
-        <hr />
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Customizar Veículo
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="wizard">
+                                <ol>
+                                    <li>Roda</li>
+                                    <li>Cor</li>
+                                    <li>Banco</li>
+                                </ol>
+                                <div>
+                                    @Html.Partial("_partial/_CreateRoda", Model.Roda)
+                         
 
-        @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
-        @Html.DropDownListFor(m => m.IdCliente,
-        new SelectList(ViewBag.Cliente, "Id", "Nome"), "Nome do Cliente",
-        new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.IdCliente)
-        
-        <br/>
+                                    @*@Html.Partial("~/Views/Shared/_partial/_btn_submit_salvar.cshtml")*@
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Modelo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div>
+                                    @Html.Partial("_partial/_CreateCor", Model.Cor)
+                                </div>
+
+                                <div>
+                                   @Html.Partial("_partial/_CreateBanco", Model.Banco)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Aro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Aro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Aro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @Html.Partial("~/Views/Shared/_partial/_BtnSubmitSave.cshtml")
-        
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+<link href="~/Content/bootstrap/css/wysiwyg/bootstrap-wysihtml5.css" rel="stylesheet">
+<link href="~/Content/bootstrap/css/wysiwyg/wysiwyg-color.css" rel="stylesheet">
+
+
+<script src="~/Content/bootstrap/js/wysiwyg/wysihtml5-0.3.0.js"></script>
+
+<script src="~/Content/bootstrap/js/bootstrap.js"></script>
+
+<!-- Editable Inputs -->
+<script src="~/Content/bootstrap/js/wysiwyg/bootstrap-wysihtml5.js"></script>
+
+<!-- Easy pie charts -->
+<script src="~/Content/bootstrap/js/jquery.easy-pie-chart.js"></script>
+
+<!-- Custom Js -->
+<script src="~/Content/bootstrap/js/wizard/bwizard.js"></script>
+
+<!-- custom Js -->
+<script src="~/Content/bootstrap/js/custom-forms.js"></script>
+<script src="~/Content/bootstrap/js/custom.js"></script>

@@ -1,84 +1,21 @@
-﻿@using VendaDeAutomoveis.Filters
+﻿<!DOCTYPE html>
 
-<!DOCTYPE html>
-<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link href="~/Content/menu.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <title>CDCars - Home Page</title>
+    @{
+        Html.RenderPartial("_partial/_cabecalho_principal");
+    }
+
 </head>
-
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="height: 0px; z-index:1000;">
-        <div class="container">
-            <div id="nav" class="navbar-collapse collapse">
-                <div class="navbar-header">
-                    <a class="navbar-brand page-scroll" href="@Url.Action("Index", "Home")" style="color: #1161ee; width: 150px;">Home</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    @if (SessionManager.IsAuthenticated)
-                    {
-                        @*<li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>*@
-                        <li>
-                            <a href="#">Clientes</a>
-                            <ul>
-                                <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Cliente", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Lista", "Index", "Cliente", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Movimentações", "HistoricoPedidos", "Venda", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Veículos</a>
-                            <ul>
-                                <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Veiculo", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Lista", "Index", "Veiculo", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Vendas</a>
-                            <ul>
-                                <li>@Html.ActionLink("Cadastrar", "FormularioCadastro", "Venda", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Lista", "Index", "Venda", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Perfomance</a>
-                            <ul>
-                                <li>@Html.ActionLink("Cadastrar", "Passo1CadastroRoda", "Performance", new { area = "" }, null)</li>
-                                <li>@Html.ActionLink("Lista", "Index", "Performance", new { area = "" }, null)</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Sistema</a>
-                            <ul>
-                                <li>
-                                    <a href="#">Acesso</a>
-                                    <ul>
-                                        <li>@Html.ActionLink("Novo", "CriarAcesso", "Login", new { area = "" }, null)</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                            <li><a href="#" style="margin-left:150px;"><span class="glyphicon glyphicon-user"></span> Olá @SessionManager.UsuarioLogado.Nome @SessionManager.UsuarioLogado.SobreNome</a></li>
-                            <li><a href="@Url.Action("Logout", "Login")"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
-                    }
-                </ul>
 
-            </div>
+    @{
+        Html.RenderPartial("_partial/_menus");
+    }
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            @RenderBody()
         </div>
     </div>
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; UNIP / SISTEMAS DE INFORMAÇÃO - TCC @DateTime.Now.Year </p>
-        </footer>
-    </div>
-
-    @RenderSection("scripts", required: false);
 </body>
-</html>

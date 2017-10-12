@@ -1,42 +1,97 @@
 ﻿@model IList<VendaDeAutomoveis.Entidades.Cliente>
 
-<br />
-<br />
-<br />
-<br />
+<head>
+    <title>Lista de jogadores</title>
 
-<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
+    @{
+        Html.RenderPartial("_partial/_cabecalho_principal");
+        Html.RenderPartial("_partial/_cabecalho_list");
+    }
 
-            <th>Nome</th>
-            <th width="110px">RG</th>
-            <th width="120px">CPF/MF</th>
-            <th>Data de Nascimento</th>
-            <th>Tipo do Cliente</th>
-            <th>E-mail</th>
-        </tr>
-    </thead>
+</head>
+<body>
 
-    <tbody>
-        @foreach (var u in Model)
-        {
-            <tr>
-                <td>@u.Nome</td>
-                <td>@u.RG</td>
-                <td>@u.CPF</td>
-                <td>@u.Data_Nascimento.ToString("dd/MM/yyyy")</td>
-                <td>@u.Tipo</td>
-                <td>@u.Email</td>
-                <td>@Html.ActionLink("Editar", "EditarCliente", new { Id = u.Id })</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Clientes
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Clientes</li>
+                            <li>/</li>
+                            <li>Listar</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
 
-<script>
-    $(document).ready(function () {
-        $('#example').DataTable();
-    });
-</script>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:15%">Nome</th>
+                                            <th style="width:15%">RG</th>
+                                            <th style="width:15%">CPF</th>
+                                            <th style="width:15%">Data de Nascimento</th>
+                                            <th style="width:15%">Tipo do Cliente</th>
+                                            <th style="width:15%">E-mail</th>
+                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RG)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CPF)
+                                                </td>
+                                                <td>
+                                                    @item.Data_Nascimento.ToString("dd/MM/yyyy")
+                                                </td>
+                                                <td>
+                                                    @item.Tipo
+                                                </td>
+                                                <td>
+                                                    @item.Email
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Detales", "Cliente", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 

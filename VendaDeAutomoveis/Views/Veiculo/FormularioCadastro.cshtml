@@ -1,61 +1,71 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
+<title>Cadastrar - Veículo</title>
+
+@{
+    ViewBag.Title = "Cadastrar - Veículo";
+    Html.RenderPartial("_partial/_cabecalho_principal");
+}
+
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Veículo
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Veículo</li>
+                    <li>/</li>
+                    <li>Cadastrar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Cadastrar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+
+                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                Html.RenderPartial("_partial/_CreateEdit", Model);
+
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/fileinput.js"></script>
 <link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
 
-<br />
-<br />
-<br />
-<br />
-
-@using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post))
-{
-    @Html.LabelFor(u => u.Fabricante, "Nome do fabricante*")
-    @Html.TextBoxFor(u => u.Fabricante, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Fabricante)
-
-    <br />
-
-    @Html.LabelFor(u => u.Modelo, "Modelo do veículo*")
-    @Html.TextBoxFor(u => u.Modelo, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Modelo)
-
-    @*<br />
-
-    @Html.LabelFor(u => u.Ano, "Ano de Fabricação do veículo*")
-    @Html.TextBoxFor(u => u.Ano, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Ano)*@
-
-    <br />
-
-    @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de portas do veículo*")
-    @Html.TextBoxFor(u => u.QuantidadeDePortas, new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.QuantidadeDePortas)
-
-    <br />
-
-    @Html.LabelFor(u => u.Valor, "Valor do veículo*")
-    @Html.TextBoxFor(u => u.Valor, new { @id = "preco", @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Valor)
-
-    <br />
-
-    @Html.LabelFor(u => u.Tipo, "Tipo do veículo*")
-    @Html.EnumDropDownListFor(u => u.Tipo, "Tipo do veiculo", new { @class = "form-control" })
-    @Html.ValidationMessageFor(u => u.Tipo)
-
-    <br />
-
-    <input type="submit" class="btn-success" value="Cadastrar" />
-}
-<br />
-
 @*<form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Produto")" method="post" enctype="multipart/form-data">
     <label class="control-label">Selecione a imagem do veículo</label>
     <input type="file" name="file" class="file">
-</form>*@
+</form>
 
 
 @section scripts{
@@ -72,5 +82,5 @@
         });
        
     </script>
-}
+}*@
 

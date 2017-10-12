@@ -1,22 +1,56 @@
-﻿@{
-    ViewBag.Title = "Cadastrar Cliente - Passo 1";
+﻿@model VendaDeAutomoveis.Entidades.Cliente
+
+<title>Cadastrar - Cliente</title>
+
+@{
+    ViewBag.Title = "Cadastrar - Cliente";
+    Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
-@model VendaDeAutomoveis.Entidades.Cliente
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Cliente
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Cliente</li>
+                    <li>/</li>
+                    <li>Cadastrar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
 
-<h4>Passo 1</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Cadastrar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
 
-@using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post))
-{
+                            @using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                Html.RenderPartial("_partial/_CreateEdit", Model);
 
-    Html.RenderPartial("partial/_CreateEdit", Model);
-
-    <div class="form_submit clearfix">
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-2">
-                <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
+</div>

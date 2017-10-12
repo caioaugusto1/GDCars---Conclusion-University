@@ -1,41 +1,103 @@
-﻿@model IList<VendaDeAutomoveis.Models.ListarPerformancesViewModel>
+﻿@model IList<VendaDeAutomoveis.Entidades.Performance>
 
-<br />
-<br />
-<br />
-<br />
+<head>
+    <title>Lista de Customizações</title>
 
-<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
+    @{
+        Html.RenderPartial("_partial/_cabecalho_principal");
+        Html.RenderPartial("_partial/_cabecalho_list");
+    }
 
-            <th>Nome</th>
-            <th width="120px">CPF/MF</th>
-            <th>Data de Nascimento</th>
-            <th>Tipo do Cliente</th>
-            <th>Banco Modelo</th>
-            <th>Banco Cor</th>
-            <th>Veiculo Cor</th>
-            <th>Roda Aro</th>
-            <th>Roda Cor</th>
-        </tr>
-    </thead>
+</head>
+<body>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.Cliente.Nome</td>
-                <td>@item.Cliente.CPF</td>
-                <td>@item.Cliente.Data_Nascimento</td>
-                <td>@item.Cliente.Tipo</td>
-                <td>@item.Banco.Modelo</td>
-                <td>@item.Banco.CorBanco</td>
-                <td>@item.Cor.Estilo</td>
-                <td>@item.Roda.Aro</td>
-                <td>@item.Roda.Cor</td>
-                <td>@Html.ActionLink("Editar", "EditarCliente", new { Id = u.Id })</td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Customizações
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Customizações</li>
+                            <li>/</li>
+                            <li>Listar</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:10%">Nome</th>
+                                            <th style="width:10%">CPF</th>
+                                            <th style="width:10%">Data de Nascimento</th>
+                                            <th style="width:10%">Tipo do Cliente</th>
+                                            <th style="width:10%">Banco Modelo</th>
+                                            <th style="width:10%">Veiculo Cor</th>
+                                            <th style="width:10%">Roda Aro</th>
+                                            <th style="width:10%">Roda Cor</th>
+                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cliente.RG)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cliente.Data_Nascimento)
+                                                </td>
+                                                <td>
+                                                    @item.Cliente.Tipo
+                                                </td>
+                                                <td>
+                                                    @item.Banco.Modelo
+                                                </td>
+                                                <td>
+                                                   @item.Cor_Veiculo.Estilo
+                                                </td>
+                                                <td>
+                                                    @item.Roda.Aro
+                                                </td>
+                                                <td>
+                                                    @item.Roda.Cor
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Detales", "Cliente", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

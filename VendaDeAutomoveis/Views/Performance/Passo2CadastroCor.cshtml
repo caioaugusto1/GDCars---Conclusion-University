@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.HiddenFor(u => u.IdPerformance, new { Value = ViewBag.IdPerformance });
+    @Html.HiddenFor(u => u.IdPerformance);
 
     <div class="form-horizontal">
         <h4>Cor_Veiculo</h4>
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        @Html.Partial("~/Views/Shared/_partial/_BtnSubmitSave.cshtml")
+        @Html.Partial("~/Views/Shared/_partial/_btn_submit_salvar.cshtml")
 
     </div>
 }

@@ -12,7 +12,5 @@ namespace VendaDeAutomoveis.Entidades
         public int Aro { get; set; }
         
         public double Valor { get; set; }
-
-        public Guid IdCliente { get; set; }
     }
 }

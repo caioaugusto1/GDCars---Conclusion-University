@@ -10,7 +10,9 @@ namespace VendaDeAutomoveis.Entidades
         public ModeloBanco Modelo { get; set; }
 
         public bool Multimidia { get; set; }
-    
-        public Guid IdPerformance { get; set; }
+
+        public double Valor { get; set; }
+
+        //public Guid IdPerformance { get; set; }
     }
 }
