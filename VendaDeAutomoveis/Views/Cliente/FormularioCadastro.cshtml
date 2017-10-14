@@ -43,6 +43,8 @@
 
                             @using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
                             {
+                                @Html.AntiForgeryToken()
+
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");

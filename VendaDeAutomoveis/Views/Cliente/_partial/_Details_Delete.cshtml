@@ -1,0 +1,40 @@
+﻿@model VendaDeAutomoveis.Entidades.Cliente
+
+<tr>
+    <td>
+        <strong>Nome Completo</strong>
+    </td>
+    <td>
+        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(model => model.Nome)</span>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>RG</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.RG)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>CPF</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.CPF)</td>
+</tr>
+<tr>
+    <td>
+        <strong>Data de Nascimento</strong>
+    </td>
+    <td>@Html.DisplayFor(model => model.Data_Nascimento)</td>
+</tr>
+<tr>
+    <td>
+        <strong>E-mail</strong>
+    </td>
+    <td>
+        <span class="text-error">@Html.DisplayFor(model => model.Email)</em></span>
+    </td>
+</tr>
+
+

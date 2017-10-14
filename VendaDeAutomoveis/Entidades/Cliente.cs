@@ -8,7 +8,7 @@ namespace VendaDeAutomoveis.Entidades
     {
 
         [Required(ErrorMessage = "Informe o nome do cliente")]
-        [StringLength(30, MinimumLength = 3)]
+        [StringLength(60, MinimumLength = 3)]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Informe o número RG do cliente")]

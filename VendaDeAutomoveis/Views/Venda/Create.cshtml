@@ -1,0 +1,182 @@
+﻿@model VendaDeAutomoveis.Models.CadastrarVendaViewModel
+
+<title>Cadastrar - Venda</title>
+
+@{
+    ViewBag.Title = "Cadastrar - Venda";
+    Html.RenderPartial("_partial/_cabecalho_principal");
+}
+
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Venda
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Venda</li>
+                    <li>/</li>
+                    <li>Cadastrar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Cadastrar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+
+                            @using (Html.BeginForm("Create", "Venda", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
+                                @Html.DropDownListFor(m => m.IdCliente,
+                                new SelectList(Model.Clientes, "Id", "Nome"), "Nome do Cliente",
+                                new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.IdCliente)
+
+                                <br />
+
+                                @Html.LabelFor(m => m.IdVeiculo, "Modelo do Veículo*")
+                                @Html.DropDownListFor(m => m.IdVeiculo,
+                                new SelectList(Model.Veiculos, "Id", "Modelo"), "Modelo do Veículo",
+                                new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.IdVeiculo)
+
+                                <br />
+
+                                Html.RenderPartial("partial/_CreateEdit", Model);
+
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/Views/Venda/js/CreateEdit.js"></script>*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+<script>
+    $(function () {
+    $('#parcialEndereco').hide();
+
+    @if (ViewBag.ExibirCampo != null) {
+        @:pegarValorEndereco();
+                }
+    });
+
+    $('#IdVeiculo').change(function () {
+    obterValorVeiculo();
+});
+
+$('#Tipo_Entrega').change(function () {
+    pegarValorEndereco();
+});
+
+$('#IdCliente').change(function () {
+    pegarValorEndereco();
+    obterInformacoesCliente();
+});
+
+function obterValorVeiculo() {
+    $.ajax({
+        url: '@Url.Action("ObterValorVeiculo")',
+        type: "post",
+        dataType: "html",
+        data:
+        {
+            idVeiculo: $("#IdVeiculo").val()
+        },
+        success: function (data) {
+            $("#Valor").val(data);
+        }
+    });
+}
+
+    function pegarValorEndereco() {
+
+    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
+        $('#parcialEndereco').hide();
+    }
+
+    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 0) {
+        $('#parcialEndereco').show();
+
+        $.ajax({
+            url: '@Url.Action("ObterEnderecoCliente")',
+            type: "post",
+            dataType: "html",
+            data: { IdCliente: $("#IdCliente").val() },
+
+            success: function (data) {
+                $('#parcialEndereco').html(data);
+                $("#atualizar").click(function () {
+
+                    AtualizarEndereco()
+                });
+            }
+        });
+    }
+}
+
+
+function AtualizarEndereco() {
+
+    $.ajax({
+        url: '@Url.Action("AtualizarEnderecos")',
+        type: "post",
+        dataType: "html",
+        data: {
+            IdCliente: $("#IdCliente").val(),
+            Endereco: $("#Endereco").val(),
+            Bairro: $("#Bairro").val(),
+            NumeroDaCasa: $("#NumeroDaCasa").val(),
+            CEP: $("#CEP").val(),
+            Cidade: $("#Cidade").val(),
+            Estado: $("#Estado").val(),
+            Complemento: $("#Complemento").val()
+
+        },
+        success: function (data) {
+            alert("Endereço Alterado");
+        }
+    });
+}
+
+function obterInformacoesCliente() {
+
+    $.ajax({
+        url: '@Url.Action("ObterInformacoesBasicasCliente")', //Metodo da minha controller
+        type: "POST",
+        dataType: "html",
+        data: { IdCliente: $("#IdCliente").val() },
+        success: function (data) {
+            debugger;
+            $('#PegarFormaDePagamento').html(data.FormasDePagamentos); //div para renderizar
+            $('#_PerformancesDisponiveisCliente').html(data.Performances);
+        }
+    });
+}
+
+</script>

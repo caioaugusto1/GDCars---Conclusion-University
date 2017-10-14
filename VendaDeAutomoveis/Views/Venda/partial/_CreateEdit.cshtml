@@ -1,1 +1,56 @@
-﻿
+﻿@model VendaDeAutomoveis.Models.CadastrarVendaViewModel
+
+@Html.LabelFor(m => m.Valor, "Valor da Compra*")
+@Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Valor)
+
+<br />
+
+<div id="_PerformancesDisponiveisCliente">
+    @Html.Partial("partial/_PerformancesDisponiveisCliente", Model)
+</div>
+
+<br />
+
+<div id="_ParcialViewFormaDePagamento">
+    @*@Html.Partial("partial/_ParcialViewFormaDePagamento", Model.FormasDePagamentos)*@
+</div>
+
+<br />
+
+@Html.LabelFor(m => m.Tipo_Entrega, "Tipo de Entrega*")
+@Html.EnumDropDownListFor(m => m.Tipo_Entrega, "Tipo de Entrega", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Tipo_Entrega)
+
+<br />
+
+<div id="parcialEndereco">
+    @Html.Partial("partial/_ParcialviewEndereco", Model.Endereco)
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+                <div class="title">
+                    <span class="fs1" aria-hidden="true" data-icon="&#xe14c;">@Html.LabelFor(a => a.Observacoes)</span>
+                </div>
+            </div>
+            <div class="widget-body">
+                <div class="control-group">
+                    <div class="wysiwyg-container">
+                        <textarea id="wysiwyg" name="Observacoes" class="col-sm-12 no-margin" placeholder="Digite o texto ..." style="height: 140px">
+                      </textarea>
+                    </div>
+                </div>
+                <div class="control-group info no-margin">
+                    <div class="controls">
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />

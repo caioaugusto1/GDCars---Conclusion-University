@@ -32,45 +32,11 @@ namespace VendaDeAutomoveis.Repository
                 });
         }
 
-        public void InserirPasso1Roda(Guid id, Guid idCliente, Guid idRoda, double ValorTotal)
+        public override IList<GDC_Perfomances> ObterTodos()
         {
-            var sql = "Insert into GDC_Perfomances (Id, IdCliente, IdRoda, ValorTotal ) " +
-             "Values(@Id, @IdCliente, @IdRoda, @ValorTotal)";
+            var sql = "SELECT * FROM GDC_Perfomances WHERE IdBanco IS NOT NULL AND IdBanco IS NOT NULL AND IdCor_Veiculo IS NOT NULL ";
 
-            var e = _context.Database.Connection.Query<GDC_Perfomances>(sql,
-                param: new
-                {
-                    Id = id,
-                    IdCliente = idCliente,
-                    IdRoda = idRoda,
-                    ValorTotal = ValorTotal
-                });
-        }
-
-        public void InserirPasso2Cor(Guid id, Guid idCorVeiculo)
-        {
-            var sql = "update GDC_Perfomances set IdCor_Veiculo = @idCorVeiculo" +
-             " where Id = id";
-
-            var e = _context.Database.Connection.Query<GDC_Perfomances>(sql,
-                param: new
-                {
-                    Id = id,
-                    IdCor_Veiculo = idCorVeiculo
-                });
-        }
-
-        public void InserPasso3Banco(Guid id, Guid idBanco)
-        {
-            var sql = "update GDC_Perfomances set IdBanco = @idBanco" +
-            " where Id = id";
-
-            var e = _context.Database.Connection.Query<GDC_Perfomances>(sql,
-                param: new
-                {
-                    Id = id,
-                    IdBanco = idBanco
-                });
+            return _context.Database.Connection.Query<GDC_Perfomances>(sql).ToList();
         }
 
         public IList<GDC_Perfomances> ObterPorIdCliente(Guid idCliente)

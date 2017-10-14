@@ -7,7 +7,8 @@
 <br />
 
 @Html.LabelFor(model => model.Aro, htmlAttributes: new { @class = "control-label col-md-2" })
-<input type="text" id="Roda.Aro" name="Roda.Aro" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
+@Html.DropDownListFor(a => a.Aro, (IEnumerable<SelectListItem>)ViewData["GetAros"], "Selecione", new Dictionary<string, object>() { { "class", "form-control" } })
+@*<input type="text" id="Roda.Aro" name="Roda.Aro" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">*@
 @Html.ValidationMessageFor(model => model.Aro, "", new { @class = "text-danger" })
 
 <br />

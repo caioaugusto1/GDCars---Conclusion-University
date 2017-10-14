@@ -326,6 +326,8 @@
     <Content Include="Scripts\plugins\purify.min.js" />
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
+    <Content Include="Views\Venda\js\CreateEdit.js" />
+    <Content Include="Views\Venda\js\CreteEditVenda.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -441,9 +443,6 @@
     <Content Include="Views\Cliente\_partial\_CreateEdit.cshtml" />
     <Content Include="Views\Veiculo\_partial\_CreateEdit.cshtml" />
     <Content Include="Views\Venda\partial\_CreateEdit.cshtml" />
-    <Content Include="Views\Performance\Passo1CadastroRoda.cshtml" />
-    <Content Include="Views\Performance\Passo2CadastroCor.cshtml" />
-    <Content Include="Views\Performance\Passo3CadastroBanco.cshtml" />
     <Content Include="Views\Venda\partial\_PerformancesDisponiveisCliente.cshtml" />
     <Content Include="Views\Shared\_partial\_btn_submit_salvar.cshtml" />
     <Content Include="Views\Shared\_partial\_cabecalho_principal.cshtml" />
@@ -454,6 +453,11 @@
     <Content Include="Views\Performance\_partial\_CreateCor.cshtml" />
     <Content Include="Views\Performance\_partial\_CreateBanco.cshtml" />
     <Content Include="Views\Performance\Create.cshtml" />
+    <Content Include="Views\Venda\Create.cshtml" />
+    <Content Include="Views\Shared\_partial\_modal_confirme.cshtml" />
+    <Content Include="Views\Cliente\_partial\_CreateEdit_Endereco.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\_partial\_Details_Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
