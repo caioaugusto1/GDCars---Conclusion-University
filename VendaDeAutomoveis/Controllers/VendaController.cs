@@ -57,19 +57,36 @@ namespace VendaDeAutomoveis.Controllers
             CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();
 
             vendaViewModel.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
-            vendaViewModel.FormasDePagamentos = new List<FormaDePagamento>();
+            vendaViewModel.FormasDePagamentos = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterTodos());
             vendaViewModel.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
-            vendaViewModel.Performance = new List<Performance>();
+            vendaViewModel.Performance = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfomanceRepository.ObterTodos());
             vendaViewModel.Endereco = new Endereco();
 
             return View(vendaViewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(Venda venda)
+        public ActionResult Create(CadastrarVendaViewModel cadVenda)
         {
             ViewBag.Cliente = _clienteRepository.ObterTodos();
             ViewBag.Veiculo = _veiculoRepository.ObterTodos();
+
+            var venda = new Venda()
+            {
+                IdCliente = cadVenda.IdCliente,
+                IdVeiculo = cadVenda.IdVeiculo,
+                IdFormaDePagamento = cadVenda.IdFormaDePagamento,
+                IdPerfomance = cadVenda.IdPerformance,
+                Valor = cadVenda.Valor,
+                Tipo_Entrega = cadVenda.Tipo_Entrega,
+                Observacoes = cadVenda.Observacoes
+            };
+
+            if (venda.Tipo_Entrega == 0)
+            {
+                ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
+                return View("Create", cadVenda);
+            }
 
             if (ModelState.IsValid)
             {
@@ -79,11 +96,6 @@ namespace VendaDeAutomoveis.Controllers
 
                 var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
 
-                if (venda.Tipo_Entrega == 0)
-                {
-                    ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
-                    return View("Create", venda);
-                }
                 if (venda.Tipo_Entrega == EntregaVenda.Domiciliar && cliente.Endereco == null || venda.Tipo_Entrega == EntregaVenda.Domiciliar && cliente.Endereco.Numero == null
                     || venda.Tipo_Entrega == EntregaVenda.Domiciliar && cliente.Endereco.Estado == null || venda.Tipo_Entrega == EntregaVenda.Domiciliar && cliente.Endereco.Cidade == null
                     || venda.Tipo_Entrega == EntregaVenda.Domiciliar && cliente.Endereco.CEP == null)
@@ -93,7 +105,7 @@ namespace VendaDeAutomoveis.Controllers
                     ViewBag.Cliente = _clienteRepository.ObterTodos();
                     ViewBag.Veiculo = _clienteRepository.ObterTodos();
                     ViewBag.ExibirCampo = true;
-                    return View("Create", venda);
+                    return View("Create", cadVenda);
                 }
 
                 _vendaRepository.Inserir(vendaToDomain);
@@ -195,29 +207,56 @@ namespace VendaDeAutomoveis.Controllers
             return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
         }
 
-        public ActionResult ObterEnderecoCliente(Guid idCliente)
+        public PartialViewResult ObterEnderecoCliente(Guid idCliente)
         {
-            var obterCliente = _clienteRepository.ObterPorId(idCliente);
+            var cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(idCliente));
 
-            var clienteEndereco = new Endereco();
+            if (cliente.IdEndereco.HasValue)
+                cliente.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cliente.IdEndereco.Value));
+            else
+                cliente.Endereco = new Endereco();
 
-            //if (obterCliente.IdEndereco.HasValue)
-            //    clienteEndereco = _enderecoRepository.ObterPorId(obterCliente.IdEndereco);
-            //else
-            //    clienteEndereco = new Endereco();
-
-            //var clienteEndereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
-            return PartialView("_ParcialviewEndereco", clienteEndereco);
+            return PartialView("_ParcialviewEndereco", cliente.Endereco);
         }
 
-        public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa, string CEP, string Cidade, string Estado, string Complemento)
+        public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa, 
+            string CEP, string Cidade, string Estado, string Complemento)
         {
             if (ModelState.IsValid)
             {
-                var endereco = _enderecoRepository.BuscarPorIdCliente(idCliente);
-                _enderecoRepository.Editar(endereco);
+                var infoCliente = _clienteRepository.ObterPorId(idCliente);
+                
+                var newEndereco = new GDC_Enderecos()
+                {
+                    Endereco = Endereco,
+                    Bairro = Bairro,
+                    Numero = NumeroDaCasa,
+                    CEP = CEP,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Complemento = Complemento
+                };
 
-                return null;
+                var endereco = new Endereco();
+
+                if (infoCliente.IdEndereco.HasValue)
+                {
+                    endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(infoCliente.IdEndereco.Value));
+                    
+                    if (endereco != null)
+                    {
+                        _enderecoRepository.Editar(newEndereco);
+                    }
+                }
+                else
+                {
+                    newEndereco.Id = Guid.NewGuid();
+
+                    _enderecoRepository.Inserir(newEndereco);
+                    _clienteRepository.Atualizar(newEndereco.Id, idCliente);
+                }
+
+                return Content("OK");
             }
             else
             {

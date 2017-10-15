@@ -53,5 +53,27 @@ namespace VendaDeAutomoveis.Repository
 
             return e.FirstOrDefault();
         }
+
+        public override void Inserir(GDC_Vendas obj)
+        {
+            var sql = "Insert into GDC_Vendas (Id, Valor, Observacao, Tipo_Entrega, Status, Termo_Autorizacao, IdCliente," +
+                "IdFormaPagamento, IdVeiculo, IdPerformance) " +
+                "Values(@Id, @Valor, @Observacao, @Tipo_Entrega, @Status, @Termo_Autorizacao, @IdCliente, @IdFormaPagamento, @IdVeiculo, @IdPerformance)";
+
+            var e = _context.Database.Connection.Query<GDC_Vendas>(sql,
+                param: new
+                {
+                    Id = obj.Id,
+                    Valor = obj.Valor,
+                    Observacao = obj.Observacao,
+                    Tipo_Entrega = obj.Tipo_Entrega,
+                    Status = obj.Status,
+                    Termo_Autorizacao = 1,
+                    IdCliente = obj.IdCliente,
+                    IdFormaPagamento = obj.IdFormaPagamento,
+                    IdVeiculo = obj.IdVeiculo,
+                    IdPerformance = obj.IdPerformance
+                });
+        }
     }
 }

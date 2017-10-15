@@ -7,13 +7,13 @@
 <br />
 
 <div id="_PerformancesDisponiveisCliente">
-    @Html.Partial("partial/_PerformancesDisponiveisCliente", Model)
+    @Html.Partial("_partial/_PerformancesDisponiveisCliente", Model.Performance)
 </div>
 
 <br />
 
 <div id="_ParcialViewFormaDePagamento">
-    @*@Html.Partial("partial/_ParcialViewFormaDePagamento", Model.FormasDePagamentos)*@
+    @Html.Partial("_partial/_ParcialViewFormaDePagamento", Model.FormasDePagamentos)
 </div>
 
 <br />
@@ -24,9 +24,9 @@
 
 <br />
 
-<div id="parcialEndereco">
-    @Html.Partial("partial/_ParcialviewEndereco", Model.Endereco)
-</div>
+@*<div id="parcialEndereco">
+    @Html.Partial("_partial/_ParcialviewEndereco", Model.Endereco)
+</div>*@
 
 <div class="row">
     <div class="col-md-12">
@@ -52,5 +52,3 @@
         </div>
     </div>
 </div>
-
-<br />

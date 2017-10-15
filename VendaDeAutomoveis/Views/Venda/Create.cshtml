@@ -4,7 +4,7 @@
 
 @{
     ViewBag.Title = "Cadastrar - Venda";
-    Html.RenderPartial("_partial/_cabecalho_principal");
+    //Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
 <div class="dashboard-wrapper">
@@ -61,10 +61,11 @@
 
                                 <br />
 
-                                Html.RenderPartial("partial/_CreateEdit", Model);
+                                Html.RenderPartial("_partial/_CreateEdit", Model);
 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
+
                         </div>
                     </div>
                 </div>
@@ -73,13 +74,10 @@
     </div>
 </div>
 
-@*<script src="~/Views/Venda/js/CreateEdit.js"></script>*@
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.maskedinput.min.js"></script>
-
 <script>
     $(function () {
-    $('#parcialEndereco').hide();
+       
+        $('#parcialEndereco').hide();
 
     @if (ViewBag.ExibirCampo != null) {
         @:pegarValorEndereco();
@@ -87,96 +85,102 @@
     });
 
     $('#IdVeiculo').change(function () {
-    obterValorVeiculo();
-});
-
-$('#Tipo_Entrega').change(function () {
-    pegarValorEndereco();
-});
-
-$('#IdCliente').change(function () {
-    pegarValorEndereco();
-    obterInformacoesCliente();
-});
-
-function obterValorVeiculo() {
-    $.ajax({
-        url: '@Url.Action("ObterValorVeiculo")',
-        type: "post",
-        dataType: "html",
-        data:
-        {
-            idVeiculo: $("#IdVeiculo").val()
-        },
-        success: function (data) {
-            $("#Valor").val(data);
-        }
+        obterValorVeiculo();
     });
-}
 
-    function pegarValorEndereco() {
+    $('#Tipo_Entrega').change(function () {
+        pegarValorEndereco();
+    });
 
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
-        $('#parcialEndereco').hide();
-    }
+    $('#IdCliente').change(function () {
+        pegarValorEndereco();
+        obterInformacoesCliente();
+    });
 
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 0) {
-        $('#parcialEndereco').show();
+    $("#btnSalvarEndereco").click(function () {
+        $('#modalConfirme').modal();
+    });
 
+    $('#btnSalvarModal').click(function () {
+        AtualizarEndereco();
+    });
+
+    function obterValorVeiculo() {
         $.ajax({
-            url: '@Url.Action("ObterEnderecoCliente")',
+            url: '@Url.Action("ObterValorVeiculo")',
             type: "post",
             dataType: "html",
-            data: { IdCliente: $("#IdCliente").val() },
-
+            data:
+            {
+                idVeiculo: $("#IdVeiculo").val()
+            },
             success: function (data) {
-                $('#parcialEndereco').html(data);
-                $("#atualizar").click(function () {
-
-                    AtualizarEndereco()
-                });
+                $("#Valor").val(data);
             }
         });
     }
-}
 
+    function pegarValorEndereco() {
 
-function AtualizarEndereco() {
-
-    $.ajax({
-        url: '@Url.Action("AtualizarEnderecos")',
-        type: "post",
-        dataType: "html",
-        data: {
-            IdCliente: $("#IdCliente").val(),
-            Endereco: $("#Endereco").val(),
-            Bairro: $("#Bairro").val(),
-            NumeroDaCasa: $("#NumeroDaCasa").val(),
-            CEP: $("#CEP").val(),
-            Cidade: $("#Cidade").val(),
-            Estado: $("#Estado").val(),
-            Complemento: $("#Complemento").val()
-
-        },
-        success: function (data) {
-            alert("Endereço Alterado");
+        if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
+            $('#parcialEndereco').hide();
         }
-    });
-}
 
-function obterInformacoesCliente() {
+        if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 0) {
+            $('#parcialEndereco').show();
 
-    $.ajax({
-        url: '@Url.Action("ObterInformacoesBasicasCliente")', //Metodo da minha controller
-        type: "POST",
-        dataType: "html",
-        data: { IdCliente: $("#IdCliente").val() },
-        success: function (data) {
-            debugger;
-            $('#PegarFormaDePagamento').html(data.FormasDePagamentos); //div para renderizar
-            $('#_PerformancesDisponiveisCliente').html(data.Performances);
+            $.ajax({
+                url: '@Url.Action("ObterEnderecoCliente")',
+                type: "post",
+                dataType: "html",
+                data: { IdCliente: $("#IdCliente").val() },
+                success: function (data) {
+                    $('#parcialEndereco').html(data);
+                    //$("#atualizar").click(function () {
+
+                    //    AtualizarEndereco()
+                    //});
+                }
+            });
         }
-    });
-}
+    }
+
+
+    function AtualizarEndereco() {
+
+        $.ajax({
+            url: '@Url.Action("AtualizarEnderecos")',
+            type: "post",
+            dataType: "html",
+            data: {
+                IdCliente: $("#IdCliente").val(),
+                Endereco: $("#EnderecoNome").val(),
+                Bairro: $("#Bairro").val(),
+                NumeroDaCasa: $("#Numero").val(),
+                CEP: $("#CEP").val(),
+                Cidade: $("#Cidade").val(),
+                Estado: $("#Estado").val(),
+                Complemento: $("#Complemento").val()
+            },
+            success: function (data) {
+                $('#success').modal();
+            }
+        });
+    }
+
+    function obterInformacoesCliente() {
+
+        $.ajax({
+            url: '@Url.Action("ObterInformacoesBasicasCliente")', //Metodo da minha controller
+            type: "POST",
+            dataType: "html",
+            data: { IdCliente: $("#IdCliente").val() },
+            success: function (data) {
+
+                $('#PegarFormaDePagamento').html(data.FormasDePagamentos); //div para renderizar
+                $('#_PerformancesDisponiveisCliente').html(data.Performances);
+            }
+        });
+    }
 
 </script>

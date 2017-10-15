@@ -1,4 +1,6 @@
-﻿
+﻿$(function () {
+    $('#parcialEndereco').hide();
+});
 
 $('#IdVeiculo').change(function () {
     obterValorVeiculo();
@@ -11,6 +13,14 @@ $('#Tipo_Entrega').change(function () {
 $('#IdCliente').change(function () {
     pegarValorEndereco();
     obterInformacoesCliente();
+});
+
+$("#atualizar").click(function () {
+    $('#modalConfirme').modal();
+});
+
+$('#btnConfirmarAlteracoes').click(function () {
+    AtualizarEndereco();
 });
 
 function obterValorVeiculo() {
@@ -27,29 +37,27 @@ function obterValorVeiculo() {
         }
     });
 }
+
 function pegarValorEndereco() {
 
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 2) {
-        debugger;
-        $('#viewParcialEndereco').hide();
+    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
+        $('#parcialEndereco').hide();
     }
 
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
-        debugger;
-        $('#viewParcialEndereco').show();
+    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 0) {
+        $('#parcialEndereco').show();
 
         $.ajax({
             url: '@Url.Action("ObterEnderecoCliente")',
             type: "post",
             dataType: "html",
             data: { IdCliente: $("#IdCliente").val() },
-
             success: function (data) {
-                $('#viewParcialEndereco').html(data);
-                $("#atualizar").click(function () {
+                $('#parcialEndereco').html(data);
+                //$("#atualizar").click(function () {
 
-                    AtualizarEndereco()
-                });
+                //    AtualizarEndereco()
+                //});
             }
         });
     }
@@ -64,14 +72,13 @@ function AtualizarEndereco() {
         dataType: "html",
         data: {
             IdCliente: $("#IdCliente").val(),
-            Endereco: $("#Endereco").val(),
+            Endereco: $("#EnderecoNome").val(),
             Bairro: $("#Bairro").val(),
-            NumeroDaCasa: $("#NumeroDaCasa").val(),
+            NumeroDaCasa: $("#Numero").val(),
             CEP: $("#CEP").val(),
             Cidade: $("#Cidade").val(),
             Estado: $("#Estado").val(),
             Complemento: $("#Complemento").val()
-
         },
         success: function (data) {
             alert("Endereço Alterado");
@@ -87,7 +94,8 @@ function obterInformacoesCliente() {
         dataType: "html",
         data: { IdCliente: $("#IdCliente").val() },
         success: function (data) {
-            $('#_ParcialViewFormaDePagamento').html(data.FormasPagamentos); //div para renderizar
+
+            $('#PegarFormaDePagamento').html(data.FormasDePagamentos); //div para renderizar
             $('#_PerformancesDisponiveisCliente').html(data.Performances);
         }
     });

@@ -52,6 +52,7 @@ namespace VendaDeAutomoveis.Repository
             var e = _context.Database.Connection.Query<GDC_Enderecos>(sql,
                 param: new
                 {
+                    Id = obj.Id,
                     Endereco = obj.Endereco,
                     Numero = obj.Numero,
                     Complemento = obj.Complemento,
