@@ -9,12 +9,12 @@ namespace VendaDeAutomoveis.Factory.Base.Upload
 {
     public class UploadArquivoFactory
     {
-        public static bool Upload(HttpPostedFileBase file, string nomeArquivo)
+        public static string Upload(HttpPostedFileBase file, string nomeArquivo)
         {
             try
             {
                 var caminhoDiretorio = ConfigurationManager.AppSettings["caminhoRepositorioDeArmazenamento"].ToString();//Config fora do sistema (Web config)
-
+                
                 string nomeA = string.Empty;
 
                 Guid arquivoGuid;
@@ -31,13 +31,15 @@ namespace VendaDeAutomoveis.Factory.Base.Upload
                     {
                         System.IO.Directory.CreateDirectory(caminhoDiretorio);
                     }
-                    var caminhoArquivo = string.Empty;
+                    string caminhoArquivo = string.Empty;
                     var extensao = System.IO.Path.GetExtension(nomeA);
 
                     caminhoArquivo = string.Format("{0}\\{1}", caminhoDiretorio, arquivoGuid + ".png");
 
                     file.SaveAs(caminhoArquivo);
 
+
+                    return caminhoArquivo;
                     //string recebendoDetalhes = arquivo.Detalhes;
 
                     //arquivo.Detalhes = "<br/>" + "<ol/>" + " - " + nomeArquivoCarregado + recebendoDetalhes;
@@ -46,11 +48,11 @@ namespace VendaDeAutomoveis.Factory.Base.Upload
                 //arquivo.Data = DateTime.Now;
 
                 //uploadArquivoDAO.AdicionarArquivo(arquivo);
-                return true;
+                return "OK";
             }
             catch
             {
-                return false;
+                return "Error";
             }
         }
     }
