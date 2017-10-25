@@ -1,5 +1,101 @@
 ﻿@model IList<VendaDeAutomoveis.Models.HistoricoPedidosModel>
 
+<head>
+    <title>Histórico de Vendas</title>
+
+    @{
+        Html.RenderPartial("_partial/_cabecalho_principal");
+        Html.RenderPartial("_partial/_cabecalho_list");
+    }
+
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Histórico de Vendas
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Clientes</li>
+                            <li>/</li>
+                            <li>Histórico de Vendas</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:15%">Modelo do Veículo</th>
+                                            <th style="width:15%">Tipo do Veículo</th>
+                                            <th style="width:15%">Valor</th>
+                                            <th style="width:15%">Tipo de Entrega</th>
+                                            <th style="width:15%">Forma de Pagamento</th>
+                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            @*<tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Veiculos.Modelo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Veiculos.Tipo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Vendas.Valor)
+                                                </td>
+                                                <td>
+                                                    @item.Vendas.Tipo_Entrega
+                                                </td>
+                                                <td>
+                                                    @item.Vendas.FormaDePagamento
+                                                </td>
+                                                @*<td>
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Detales", "Cliente", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>*@
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+@*@model IList<VendaDeAutomoveis.Models.HistoricoPedidosModel>
+
 <br />
 <br />
 <br />
@@ -9,10 +105,10 @@
 
 @using (Html.BeginForm("HistoricoPedidos", "Venda", FormMethod.Get))
 {
-    @*@Html.LabelFor(m => m.IdCliente, "Cliente")*@
-    @*@Html.DropDownListFor(m => m.IdCliente,
+    @Html.LabelFor(m => m.IdCliente, "Cliente")
+    @Html.DropDownListFor(m => m.IdCliente,
         new SelectList(Model.Clientes, "IdCliente", "Nome"),
-        "Escolha um Cliente")*@
+        "Escolha um Cliente")
 
     @Html.DropDownList("Clientes", "Escolha um Cliente")
 
@@ -31,7 +127,7 @@
         </tr>
     </thead>
     <tbody>
-        @*@foreach (var m in Model)
+        @foreach (var m in Model)
             {
             <tr>
                 <td>@m.Veiculo.Modelo</td>
@@ -41,6 +137,6 @@
                 <td>@m.FormaDePagamento.ModeloFormaDePagamento</td>
                 <td>@m.Observacoes</td>
             </tr>
-        }*@
+        }*
     </tbody>
-</table>
+</table>*@

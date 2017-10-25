@@ -2,6 +2,7 @@
 
 <head>
     <title>CDCars - Home Page</title>
+
     @{
         Html.RenderPartial("_partial/_cabecalho_principal");
     }
@@ -16,6 +17,10 @@
     <div id="page-wrapper">
         <div class="container-fluid">
             @RenderBody()
+
+            @Html.Partial("~/Views/Shared/_partial/_modal_confirme.cshtml")
+
+            @Html.Partial("~/Views/Shared/_partial/_modal_success.cshtml")
         </div>
     </div>
 </body>

@@ -1,4 +1,4 @@
-﻿@model IList<VendaDeAutomoveis.Entidades.Performance>
+﻿@model IList<VendaDeAutomoveis.Models.ListarPerformancesViewModel>
 
 <head>
     <title>Lista de Customizações</title>
@@ -72,7 +72,7 @@
                                                     @item.Banco.Modelo
                                                 </td>
                                                 <td>
-                                                   @item.Cor_Veiculo.Estilo
+                                                   @*@item.Cor_Veiculo.Estilo*@
                                                 </td>
                                                 <td>
                                                     @item.Roda.Aro
@@ -81,12 +81,12 @@
                                                     @item.Roda.Cor
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    @*<a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
                                                     <a href="@Url.Action("Detales", "Cliente", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
                                                     <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                    </a>
+                                                    </a>*@
                                                 </td>
                                             </tr>
                                         }

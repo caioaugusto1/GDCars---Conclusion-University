@@ -57,7 +57,7 @@ namespace VendaDeAutomoveis.Repository
                 });
         }
 
-        public void Editar(Cliente obj)
+        public override void Editar(GDC_Clientes obj)
         {
             var sql = "update GDC_Clientes set Nome = @Nome, RG = @RG, CPF = @CPF, Data_Nascimento = @Data_Nascimento, Email = @Email where Id = @Id ";
 

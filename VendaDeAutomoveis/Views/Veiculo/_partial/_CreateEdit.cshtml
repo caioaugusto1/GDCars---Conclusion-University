@@ -1,9 +1,5 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-@Html.AntiForgeryToken()
-
-@Html.HiddenFor(model => model.Id)
-
 <br />
 
 @Html.LabelFor(u => u.Fabricante, "Fabricante*")
@@ -18,9 +14,16 @@
 
 <br />
 
+@{ 
+    var anoAtual = DateTime.Now.Year;
 
+    if(DateTime.Now.Month > 9)
+    {
+        anoAtual = DateTime.Now.Year + 1;
+    }
+}
 <label for="disabledTextInput">Ano</label>
-<input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@DateTime.Now.Year" value="@DateTime.Now.Year" disabled>
+<input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@anoAtual" value="@anoAtual" disabled>
 @Html.ValidationMessageFor(u => u.Ano)
 
 <br />

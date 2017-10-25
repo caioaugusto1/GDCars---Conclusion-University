@@ -31,7 +31,7 @@ namespace VendaDeAutomoveis.Entidades
         public virtual Banco Banco { get; set; }
 
         [Required]
-        public Guid IdCor { get; set; }
+        public Guid IdCorVeiculo { get; set; }
 
         public virtual Cor_Veiculo Cor_Veiculo { get; set; }
     }

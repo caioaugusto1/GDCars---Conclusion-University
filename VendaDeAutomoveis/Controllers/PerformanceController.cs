@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Enums;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
@@ -13,11 +11,19 @@ namespace VendaDeAutomoveis.Controllers
 {
     public class PerformanceController : Controller
     {
+
+        #region Instâncias de Repositorys
+
         private PerfomanceRepository _perfoRepository;
         private ClienteRepository _clienteRepository;
         private RodaRepository _rodaRepository;
         private CorVeiculoRepository _corVeiculoRepository;
         private BancoRepository _bancoRepository;
+
+        #endregion
+
+
+        #region Métoo Construtor
 
         public PerformanceController(PerfomanceRepository _perfoRepository, ClienteRepository _clienteRepository,
             RodaRepository _rodaRepository, CorVeiculoRepository _corVeiculoRepository, BancoRepository _bancoRepository)
@@ -29,26 +35,28 @@ namespace VendaDeAutomoveis.Controllers
             this._bancoRepository = _bancoRepository;
         }
 
+        #endregion  
+
         // GET: Performance
         public ActionResult Index()
         {
-            var obterPerformances = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
+            var obterCustomns = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfoRepository.ObterTodos());
 
-            var perform = new ListarPerformancesViewModel();
+            var custom = new ListarPerformancesViewModel();
 
-            List<ListarPerformancesViewModel> perfViewModel = new List<ListarPerformancesViewModel>();
+            List<ListarPerformancesViewModel> customViewModel = new List<ListarPerformancesViewModel>();
 
-            foreach (var itemPerfor in obterPerformances)
+            foreach (var itemCustom in obterCustomns)
             {
-                perform.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemPerfor.IdCliente));
-                perform.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemPerfor.IdRoda));
-                perform.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemPerfor.IdBanco));
-                perform.Cor = Mapper.Map<Cor_Veiculo>(_corVeiculoRepository.ObterPorId(itemPerfor.IdCor));
+                custom.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemCustom.IdCliente));
+                custom.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemCustom.IdRoda));
+                custom.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemCustom.IdBanco));
+                custom.Cor_Veiculo = Mapper.Map<Cor_Veiculo>(_corVeiculoRepository.ObterPorId(itemCustom.IdCorVeiculo));
 
-                perfViewModel.Add(perform);
+                customViewModel.Add(custom);
             }
 
-            return View(perfViewModel);
+            return View(customViewModel);
         }
 
         [HttpGet]
@@ -57,6 +65,7 @@ namespace VendaDeAutomoveis.Controllers
             Performance Model = new Performance();
 
             ViewBag.Cliente = _clienteRepository.ObterTodos();
+            ViewData["GetAros"] = Roda.GetAros();
 
             return View(Model);
         }
@@ -79,69 +88,8 @@ namespace VendaDeAutomoveis.Controllers
             }
 
             ViewBag.Cliente = _clienteRepository.ObterTodos();
-
+            
             return View(custom);
-        }
-
-
-        [HttpGet]
-        public ActionResult Passo1CadastroRoda()
-        {
-            Performance Model = new Performance();
-
-            ViewBag.Cliente = _clienteRepository.ObterTodos();
-
-            return View(Model);
-        }
-
-        [HttpPost]
-        public ActionResult Passo1CadastroRoda(Roda roda)
-        {
-            if (ModelState.IsValid)
-            {
-                var idPerformance = Guid.NewGuid();
-
-                _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(roda));
-                //_perfoRepository.InserirPasso1Roda(idPerformance, roda.IdCliente, roda.Id, roda.Valor);
-
-                return RedirectToAction("Passo2CadastroCor", idPerformance);
-            }
-            else
-            {
-                return View(roda);
-            }
-        }
-
-        [HttpGet]
-        public ActionResult Passo2CadastroCor(Guid idPerformance)
-        {
-            ViewBag.IdPerformance = idPerformance;
-
-            return View("Passo2CadastroCor", idPerformance);
-        }
-
-        [HttpPost]
-        public ActionResult Passo2CadastroCor(Cor_Veiculo corVeiculo)
-        {
-            _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(corVeiculo));
-            //_perfoRepository.InserirPasso2Cor(corVeiculo.IdPerformance, corVeiculo.Id);
-
-            return View("Passo3CadastroCor");
-        }
-
-        [HttpGet]
-        public ActionResult Passo3CadastroBanco()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Passo3CadastroBanco(Banco banco)
-        {
-            _bancoRepository.Inserir(Mapper.Map<GDC_Bancos>(banco));
-            //_perfoRepository.InserirPasso2Cor(banco.IdPerformance, banco.Id);
-
-            return View();
         }
     }
 }

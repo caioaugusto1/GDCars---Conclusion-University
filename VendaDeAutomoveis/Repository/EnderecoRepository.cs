@@ -43,5 +43,24 @@ namespace VendaDeAutomoveis.Repository
                     Cidade = obj.Cidade
                 });
         }
+
+        public override void Editar(GDC_Enderecos obj)
+        {
+            var sql = "update GDC_Enderecos set Endereco = @Endereco, Numero = @Numero, Complemento = @Complemento, " +
+                "CEP = @CEP, Bairro = @Bairro, Estado = @Estado, Cidade = @Cidade where Id = @Id ";
+
+            var e = _context.Database.Connection.Query<GDC_Enderecos>(sql,
+                param: new
+                {
+                    Id = obj.Id,
+                    Endereco = obj.Endereco,
+                    Numero = obj.Numero,
+                    Complemento = obj.Complemento,
+                    CEP = obj.CEP,
+                    Bairro = obj.Bairro,
+                    Estado = obj.Estado,
+                    Cidade = obj.Cidade,
+                });
+        }
     }
 }

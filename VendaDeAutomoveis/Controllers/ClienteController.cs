@@ -13,9 +13,15 @@ namespace VendaDeAutomoveis.Controllers
     [AutorizacaoFilter]
     public class ClienteController : Controller
     {
+        #region Instâncias Repositorys
+
         private ClienteRepository _clienteRepository;
         private VendaRepository _vendaRepository;
         private EnderecoRepository _enderecoRepository;
+
+        #endregion
+
+        #region Método Construtor
 
         public ClienteController(ClienteRepository _clienteRepository, VendaRepository _vendaRepository, EnderecoRepository _enderecoRepository)
         {
@@ -23,6 +29,8 @@ namespace VendaDeAutomoveis.Controllers
             this._vendaRepository = _vendaRepository;
             this._enderecoRepository = _enderecoRepository;
         }
+
+        #endregion
 
         public ActionResult Index()
         {
@@ -34,20 +42,6 @@ namespace VendaDeAutomoveis.Controllers
         public ActionResult FormularioCadastro()
         {
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult AdicionarEndereco(Endereco endereco)
-        {
-            if (ModelState.IsValid)
-            {
-                var enderecoDomain = Mapper.Map<GDC_Enderecos>(endereco);
-
-                _enderecoRepository.Inserir(enderecoDomain);
-                _clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
-            }
-
-            return RedirectToAction("Index");
         }
 
         [HttpPost]
@@ -70,7 +64,7 @@ namespace VendaDeAutomoveis.Controllers
                         _clienteRepository.Inserir(clienteToDomain);
                         ViewBag.IdCliente = cliente.Id;
 
-                        return View("CadastrarEndereco");
+                        return RedirectToAction("CadastrarEndereco", new { idCliente = cliente.Id });
                     }
                     else
                     {
@@ -90,6 +84,63 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        #region Endereco
+
+        [HttpGet]
+        public ActionResult CadastrarEndereco(Guid idCliente)
+        {
+            var enderecoViewModel = new Endereco();
+
+            enderecoViewModel.IdCliente = idCliente;
+
+            return View(enderecoViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AdicionarEndereco(Endereco endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                var enderecoDomain = Mapper.Map<GDC_Enderecos>(endereco);
+
+                _enderecoRepository.Inserir(enderecoDomain);
+                _clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult EditarEndereco(Guid id)
+        {
+            var enderecoViewModel = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(id));
+
+            if (enderecoViewModel == null)
+                return Content("Erro");
+
+            return View(enderecoViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditarEndereco(Endereco endereco)
+        {
+            if (ModelState.IsValid)
+            {
+                _enderecoRepository.Editar(Mapper.Map<GDC_Enderecos>(endereco));
+
+                var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(endereco.Id);
+
+                return View("CadastrarEndereco", enderecoViewModel);
+                //return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("EditarCliente", endereco);
+            }
+        }
+
+        #endregion
+
         [HttpGet]
         public ActionResult EditarCliente(Guid id)
         {
@@ -106,7 +157,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (ModelState.IsValid)
             {
-                _clienteRepository.Editar(cliente);
+                _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
 
                 var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(cliente.Id);
 
@@ -117,6 +168,17 @@ namespace VendaDeAutomoveis.Controllers
             {
                 return View("EditarCliente", cliente);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Details(Guid id)
+        {
+            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
+           
+            if(clienteViewModel.IdEndereco.HasValue)
+                clienteViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(clienteViewModel.IdEndereco.Value));
+
+            return View(clienteViewModel);
         }
     }
 }

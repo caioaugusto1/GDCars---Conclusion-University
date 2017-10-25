@@ -1,9 +1,5 @@
 ﻿@model VendaDeAutomoveis.Entidades.Cliente
 
-@Html.AntiForgeryToken()
-
-<br />
-
 @Html.LabelFor(u => u.Nome, "Nome*")
 @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
 @Html.ValidationMessageFor(u => u.Nome)

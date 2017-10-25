@@ -8,7 +8,7 @@ namespace VendaDeAutomoveis.Models
         {
             Cliente = new Cliente();
             Banco = new Banco();
-            Cor = new Cor_Veiculo();
+            Cor_Veiculo = new Cor_Veiculo();
             Roda = new Roda();
         }
 
@@ -16,7 +16,7 @@ namespace VendaDeAutomoveis.Models
 
         public Banco Banco { get; set; }
 
-        public Cor_Veiculo Cor { get; set; }
+        public Cor_Veiculo Cor_Veiculo { get; set; }
 
         public Roda Roda { get; set; }
     }

@@ -1,0 +1,72 @@
+﻿@model VendaDeAutomoveis.Models.CadastrarVendaViewModel
+
+@using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post))
+{
+    
+    @Html.HiddenFor(u => u.IdCliente, new { @class = "form-control" })
+    
+    @Html.LabelFor(u => u.Endereco.EnderecoNome, "Endereço*")
+    @Html.TextBoxFor(u => u.Endereco.EnderecoNome, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.EnderecoNome)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.Numero, "Número da casa*")
+    @Html.TextBoxFor(u => u.Endereco.Numero, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.Numero)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.Complemento, "Complemento*")
+    @Html.TextBoxFor(u => u.Endereco.Complemento, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.Complemento)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.CEP, "CEP*")
+    @Html.TextBoxFor(u => u.Endereco.CEP, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.CEP)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.Bairro, "Bairro*")
+    @Html.TextBoxFor(u => u.Endereco.Bairro, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.Bairro)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.Cidade, "Cidade*")
+    @Html.TextBoxFor(u => u.Endereco.Cidade, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.Cidade)
+
+    <br />
+
+    @Html.LabelFor(u => u.Endereco.Estado, "Estado*")
+    @Html.TextBoxFor(u => u.Endereco.Estado, new { @class = "form-control" })
+    @Html.ValidationMessageFor(u => u.Endereco.Estado)
+
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" id="btnSalvarEndereco" value="Salvar" class="btn btn-default" />
+        </div>
+    </div>
+
+
+    @section Scripts {
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#cep").mask("99999-999");
+        });
+    </script>
+
+
+    }
+  
+}
+

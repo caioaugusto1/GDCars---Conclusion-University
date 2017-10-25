@@ -1,0 +1,90 @@
+﻿@model VendaDeAutomoveis.Entidades.Cliente
+
+<head>
+    @{
+        ViewBag.Title = "Detalhes - Cliente";
+        Html.RenderPartial("_partial/_cabecalho_principal");
+    }
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Cliente
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Cliente</li>
+                            <li>/</li>
+                            <li>Detalhes</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget no-margin">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="text-error">Detalhes</span>
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <table class="table table-striped table-hover">
+                                <tbody>
+
+                                    @{
+                                        Html.RenderPartial("_partial/_Details_Delete", Model);
+                                    }
+
+                                    <tr>
+                                        <td colspan="4">
+                                            <a href="@Url.Action("Edit", "Cliente", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            @if (Model.Endereco != null)
+                            {
+                                <table class="table table-striped table-hover no-margin">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:25%">Endereço</th>
+                                            <th style="width:5%">Número</th>
+                                            <th style="width:5%">Complemento</th>
+                                            <th style="width:10%">CEP</th>
+                                            <th style="width:10%">Bairro</th>
+                                            <th style="width:10%">Estado</th>
+                                            <th style="width:10%">Cidade</th>
+                                            <th style="width:10%"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>@Model.Endereco.EnderecoNome</td>
+                                            <td>@Model.Endereco.Numero</td>
+                                            <td>@Model.Endereco.Complemento<em class="muted"> Is not Complement</em></td>
+                                            <td>@Model.Endereco.CEP</td>
+                                            <td>@Model.Endereco.Bairro</td>
+                                            <td>@Model.Endereco.Estado</td>
+                                            <td>@Model.Endereco.Cidade</td>
+                                            <td colspan="4">
+                                                <a href="@Url.Action("EditarEndereco", "Cliente", new { Id = Model.Id })" class="btn btn-info btn-large pull-right">Editar</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

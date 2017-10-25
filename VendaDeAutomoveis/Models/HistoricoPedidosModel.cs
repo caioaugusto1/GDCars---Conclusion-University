@@ -6,8 +6,12 @@ namespace VendaDeAutomoveis.Models
 {
     public class HistoricoPedidosModel
     {
-        public Guid IdCliente { get; set; }
-        public IList<Venda> Vendas { get; set; }
+        public Guid? IdCliente { get; set; }
+
+        public List<Venda> Vendas { get; set; }
+
         public IList<Cliente> Clientes { get; set; }
+
+        public IList<Veiculo> Veiculos { get; set; }
     }
 }
