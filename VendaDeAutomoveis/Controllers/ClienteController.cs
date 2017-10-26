@@ -127,11 +127,11 @@ namespace VendaDeAutomoveis.Controllers
             if (ModelState.IsValid)
             {
                 _enderecoRepository.Editar(Mapper.Map<GDC_Enderecos>(endereco));
+                return RedirectToAction("Index");
+                //var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(endereco.Id);
 
-                var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(endereco.Id);
-
-                return View("CadastrarEndereco", enderecoViewModel);
-                //return RedirectToAction("Index");
+                //return View("CadastrarEndereco", enderecoViewModel);
+                ////return RedirectToAction("Index");
             }
             else
             {
@@ -159,10 +159,7 @@ namespace VendaDeAutomoveis.Controllers
             {
                 _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
 
-                var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(cliente.Id);
-
-                return View("CadastrarEndereco", enderecoViewModel);
-                //return RedirectToAction("Index");
+                return RedirectToAction("Details", cliente.Id);
             }
             else
             {

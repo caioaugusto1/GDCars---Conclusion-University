@@ -1,7 +1,7 @@
-﻿@model VendaDeAutomoveis.Entidades.Cliente
+﻿@model VendaDeAutomoveis.Entidades.Endereco
 
 @{
-    ViewBag.Title = "Editar - Cliente";
+    ViewBag.Title = "Editar - Endereco";
     Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
@@ -15,7 +15,7 @@
                     <li>/</li>
                     <li>Editar</li>
                     <li>/</li>
-                    <li>Cliente</li>
+                    <li>Endereco</li>
                 </ul>
             </small>
         </h2>
@@ -39,11 +39,11 @@
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("EditarCliente", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
+                            @using (Html.BeginForm("EditarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
                             {
                                 @Html.AntiForgeryToken()
 
-                                Html.RenderPartial("_partial/_CreateEdit", Model);
+                                Html.RenderPartial("_partial/_CreateEdit_Endereco", Model);
 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }

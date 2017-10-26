@@ -1,0 +1,113 @@
+﻿@model VendaDeAutomoveis.Models.DetailsDeleteVendaViewModel
+
+@Html.HiddenFor(item => Model.Cliente.Id)
+@Html.HiddenFor(item => Model.Veiculo.Id)
+@Html.HiddenFor(item => Model.Performance.Id)
+@Html.HiddenFor(item => Model.FormaDePagamento.Id)
+
+<tr>
+    <td>
+        <strong>Cliente</strong>
+    </td>
+    <td>
+        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(item => Model.Cliente.Nome)</span>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <strong>CPF</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Cliente.CPF)</td>
+</tr>
+
+<tr>
+    <td>
+        <span class="label label-success" style="font-size: 100% !important;">Veículo</span>
+    </td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Fabricante</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Veiculo.Fabricante)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Modelo</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Veiculo.Modelo)</td>
+</tr>
+
+<tr>
+    <td>
+        <span class="label label-success" style="font-size: 100% !important;">Pagamento</span>
+    </td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Forma de Pagamento</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.FormaDePagamento.Modelo)</td>
+</tr>
+
+<tr>
+    <td>
+        <span class="label label-success" style="font-size: 100% !important;">Roda</span>
+    </td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Modelo</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Roda.Modelo)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Aro</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Roda.Aro)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Cor</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Roda.Cor)</td>
+</tr>
+
+<tr>
+    <td>
+        <span class="label label-success" style="font-size: 100% !important;">Banco</span>
+    </td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Modelo</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Banco.Modelo)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Cor</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Banco.CorBanco)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Multimidia</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Banco.Multimidia)</td>
+</tr>

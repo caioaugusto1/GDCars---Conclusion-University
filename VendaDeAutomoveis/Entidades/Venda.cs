@@ -15,6 +15,8 @@ namespace VendaDeAutomoveis.Entidades
         [Required(ErrorMessage = "Informe o tipo de entrega")]
         public EntregaVenda Tipo_Entrega { get; set; }
 
+        public StatusVenda Status { get; set; }
+
         //[Required(ErrorMessage="Informe a data da compra")]
         //public DateTime DataCompra { get; set; }
 

@@ -15,6 +15,8 @@ namespace VendaDeAutomoveis.Models
 
         public IList<Veiculo> Veiculos { get; set; }
 
+        //public IList<Venda> Vendas { get; set; }
+
         public Guid IdFormaDePagamento { get; set; }
 
         public IList<FormaDePagamento> FormasDePagamentos { get; set; }
@@ -30,6 +32,8 @@ namespace VendaDeAutomoveis.Models
         public double Valor { get; set; }
 
         public EntregaVenda Tipo_Entrega { get; set; }
+
+        public StatusVenda Status { get; set; }
 
         public string Observacoes { get; set; }
     }

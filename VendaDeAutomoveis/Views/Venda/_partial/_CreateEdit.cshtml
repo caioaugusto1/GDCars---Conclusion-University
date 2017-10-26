@@ -24,6 +24,12 @@
 
 <br />
 
+@Html.LabelFor(m => m.Status, "Tipo de Entrega*")
+@Html.EnumDropDownListFor(m => m.Status, "Tipo de Entrega", new { @class = "form-control" })
+@Html.ValidationMessageFor(m => m.Status)
+
+<br />
+
 @*<div id="parcialEndereco">
     @Html.Partial("_partial/_ParcialviewEndereco", Model.Endereco)
 </div>*@

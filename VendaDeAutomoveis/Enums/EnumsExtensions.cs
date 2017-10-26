@@ -84,11 +84,11 @@ namespace VendaDeAutomoveis.Enums
         public enum StatusVenda
         {
             [Display(Name = "Pedido Efetuado")]
-            PedidoEfetuado,
+            Efetuado,
             [Display(Name = "Pedido Entregue")]
             Entregue,
             [Display(Name = "Aguardando Liberação")]
-            AguardandoLiberacao
+            Aguardando
         }
 
         public enum EntregaVenda

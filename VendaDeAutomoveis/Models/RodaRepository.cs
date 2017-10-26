@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 

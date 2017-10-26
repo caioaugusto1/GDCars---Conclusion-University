@@ -119,7 +119,7 @@ namespace VendaDeAutomoveis.Controllers
             foreach (string nomeArquivo in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[nomeArquivo];
-                fazerUpload = UploadArquivoFactory.Upload(file, nomeArquivo);
+                UploadArquivoFactory.Upload(file, nomeArquivo);
             }
 
             if (fazerUpload)

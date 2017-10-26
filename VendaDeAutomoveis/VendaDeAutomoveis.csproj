@@ -345,6 +345,7 @@
     <Compile Include="Controllers\VendaController.cs" />
     <Compile Include="Enums\EnumsExtensions.cs" />
     <Compile Include="Models\CadastrarVendaViewModel.cs" />
+    <Compile Include="Models\DetailsDeleteVendaViewModel.cs" />
     <Compile Include="Models\ListarPerformances.cs" />
     <Compile Include="Models\RodaRepository.cs" />
     <Compile Include="Repository\BancoRepository.cs" />
@@ -458,6 +459,9 @@
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\_partial\_Details_Delete.cshtml" />
     <Content Include="Views\Shared\_partial\_modal_success.cshtml" />
+    <Content Include="Views\Venda\DetailsConfirmar.cshtml" />
+    <Content Include="Views\Venda\_partial\_Details_Delete.cshtml" />
+    <Content Include="Views\Cliente\EditarEndereco.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
