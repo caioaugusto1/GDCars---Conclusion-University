@@ -18,7 +18,7 @@ namespace VendaDeAutomoveis.Entidades
         {
             List<SelectListItem> listAro = new List<SelectListItem>();
 
-            for (var i = 13; i <= 20; i++)
+            for (var i = 14; i <= 20; i++)
                 listAro.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
 
             return listAro;

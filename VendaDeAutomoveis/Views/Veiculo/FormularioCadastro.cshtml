@@ -51,32 +51,13 @@
 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
-
-                            @*<div class="item branding">
-                                <img src="~/Content/imgs/2752acc6-ede1-404c-8c78-c75eae096d07.png" style="width: 10%;">
-                                <div class="works-overlay">
-                                    <div class="wo-inner">
-                                        <h4>@Html.DisplayFor(modelItem => modelItem.Upload.NomeArquivo)</h4>
-                                    </div>
-                                </div>
-                            </div>*@
-
-
-                            <form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Veiculo")" method="post" enctype="multipart/form-data">
-                                <div id="wrapper">
-                                    <input id="fileUpload" name="file" type="file"><br />
-                                    <div id="image-holder"></div>
-                                </div>
-
-
-                              @*  <label class="control-label">Selecione a imagem do veículo</label>*@
-                            @*    <input type="file" name="file" class="file">*@
-                                <button type="submit">Aqui</button>
-                            </form>
-
-                           
+                            <div class="file-loading">
+                                <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                       data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                            </div>
 
                         </div>
+                      
                     </div>
                 </div>
             </div>
@@ -84,56 +65,20 @@
     </div>
 </div>
 
-<script>
-    $("#fileUpload").on('change', function () {
+<script src="~/Scripts/fileinput.js"></script>
+<script src="~/Scripts/fileinput.min.js"></script>
+<link href="~/Content/bootstrap/css/fileinput.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/fileinput.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/fileinput.rtl.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet" />
 
-        if (typeof (FileReader) != "undefined") {
-
-            var image_holder = $("#image-holder");
-            image_holder.empty();
-
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("<img />", {
-                    "src": e.target.result,
-                    "class": "thumb-image",
-                    "style": "width: 90%"
-                }).appendTo(image_holder);
-            }
-            image_holder.show();
-            reader.readAsDataURL($(this)[0].files[0]);
-        } else {
-            alert("Este navegador nao suporta FileReader.");
-        }
+<script type="text/javascript">
+    $(document).on('ready', function () {
+        $("#input-b3").fileinput({
+            showUpload: false,
+            maxFileCount: 1,
+            mainClass: "input-group-lg"
+        });
     });
 </script>
-
-@*
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/fileinput.js"></script>
-<link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
-<link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
-
-@*<form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Produto")" method="post" enctype="multipart/form-data">
-    <label class="control-label">Selecione a imagem do veículo</label>
-    <input type="file" name="file" class="file">
-</form>
-
-
-@section scripts{
-    <script type="text/javascript">
-        $(function () {
-            $("#input-id").fileinput();
-
-            // with plugin options
-            $("#input-id").fileinput({ 'showUpload': false, 'previewFileType': 'any' });
-        });
-
-        $('.btn btn-default fileinput-upload fileinput-upload-button').click(function () {
-            $('#formUploadArquivo').submit();
-        });
-       
-    </script>
-}*@
 

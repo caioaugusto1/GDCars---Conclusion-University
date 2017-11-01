@@ -154,6 +154,7 @@
     <Content Include="Content\bootstrap\img\edit-icon.png" />
     <Content Include="Content\bootstrap\img\female.png" />
     <Content Include="Content\bootstrap\img\icon-wrench.png" />
+    <Content Include="Content\bootstrap\img\loading.gif" />
     <Content Include="Content\bootstrap\img\logo.png" />
     <Content Include="Content\bootstrap\img\male.png" />
     <Content Include="Content\bootstrap\img\sorting.png" />
@@ -220,8 +221,13 @@
     <Content Include="Content\bootstrap\js\wizard\bwizard.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\bootstrap-wysihtml5.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\wysihtml5-0.3.0.js" />
+    <Content Include="Content\fileinput-rtl.min.css" />
+    <Content Include="Content\fileinput.css" />
+    <Content Include="Content\fileinput.min.css" />
+    <Content Include="Content\fileinput.rtl.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\loading.gif" />
     <Content Include="Scripts\autoNumeric.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -268,6 +274,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\fileinpit.min.js" />
     <Content Include="Scripts\fileinput.js" />
     <Content Include="Scripts\fileinput.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
