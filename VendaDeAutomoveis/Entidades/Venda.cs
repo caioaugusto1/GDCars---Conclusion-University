@@ -92,7 +92,6 @@ namespace VendaDeAutomoveis.Entidades
                 string recebendoObservacao = venda.Observacoes;
                 venda.Valor = (venda.Valor + 12000);
                 venda.Observacoes = recebendoObservacao + " / Veiculo Esportivo : Acréscimo de R$12.000,00 referente ao período de 12 meses de seguro obrigatório";
-                //vendaRepository.Editar(venda);
             }
 
             return venda;

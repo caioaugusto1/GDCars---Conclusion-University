@@ -34,14 +34,11 @@
                 <div class="widget-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-3">
-                            <div class="thumbnail">
-                                AQUI VAI UMA IMAGEM
-                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
-                            </div>
+                            <div class="thumbnail" id="image-holder"></div>
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal" }))
+                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
                             {
                                 Html.AntiForgeryToken();
 
@@ -49,33 +46,14 @@
 
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
-                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
-                            }
-
-                            @*<div class="item branding">
-                                <img src="~/Content/imgs/2752acc6-ede1-404c-8c78-c75eae096d07.png" style="width: 10%;">
-                                <div class="works-overlay">
-                                    <div class="wo-inner">
-                                        <h4>@Html.DisplayFor(modelItem => modelItem.Upload.NomeArquivo)</h4>
-                                    </div>
-                                </div>
-                            </div>*@
-
-
-                            <form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Veiculo")" method="post" enctype="multipart/form-data">
                                 <div id="wrapper">
-                                    <input id="fileUpload" name="file" type="file"><br />
-                                    <div id="image-holder"></div>
+                                    <input id="fileUpload" name="file" type="file">
                                 </div>
+                                <br />
 
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
 
-                              @*  <label class="control-label">Selecione a imagem do veículo</label>*@
-                            @*    <input type="file" name="file" class="file">*@
-                                <button type="submit">Aqui</button>
-                            </form>
-
-                           
-
+                            }
                         </div>
                     </div>
                 </div>
@@ -106,34 +84,6 @@
             alert("Este navegador nao suporta FileReader.");
         }
     });
+
 </script>
-
-@*
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/fileinput.js"></script>
-<link href="~/Content/bootstrap-fileinput/css/fileinput.css" rel="stylesheet" />
-<link href="~/Content/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" />
-
-@*<form id="formUploadArquivo" action="@Url.Action("SalvarArquivo", "Produto")" method="post" enctype="multipart/form-data">
-    <label class="control-label">Selecione a imagem do veículo</label>
-    <input type="file" name="file" class="file">
-</form>
-
-
-@section scripts{
-    <script type="text/javascript">
-        $(function () {
-            $("#input-id").fileinput();
-
-            // with plugin options
-            $("#input-id").fileinput({ 'showUpload': false, 'previewFileType': 'any' });
-        });
-
-        $('.btn btn-default fileinput-upload fileinput-upload-button').click(function () {
-            $('#formUploadArquivo').submit();
-        });
-       
-    </script>
-}*@
 

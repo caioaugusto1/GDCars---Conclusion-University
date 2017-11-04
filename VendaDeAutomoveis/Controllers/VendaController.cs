@@ -96,6 +96,11 @@ namespace VendaDeAutomoveis.Controllers
                     }
                 }
 
+                cadVenda.Venda = Mapper.Map<Venda>(cadVenda);
+                
+                cadVenda.Venda = CalcularVeiculoEsportivo(cadVenda.Venda);
+                cadVenda.Venda = CalcularPagamento(cadVenda.Venda);
+
                 return RedirectToAction("DetailsConfirmar", cadVenda );
             }
             else
@@ -103,7 +108,7 @@ namespace VendaDeAutomoveis.Controllers
                 return View("Create", cadVenda);
             }
 
-
+            #region Coments
             //ViewBag.Cliente = _clienteRepository.ObterTodos();
             //ViewBag.Veiculo = _veiculoRepository.ObterTodos();
 
@@ -161,6 +166,7 @@ namespace VendaDeAutomoveis.Controllers
             //{
             //    return View("Create", cadVenda);
             //}
+            #endregion
 
         }
 
@@ -179,6 +185,7 @@ namespace VendaDeAutomoveis.Controllers
             detailsDeleteVendaViewModel.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
             detailsDeleteVendaViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cadVenda.IdEndereco));
             detailsDeleteVendaViewModel.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+            detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(cadVenda.Venda);
 
             return View(detailsDeleteVendaViewModel);
         }
@@ -186,29 +193,21 @@ namespace VendaDeAutomoveis.Controllers
         [HttpPost]
         public ActionResult Confirmar(DetailsDeleteVendaViewModel cadVenda)
         {
-            //var venda = new Venda()
-            //{
-            //    IdCliente = cadVenda.IdCliente,
-            //    IdVeiculo = cadVenda.IdVeiculo,
-            //    IdFormaDePagamento = cadVenda.IdFormaDePagamento,
-            //    IdPerfomance = cadVenda.IdPerformance,
-            //    Valor = cadVenda.Valor,
-            //    Tipo_Entrega = cadVenda.Tipo_Entrega,
-            //    Status = cadVenda.Status,
-            //    Observacoes = cadVenda.Observacoes
-            //};
+            var e = new GDC_Vendas()
+            {
+                IdCliente = cadVenda.Cliente.Id,
+                IdVeiculo = cadVenda.Veiculo.Id,
+                IdFormaPagamento = cadVenda.FormaDePagamento.Id,
+                IdPerformance = cadVenda.Performance.Id,
+                Valor = cadVenda.Veiculo.Valor,
+                Observacao = cadVenda.Venda.Observacoes,
+                Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
+                Status = cadVenda.Venda.Status.ToString(),
+            };
 
-            //var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
-            //var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
-            //var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
-
-            //_vendaRepository.Inserir(vendaToDomain);
-            //MudarClienteComunParaVip(cliente);
-            //AumentarValorVeiculoEsportivo(venda);
-            //CalcularPagamento(venda);
-
-            return View(cadVenda);
-        }
+            _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
+            return View("Index");
+           }
 
         public ActionResult HistoricoPedidos()
         {
@@ -239,26 +238,6 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
-        private double AumentarValorVeiculoEsportivo(Venda venda)
-        {
-            var objVenda = Mapper.Map<Venda, GDC_Vendas>(CalcularVeiculoEsportivo(venda));
-
-            _vendaRepository.Editar(objVenda);
-
-            return objVenda.Valor;
-        }
-
-        private double CalcularPagamento(Venda venda)
-        {
-            var pgto12ComJuros = new PagamentoAPrazo12xComJuros();
-
-            //var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(pgto12ComJuros.CalculaValor(venda.Valor));
-
-            //vendaRepository.Editar(vendaToDomain);
-
-            return venda.Valor;
-        }
-
         public JsonResult ObterInformacoesBasicasCliente(Guid idCliente)
         {
             var vendaViewModel = new CadastrarVendaViewModel();
@@ -278,7 +257,6 @@ namespace VendaDeAutomoveis.Controllers
         public ActionResult ObterValorVeiculo(Guid idVeiculo)
         {
             var veiculo = _veiculoRepository.ObterPorId(idVeiculo);
-            //return Json(new { success = true, veiculo.Valor });
             return Content(veiculo.Valor.ToString());
         }
 

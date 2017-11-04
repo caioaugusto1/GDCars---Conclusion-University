@@ -28,6 +28,10 @@ namespace VendaDeAutomoveis.Models
         public Guid IdEndereco { get; set; }
 
         public Endereco Endereco { get; set; }
+    
+        public Guid IdVenda { get; set; }
+
+        public Venda Venda { get; set; }
 
         public double Valor { get; set; }
 

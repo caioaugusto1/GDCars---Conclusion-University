@@ -326,6 +326,7 @@
     <Content Include="Scripts\plugins\purify.min.js" />
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
+    <Content Include="Views\Erorr\error.html" />
     <Content Include="Views\Venda\js\CreateEdit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

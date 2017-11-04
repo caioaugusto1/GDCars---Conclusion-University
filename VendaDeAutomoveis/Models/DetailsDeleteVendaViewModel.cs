@@ -6,6 +6,8 @@ namespace VendaDeAutomoveis.Models
     {
         public Cliente Cliente { get; set; }
 
+        public Venda Venda { get; set; }
+
         public Endereco Endereco { get; set; }
 
         public Veiculo Veiculo { get; set; }

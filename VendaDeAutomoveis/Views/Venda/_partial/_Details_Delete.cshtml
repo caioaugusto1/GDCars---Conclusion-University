@@ -4,6 +4,7 @@
 @Html.HiddenFor(item => Model.Veiculo.Id)
 @Html.HiddenFor(item => Model.Performance.Id)
 @Html.HiddenFor(item => Model.FormaDePagamento.Id)
+@Html.HiddenFor(item => Model.Venda)
 
 <tr>
     <td>
@@ -95,19 +96,33 @@
     <td>
         <strong>Modelo</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Banco.Modelo)</td>
+    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.Modelo)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Cor</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Banco.CorBanco)</td>
+    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.CorBanco)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Multimidia</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Banco.Multimidia)</td>
+    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.Multimidia)</td>
+</tr>
+
+<tr>
+    <td>
+        <span class="label label-success" style="font-size: 100% !important;">Venda</span>
+    </td>
+    <td></td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Observação</strong>
+    </td>
+    <td>@Html.DisplayFor(item => Model.Venda.Observacoes)</td>
 </tr>

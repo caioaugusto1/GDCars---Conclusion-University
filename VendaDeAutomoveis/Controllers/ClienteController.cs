@@ -32,6 +32,8 @@ namespace VendaDeAutomoveis.Controllers
 
         #endregion
 
+        #region Cliente
+
         public ActionResult Index()
         {
             var clienteViewModel = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
@@ -84,6 +86,45 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult EditarCliente(Guid id)
+        {
+            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
+
+            if (clienteViewModel == null)
+                return Content("Erro");
+
+            return View(clienteViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditarCliente(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
+
+                return RedirectToAction("Details", cliente.Id);
+            }
+            else
+            {
+                return View("EditarCliente", cliente);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Details(Guid id)
+        {
+            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
+
+            if (clienteViewModel.IdEndereco.HasValue)
+                clienteViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(clienteViewModel.IdEndereco.Value));
+
+            return View(clienteViewModel);
+        }
+
+        #endregion
+
         #region Endereco
 
         [HttpGet]
@@ -128,10 +169,6 @@ namespace VendaDeAutomoveis.Controllers
             {
                 _enderecoRepository.Editar(Mapper.Map<GDC_Enderecos>(endereco));
                 return RedirectToAction("Index");
-                //var enderecoViewModel = _enderecoRepository.BuscarPorIdCliente(endereco.Id);
-
-                //return View("CadastrarEndereco", enderecoViewModel);
-                ////return RedirectToAction("Index");
             }
             else
             {
@@ -140,42 +177,5 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         #endregion
-
-        [HttpGet]
-        public ActionResult EditarCliente(Guid id)
-        {
-            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
-
-            if (clienteViewModel == null)
-                return Content("Erro");
-
-            return View(clienteViewModel);
-        }
-
-        [HttpPost]
-        public ActionResult EditarCliente(Cliente cliente)
-        {
-            if (ModelState.IsValid)
-            {
-                _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
-
-                return RedirectToAction("Details", cliente.Id);
-            }
-            else
-            {
-                return View("EditarCliente", cliente);
-            }
-        }
-
-        [HttpGet]
-        public ActionResult Details(Guid id)
-        {
-            var clienteViewModel = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(id));
-           
-            if(clienteViewModel.IdEndereco.HasValue)
-                clienteViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(clienteViewModel.IdEndereco.Value));
-
-            return View(clienteViewModel);
-        }
     }
 }
