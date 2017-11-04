@@ -1,45 +1,56 @@
 ﻿@model VendaDeAutomoveis.Entidades.Cliente
 
-@Html.LabelFor(u => u.Nome, "Nome*")
-@Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Nome)
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.Nome, "Nome*")
+        @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Nome)
+    </div>
+</div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-3">
+        @Html.LabelFor(u => u.Data_Nascimento, "Data de Nascimento*")
+        @Html.TextBoxFor(u => u.Data_Nascimento, new { @id = "dtnascimento", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Data_Nascimento)
+    </div>
+</div>
 
-@Html.LabelFor(u => u.RG, "RG*")
-@Html.TextBoxFor(u => u.RG, new { @id = "rg", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.RG)
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.RG, "RG*")
+        @Html.TextBoxFor(u => u.RG, new { @id = "rg", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.RG)
+    </div>
+</div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.CPF, "CPF/MF*")
+        @Html.TextBoxFor(u => u.CPF, new { @id = "cpf", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.CPF)
+    </div>
+</div>
 
-@Html.LabelFor(u => u.CPF, "CPF/MF*")
-@Html.TextBoxFor(u => u.CPF, new { @id = "cpf", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.CPF)
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.Email, "E-mail*")
+        @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Email)
 
-<br />
-
-@Html.LabelFor(u => u.Data_Nascimento, "Data de Nascimento*")
-@Html.TextBoxFor(u => u.Data_Nascimento, new { @id = "dtnascimento", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Data_Nascimento)
-
-<br />
-
-@Html.LabelFor(u => u.Email, "E-mail*")
-@Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Email)
-
-<br />
+    </div>
+</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.maskedinput.min.js"></script>
 
 <script type="text/javascript">
 
-        $(document).ready(function () {
-            $("#cpf").mask("999.999.999-99");
-            $("#rg").mask("99.999.999-*");
-            $("#dtnascimento").mask("99/99/9999");
-            //$("#cep").mask("99999-999");
-        });
+    $(document).ready(function () {
+        $("#cpf").mask("999.999.999-99");
+        $("#rg").mask("99.999.999-*");
+        $("#dtnascimento").mask("99/99/9999");
+        //$("#cep").mask("99999-999");
+    });
 
 </script>

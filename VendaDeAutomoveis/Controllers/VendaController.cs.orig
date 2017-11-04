@@ -1,190 +1,340 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using VendaDeAutomoveis.DAO;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Factory.EntidadesFactory;
+using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
+using VendaDeAutomoveis.Repository;
+using VendaDeAutomoveis.Repository.ConnectionContext;
+using static VendaDeAutomoveis.Entidades.Cliente;
+using static VendaDeAutomoveis.Entidades.Venda;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Controllers
 {
+    [AutorizacaoFilter]
     public class VendaController : Controller
     {
-        private VendaDAO vendaDAO;
-        private ClienteDAO clienteDAO;
-        private ProdutoDAO produtoDAO;
-        private PagamentosDAO pagamentoDAO;
-        public VendaController(VendaDAO vendaDAO, ClienteDAO clienteDao, ProdutoDAO produtoDAO, PagamentosDAO pagamentoDAO)
-        {
-            this.vendaDAO = vendaDAO;
-            this.clienteDAO = clienteDao;
-            this.produtoDAO = produtoDAO;
-            this.pagamentoDAO = pagamentoDAO;
-        }
-        public ActionResult Form()
-        {
-            ViewBag.Cliente = clienteDAO.Lista();
-            ViewBag.Produto = produtoDAO.Lista();
-            ViewBag.FormaDePagamento = pagamentoDAO.Lista();
-            return View();
-        }
-        public ActionResult AdicionarVenda(Venda vendas)
-        {
-            if (ModelState.IsValid)
-            {              
-                FormaDePagamento formaDePagamento = pagamentoDAO.PegarPagamento(vendas.IdFormaDePagamento);
-                Cliente cliente = clienteDAO.PegarCliente(vendas.IdCliente);
+        #region Instâncias Repositorys
 
-                if (vendas.TipoEntrega == 0)
-                {
-                    ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
-                    ViewBag.Cliente = clienteDAO.Lista();
-                    ViewBag.Produto = produtoDAO.Lista();
-                    return View("Form", vendas);
-                }
-                if (vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Endereco == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.NumeroDaCasa == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Estado == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.Cidade == null || vendas.TipoEntrega == Enum.TipoEntrega.Domiciliar && cliente.CEP == null)
-                {
+        private ClienteRepository _clienteRepository;
+        private VendaRepository _vendaRepository;
+        private VeiculoRepository _veiculoRepository;
+        private FormaPagamentoRepository _formaPagamentoRepository;
+        private EnderecoRepository _enderecoRepository;
+        private PerfomanceRepository _perfomanceRepository;
+        private RodaRepository _rodaRepository;
+        private BancoRepository _bancoRepository;
+        private CorVeiculoRepository _corRepository;
 
-                    ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
-                    ViewBag.Cliente = clienteDAO.Lista();
-                    ViewBag.Produto = produtoDAO.Lista();
-                    ViewBag.ExibirCampo = true;
-                    return View("Form", vendas);
-                }
-                vendaDAO.AdicionarVenda(vendas);
-                MudarClienteComunParaVip(cliente);
-                Produto produto = produtoDAO.PegarProduto(vendas.IdProduto);
-                AumentarValorVeiculoEsportivo(vendas);
-                CalcularPagamento(vendas);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                ViewBag.Cliente = clienteDAO.Lista();
-                ViewBag.Produto = produtoDAO.Lista();
-                return View("Form");
-            }
+        #endregion
+
+        #region Método Construtor
+
+        public VendaController(VendaRepository _vendaRepository, ClienteRepository _clienteRepository, VeiculoRepository _veiculoRepository,
+            FormaPagamentoRepository _formaPagamentoRepository, EnderecoRepository _enderecoRepository, PerfomanceRepository _perfomanceRepository,
+            RodaRepository _rodaRepository, BancoRepository _bancoRepository, CorVeiculoRepository _corRepository)
+        {
+            this._clienteRepository = _clienteRepository;
+            this._vendaRepository = _vendaRepository;
+            this._veiculoRepository = _veiculoRepository;
+            this._formaPagamentoRepository = _formaPagamentoRepository;
+            this._enderecoRepository = _enderecoRepository;
+            this._perfomanceRepository = _perfomanceRepository;
+            this._rodaRepository = _rodaRepository;
+            this._bancoRepository = _bancoRepository;
+            this._corRepository = _corRepository;
         }
+
+        #endregion
+
         public ActionResult Index()
         {
-            IList<Venda> vendas = vendaDAO.Lista();
-            return View(vendas);
-        }
-        public ActionResult HistoricoPedidos(HistoricoPedidosModel model)
-        {
-            model.Clientes = clienteDAO.Lista();
-            model.Vendas = vendaDAO.BuscaPorCliente(model.IdCliente);
-            return View(model);
-        }
-        private void MudarClienteComunParaVip(Cliente cliente)
-        {
-            if (cliente.TipoDoCliente == TipoCliente.Comum && vendaDAO.TotalPorCliente(cliente.IdCliente) >= 200000)
-            {
-                cliente.TipoDoCliente = TipoCliente.Vip;
-                clienteDAO.EditarCliente(cliente);
-            }
-        }
-        private decimal AumentarValorVeiculoEsportivo(Venda venda)
-        {
-            if (venda.Produto.TipoVeiculo == TipoVeiculo.Esportivo)
-            {
-                string recebendoObservacao = venda.Observacoes;
-                venda.Valor = (venda.Valor + 12000);
-                venda.Observacoes = recebendoObservacao + " Veiculo Esportivo : Acréscimo de R$12.000,00 referente ao período de 12 meses de seguro obrigatório";
-                vendaDAO.EditarVenda(venda);
-            }
-            return venda.Valor;
-        }
-        private decimal CalcularPagamento(Venda venda)
-        {
-            string recebendoObservacao = venda.Observacoes;
+            var vendaViewModel = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(_vendaRepository.ObterTodos());
 
-            if (venda.FormaDePagamento.IdFormaDePagamento == 1)
-            {
-                venda.Observacoes = recebendoObservacao + " Financiamento com pagamento à vista";
-                vendaDAO.EditarVenda(venda);
-             }        
-            else if (venda.FormaDePagamento.IdFormaDePagamento == 2)
-            {
-                decimal parcela = venda.Valor;
-                parcela = parcela / 12;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-                vendaDAO.EditarVenda(venda);
-            }
-            else if (venda.FormaDePagamento.IdFormaDePagamento == 3)
-            {
-                decimal parcela = venda.Valor;
-                parcela = parcela / 60;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-                vendaDAO.EditarVenda(venda);
-            }
-            else if (venda.FormaDePagamento.IdFormaDePagamento == 4)
-            {
-                double juros = 0.03;
-                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
-                decimal parcela = venda.Valor;
-                parcela = parcela / 12;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-                vendaDAO.EditarVenda(venda);
-            }
-            else if (venda.FormaDePagamento.IdFormaDePagamento == 5)
-            {
-                double juros = 0.05;
-                venda.Valor = (venda.Valor * Convert.ToDecimal(juros)) + venda.Valor;
-                decimal parcela = venda.Valor;
-                parcela = parcela / 60;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-                vendaDAO.EditarVenda(venda);
-            }
-            return venda.Valor;
+            return View(vendaViewModel);
         }
-        public ActionResult PegarPrecoProduto(int IdProduto)
-        {
-            var produto = produtoDAO.PegarProduto(IdProduto);
-            return Content(produto.Preco.ToString());
-<<<<<<< HEAD
-        }
-     
 
-=======
-        } 
->>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
-        public ActionResult PegarEndereco(int IdCliente)
+        [HttpGet]
+        public ActionResult Create()
         {
-            var cliente = clienteDAO.PegarCliente(IdCliente);
-            return PartialView("_ParcialviewEndereco", cliente);
+            CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();
+
+            vendaViewModel.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
+            vendaViewModel.FormasDePagamentos = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterTodos());
+            vendaViewModel.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+            vendaViewModel.Performance = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfomanceRepository.ObterTodos());
+            vendaViewModel.Endereco = new Endereco();
+
+            return View(vendaViewModel);
         }
-        public ActionResult PegarFormaDePagamento(int IdCliente)
-        { 
-            var cliente = clienteDAO.PegarCliente(IdCliente);
-            if(cliente.TipoDoCliente == TipoCliente.Vip)
+
+        [HttpPost]
+        public ActionResult Create(CadastrarVendaViewModel cadVenda)
+        {
+            if (cadVenda.Tipo_Entrega != EntregaVenda.Domiciliar && cadVenda.Tipo_Entrega != EntregaVenda.Loja)
             {
-                var pagamento = pagamentoDAO.ListaDePagamentosVip();
-                return PartialView("_ParcialViewFormaDePagamento", pagamento);
+                ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
+                return View("Create", cadVenda);
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (cadVenda.Tipo_Entrega == EntregaVenda.Domiciliar)
+                {
+                    if (cadVenda.Endereco == null || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Numero) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Estado)
+                        || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Cidade) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.CEP))
+                    {
+                        ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
+                        ViewBag.ExibirCampo = true;
+                        return View("Create", cadVenda);
+                    }
+                }
+
+                cadVenda.Venda = Mapper.Map<Venda>(cadVenda);
+                
+                cadVenda.Venda = CalcularVeiculoEsportivo(cadVenda.Venda);
+                cadVenda.Venda = CalcularPagamento(cadVenda.Venda);
+
+                return RedirectToAction("DetailsConfirmar", cadVenda );
             }
             else
             {
-                var pagamento = pagamentoDAO.ListaDePagamentosComum();
-                return PartialView("_ParcialViewFormaDePagamento", pagamento);
+                return View("Create", cadVenda);
+            }
+<<<<<<< HEAD
+
+            #region Coments
+            //ViewBag.Cliente = _clienteRepository.ObterTodos();
+            //ViewBag.Veiculo = _veiculoRepository.ObterTodos();
+
+            //var venda = new Venda()
+            //{
+            //    IdCliente = cadVenda.IdCliente,
+            //    IdVeiculo = cadVenda.IdVeiculo,
+            //    IdFormaDePagamento = cadVenda.IdFormaDePagamento,
+            //    IdPerfomance = cadVenda.IdPerformance,
+            //    Valor = cadVenda.Valor,
+            //    Tipo_Entrega = cadVenda.Tipo_Entrega,
+            //    Status = cadVenda.Status,
+            //    Observacoes = cadVenda.Observacoes
+            //};
+
+            //if (cadVenda.Tipo_Entrega != EntregaVenda.Domiciliar && cadVenda.Tipo_Entrega != EntregaVenda.Loja)
+            //{
+            //    ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
+            //    return View("Create", cadVenda);
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+
+            //    var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
+
+            //    var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
+
+            //    vendaToDomain.IdFormaPagamento = formaDePagamento.Id;
+            //    vendaToDomain.IdPerformance = cadVenda.IdPerformance;
+
+            //    if (venda.Tipo_Entrega == EntregaVenda.Domiciliar)
+            //    {
+            //        if(cliente.Endereco == null || cliente.Endereco.Numero == null || cliente.Endereco.Estado == null 
+            //            || cliente.Endereco.Cidade == null || cliente.Endereco.CEP == null)
+            //        {
+
+            //            ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
+            //            ViewBag.Cliente = _clienteRepository.ObterTodos();
+            //            ViewBag.Veiculo = _clienteRepository.ObterTodos();
+            //            ViewBag.ExibirCampo = true;
+            //            return View("Create", cadVenda);
+            //        }
+            //    }
+
+            //    _vendaRepository.Inserir(vendaToDomain);
+            //    MudarClienteComunParaVip(cliente);
+            //    //Veiculo veiculo = veiculoRepository.ObterPorId(venda.Id);
+            //    AumentarValorVeiculoEsportivo(venda);
+            //    CalcularPagamento(venda);
+            //    return RedirectToAction("Index");
+            //}
+            //else
+            //{
+            //    return View("Create", cadVenda);
+            //}
+            #endregion
+
+=======
+>>>>>>> 0d5546dc5929e368111651231cd9a71204a0135a
+        }
+
+        [HttpGet]
+        public ActionResult DetailsConfirmar(CadastrarVendaViewModel cadVenda)
+        {
+            DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
+
+            detailsDeleteVendaViewModel.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
+            detailsDeleteVendaViewModel.Performance = Mapper.Map<Performance>(_perfomanceRepository.ObterPorId(cadVenda.IdPerformance));
+            detailsDeleteVendaViewModel.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(detailsDeleteVendaViewModel.Performance.IdRoda));
+            detailsDeleteVendaViewModel.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(detailsDeleteVendaViewModel.Performance.IdBanco));
+            detailsDeleteVendaViewModel.Cor_Veiculo = Mapper.Map<Cor_Veiculo>(_corRepository.ObterPorId(detailsDeleteVendaViewModel.Performance.IdCorVeiculo));
+            detailsDeleteVendaViewModel.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
+            detailsDeleteVendaViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cadVenda.IdEndereco));
+            detailsDeleteVendaViewModel.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+            detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(cadVenda.Venda);
+
+            return View(detailsDeleteVendaViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Confirmar(DetailsDeleteVendaViewModel cadVenda)
+        {
+<<<<<<< HEAD
+            var e = new GDC_Vendas()
+            {
+                IdCliente = cadVenda.Cliente.Id,
+                IdVeiculo = cadVenda.Veiculo.Id,
+                IdFormaPagamento = cadVenda.FormaDePagamento.Id,
+                IdPerformance = cadVenda.Performance.Id,
+                Valor = cadVenda.Veiculo.Valor,
+                Observacao = cadVenda.Venda.Observacoes,
+                Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
+                Status = cadVenda.Venda.Status.ToString(),
+            };
+
+            _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
+            return View("Index");
+           }
+=======
+           
+
+            return View(cadVenda);
+        }
+>>>>>>> 0d5546dc5929e368111651231cd9a71204a0135a
+
+        public ActionResult HistoricoPedidos()
+        {
+            List<HistoricoPedidosModel> historicoPedidoVM = new List<HistoricoPedidosModel>();
+
+            //var list = Mapper.Map<List<GDC_Vendas>, List<Venda>>(_vendaRepository.ObterTodos().ToList());
+            //historicoPedidoVM.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos().ToList());
+
+            //foreach(var item in list)
+            //{
+            //    historicoPedidoVM.Add(item);
+            //}
+
+
+            return View(historicoPedidoVM);
+        }
+
+        private void MudarClienteComunParaVip(Cliente cliente)
+        {
+            if (cliente.Tipo == TipoCliente.Comum)
+            {
+                var calcularGastoCliente = _vendaRepository.GastosPorCliente(cliente.Id);
+
+                if (calcularGastoCliente >= 200000)
+                    MudarClienteParaVip(cliente);
+
+                _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
             }
         }
-<<<<<<< HEAD
-                        
-        public ActionResult AtualizarEndereco(Cliente cliente)
+
+        public JsonResult ObterInformacoesBasicasCliente(Guid idCliente)
+        {
+            var vendaViewModel = new CadastrarVendaViewModel();
+
+            vendaViewModel.Performance = Mapper.Map<IList<Performance>>(_perfomanceRepository.ObterPorIdCliente(idCliente));
+
+            var cliente = _clienteRepository.ObterPorId(idCliente);
+
+            if (cliente.Tipo == TipoCliente.Vip.ToString())
+                vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip());
+            else
+                vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
+
+            return Json(new { FormasPagamentos = vendaViewModel.FormasDePagamentos, Performances = vendaViewModel.Performance });
+        }
+
+        public ActionResult ObterValorVeiculo(Guid idVeiculo)
+        {
+            var veiculo = _veiculoRepository.ObterPorId(idVeiculo);
+            return Content(veiculo.Valor.ToString());
+        }
+
+        public ActionResult PegarFormaDePagamento(Guid IdCliente)
+        {
+            var vendaViewModel = new CadastrarVendaViewModel();
+
+            var cliente = _clienteRepository.ObterPorId(IdCliente);
+
+            if (cliente.Tipo == TipoCliente.Vip.ToString())
+                vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip().ToList());
+            else
+                vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum().ToList());
+
+            return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
+        }
+
+        public PartialViewResult ObterEnderecoCliente(Guid idCliente)
+        {
+            var cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(idCliente));
+
+            if (cliente.IdEndereco.HasValue)
+                cliente.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cliente.IdEndereco.Value));
+            else
+                cliente.Endereco = new Endereco();
+
+            return PartialView("_ParcialviewEndereco", cliente.Endereco);
+        }
+
+        public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa, 
+            string CEP, string Cidade, string Estado, string Complemento)
         {
             if (ModelState.IsValid)
             {
-                clienteDAO.EditarCliente( cliente);
-                return RedirectToAction("Index");
+                var infoCliente = _clienteRepository.ObterPorId(idCliente);
+                
+                var newEndereco = new GDC_Enderecos()
+                {
+                    Endereco = Endereco,
+                    Bairro = Bairro,
+                    Numero = NumeroDaCasa,
+                    CEP = CEP,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Complemento = Complemento
+                };
+
+                var endereco = new Endereco();
+
+                if (infoCliente.IdEndereco.HasValue)
+                {
+                    endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(infoCliente.IdEndereco.Value));
+                    
+                    if (endereco != null)
+                    {
+                        _enderecoRepository.Editar(newEndereco);
+                    }
+                }
+                else
+                {
+                    newEndereco.Id = Guid.NewGuid();
+
+                    _enderecoRepository.Inserir(newEndereco);
+                    _clienteRepository.Atualizar(newEndereco.Id, idCliente);
+                }
+
+                return Content("OK");
             }
             else
             {
-                return View("Index", cliente);
-            }     
+                return Content("Campo errado");
+            }
         }
-       
-=======
->>>>>>> 26918cb44f8d45a84a9e1a0272f93febce110215
     }
 }

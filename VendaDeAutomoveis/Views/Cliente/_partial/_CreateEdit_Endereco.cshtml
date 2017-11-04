@@ -2,55 +2,57 @@
 
 @Html.HiddenFor(u => u.IdCliente)
 
-@Html.LabelFor(u => u.EnderecoNome, "Endereço")
-@Html.TextBoxFor(u => u.EnderecoNome, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.EnderecoNome)
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.EnderecoNome, "Endereço")
+        @Html.TextBoxFor(u => u.EnderecoNome, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.EnderecoNome)
+    </div>
+</div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.Numero, "Número da Casa")
+        @Html.TextBoxFor(u => u.Numero, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Numero)
+    </div>
 
-@Html.LabelFor(u => u.Numero, "Número da casa")
-@Html.TextBoxFor(u => u.Numero, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Numero)
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.Complemento, "Complemento")
+        @Html.TextBoxFor(u => u.Complemento, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Complemento)
+    </div>
+</div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.CEP, "CEP")
+        @Html.TextBoxFor(u => u.CEP, new { id = "cep", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.CEP)
+    </div>
 
-@Html.LabelFor(u => u.Complemento, "Complemento")
-@Html.TextBoxFor(u => u.Complemento, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Complemento)
+    <div class="col-md-5">
+        @Html.LabelFor(u => u.Bairro, "Bairro")
+        @Html.TextBoxFor(u => u.Bairro, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Bairro)
+    </div>
+</div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.Cidade, "Cidade")
+        @Html.TextBoxFor(u => u.Cidade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Cidade)
+    </div>
+</div>
 
-@Html.LabelFor(u => u.CEP, "CEP")
-@Html.TextBoxFor(u => u.CEP, new { id = "cep", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.CEP)
-
-<br />
-
-@Html.LabelFor(u => u.Bairro, "Bairro")
-@Html.TextBoxFor(u => u.Bairro, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Bairro)
-
-<br />
-
-@Html.LabelFor(u => u.Cidade, "Cidade")
-@Html.TextBoxFor(u => u.Cidade, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Cidade)
-
-<br />
-
-@Html.LabelFor(u => u.Estado, "Estado")
-@Html.TextBoxFor(u => u.Estado, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Estado)
-
-<br />
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.Estado, "Estado")
+        @Html.TextBoxFor(u => u.Estado, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Estado)
+    </div>
+</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.maskedinput.min.js"></script>
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        $("#cep").mask("99999-999");
-    });
-
-</script>

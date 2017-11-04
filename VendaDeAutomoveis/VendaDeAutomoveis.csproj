@@ -218,6 +218,7 @@
     <Content Include="Content\bootstrap\js\plugins\morris\raphael.min.js" />
     <Content Include="Content\bootstrap\js\rating\jquery.raty.js" />
     <Content Include="Content\bootstrap\js\tiny-scrollbar.js" />
+    <Content Include="Content\bootstrap\js\Utils\Utils.js" />
     <Content Include="Content\bootstrap\js\wizard\bwizard.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\bootstrap-wysihtml5.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\wysihtml5-0.3.0.js" />
@@ -334,6 +335,7 @@
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
     <Content Include="Views\Erorr\error.html" />
+    <Content Include="Views\Performance\js\customValidate.js" />
     <Content Include="Views\Venda\js\CreateEdit.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -343,6 +345,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\Adapter\CadastrarVendaViewModelAdapter.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\ConfigMappingProfile.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -470,6 +473,7 @@
     <Content Include="Views\Venda\DetailsConfirmar.cshtml" />
     <Content Include="Views\Venda\_partial\_Details_Delete.cshtml" />
     <Content Include="Views\Cliente\EditarEndereco.cshtml" />
+    <Content Include="Views\Shared\_partial\_modal_error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

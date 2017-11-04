@@ -51,6 +51,20 @@ namespace VendaDeAutomoveis.AutoMapper
             CreateMap<CadastrarVendaViewModel, GDC_Veiculos>()
               .ReverseMap();
 
+            CreateMap<CadastrarVendaViewModel, DetailsDeleteVendaViewModel>()
+                 .ForMember(map => map.Cliente, map => map.MapFrom(y => y.Clientes))
+                  .ForMember(map => map.FormaDePagamento, map => map.MapFrom(y => y.FormasDePagamentos))
+                   .ForMember(map => map.Performance, map => map.MapFrom(y => y.Performance))
+                    .ForMember(map => map.Veiculo, map => map.MapFrom(y => y.Veiculos))
+                     .ForMember(map => map.Venda, map => map.MapFrom(y => y.Venda));
+
+            CreateMap<DetailsDeleteVendaViewModel, CadastrarVendaViewModel>()
+                .ForMember(map => map.Clientes, map => map.MapFrom(y => y.Cliente))
+                 .ForMember(map => map.FormasDePagamentos, map => map.MapFrom(y => y.FormaDePagamento))
+                  .ForMember(map => map.Performance, map => map.MapFrom(y => y.Performance))
+                   .ForMember(map => map.Veiculos, map => map.MapFrom(y => y.Veiculo))
+                    .ForMember(map => map.Venda, map => map.MapFrom(y => y.Venda));
+
             #endregion
         }
     }

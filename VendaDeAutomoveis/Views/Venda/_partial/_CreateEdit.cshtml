@@ -1,41 +1,51 @@
 ﻿@model VendaDeAutomoveis.Models.CadastrarVendaViewModel
 
-@Html.LabelFor(m => m.Valor, "Valor da Compra*")
-@Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
-@Html.ValidationMessageFor(m => m.Valor)
-
-<br />
-
-<div id="_PerformancesDisponiveisCliente">
-    @Html.Partial("_partial/_PerformancesDisponiveisCliente", Model.Performance)
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(m => m.Valor, "Valor do Veículo*")
+        @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Valor)
+    </div>
 </div>
 
-<br />
-
-<div id="_ParcialViewFormaDePagamento">
-    @Html.Partial("_partial/_ParcialViewFormaDePagamento", Model.FormasDePagamentos)
+<div class="form-group">
+    <div class="col-md-5">
+        <div id="_PerformancesDisponiveisCliente">
+            @Html.Partial("_partial/_PerformancesDisponiveisCliente", Model.Performance)
+        </div>
+    </div>
 </div>
 
-<br />
+<div class="form-group">
+    <div class="col-md-5">
+        <div id="_ParcialViewFormaDePagamento">
+            @Html.Partial("_partial/_ParcialViewFormaDePagamento", Model.FormasDePagamentos)
+        </div>
+    </div>
+</div>
 
-@Html.LabelFor(m => m.Tipo_Entrega, "Tipo de Entrega*")
-@Html.EnumDropDownListFor(m => m.Tipo_Entrega, "Tipo de Entrega", new { @class = "form-control" })
-@Html.ValidationMessageFor(m => m.Tipo_Entrega)
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(m => m.Tipo_Entrega, "Tipo de Entrega*")
+        @Html.EnumDropDownListFor(m => m.Tipo_Entrega, "Tipo de Entrega", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Tipo_Entrega)
+    </div>
+</div>
 
-<br />
-
-@Html.LabelFor(m => m.Status, "Tipo de Entrega*")
-@Html.EnumDropDownListFor(m => m.Status, "Tipo de Entrega", new { @class = "form-control" })
-@Html.ValidationMessageFor(m => m.Status)
-
-<br />
+<div class="form-group">
+    <div class="col-md-5">
+        @Html.LabelFor(m => m.Status, "Tipo de Entrega*")
+        @Html.EnumDropDownListFor(m => m.Status, "Tipo de Entrega", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Status)
+    </div>
+</div>
 
 @*<div id="parcialEndereco">
-    @Html.Partial("_partial/_ParcialviewEndereco", Model.Endereco)
-</div>*@
+        @Html.Partial("_partial/_ParcialviewEndereco", Model.Endereco)
+    </div>*@
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <div class="widget">
             <div class="widget-header">
                 <div class="title">
@@ -45,7 +55,7 @@
             <div class="widget-body">
                 <div class="control-group">
                     <div class="wysiwyg-container">
-                        <textarea id="wysiwyg" name="Observacoes" class="col-sm-12 no-margin" placeholder="Digite o texto ..." style="height: 140px">
+                        <textarea id="wysiwyg" name="Observacoes" class="col-sm-10 no-margin" placeholder="Digite o texto ..." style="height: 140px">
                       </textarea>
                     </div>
                 </div>

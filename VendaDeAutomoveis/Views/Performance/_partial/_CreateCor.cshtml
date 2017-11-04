@@ -1,7 +1,7 @@
 ﻿@model VendaDeAutomoveis.Entidades.Cor_Veiculo
 
 @Html.LabelFor(model => model.Estilo, htmlAttributes: new { @class = "control-label col-md-2" })
-@Html.EnumDropDownListFor(model => model.Estilo, new { @class = "form-control" })
+@Html.EnumDropDownListFor(model => model.Estilo, "Selecione", new { @class = "form-control" })
 @Html.ValidationMessageFor(model => model.Estilo, "", new { @class = "text-danger" })
 
 <br />
@@ -9,7 +9,7 @@
 <label style="float:none !important;">Valor</label>
 <div class="input-group" style="width: 30%">
     <span class="input-group-addon">R$</span>
-    <input type="text" id="Valor" name="Cor_Veiculo.Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
+    <input type="text" id="CorValor" name="Cor_Veiculo.Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
     <span class="input-group-addon">.00</span>
     @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
 </div>

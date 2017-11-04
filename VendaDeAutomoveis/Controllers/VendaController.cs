@@ -94,10 +94,10 @@ namespace VendaDeAutomoveis.Controllers
                     }
                 }
 
+
                 cadVenda.Venda = Mapper.Map<Venda>(cadVenda);
-                
-                cadVenda.Venda = CalcularVeiculoEsportivo(cadVenda.Venda);
-                cadVenda.Venda = CalcularPagamento(cadVenda.Venda);
+                //cadVenda.Venda = CalcularVeiculoEsportivo(cadVenda.Venda);
+                //cadVenda.Venda = CalcularPagamento(cadVenda.Venda);
 
                 return RedirectToAction("DetailsConfirmar", cadVenda );
             }
@@ -105,8 +105,6 @@ namespace VendaDeAutomoveis.Controllers
             {
                 return View("Create", cadVenda);
             }
-            #region Coments
-            #endregion
         }
 
         [HttpGet]
