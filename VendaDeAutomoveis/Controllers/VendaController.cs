@@ -75,8 +75,6 @@ namespace VendaDeAutomoveis.Controllers
         [HttpPost]
         public ActionResult Create(CadastrarVendaViewModel cadVenda)
         {
-            cadVenda.IdPerformance = Guid.Parse("07374954-2C92-4712-BF99-2AAE9B6552F7");
-
             if (cadVenda.Tipo_Entrega != EntregaVenda.Domiciliar && cadVenda.Tipo_Entrega != EntregaVenda.Loja)
             {
                 ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
@@ -87,8 +85,8 @@ namespace VendaDeAutomoveis.Controllers
             {
                 if (cadVenda.Tipo_Entrega == EntregaVenda.Domiciliar)
                 {
-                    if (cadVenda.Endereco == null || cadVenda.Endereco.Numero == null || cadVenda.Endereco.Estado == null
-                        || cadVenda.Endereco.Cidade == null || cadVenda.Endereco.CEP == null)
+                    if (cadVenda.Endereco == null || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Numero) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Estado)
+                        || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Cidade) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.CEP))
                     {
                         ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
                         ViewBag.ExibirCampo = true;
@@ -107,74 +105,13 @@ namespace VendaDeAutomoveis.Controllers
             {
                 return View("Create", cadVenda);
             }
-
             #region Coments
-            //ViewBag.Cliente = _clienteRepository.ObterTodos();
-            //ViewBag.Veiculo = _veiculoRepository.ObterTodos();
-
-            //var venda = new Venda()
-            //{
-            //    IdCliente = cadVenda.IdCliente,
-            //    IdVeiculo = cadVenda.IdVeiculo,
-            //    IdFormaDePagamento = cadVenda.IdFormaDePagamento,
-            //    IdPerfomance = cadVenda.IdPerformance,
-            //    Valor = cadVenda.Valor,
-            //    Tipo_Entrega = cadVenda.Tipo_Entrega,
-            //    Status = cadVenda.Status,
-            //    Observacoes = cadVenda.Observacoes
-            //};
-
-            //if (cadVenda.Tipo_Entrega != EntregaVenda.Domiciliar && cadVenda.Tipo_Entrega != EntregaVenda.Loja)
-            //{
-            //    ModelState.AddModelError("TipoEntrega", "Escolha um tipo de Entrega!");
-            //    return View("Create", cadVenda);
-            //}
-
-            //if (ModelState.IsValid)
-            //{
-            //    var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
-
-            //    var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
-
-            //    var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
-
-            //    vendaToDomain.IdFormaPagamento = formaDePagamento.Id;
-            //    vendaToDomain.IdPerformance = cadVenda.IdPerformance;
-
-            //    if (venda.Tipo_Entrega == EntregaVenda.Domiciliar)
-            //    {
-            //        if(cliente.Endereco == null || cliente.Endereco.Numero == null || cliente.Endereco.Estado == null 
-            //            || cliente.Endereco.Cidade == null || cliente.Endereco.CEP == null)
-            //        {
-
-            //            ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
-            //            ViewBag.Cliente = _clienteRepository.ObterTodos();
-            //            ViewBag.Veiculo = _clienteRepository.ObterTodos();
-            //            ViewBag.ExibirCampo = true;
-            //            return View("Create", cadVenda);
-            //        }
-            //    }
-
-            //    _vendaRepository.Inserir(vendaToDomain);
-            //    MudarClienteComunParaVip(cliente);
-            //    //Veiculo veiculo = veiculoRepository.ObterPorId(venda.Id);
-            //    AumentarValorVeiculoEsportivo(venda);
-            //    CalcularPagamento(venda);
-            //    return RedirectToAction("Index");
-            //}
-            //else
-            //{
-            //    return View("Create", cadVenda);
-            //}
             #endregion
-
         }
 
         [HttpGet]
         public ActionResult DetailsConfirmar(CadastrarVendaViewModel cadVenda)
         {
-            cadVenda.IdPerformance = Guid.Parse("07374954-2c92-4712-bf99-2aae9b6552f7");
-
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
 
             detailsDeleteVendaViewModel.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
@@ -204,6 +141,11 @@ namespace VendaDeAutomoveis.Controllers
                 Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
                 Status = cadVenda.Venda.Status.ToString(),
             };
+
+            //var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+            //var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
+            //var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
+
 
             _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
             return View("Index");
