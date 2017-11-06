@@ -34,26 +34,29 @@
                 <div class="widget-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-3">
-                            <div class="thumbnail" id="image-holder"></div>
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
-                                Html.AntiForgeryToken();
+                                @Html.AntiForgeryToken()
 
                                 Html.HiddenFor(model => model.Id);
 
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
-                            <div class="file-loading">
-                                <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-                                       data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-                            </div>
-                        </div>
-                                <br />
-                      
+                                <div class="file-loading">
+                                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
+                                </div>
+
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,7 +64,10 @@
     </div>
 </div>
 
+
+
 <script src="~/Scripts/fileinput.min.js"></script>
+
 <link href="~/Content/bootstrap/css/fileinput.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.rtl.css" rel="stylesheet" />
@@ -72,6 +78,6 @@
             showUpload: false,
             maxFileCount: 1,
             mainClass: "input-group-lg"
-    });
+        });
 </script>
 
