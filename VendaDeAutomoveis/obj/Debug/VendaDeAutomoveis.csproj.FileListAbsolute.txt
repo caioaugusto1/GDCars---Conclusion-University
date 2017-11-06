@@ -335,3 +335,46 @@ C:\Users\Fernando\Documents\Caio Augusto\GDCars\VendaDeAutomoveis\obj\Debug\Vend
 C:\Users\Fernando\Documents\Caio Augusto\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csproj.CoreCompileInputs.cache
 C:\Users\Fernando\Documents\Caio Augusto\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
 C:\Users\Fernando\Documents\Caio Augusto\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll.config
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\VendaDeAutomoveis.pdb
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\AutoMapper.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Dapper.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DomainValidation.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DotNetZip.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Microsoft.Web.Infrastructure.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\SqlMapper.Common.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\SqlMapper.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\WebActivatorEx.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\AutoMapper.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Dapper.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\DotNetZip.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\EntityFramework.SqlServer.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Common.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Ninject.Web.Mvc.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.pdb
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\Validator.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Razor.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Deployment.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Webpages.Razor.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Helpers.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\bin\System.Web.Mvc.xml
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csprojResolveAssemblyReference.cache
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.csproj.CoreCompileInputs.cache
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.dll
+D:\GDCars - TCC\GDCars\VendaDeAutomoveis\obj\Debug\VendaDeAutomoveis.pdb
