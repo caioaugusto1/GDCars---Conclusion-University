@@ -1,7 +1,7 @@
 ﻿@Html.Label("Custom Disponíveis")
 @Html.DropDownList("Id",
                 new SelectList(Model, "Id", "ValorTotal"), "Performances Disponíveis",
-        new { @class = "form-control" })
+        new { @class = "form-control", @id = "idCustom" })
 @Html.ValidationMessage("FormaDePagamentoModel")
 
 
