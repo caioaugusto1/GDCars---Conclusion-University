@@ -49,20 +49,33 @@
 
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
-                                <div class="file-loading">
-                                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-                                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
-                                </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        <div class="file-loading">
+                                            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                                   data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+                                        </div>
                                     </div>
                                 </div>
 
-                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
-                            }
+                                <br />
+=======
                                 <div class="file-loading">
                                     <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
                                            data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
                                 </div>
+
 >>>>>>> 86096e1d8ba0d5ca663fd33e41f7158bc0e8c8bb
+=======
+                                <div class="file-loading">
+                                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
+                                </div>
+
+>>>>>>> 4d136feffc9f5a3c52d11a653d860e4cb41a187d
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
                         </div>
@@ -73,9 +86,18 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+
 
 <script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>
+=======
+<<<<<<< HEAD
+
+
+=======
+<script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>
 >>>>>>> 6b71947ff1ee568e67f2628d26c036110c548ab4
+>>>>>>> 4d136feffc9f5a3c52d11a653d860e4cb41a187d
 <script src="~/Scripts/fileinput.min.js"></script>
 
 <link href="~/Content/bootstrap/css/fileinput.min.css" rel="stylesheet" />
@@ -84,8 +106,20 @@
 <link href="~/Content/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet" />
 <<<<<<< HEAD
 
+
+=======
+<<<<<<< HEAD
+<script type="text/javascript">
+    $(document).on('ready', function () {
+        $("#input-b3").fileinput({
+            showUpload: false,
+            maxFileCount: 1,
+            mainClass: "input-group-lg"
+        });
+</script>
 =======
 
 
 >>>>>>> 6b71947ff1ee568e67f2628d26c036110c548ab4
+>>>>>>> 4d136feffc9f5a3c52d11a653d860e4cb41a187d
 
