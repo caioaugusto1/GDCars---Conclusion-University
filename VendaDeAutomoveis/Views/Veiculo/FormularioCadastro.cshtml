@@ -43,7 +43,7 @@
 
                             @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
-                                Html.AntiForgeryToken();
+                                @Html.AntiForgeryToken()
 
                                 Html.HiddenFor(model => model.Id);
 
@@ -52,16 +52,15 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                        <div class="file-loading">
-                                            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-                                                   data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
-                                        </div>
-                                    </div>
+                                <div class="file-loading">
+                                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
                                 </div>
 
                                 <br />
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -70,8 +69,11 @@
     </div>
 </div>
 
+
+
 <script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>
 <script src="~/Scripts/fileinput.min.js"></script>
+
 <link href="~/Content/bootstrap/css/fileinput.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.rtl.css" rel="stylesheet" />

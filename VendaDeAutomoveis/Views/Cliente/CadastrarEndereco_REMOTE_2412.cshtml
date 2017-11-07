@@ -1,20 +1,21 @@
-﻿@model VendaDeAutomoveis.Entidades.Cliente
+﻿@model VendaDeAutomoveis.Entidades.Endereco
 
-<title>Cadastrar - Cliente</title>
+<title>Cadastrar - Endereço</title>
 
 @{
-    ViewBag.Title = "Cadastrar - Cliente";
+    ViewBag.Title = "Cadastrar - Endereço";
+    //Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
 <div class="dashboard-wrapper">
     <div class="page-title clearfix">
         <h2>
-            Cliente
+            Endereço
             <small>
                 <ul>
                     <li>Home</li>
                     <li>/</li>
-                    <li>Cliente</li>
+                    <li>Endereço</li>
                     <li>/</li>
                     <li>Cadastrar</li>
                 </ul>
@@ -40,11 +41,11 @@
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("AdicionarCliente", "Cliente", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
+                            @using (Html.BeginForm("AdicionarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
                             {
-                                @Html.AntiForgeryToken()
+                                Html.AntiForgeryToken();
 
-                                Html.RenderPartial("_partial/_CreateEdit", Model);
+                                Html.RenderPartial("_partial/_CreateEdit_Endereco", Model);
 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
@@ -57,6 +58,11 @@
 </div>
 
 <script src="~/Content/bootstrap/js/bootstrap.js"></script>
-<script src="@Url.Content("~/Scripts/Utils/CreateEditCliente.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/CreateEditEndereco.js")"></script>
 <script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
-        return true;
+
+<script>
+    $(document).ready(function () {
+        $("#cep").mask("99999-999");
+    });
+</script>
