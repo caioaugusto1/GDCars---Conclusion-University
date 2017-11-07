@@ -26,7 +26,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Aro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o tamanho do<b> Aro</b>.");
+        msgs.push("É necessário preencher o <b>Tamanho do Aro</b>.");
     } else {
         $('#Aro').css({ "background-color": "#fff", "border-color": "#ccc" });
     }

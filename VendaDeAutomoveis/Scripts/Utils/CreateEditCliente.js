@@ -60,10 +60,10 @@ function validForm() {
         $('#cpf').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
 
         if (!cpfValido) {
-            msgs.push("CPF inválido!");
+            msgs.push("<b>CPF inválido!</b>");
         }
         else {
-            msgs.push("CPF não preenchido!");
+            msgs.push("<b>CPF não preenchido!</b>");
         }
     } else {
         $('#cpf').css({ "background-color": "#fff", "border-color": "#ccc" });
