@@ -57,101 +57,12 @@
     </div>
 </div>
 
+<script src="~/Content/bootstrap/js/bootstrap.js"></script>
+<script src="@Url.Content("~/Scripts/Utils/CreateEditEndereco.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
 
-<script type="text/javascript">
-
+<script>
     $(document).ready(function () {
         $("#cep").mask("99999-999");
     });
-
-    $('#btnCadastrar').click(function () {
-        var isValid = validForm();
-
-        if (isValid == false) {
-            saveLead();
-        }
-        else {
-            $('#form').submit();
-        }
-    });
-
-    var msgs = [];
-    function validForm() {
-        msgs = [];
-        var campo;
-        var isValid = true;
-
-        campo = $("#EnderecoNome").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#EnderecoNome').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencha o cliente.");
-        } else {
-            $('#EnderecoNome').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#Numero').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Numero').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o Modelo do veículo.");
-        } else {
-            $('#Numero').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#CEP').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#CEP').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o Modelo do veículo.");
-        } else {
-            $('#CEP').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#Estado').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Estado').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o Modelo do veículo.");
-        } else {
-            $('#Estado').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#Bairro').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Bairro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o Modelo do veículo.");
-        } else {
-            $('#Bairro').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#Cidade').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Cidade').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o Modelo do veículo.");
-        } else {
-            $('#Cidade').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        return isValid;
-    }
-
-    function saveLead() {
-        var form = document.forms[0];
-        if (validForm()) {
-            form.submit();
-        }
-        else {
-            var novoHTML = "";
-            for (var i = 0; i < msgs.length; i++) {
-                var msg = msgs[i];
-                novoHTML += msg + "<br />";
-            }
-            $('#modalError .modal-body').html(novoHTML);
-            $('#modalError').modal('show');
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-        }
-    }
 </script>
