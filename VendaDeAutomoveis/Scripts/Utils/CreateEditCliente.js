@@ -29,7 +29,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#rg').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher com o <b>Modelo do veículo.<\b>");
+        msgs.push("É necessário preencher com o <b>Modelo do veículo</b>.");
     } else {
         $('#rg').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -38,7 +38,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Email').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher com <b>E-mail.<\b>");
+        msgs.push("É necessário preencher com <b>E-mail</b>.");
     } else {
         $('#Email').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -47,7 +47,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#dtnascimento').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher a <b>Data de Nascimento.<\b>");
+        msgs.push("É necessário preencher a <b>Data de Nascimento</b>.");
     } else {
         $('#dtnascimento').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
