@@ -20,7 +20,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Nome').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher com o nome do <b>Cliente.<\b>");
+        msgs.push("É necessário preencher com o nome do <b>Cliente<\b>.");
     } else {
         $('#Nome').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
