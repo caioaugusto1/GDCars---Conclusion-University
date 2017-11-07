@@ -8,7 +8,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#IdCliente').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o nome do <b>Cliente.<\b>");
     } else {
         $('#IdCliente').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -17,7 +17,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#RodaModelo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o Modelo do veículo.");
+        msgs.push("É necessário preencher o <b>Modelo do Veículo.<\b>");
     } else {
         $('#RodaModelo').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -26,7 +26,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Aro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o Modelo do veículo.");
+        msgs.push("É necessário preencher o tamanho do<b> Aro.<\b>");
     } else {
         $('#Aro').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -35,7 +35,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#RodaValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o Modelo do veículo.");
+        msgs.push("É necessário preencher o <b>Valor da Roda.<\b>");
     } else {
         $('#RodaValor').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -44,7 +44,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Estilo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário fornecer um e-mail válido!");
+        msgs.push("É necessário escolher o <b>Estilo<\b>");
     } else {
         $('#Estilo').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -53,7 +53,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#CorRoda').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário fornecer um e-mail válido!");
+        msgs.push("É necessário escolher a <b>Cor da Roda.<\b>");
     } else {
         $('#CorRoda').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -62,7 +62,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#CorValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o Modelo do veículo.");
+        msgs.push("É necessário preencher o <b>Valor da Cor.<\b>");
     } else {
         $('#CorValor').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -71,7 +71,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#ModeloBanco').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher um <b>Modelo de Banco.<\b>");
     } else {
         $('#ModeloBanco').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -80,7 +80,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#CorBanco').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher a <b>Cor do Banco.<\b>");
     } else {
         $('#CorBanco').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -89,7 +89,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#BancoValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher o Modelo do veículo.");
+        msgs.push("É necessário preencher o <b>Valor do Banco.<\b>");
     } else {
         $('#BancoValor').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
