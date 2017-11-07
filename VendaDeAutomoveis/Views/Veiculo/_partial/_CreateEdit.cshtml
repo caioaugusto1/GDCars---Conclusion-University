@@ -1,41 +1,54 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-<br />
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.Fabricante, "Fabricante*")
+        @Html.TextBoxFor(u => u.Fabricante, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Fabricante)
+    </div>
+</div>
 
-@Html.LabelFor(u => u.Fabricante, "Fabricante*")
-@Html.TextBoxFor(u => u.Fabricante, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Fabricante)
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.LabelFor(u => u.Modelo, "Modelo*")
+        @Html.TextBoxFor(u => u.Modelo, new { @id = "modelo", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Modelo)
+    </div>
+</div>
 
-<br />
-
-@Html.LabelFor(u => u.Modelo, "Modelo*")
-@Html.TextBoxFor(u => u.Modelo, new { @id = "modelo", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Modelo)
-
-<br />
-
-@{ 
+@{
     var anoAtual = DateTime.Now.Year;
 
-    if(DateTime.Now.Month > 9)
+    if (DateTime.Now.Month > 9)
     {
         anoAtual = DateTime.Now.Year + 1;
     }
 }
-<label for="disabledTextInput">Ano</label>
-<input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@anoAtual" value="@anoAtual" disabled>
-@Html.ValidationMessageFor(u => u.Ano)
 
-<br />
+<div class="form-group">
+    <div class="col-md-3">
+        <label for="disabledTextInput">Ano</label>
+        <input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@anoAtual" value="@anoAtual" disabled>
+        @Html.ValidationMessageFor(u => u.Ano)
+    </div>
+</div>
 
-@Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de Portas*")
-@Html.TextBoxFor(u => u.QuantidadeDePortas, new { @id = "qtportas", @class = "form-control" })
-@Html.ValidationMessageFor(u => u.QuantidadeDePortas)
+<div class="form-group">
+    <div class="col-md-3">
+        @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de Portas*")
+        @Html.TextBoxFor(u => u.QuantidadeDePortas, new { @id = "qtportas", @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.QuantidadeDePortas)
+    </div>
+</div>
 
-<br />
-
-@Html.LabelFor(u => u.Valor, "Valor*")
-@Html.TextBoxFor(u => u.Valor, new { @class = "form-control" })
-@Html.ValidationMessageFor(u => u.Valor)
-
-<br />
+<label style="float:none !important;">Valor</label>
+<div class="form-group">
+    <div class="col-md-5">
+        <div class="input-group">
+            <span class="input-group-addon">R$</span>
+            <input type="text" id="Valor" name="Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
+            <span class="input-group-addon">.00</span>
+            @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
