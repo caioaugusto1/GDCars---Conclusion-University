@@ -1,0 +1,163 @@
+﻿@model VendaDeAutomoveis.Entidades.Endereco
+
+<title>Cadastrar - Endereço</title>
+
+@{
+    ViewBag.Title = "Cadastrar - Endereço";
+    //Html.RenderPartial("_partial/_cabecalho_principal");
+}
+
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Endereço
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Endereço</li>
+                    <li>/</li>
+                    <li>Cadastrar</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Cadastrar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+
+                            @using (Html.BeginForm("AdicionarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
+                            {
+                                Html.AntiForgeryToken();
+
+                                Html.RenderPartial("_partial/_CreateEdit_Endereco", Model);
+
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/bootstrap/js/bootstrap.js"></script>
+<script src="@Url.Content("~/Scripts/Utils/CreateEditEndereco.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#cep").mask("99999-999");
+    });
+<<<<<<< HEAD
+
+    $('#btnCadastrar').click(function () {
+        var isValid = validForm();
+
+        if (isValid == false) {
+            saveLead();
+        }
+        else {
+            $('#form').submit();
+        }
+    });
+
+    var msgs = [];
+    function validForm() {
+        msgs = [];
+        var campo;
+        var isValid = true;
+
+        campo = $("#EnderecoNome").val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#EnderecoNome').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher o <b>Endereço.</b>");
+        } else {
+            $('#EnderecoNome').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        campo = $('#Numero').val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#Numero').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher o <b>Número</b>.");
+        } else {
+            $('#Numero').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        campo = $('#CEP').val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#CEP').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher o <b>CEP.</b>");
+        } else {
+            $('#CEP').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        campo = $('#Estado').val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#Estado').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher o <b>Estado.</b>");
+        } else {
+            $('#Estado').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        campo = $('#Bairro').val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#Bairro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher o <b>Bairro.</b>");
+        } else {
+            $('#Bairro').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        campo = $('#Cidade').val();
+        if (!campo && campo.length <= 0) {
+            isValid = false;
+            $('#Cidade').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+            msgs.push("É necessário preencher a <b>Cidade.</b>");
+        } else {
+            $('#Cidade').css({ "background-color": "#fff", "border-color": "#ccc" });
+        }
+
+        return isValid;
+    }
+
+    function saveLead() {
+        var form = document.forms[0];
+        if (validForm()) {
+            form.submit();
+        }
+        else {
+            var novoHTML = "";
+            for (var i = 0; i < msgs.length; i++) {
+                var msg = msgs[i];
+                novoHTML += msg + "<br />";
+            }
+            $('#modalError .modal-body').html(novoHTML);
+            $('#modalError').modal('show');
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+        }
+    }
+</script>
+=======
+</script>
+>>>>>>> eed63c314e56cd97feba68356ae36728e87581fd
