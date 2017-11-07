@@ -117,7 +117,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#IdCliente').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o <b>Cliente</b>.");
     } else {
         $('#IdCliente').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -126,7 +126,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#IdVeiculo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o <b>Veículo</b>.");
     } else {
         $('#IdVeiculo').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -135,7 +135,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Valor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o <b>Valor</b>.");
     } else {
         $('#IdCliente').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -153,7 +153,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Tipo_Entrega').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o <b>Tipo de Entrega</b>.");
     } else {
         $('#Tipo_Entrega').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
@@ -162,7 +162,7 @@ function validForm() {
     if (!campo && campo.length <= 0) {
         isValid = false;
         $('#Status').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencha o cliente.");
+        msgs.push("É necessário preencher o <b>Status</b>.");
     } else {
         $('#Status').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
