@@ -223,6 +223,7 @@
     <Content Include="Scripts\Utils\CreateEditCliente.js" />
     <Content Include="Scripts\Utils\CreateEditCustom.js" />
     <Content Include="Scripts\Utils\CreateEditEndereco.js" />
+    <Content Include="Scripts\Utils\CreateEditVeiculo.js" />
     <Content Include="Scripts\Utils\CreateEditVenda.js" />
     <Content Include="Scripts\Utils\UploadInputFile.js" />
     <Content Include="Scripts\Utils\Utils.js" />
