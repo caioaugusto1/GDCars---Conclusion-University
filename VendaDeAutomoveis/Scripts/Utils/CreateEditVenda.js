@@ -2,9 +2,9 @@
 
     $('#parcialEndereco').hide();
 
-    @if (ViewBag.ExibirCampo != null) {
-        @:pegarValorEndereco();
-    }
+    //@if (ViewBag.ExibirCampo != null) {
+    //    @:pegarValorEndereco();
+    //}
 });
 
 $('#IdVeiculo').change(function () {
@@ -95,14 +95,27 @@ function AtualizarEndereco() {
 function obterInformacoesCliente() {
 
     $.ajax({
-        url: '@Url.Action("ObterInformacoesBasicasCliente")', //Metodo da minha controller
+        url: 'ObterInformacoesBasicasCliente/Venda', 
         type: "POST",
-        dataType: "html",
+        dataType: "json",
         data: { IdCliente: $("#IdCliente").val() },
         success: function (data) {
+            var attrFormaPagamento = $('#formaPagamento');
 
-            $('#PegarFormaDePagamento').html(data.FormasDePagamentos); //div para renderizar
-            $('#_PerformancesDisponiveisCliente').html(data.Performances);
+            $(attrFormaPagamento).find('option').remove();
+            $(attrFormaPagamento).append('<option>Formas de Pagamentos</option>');
+
+            $.each(data.formasDePagamento, function (index, item) { // item is now an object containing properties ID and Text
+                $(attrFormaPagamento).append('<option value="' + item.Id + '">' + item.Modelo + '</option>');
+            });
+
+            var attrCustoms = $('#customs');
+            $(attrCustoms).find('option').remove();
+            $(attrCustoms).append('<option>Customizações</option>');
+
+            $.each(data.customs, function (index, item) { // item is now an object containing properties ID and Text
+                $(attrCustoms).append('<option value="' + item.Id + '">' + item.ValorTotal + '</option>');
+            });
         }
     });
 }

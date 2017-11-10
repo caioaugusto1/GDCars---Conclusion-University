@@ -64,7 +64,7 @@ namespace VendaDeAutomoveis.Controllers
             CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();
 
             vendaViewModel.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
-            vendaViewModel.FormasDePagamentos = Mapper.Map<IList<GDC_Formas_Pagamentos>, IList<FormaDePagamento>>(_formaPagamentoRepository.ObterTodos());
+            vendaViewModel.FormasDePagamentos = new List<FormaDePagamento>();
             vendaViewModel.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
             vendaViewModel.Performance = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfomanceRepository.ObterTodos());
             vendaViewModel.Endereco = new Endereco();
@@ -191,7 +191,7 @@ namespace VendaDeAutomoveis.Controllers
             else
                 vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
 
-            return Json(new { FormasPagamentos = vendaViewModel.FormasDePagamentos, Performances = vendaViewModel.Performance });
+            return Json(new { formasDePagamento = vendaViewModel.FormasDePagamentos, customs = vendaViewModel.Performance });
         }
 
         public ActionResult ObterValorVeiculo(Guid idVeiculo)

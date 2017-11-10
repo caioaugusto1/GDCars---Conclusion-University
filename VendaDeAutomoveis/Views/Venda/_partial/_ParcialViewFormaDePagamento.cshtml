@@ -1,6 +1,6 @@
 ﻿@Html.Label("Forma de Pagamento")
 @Html.DropDownList("IdFormaDePagamento",
                 new SelectList(Model, "Id", "Modelo"), "Forma de Pagamento",
-        new { @class = "form-control" })
+        new { @class = "form-control", @id = "formaPagamento" })
 @Html.ValidationMessage("FormaDePagamentoModel")
 
