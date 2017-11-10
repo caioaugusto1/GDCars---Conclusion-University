@@ -36,6 +36,7 @@ namespace VendaDeAutomoveis.Controllers
 
                 if (validarAcesso == null)
                 {
+                    ViewBag.Error = true;
                     ModelState.AddModelError("login.Invalido", "Usuário ou senha Inválido, tente novamente!");
                 }
                 else

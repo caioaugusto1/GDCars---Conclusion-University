@@ -40,27 +40,25 @@
                             </div>
                         </div>
                         <div class="col-md-10 col-sm-9">
-
                             @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
-                                @Html.AntiForgeryToken()
+                                Html.AntiForgeryToken();
 
                                 Html.HiddenFor(model => model.Id);
 
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
-
                                 <div class="form-group">
                                     <div class="col-md-10">
-                                <div class="file-loading">
-                                    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-                                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
+                                        <div class="file-loading">
+                                            <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+                                                   data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <br />
+                                
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
-                        </div>
                         </div>
                     </div>
                 </div>

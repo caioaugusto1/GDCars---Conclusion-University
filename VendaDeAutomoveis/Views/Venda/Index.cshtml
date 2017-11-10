@@ -1,43 +1,91 @@
 ﻿@model IList<VendaDeAutomoveis.Entidades.Venda>
 
-<br />
-<br />
-<br />
-<br />
+<head>
+    <title>Lista de Vendas</title>
 
-<table class="table table-hover">
-    <thead>
-        <tr id="trs"> 
-            <th>Cliente</th>
-            <th>Veículo</th>
-            <th>Modelo</th>
-            <th>Ano</th>
-            <th>Cor do Veiculo</th>
-            <th>Roda</th>
-            <th>Aro</th>
-            <th>Cor do Banco</th>
-            <th>Modelo do Banco</th>
-            <th>Valor Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var m in Model)
-        {
-            <tr>
-                <td>@m.Cliente.Nome</td>
-                <td>@m.Veiculo.Modelo</td>
-                <td>@m.Valor.ToString("c")</td>
-                @*<td>@m..ToString("dd/MM/yyyy")</td>*@
-                <td>@m.Tipo_Entrega</td>
-                <td>@m.FormaDePagamento.Modelo</td>            
-                <td>@m.Observacoes</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<style>
-    #trs th{
-        width: 120px;
+    @{
+        //Html.RenderPartial("_partial/_cabecalho_principal");
+        Html.RenderPartial("_partial/_cabecalho_list");
     }
-</style>
+
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="dashboard-wrapper">
+            <div class="page-title clearfix">
+                <h2>
+                    Clientes
+                    <small>
+                        <ul>
+                            <li>Home</li>
+                            <li>/</li>
+                            <li>Vendas</li>
+                            <li>/</li>
+                            <li>Listar</li>
+                        </ul>
+                    </small>
+                </h2>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="widget-header">
+                            <div class="title">
+                                <span class="fs1" aria-hidden="true" data-icon="&#xe14a;"></span> Lista
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div id="dt_example" class="example_alt_pagination">
+                                <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:20%">Cliente</th>
+                                            <th style="width:20%">Veículo</th>
+                                            <th style="width:20%">Modelo</th>
+                                            <th style="width:10%">Ano</th>
+                                            <th style="width:10%">Valor Total</th>
+                                            <th style="width:20%" class="hidden-phone">Ação</th>                                       
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr class="gradeX">
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Veiculo.Fabricante)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Veiculo.Modelo)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Veiculo.Ano)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Valor)
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("Details", "Cliente", new { Id = item.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>
+                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -218,6 +218,8 @@
     <Content Include="Content\bootstrap\js\plugins\morris\raphael.min.js" />
     <Content Include="Content\bootstrap\js\rating\jquery.raty.js" />
     <Content Include="Content\bootstrap\js\tiny-scrollbar.js" />
+    <Content Include="img\gdcars_principal.jpg" />
+    <Content Include="Content\bootstrap\js\jquery.mask_igorescobar.js" />
     <Content Include="Scripts\Utils\CreateEditCliente.js" />
     <Content Include="Scripts\Utils\CreateEditCustom.js" />
     <Content Include="Scripts\Utils\CreateEditEndereco.js" />
@@ -227,10 +229,6 @@
     <Content Include="Content\bootstrap\js\wizard\bwizard.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\bootstrap-wysihtml5.js" />
     <Content Include="Content\bootstrap\js\wysiwyg\wysihtml5-0.3.0.js" />
-    <Content Include="Content\fileinput-rtl.min.css" />
-    <Content Include="Content\fileinput.css" />
-    <Content Include="Content\fileinput.min.css" />
-    <Content Include="Content\fileinput.rtl.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="img\loading.gif" />

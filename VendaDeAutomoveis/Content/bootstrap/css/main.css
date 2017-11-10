@@ -15,6 +15,22 @@ body {
     background: #2b2b2b;
 }
 
+.bodyLogin {
+    background-image: url("/img/gdcars_principal.jpg");
+    background-size: cover;
+}
+
+.slider_overlay {
+    background: none repeat scroll 0 0 #242434;
+    height: 100%;
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
 a:hover {
     text-decoration: none;
 }
@@ -271,6 +287,7 @@ img.media-object {
 }
 
 .login-wrapper {
+    z-index: 3;
     position: absolute;
     top: 50%;
     left: 50%;

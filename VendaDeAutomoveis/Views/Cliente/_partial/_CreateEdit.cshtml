@@ -41,13 +41,16 @@
     </div>
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.maskedinput.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.maskedinput.min.js"></script>*@
+
+<script type="text/javascript" src="~/img/jquery.mask.js"></script>
 
 <script type="text/javascript">
 
     $(document).ready(function () {
         $("#cpf").mask("999.999.999-99");
+        //$('#cpf').mask('000.000.000-00', { reverse: true });
         $("#rg").mask("99.999.999-*");
         $("#dtnascimento").mask("99/99/9999");
         //$("#cep").mask("99999-999");

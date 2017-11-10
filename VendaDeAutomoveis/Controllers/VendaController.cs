@@ -103,6 +103,10 @@ namespace VendaDeAutomoveis.Controllers
             }
             else
             {
+                cadVenda.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
+                cadVenda.FormasDePagamentos = new List<FormaDePagamento>();
+                cadVenda.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+
                 return View("Create", cadVenda);
             }
         }

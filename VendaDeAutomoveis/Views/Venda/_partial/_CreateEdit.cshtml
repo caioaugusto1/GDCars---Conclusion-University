@@ -10,7 +10,7 @@
 
 <div class="form-group">
     <div class="col-md-5">
-        @Html.Label("Custom Disponíveis")
+        @Html.Label("Custom Disponíveis*")
         @Html.DropDownListFor(c => c.Performance, new SelectList(Model.Performance, "Id", "ValorTotal"), "Customizações Disponíveis",
         new { @class = "form-control", @id = "customs" })
         @Html.ValidationMessage("FormaDePagamentoModel")
@@ -19,7 +19,7 @@
 
 <div class="form-group">
     <div class="col-md-5">
-        @Html.Label("Forma de Pagamento")
+        @Html.Label("Formas de Pagamentos*")
         @Html.DropDownListFor(a => a.IdFormaDePagamento, new SelectList(Model.FormasDePagamentos, "Id", "Modelo"), "Forma de Pagamento",
         new { @class = "form-control", @id = "formaPagamento" })
     </div>

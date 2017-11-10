@@ -30,7 +30,7 @@ $('#btnSalvarModal').click(function () {
 
 function obterValorVeiculo() {
     $.ajax({
-        url: '@Url.Action("ObterValorVeiculo")',
+        url: 'ObterValorVeiculo/Venda',
         type: "post",
         dataType: "html",
         data:
@@ -54,7 +54,7 @@ function pegarValorEndereco() {
         $('#parcialEndereco').show();
 
         $.ajax({
-            url: '@Url.Action("ObterEnderecoCliente")',
+            url: 'ObterEnderecoCliente/Venda',
             type: "post",
             dataType: "html",
             data: { IdCliente: $("#IdCliente").val() },
@@ -73,7 +73,7 @@ function pegarValorEndereco() {
 function AtualizarEndereco() {
 
     $.ajax({
-        url: '@Url.Action("AtualizarEnderecos")',
+        url: 'AtualizarEnderecos/Venda',
         type: "post",
         dataType: "html",
         data: {

@@ -6,9 +6,26 @@ $('#btnCadastrar').click(function () {
         saveLead();
     }
     else {
-        $('#form').submit();
+        formSubmit();
     }
 });
+
+$('#btnSalvarModal').click(function () {
+    var isValid = validForm();
+
+    if (isValid == false) {
+        saveLead();
+    }
+    else {
+        formSubmit();
+    }
+});
+
+function formSubmit()
+{
+    $('#form').submit();
+};
+
 
 function validarCPF(strCPF) {
     var Soma;

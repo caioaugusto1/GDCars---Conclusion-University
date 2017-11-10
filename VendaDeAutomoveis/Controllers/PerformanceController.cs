@@ -73,9 +73,14 @@ namespace VendaDeAutomoveis.Controllers
         [HttpPost]
         public ActionResult Create(Performance custom)
         {
+            ViewBag.Cliente = _clienteRepository.ObterTodos();
+
             if (ModelState.IsValid)
             {
                 custom.Id = Guid.NewGuid();
+                custom.IdBanco = custom.Banco.Id;
+                custom.IdRoda = custom.Roda.Id;
+                custom.IdCorVeiculo = custom.Cor_Veiculo.Id;
 
                 _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(custom.Roda));
                 _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(custom.Cor_Veiculo));
@@ -87,8 +92,6 @@ namespace VendaDeAutomoveis.Controllers
 
             }
 
-            ViewBag.Cliente = _clienteRepository.ObterTodos();
-            
             return View(custom);
         }
     }
