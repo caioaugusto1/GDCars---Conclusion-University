@@ -16,7 +16,15 @@ namespace VendaDeAutomoveis.Repository
         
         public double GastosPorCliente(Guid id)
         {
-            return _context.Vendas.Where(c => c.Id == id).Sum(c => c.Valor);
+            var sql = "SELECT SUM(VALOR) FROM GDC_Vendas WHERE IdCliente = @id ";
+
+            var e = _context.Database.Connection.Query(sql,
+                param: new
+                {
+                    id = id
+                });
+
+            return e.FirstOrDefault();
         }
 
         public override GDC_Vendas ObterPorId(Guid id)
@@ -37,7 +45,6 @@ namespace VendaDeAutomoveis.Repository
             var sql = "SELECT * FROM GDC_Vendas ";
 
             return _context.Database.Connection.Query<GDC_Vendas>(sql)
-                .OrderBy(c => c.GDC_Clientes.Nome)
                 .ToList();
         }
 

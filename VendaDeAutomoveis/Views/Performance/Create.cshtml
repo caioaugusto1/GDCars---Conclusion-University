@@ -50,7 +50,7 @@
                                     @Html.Partial("_partial/_CreateBanco", Model.Banco)
                                 </div>
 
-                                <div class="alert alert-block alert-success go-green-bg no-margin">
+                                <div class="alert alert-block go-green-bg no-margin">
                                     <button data-dismiss="alert" class="close" type="button">
                                         ×
                                     </button>
@@ -78,135 +78,18 @@
 <script src="~/Content/bootstrap/js/wizard/bwizard.js"></script>
 <script src="~/Content/bootstrap/js/custom-forms.js"></script>
 
+<script src="@Url.Content("~/Scripts/Utils/CreateEditCustom.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+
 <script>
-    $('#btnConfirmarAlteracoes').click(function () {
+    $('#btnSalvarModal').click(function () {
         var isValid = validForm();
 
         if (isValid == false) {
             saveLead();
         }
         else {
-            $('#modalConfirme').modal();
+            formSubmit();
         }
-
     });
-
-    var msgs = [];
-    function validForm() {
-        msgs = [];
-        var campo;
-        var isValid = true;
-
-        campo = $("#IdCliente option:selected").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#IdCliente').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher com o <b>Nome do Cliente.</b>");
-        } else {
-            $('#IdCliente').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#RodaModelo').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#RodaModelo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher com o <b>Modelo do Veículo.</b>");
-        } else {
-            $('#RodaModelo').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#Aro').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Aro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o <b>Aro.</b>");
-        } else {
-            $('#Aro').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#RodaValor').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#RodaValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o <b>Valor da Roda.</b>");
-        } else {
-            $('#RodaValor').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $("#Estilo").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#Estilo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário fornecer um <b>Estilo!</b>");
-        } else {
-            $('#Estilo').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $("#CorRoda").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#CorRoda').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário fornecer uma cor para <b>Roda!</b>");
-        } else {
-            $('#CorRoda').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#CorValor').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#CorValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o <b>Valor da Cor.</b>");
-        } else {
-            $('#CorValor').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $("#ModeloBanco option:selected").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#ModeloBanco').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o <b>Modelo do Banco.</b>");
-        } else {
-            $('#ModeloBanco').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $("#CorBanco option:selected").val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#CorBanco').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher <b>Cor do Banco.</b>");
-        } else {
-            $('#CorBanco').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        campo = $('#BancoValor').val();
-        if (!campo && campo.length <= 0) {
-            isValid = false;
-            $('#BancoValor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-            msgs.push("É necessário preencher o <b>Valor do Banco.</b>");
-        } else {
-            $('#BancoValor').css({ "background-color": "#fff", "border-color": "#ccc" });
-        }
-
-        return isValid;
-    }
-
-    function saveLead() {
-        var form = document.forms[0];
-        if (validForm()) {
-            form.submit();
-        }
-        else {
-            var novoHTML = "";
-            for (var i = 0; i < msgs.length; i++) {
-                var msg = msgs[i];
-                novoHTML += msg + "<br />";
-            }
-            $('#modalError .modal-body').html(novoHTML);
-            $('#modalError').modal('show');
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-        }
-    }
-
 </script>
-<script src="@Url.Content("~/Scripts/Utils/CreateEditCustom.js")"></script>
-<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>

@@ -1,4 +1,15 @@
-﻿var msgs = [];
+﻿$('#btnConfirmarAlteracoes').click(function () {
+    var isValid = validForm();
+
+    if (isValid == false) {
+        saveLead();
+    }
+    else {
+        $('#modalConfirme').modal();
+    }
+});
+
+var msgs = [];
 function validForm() {
     msgs = [];
     var campo;

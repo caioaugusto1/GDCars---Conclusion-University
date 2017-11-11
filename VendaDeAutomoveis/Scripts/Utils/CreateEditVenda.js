@@ -1,10 +1,5 @@
 ﻿$(function () {
-
     $('#parcialEndereco').hide();
-
-    //@if (ViewBag.ExibirCampo != null) {
-    //    @:pegarValorEndereco();
-    //}
 });
 
 $('#IdVeiculo').change(function () {
@@ -24,7 +19,7 @@ $("#btnSalvarEndereco").click(function () {
     $('#modalConfirme').modal();
 });
 
-$('#btnSalvarModal').click(function () {
+$('#btnSalvarEndereco').click(function () {
     AtualizarEndereco();
 });
 
@@ -60,10 +55,6 @@ function pegarValorEndereco() {
             data: { IdCliente: $("#IdCliente").val() },
             success: function (data) {
                 $('#parcialEndereco').html(data);
-                //$("#atualizar").click(function () {
-
-                //    AtualizarEndereco()
-                //});
             }
         });
     }
@@ -78,13 +69,13 @@ function AtualizarEndereco() {
         dataType: "html",
         data: {
             IdCliente: $("#IdCliente").val(),
-            Endereco: $("#EnderecoNome").val(),
-            Bairro: $("#Bairro").val(),
-            NumeroDaCasa: $("#Numero").val(),
-            CEP: $("#CEP").val(),
-            Cidade: $("#Cidade").val(),
-            Estado: $("#Estado").val(),
-            Complemento: $("#Complemento").val()
+            Endereco: $("#enderecoNome").val(),
+            Bairro: $("#bairro").val(),
+            NumeroDaCasa: $("#numero").val(),
+            CEP: $("#cep").val(),
+            Cidade: $("#cidade").val(),
+            Estado: $("#estado").val(),
+            Complemento: $("#complemento").val()
         },
         success: function (data) {
             $('#success').modal();
@@ -153,13 +144,13 @@ function validForm() {
         $('#IdCliente').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $("#idCustom option:selected").val();
+    campo = $("#customs option:selected").val();
     if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#idCustom').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        $('#customs').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencha o cliente.");
     } else {
-        $('#idCustom').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#customs').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
     campo = $("#Tipo_Entrega option:selected").text();

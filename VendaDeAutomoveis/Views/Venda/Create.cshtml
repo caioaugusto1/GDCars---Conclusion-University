@@ -81,3 +81,12 @@
 <script src="~/Content/bootstrap/js/bootstrap.js"></script>
 <script src="@Url.Content("~/Scripts/Utils/CreateEditVenda.js")"></script>
 <script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+
+<script>
+
+    @if (ViewBag.ExibirCampo != null)
+    {
+        @:pegarValorEndereco();
+    }
+
+</script>

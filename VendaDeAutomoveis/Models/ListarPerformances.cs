@@ -2,9 +2,9 @@
 
 namespace VendaDeAutomoveis.Models
 {
-    public class ListarPerformancesViewModel
+    public class ListarCustomsViewModel
     {
-        public ListarPerformancesViewModel()
+        public ListarCustomsViewModel()
         {
             Cliente = new Cliente();
             Banco = new Banco();

@@ -42,9 +42,9 @@ namespace VendaDeAutomoveis.Controllers
         {
             var obterCustomns = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfoRepository.ObterTodos());
 
-            var custom = new ListarPerformancesViewModel();
+            var custom = new ListarCustomsViewModel();
 
-            List<ListarPerformancesViewModel> customViewModel = new List<ListarPerformancesViewModel>();
+            List<ListarCustomsViewModel> customViewModel = new List<ListarCustomsViewModel>();
 
             foreach (var itemCustom in obterCustomns)
             {
@@ -82,6 +82,8 @@ namespace VendaDeAutomoveis.Controllers
                 custom.IdRoda = custom.Roda.Id;
                 custom.IdCorVeiculo = custom.Cor_Veiculo.Id;
 
+                custom.ValorTotal = CalcularCustom(custom);
+
                 _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(custom.Roda));
                 _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(custom.Cor_Veiculo));
                 _bancoRepository.Inserir(Mapper.Map<GDC_Bancos>(custom.Banco));
@@ -93,6 +95,17 @@ namespace VendaDeAutomoveis.Controllers
             }
 
             return View(custom);
+        }
+
+        private double CalcularCustom(Performance custom)
+        {
+            double valorTotal = 0;
+
+            valorTotal = custom.Banco.Valor;
+            valorTotal += custom.Cor_Veiculo.Valor;
+            valorTotal += custom.Roda.Valor;
+
+            return valorTotal;
         }
     }
 }
