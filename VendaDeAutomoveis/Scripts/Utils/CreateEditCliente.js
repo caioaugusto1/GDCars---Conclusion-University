@@ -1,13 +1,16 @@
-﻿$('#btnCadastrar').click(function () {
+﻿
+$(document).ready(function () {
+    $('#btnCadastrar').click(function () {
 
-    var isValid = validForm();
+        var isValid = validForm();
 
-    if (isValid == false) {
-        saveLead();
-    }
-    else {
-        $('#form').submit();
-    }
+        if (isValid == false) {
+            saveLead();
+        }
+        else {
+            $('#form').submit();
+        }
+    });
 });
 
 var msgs = [];

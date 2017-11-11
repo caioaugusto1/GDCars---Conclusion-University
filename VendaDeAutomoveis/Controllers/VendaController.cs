@@ -52,7 +52,7 @@ namespace VendaDeAutomoveis.Controllers
         public ActionResult Index()
         {
             var vendaViewModel = new ListarVendasViewModel();
-            vendaViewModel.Vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos());
+            vendaViewModel.Vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos().ToList());
 
             foreach(var v in vendaViewModel.Vendas)
             {

@@ -5,7 +5,7 @@ namespace VendaDeAutomoveis.Entidades
 {
     public class Banco : Entity
     {
-        public CorBanco CorBanco { get; set; }
+        public CorBanco Cor { get; set; }
 
         public ModeloBanco Modelo { get; set; }
 

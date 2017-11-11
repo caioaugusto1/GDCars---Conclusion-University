@@ -104,11 +104,11 @@ namespace VendaDeAutomoveis.Controllers
             {
                 _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
 
-                return RedirectToAction("Details", cliente.Id);
+                return RedirectToAction("Details", new { cliente.Id });
             }
             else
             {
-                return View("EditarCliente", cliente);
+                return View("EditarCliente", cliente.Id);
             }
         }
 
@@ -168,7 +168,7 @@ namespace VendaDeAutomoveis.Controllers
             if (ModelState.IsValid)
             {
                 _enderecoRepository.Editar(Mapper.Map<GDC_Enderecos>(endereco));
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { endereco.IdCliente });
             }
             else
             {

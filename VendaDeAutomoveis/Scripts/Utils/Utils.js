@@ -9,18 +9,6 @@
     }
 });
 
-$('#btnSalvarModal').click(function () {
-    var isValid = validForm();
-
-    if (isValid == false) {
-        saveLead();
-    }
-    else {
-        formSubmit();
-    }
-});
-
-
 $('#btnCadastrar').click(function () {
     var isValid = validForm();
 

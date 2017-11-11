@@ -77,19 +77,12 @@
 <script src="~/Content/bootstrap/js/wysiwyg/bootstrap-wysihtml5.js"></script>
 <script src="~/Content/bootstrap/js/wizard/bwizard.js"></script>
 <script src="~/Content/bootstrap/js/custom-forms.js"></script>
-
+<script src="~/Content/bootstrap/js/jquery.mask_igorescobar.js"></script>
 <script src="@Url.Content("~/Scripts/Utils/CreateEditCustom.js")"></script>
 <script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
 
 <script>
-    $('#btnSalvarModal').click(function () {
-        var isValid = validForm();
 
-        if (isValid == false) {
-            saveLead();
-        }
-        else {
-            formSubmit();
-        }
-    });
+    $('.valor').mask('#.##0,00', { reverse: true });
+    
 </script>
