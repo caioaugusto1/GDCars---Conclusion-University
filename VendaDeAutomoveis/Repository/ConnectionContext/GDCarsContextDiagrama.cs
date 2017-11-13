@@ -10,6 +10,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext
         public GDCarsContextDiagrama()
             : base("name=GDCarsContextDiagrama")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public virtual DbSet<GDC_Bancos> GDC_Bancos { get; set; }

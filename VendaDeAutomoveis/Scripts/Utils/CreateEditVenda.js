@@ -3,15 +3,23 @@
 });
 
 $('#IdVeiculo').change(function () {
-    obterValorVeiculo();
+    if ($('#IdVeiculo').val() == "") {
+        $('#Valor').val('0');
+    } else {
+        obterValorVeiculo();
+    }
 });
 
 $('#Tipo_Entrega').change(function () {
-    pegarValorEndereco();
+
+    if ($('#Tipo_Entrega').val() == "0") {
+        $('#parcialEndereco').show();
+    } else {
+        $('#parcialEndereco').hide();
+    }
 });
 
 $('#IdCliente').change(function () {
-    pegarValorEndereco();
     obterInformacoesCliente();
 });
 
@@ -25,7 +33,7 @@ $('#btnSalvarEndereco').click(function () {
 
 function obterValorVeiculo() {
     $.ajax({
-        url: 'ObterValorVeiculo/Venda',
+        url: 'ObterValorVeiculo',
         type: "post",
         dataType: "html",
         data:
@@ -39,32 +47,10 @@ function obterValorVeiculo() {
     });
 }
 
-function pegarValorEndereco() {
-
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 1) {
-        $('#parcialEndereco').hide();
-    }
-
-    if ($("#IdCliente").val() != '' && $("#Tipo_Entrega").val() == 0) {
-        $('#parcialEndereco').show();
-
-        $.ajax({
-            url: 'ObterEnderecoCliente/Venda',
-            type: "post",
-            dataType: "html",
-            data: { IdCliente: $("#IdCliente").val() },
-            success: function (data) {
-                $('#parcialEndereco').html(data);
-            }
-        });
-    }
-}
-
-
 function AtualizarEndereco() {
 
     $.ajax({
-        url: 'AtualizarEnderecos/Venda',
+        url: 'AtualizarEnderecos',
         type: "post",
         dataType: "html",
         data: {
@@ -86,7 +72,7 @@ function AtualizarEndereco() {
 function obterInformacoesCliente() {
 
     $.ajax({
-        url: 'ObterInformacoesBasicasCliente/Venda', 
+        url: 'ObterInformacoesBasicasCliente',
         type: "POST",
         dataType: "json",
         data: { IdCliente: $("#IdCliente").val() },
@@ -107,9 +93,18 @@ function obterInformacoesCliente() {
             $.each(data.customs, function (index, item) { // item is now an object containing properties ID and Text
                 $(attrCustoms).append('<option value="' + item.Id + '">' + item.ValorTotal + '</option>');
             });
+
+            $('#enderecoNome').val(data.endereco.EnderecoNome);
+            $('#numero').val(data.endereco.Numero);
+            $('#complemento').val(data.endereco.Complemento);
+            $('#bairro').val(data.endereco.Bairro);
+            $('#cep').val(data.endereco.CEP);
+            $('#cidade').val(data.endereco.Cidade);
+            $('#estado').val(data.endereco.Estado);
         }
     });
-}
+};
+
 
 var msgs = [];
 function validForm() {

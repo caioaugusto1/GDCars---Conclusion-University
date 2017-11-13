@@ -17,7 +17,7 @@
                         <ul>
                             <li>Home</li>
                             <li>/</li>
-                            <li>Cliente</li>
+                            <li><a href="@Url.Action("listar-clientes","administrativo/cliente")">Listar</a></li>
                             <li>/</li>
                             <li>Detalhes</li>
                         </ul>
@@ -43,7 +43,7 @@
 
                                     <tr>
                                         <td colspan="4">
-                                            <a href="@Url.Action("EditarCliente", "Cliente", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
+                                            <a href="@Url.Action("editar-cliente", "administrativo/cliente", new { Id = Model.Id })" class="btn btn-blue btn-large pull-right">Editar</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -74,7 +74,7 @@
                                             <td>@Model.Endereco.Estado</td>
                                             <td>@Model.Endereco.Cidade</td>
                                             <td colspan="4">
-                                                <a href="@Url.Action("EditarEndereco", "Cliente", new { Id = Model.IdEndereco })" class="btn btn-blue btn-large pull-right">Editar</a>
+                                                <a href="@Url.Action("editar-cliente/endereco", "administrativo/cliente", new { Id = Model.IdEndereco })" class="btn btn-blue btn-large pull-right">Editar</a>
                                             </td>
                                         </tr>
                                     </tbody>

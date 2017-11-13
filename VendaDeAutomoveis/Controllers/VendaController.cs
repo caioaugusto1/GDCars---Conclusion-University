@@ -15,7 +15,7 @@ using static VendaDeAutomoveis.Enums.EnumsExtensions;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("administrativo/vendas")]
+    [RoutePrefix("administrativo-vendas")]
     public class VendaController : BaseController
     {
         #region Instâncias Repositorys
@@ -48,11 +48,7 @@ namespace VendaDeAutomoveis.Controllers
             this._bancoRepository = _bancoRepository;
             this._corRepository = _corRepository;
         }
-
-        public VendaController()
-        {
-        }
-
+        
         #endregion
 
         [Route("listar-vendas")]
@@ -215,22 +211,29 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("ObterInformacoesBasicasCliente")]
         public JsonResult ObterInformacoesBasicasCliente(Guid idCliente)
         {
             var vendaViewModel = new CadastrarVendaViewModel();
 
             vendaViewModel.Performance = Mapper.Map<IList<Performance>>(_perfomanceRepository.ObterPorIdCliente(idCliente));
 
-            var cliente = _clienteRepository.ObterPorId(idCliente);
+            var cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(idCliente));
 
-            if (cliente.Tipo == TipoCliente.Vip.ToString())
+            if (cliente.Tipo.ToString() == TipoCliente.Vip.ToString())
                 vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip());
             else
                 vendaViewModel.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum());
 
-            return Json(new { formasDePagamento = vendaViewModel.FormasDePagamentos, customs = vendaViewModel.Performance });
+            if (cliente.Endereco == null)
+                cliente.Endereco = new Endereco();
+
+            return Json(new { formasDePagamento = vendaViewModel.FormasDePagamentos, customs = vendaViewModel.Performance, endereco = cliente.Endereco });
         }
 
+        [HttpPost]
+        [Route("ObterValorVeiculo")]
         public ActionResult ObterValorVeiculo(Guid idVeiculo)
         {
             var veiculo = _veiculoRepository.ObterPorId(idVeiculo);
@@ -251,6 +254,8 @@ namespace VendaDeAutomoveis.Controllers
             return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
         }
 
+        [HttpPost]
+        [Route("ObterEnderecoCliente")]
         public PartialViewResult ObterEnderecoCliente(Guid idCliente)
         {
             var cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(idCliente));

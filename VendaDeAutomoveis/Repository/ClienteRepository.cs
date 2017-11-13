@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using System;
 using System.Linq;
-using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
@@ -12,7 +11,7 @@ namespace VendaDeAutomoveis.Repository
         public ClienteRepository(ContextGDCars context)
             : base(context)
         {
-        }   
+        }
 
         public GDC_Clientes ObterPorCPF(string cpf)
         {
@@ -75,14 +74,29 @@ namespace VendaDeAutomoveis.Repository
 
         public override GDC_Clientes ObterPorId(Guid id)
         {
-            var sql = "SELECT * FROM GDC_Clientes where Id = @id ";
+            var cliente = base.ObterPorId(id);
 
-            return _context.Database.Connection.Query<GDC_Clientes>(sql,
-                    param: new
-                    {
-                        Id = id
-                    }).FirstOrDefault();
+            EnderecoRepository end = new EnderecoRepository(this._context);
 
+            if (cliente.IdEndereco.HasValue)
+            {
+                cliente.GDC_Enderecos = end.ObterPorId(cliente.IdEndereco.Value);
+            }
+
+            return cliente;
+        }
+
+        public GDC_Clientes ObterPorIdEndereco(Guid id)
+        {
+            var sql = "SELECT * FROM GDC_Clientes where idEndereco = @id ";
+
+            var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
+                param: new
+                {
+                    id = id
+                });
+
+            return e.FirstOrDefault();
         }
     }
 }

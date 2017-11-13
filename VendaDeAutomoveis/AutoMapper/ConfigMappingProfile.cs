@@ -11,7 +11,9 @@ namespace VendaDeAutomoveis.AutoMapper
         {
             #region Class / Entities
 
-            CreateMap<GDC_Clientes, Cliente>().ReverseMap();
+            CreateMap<GDC_Clientes, Cliente>()
+                .ForMember(map => map.Endereco, e => e.MapFrom(y => y.GDC_Enderecos))
+                .ReverseMap();
 
             CreateMap<GDC_Enderecos, Endereco>()
                 .ForMember(e => e.EnderecoNome, map => map.MapFrom(y => y.Endereco));

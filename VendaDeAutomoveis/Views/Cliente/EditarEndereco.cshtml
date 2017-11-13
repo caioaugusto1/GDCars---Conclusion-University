@@ -42,6 +42,8 @@
                             @using (Html.BeginForm("EditarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
                             {
                                 @Html.AntiForgeryToken()
+                                
+                                @Html.HiddenFor(c => c.Id)
 
                                 Html.RenderPartial("_partial/_CreateEdit_Endereco", Model);
 

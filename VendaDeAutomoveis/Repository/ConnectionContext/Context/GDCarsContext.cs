@@ -8,6 +8,7 @@ namespace VendaDeAutomoveis.Repository
         public ContextGDCars()
             : base ("ContextGDCars")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

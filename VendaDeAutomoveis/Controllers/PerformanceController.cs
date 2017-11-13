@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
+using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 
 namespace VendaDeAutomoveis.Controllers
 {
+    [AutorizacaoFilter]
+    [RoutePrefix("administrativo/custom")]
     public class PerformanceController : Controller
     {
-
         #region Instâncias de Repositorys
 
         private PerfomanceRepository _perfoRepository;
@@ -22,8 +24,8 @@ namespace VendaDeAutomoveis.Controllers
         private BancoRepository _bancoRepository;
 
         #endregion
-        
-        #region Métoo Construtor
+
+        #region Métodos Construtor
 
         public PerformanceController(PerfomanceRepository _perfoRepository, ClienteRepository _clienteRepository,
             RodaRepository _rodaRepository, CorVeiculoRepository _corVeiculoRepository, BancoRepository _bancoRepository)
@@ -35,9 +37,11 @@ namespace VendaDeAutomoveis.Controllers
             this._bancoRepository = _bancoRepository;
         }
 
-        #endregion  
+        #endregion
 
-        // GET: Performance
+        #region Métodos Públicos
+
+        [Route("listar-custom")]
         public ActionResult Index()
         {
             var obterCustomns = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
@@ -62,6 +66,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpGet]
+        [Route("cadastrar-custom")]
         public ActionResult Create()
         {
             Performance Model = new Performance();
@@ -97,7 +102,9 @@ namespace VendaDeAutomoveis.Controllers
 
             return View(custom);
         }
+        #endregion
 
+        #region Métodos Privados
         private double CalcularCustom(Performance custom)
         {
             double valorTotal = 0;
@@ -108,5 +115,8 @@ namespace VendaDeAutomoveis.Controllers
 
             return valorTotal;
         }
+
+        #endregion
+
     }
 }

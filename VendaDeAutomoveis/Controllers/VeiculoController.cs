@@ -61,6 +61,7 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
+        [HttpGet]
         [Route("editar-veiculo/{id:guid}")]
         public ActionResult Editar(Guid id)
         {
