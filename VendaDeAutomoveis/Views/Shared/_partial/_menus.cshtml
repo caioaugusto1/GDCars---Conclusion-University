@@ -46,7 +46,7 @@
         </div>
         <ul class="slick-menu">
             <li>
-                <a href="@Url.Action("home", "pagina-principal-cola-com-nois")">
+                <a href="@Url.Action("inicio", "pagina-principal-GDCars")">
                     <span class="fs1" aria-hidden="true" data-icon="&#xe0a2;"></span>
                     <strong>Dashboard</strong>
                 </a>
@@ -70,8 +70,8 @@
                     <strong>Veículos</strong>
                 </a>
                 <ul>
-                    <li><a href="@Url.Action("FormularioCadastro", "Veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
-                    <li><a href="@Url.Action("Index", "Veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                    <li><a href="@Url.Action("FormularioCadastro", "administrativo/veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("listar-veiculo", "administrativo/veiculo")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
                 </ul>
             </li>
             <li class="drop-menu">
@@ -92,9 +92,9 @@
                     <strong>Vendas</strong>
                 </a>
                 <ul>
-                    <li><a href="@Url.Action("Create", "Venda")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
-                    <li><a href="@Url.Action("Index", "Venda")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
-                    <li><a href="@Url.Action("HistoricoPedidos", "Venda")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Movimentação</a></li>
+                    <li><a href="@Url.Action("cadastrar-venda", "administrativo/vendas")">><span class="fs1" aria-hidden="true" data-icon="&#xe02d;"></span>Novo</a></li>
+                    <li><a href="@Url.Action("listar-vendas", "administrativo/vendas")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Listar</a></li>
+                    <li><a href="@Url.Action("HistoricoPedidos", "administrativo/vendas")">><span class="fs1" aria-hidden="true" data-icon="&#xe0b8;"></span>Movimentação</a></li>
                 </ul>
             </li>
         </ul>

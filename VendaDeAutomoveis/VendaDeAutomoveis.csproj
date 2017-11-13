@@ -225,6 +225,7 @@
     <Content Include="Scripts\Utils\CreateEditEndereco.js" />
     <Content Include="Scripts\Utils\CreateEditVeiculo.js" />
     <Content Include="Scripts\Utils\CreateEditVenda.js" />
+    <Content Include="Scripts\Utils\CreateEditVendasDetalhes.js" />
     <Content Include="Scripts\Utils\UploadInputFile.js" />
     <Content Include="Scripts\Utils\Utils.js" />
     <Content Include="Content\bootstrap\js\wizard\bwizard.js" />
@@ -322,7 +323,6 @@
     <Content Include="Scripts\plugins\purify.min.js" />
     <Content Include="Scripts\plugins\sortable.js" />
     <Content Include="Scripts\plugins\sortable.min.js" />
-    <Content Include="Views\Error\error.html" />
     <Content Include="Views\Performance\js\customValidate.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -334,6 +334,7 @@
     <Compile Include="AutoMapper\Adapter\CadastrarVendaViewModelAdapter.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\ConfigMappingProfile.cs" />
+    <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -344,6 +345,7 @@
     <Compile Include="Models\CadastrarVendaViewModel.cs" />
     <Compile Include="Models\DetailsDeleteVendaViewModel.cs" />
     <Compile Include="Models\ListarPerformances.cs" />
+    <Compile Include="Models\ListarVendasViewModel.cs" />
     <Compile Include="Models\RodaRepository.cs" />
     <Compile Include="Repository\BancoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
@@ -407,7 +409,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ListarPerformancesViewModel.cs" />
+    <Compile Include="Models\FormaDePagamentoModel.cs" />
     <Compile Include="Models\HistoricoPedidosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Criptografia.cs" />
@@ -460,6 +462,7 @@
     <Content Include="Views\Venda\_partial\_Details_Delete.cshtml" />
     <Content Include="Views\Cliente\EditarEndereco.cshtml" />
     <Content Include="Views\Shared\_partial\_modal_error.cshtml" />
+    <Content Include="Views\Base\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

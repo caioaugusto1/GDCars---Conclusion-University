@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-md-10 col-sm-9">
-                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm("AdicionarProduto", "administrativo/veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
                                 Html.AntiForgeryToken();
 

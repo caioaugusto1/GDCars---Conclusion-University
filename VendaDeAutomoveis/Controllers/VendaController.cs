@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using VendaDeAutomoveis.Controllers.Base;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
@@ -14,7 +15,8 @@ using static VendaDeAutomoveis.Enums.EnumsExtensions;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
-    public class VendaController : Controller
+    [RoutePrefix("administrativo/vendas")]
+    public class VendaController : BaseController
     {
         #region Instâncias Repositorys
 
@@ -47,23 +49,44 @@ namespace VendaDeAutomoveis.Controllers
             this._corRepository = _corRepository;
         }
 
+        public VendaController()
+        {
+        }
+
         #endregion
 
+        [Route("listar-vendas")]
         public ActionResult Index()
         {
-            var vendaViewModel = new ListarVendasViewModel();
-            vendaViewModel.Vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos().ToList());
-
-            foreach(var v in vendaViewModel.Vendas)
+            try
             {
-                v.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(v.IdCliente));
+                var vendaViewModel = new ListarVendasViewModel();
+                List<ListarVendasViewModel> vendasViewModel = new List<ListarVendasViewModel>();
+
+                var vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos());
+
+                vendas.ForEach(ven =>
+                {
+                    vendaViewModel = new ListarVendasViewModel();
+
+                    vendaViewModel.Vendas = ven;
+                    vendaViewModel.Clientes = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(ven.IdCliente));
+                    vendaViewModel.Veiculos = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(ven.IdVeiculo));
+
+                    vendasViewModel.Add(vendaViewModel);
+                });
+
+                return View(vendasViewModel);
             }
-
-
-            return View(vendaViewModel);
+            catch(Exception ex)
+            {
+                return RedirectToAction("Error", "Base");
+            }
+            
         }
 
         [HttpGet]
+        [Route("cadastrar-venda")]
         public ActionResult Create()
         {
             CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();

@@ -1,6 +1,6 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-@using (Html.BeginForm("Editar", "Veiculo", FormMethod.Post))
+@using (Html.BeginForm("Editar", "administrativo/veiculo", FormMethod.Post))
 {
     @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
 

@@ -1,4 +1,4 @@
-﻿@model IList<VendaDeAutomoveis.Models.ListarVendasViewModel>
+﻿@model List<VendaDeAutomoveis.Models.ListarVendasViewModel>
 
 <head>
     <title>Lista de Vendas</title>
@@ -53,27 +53,27 @@
                                         {
                                             <tr class="gradeX">
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                                                    @item.Clientes.Nome
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Veiculo.Fabricante)
+                                                    @item.Veiculos.Fabricante
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Veiculo.Modelo)
+                                                    @item.Veiculos.Modelo
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Veiculo.Ano)
+                                                    @item.Veiculos.Ano.ToString()
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Valor)
+                                                    @item.Vendas.Valor.ToString()
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("Details", "Cliente", new { Id = item.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    <a href="@Url.Action("Details", "Venda", new { Id = item.Vendas.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Vendas.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                    </a>
+                                                    @*<a href="@Url.Action("Delete", "Jogadores", new { Id = item.Vendas  .Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                    </a>*@
                                                 </td>
                                             </tr>
                                         }
