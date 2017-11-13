@@ -39,7 +39,7 @@
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("EditarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal" }))
+                            @using (Html.BeginForm("EditarEndereco", "Cliente", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
                             {
                                 @Html.AntiForgeryToken()
 
@@ -54,3 +54,6 @@
         </div>
     </div>
 </div>
+
+<script src="@Url.Content("~/Scripts/Utils/CreateEditEndereco.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>

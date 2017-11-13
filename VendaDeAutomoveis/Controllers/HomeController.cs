@@ -4,10 +4,12 @@ using VendaDeAutomoveis.Filters;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("pagina-principal-GDCars")]
     public class HomeController : Controller
     {
         // GET: Home
-        public ActionResult Index()
+        [Route("inicio")]
+        public ActionResult Index() 
         {
             return View();
         }

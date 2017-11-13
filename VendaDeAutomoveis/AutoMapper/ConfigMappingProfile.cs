@@ -23,7 +23,11 @@ namespace VendaDeAutomoveis.AutoMapper
             CreateMap<GDC_Vendas, Venda>().ReverseMap();
             CreateMap<GDC_Veiculos, Veiculo>().ReverseMap();
             CreateMap<GDC_Formas_Pagamentos, FormaDePagamento>().ReverseMap();
-            CreateMap<GDC_Perfomances, Performance>().ReverseMap();
+
+            CreateMap<GDC_Perfomances, Performance>()
+                .ForMember(e => e.IdCorVeiculo, map => map.MapFrom(y => y.IdCor_Veiculo))
+                .ReverseMap();
+
             CreateMap<GDC_Rodas, Roda>().ReverseMap();
             CreateMap<GDC_Bancos, Banco>().ReverseMap();
             CreateMap<GDC_Cor_Veiculos, Cor_Veiculo>().ReverseMap();

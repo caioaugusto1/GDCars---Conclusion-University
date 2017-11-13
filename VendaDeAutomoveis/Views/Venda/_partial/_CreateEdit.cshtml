@@ -3,7 +3,7 @@
 <div class="form-group">
     <div class="col-md-5">
         @Html.LabelFor(m => m.Valor, "Valor do Veículo*")
-        @Html.TextBoxFor(m => m.Valor, new { @class = "form-control" })
+        @Html.TextBoxFor(m => m.Valor, new { @class = "form-control", @disabled = "disabled" })
         @Html.ValidationMessageFor(m => m.Valor)
     </div>
 </div>
@@ -11,7 +11,7 @@
 <div class="form-group">
     <div class="col-md-5">
         @Html.Label("Custom Disponíveis*")
-        @Html.DropDownListFor(c => c.Performance, new SelectList(Model.Performance, "Id", "ValorTotal"), "Customizações Disponíveis",
+        @Html.DropDownListFor(c => c.IdPerformance, new SelectList(Model.Performance, "Id", "ValorTotal"), "Customizações Disponíveis",
         new { @class = "form-control", @id = "customs" })
         @Html.ValidationMessage("FormaDePagamentoModel")
     </div>
@@ -27,23 +27,23 @@
 
 <div class="form-group">
     <div class="col-md-5">
+        @Html.LabelFor(m => m.Status, "Status*")
+        @Html.EnumDropDownListFor(m => m.Status, "Tipo de Entrega", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Status)
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-5">
         @Html.LabelFor(m => m.Tipo_Entrega, "Tipo de Entrega*")
         @Html.EnumDropDownListFor(m => m.Tipo_Entrega, "Tipo de Entrega", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Tipo_Entrega)
     </div>
 </div>
 
-<div class="form-group">
-    <div class="col-md-5">
-        @Html.LabelFor(m => m.Status, "Tipo de Entrega*")
-        @Html.EnumDropDownListFor(m => m.Status, "Tipo de Entrega", new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Status)
-    </div>
+<div id="parcialEndereco">
+    @Html.Partial("_partial/_ParcialviewEndereco")
 </div>
-
-@*<div id="parcialEndereco">
-        @Html.Partial("_partial/_ParcialviewEndereco", Model.Endereco)
-    </div>*@
 
 <div class="row">
     <div class="col-md-10">

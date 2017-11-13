@@ -46,11 +46,11 @@ namespace VendaDeAutomoveis.Entidades
         public static Venda CalcularPagamento(Venda venda)
         {
             string recebendoObservacao = venda.Observacoes;
-            
+
             if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAVista.ToString())
             {
                 double desconto = 0.06;
-                venda.Valor = (venda.Valor - desconto) - venda.Valor;
+                venda.Valor = (venda.Valor - desconto);
                 venda.Observacoes = recebendoObservacao + " Pagamento à vista";
             }
             else if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAPrazo12xComJuros.ToString())

@@ -7,8 +7,14 @@
 <br />
 
 @Html.LabelFor(model => model.Aro, htmlAttributes: new { @class = "control-label col-md-2" })
-@Html.DropDownListFor(a => a.Aro, (IEnumerable<SelectListItem>)ViewData["GetAros"], "Selecione", new Dictionary<string, object>() { { "class", "form-control" } })
-@Html.ValidationMessageFor(model => model.Aro, "", new { @class = "text-danger" })
+<select class="form-control" data-val="true" data-val-number="The field Aro must be a number." data-val-required="O campo Aro é obrigatório." id="Aro" 
+        name="Roda.Aro" style="background-color: rgb(255, 255, 255); border-color: rgb(204, 204, 204);">
+    <option>Selecione</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+</select>
 
 <br />
 
@@ -18,10 +24,14 @@
 
 <br />
 
-@Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2", @style = "float: none !important;" })
-<div class="input-group" style="width: 30%">
-    <span class="input-group-addon">R$</span>
-    <input type="text" id="RodaValor" name="Roda.Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
-    <span class="input-group-addon">.00</span>
-    @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2", @style = "float: none !important;" })
+    <div class="input-group col-md-3">
+        <span class="input-group-addon">R$</span>
+        <input type="text" id="RodaValor" name="Roda.Valor" class="form-control valor" data-val="true" data-val-required="O campo Valor é obrigatório.">
+        <span class="input-group-addon">.00</span>
+        @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+    </div>
 </div>
+

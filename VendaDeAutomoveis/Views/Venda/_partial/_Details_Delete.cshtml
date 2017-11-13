@@ -2,9 +2,14 @@
 
 @Html.HiddenFor(item => Model.Cliente.Id)
 @Html.HiddenFor(item => Model.Veiculo.Id)
+@Html.HiddenFor(item => Model.Veiculo.Valor)
 @Html.HiddenFor(item => Model.Performance.Id)
 @Html.HiddenFor(item => Model.FormaDePagamento.Id)
-@Html.HiddenFor(item => Model.Venda)
+@Html.HiddenFor(item => Model.Venda.Id)
+@Html.HiddenFor(item => Model.Venda.Tipo_Entrega)
+@Html.HiddenFor(item => Model.Venda.Status)
+@Html.HiddenFor(item => Model.Venda.Observacoes)
+
 
 <tr>
     <td>
@@ -126,3 +131,5 @@
     </td>
     <td>@Html.DisplayFor(item => Model.Venda.Observacoes)</td>
 </tr>
+
+

@@ -3,20 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using VendaDeAutomoveis.Controllers.Base;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Factory.EntidadesFactory;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using static VendaDeAutomoveis.Entidades.Cliente;
-using static VendaDeAutomoveis.Entidades.Venda;
 using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
-    public class VendaController : Controller
+    [RoutePrefix("administrativo/vendas")]
+    public class VendaController : BaseController
     {
         #region Instâncias Repositorys
 
@@ -49,16 +49,44 @@ namespace VendaDeAutomoveis.Controllers
             this._corRepository = _corRepository;
         }
 
+        public VendaController()
+        {
+        }
+
         #endregion
 
+        [Route("listar-vendas")]
         public ActionResult Index()
         {
-            var vendaViewModel = Mapper.Map<IList<GDC_Vendas>, IList<Venda>>(_vendaRepository.ObterTodos());
+            try
+            {
+                var vendaViewModel = new ListarVendasViewModel();
+                List<ListarVendasViewModel> vendasViewModel = new List<ListarVendasViewModel>();
 
-            return View(vendaViewModel);
+                var vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos());
+
+                vendas.ForEach(ven =>
+                {
+                    vendaViewModel = new ListarVendasViewModel();
+
+                    vendaViewModel.Vendas = ven;
+                    vendaViewModel.Clientes = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(ven.IdCliente));
+                    vendaViewModel.Veiculos = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(ven.IdVeiculo));
+
+                    vendasViewModel.Add(vendaViewModel);
+                });
+
+                return View(vendasViewModel);
+            }
+            catch(Exception ex)
+            {
+                return RedirectToAction("Error", "Base");
+            }
+            
         }
 
         [HttpGet]
+        [Route("cadastrar-venda")]
         public ActionResult Create()
         {
             CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();
@@ -94,18 +122,23 @@ namespace VendaDeAutomoveis.Controllers
                     }
                 }
 
-
                 cadVenda.Venda = Mapper.Map<Venda>(cadVenda);
-                //cadVenda.Venda = CalcularVeiculoEsportivo(cadVenda.Venda);
-                //cadVenda.Venda = CalcularPagamento(cadVenda.Venda);
 
-                return RedirectToAction("DetailsConfirmar", cadVenda );
+                cadVenda.Venda.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
+                cadVenda.Venda.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+
+                cadVenda.Venda = Venda.CalcularVeiculoEsportivo(cadVenda.Venda);
+                cadVenda.Venda = Venda.CalcularPagamento(cadVenda.Venda);
+
+                return RedirectToAction("DetailsConfirmar", cadVenda);
             }
             else
             {
                 cadVenda.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
-                cadVenda.FormasDePagamentos = new List<FormaDePagamento>();
+                cadVenda.FormasDePagamentos = Mapper.Map<IList<FormaDePagamento>>(_formaPagamentoRepository.ObterTodos());
                 cadVenda.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+                cadVenda.Performance = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfomanceRepository.ObterTodos());
+                cadVenda.Endereco = new Endereco();
 
                 return View("Create", cadVenda);
             }
@@ -116,6 +149,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
 
+            detailsDeleteVendaViewModel.Venda = cadVenda.Venda;
             detailsDeleteVendaViewModel.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
             detailsDeleteVendaViewModel.Performance = Mapper.Map<Performance>(_perfomanceRepository.ObterPorId(cadVenda.IdPerformance));
             detailsDeleteVendaViewModel.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(detailsDeleteVendaViewModel.Performance.IdRoda));
@@ -124,8 +158,7 @@ namespace VendaDeAutomoveis.Controllers
             detailsDeleteVendaViewModel.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
             detailsDeleteVendaViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cadVenda.IdEndereco));
             detailsDeleteVendaViewModel.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
-            detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(cadVenda.Venda);
-
+            
             return View(detailsDeleteVendaViewModel);
         }
 
@@ -144,12 +177,10 @@ namespace VendaDeAutomoveis.Controllers
                 Status = cadVenda.Venda.Status.ToString(),
             };
 
-            //var formaDePagamento = Mapper.Map<GDC_Formas_Pagamentos, FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
-            //var cliente = Mapper.Map<GDC_Clientes, Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
-            //var vendaToDomain = Mapper.Map<Venda, GDC_Vendas>(venda);
-
-
             _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
+
+            MudarClienteComunParaVip(cadVenda.Cliente);
+            
             return View("Index");
            }
 
@@ -173,9 +204,11 @@ namespace VendaDeAutomoveis.Controllers
         {
             if (cliente.Tipo == TipoCliente.Comum)
             {
-                var calcularGastoCliente = _vendaRepository.GastosPorCliente(cliente.Id);
+                //var calcularGastoCliente = _vendaRepository.GastosPorCliente(cliente.Id);
 
-                if (calcularGastoCliente >= 200000)
+                var calcularGastoCliente = _vendaRepository.ObterPorId(cliente.Id);
+
+                if (calcularGastoCliente.Valor >= 200000)
                     MudarClienteParaVip(cliente);
 
                 _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));

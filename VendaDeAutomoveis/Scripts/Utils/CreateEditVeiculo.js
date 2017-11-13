@@ -1,20 +1,6 @@
-﻿
-$(document).ready(function () {
-    $('#btnCadastrar').click(function () {
-
-        var isValid = validForm();
-
-        if (isValid == false) {
-            saveLead();
-        }
-        else {
-            $('#form').submit();
-        }
-    });
-});
-
-var msgs = [];
+﻿var msgs = [];
 function validForm() {
+    debugger;
     msgs = [];
     var campo;
     var isValid = true;

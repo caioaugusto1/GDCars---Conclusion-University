@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Models;
@@ -21,8 +22,7 @@ namespace VendaDeAutomoveis.Controllers
         private BancoRepository _bancoRepository;
 
         #endregion
-
-
+        
         #region Métoo Construtor
 
         public PerformanceController(PerfomanceRepository _perfoRepository, ClienteRepository _clienteRepository,
@@ -40,14 +40,16 @@ namespace VendaDeAutomoveis.Controllers
         // GET: Performance
         public ActionResult Index()
         {
-            var obterCustomns = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfoRepository.ObterTodos());
+            var obterCustomns = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
 
-            var custom = new ListarPerformancesViewModel();
+            var custom = new ListarCustomsViewModel();
 
-            List<ListarPerformancesViewModel> customViewModel = new List<ListarPerformancesViewModel>();
+            List<ListarCustomsViewModel> customViewModel = new List<ListarCustomsViewModel>();
 
             foreach (var itemCustom in obterCustomns)
             {
+                custom = new ListarCustomsViewModel();
+
                 custom.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemCustom.IdCliente));
                 custom.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemCustom.IdRoda));
                 custom.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemCustom.IdBanco));
@@ -65,7 +67,6 @@ namespace VendaDeAutomoveis.Controllers
             Performance Model = new Performance();
 
             ViewBag.Cliente = _clienteRepository.ObterTodos();
-            ViewData["GetAros"] = Roda.GetAros();
 
             return View(Model);
         }
@@ -82,6 +83,8 @@ namespace VendaDeAutomoveis.Controllers
                 custom.IdRoda = custom.Roda.Id;
                 custom.IdCorVeiculo = custom.Cor_Veiculo.Id;
 
+                custom.ValorTotal = CalcularCustom(custom);
+
                 _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(custom.Roda));
                 _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(custom.Cor_Veiculo));
                 _bancoRepository.Inserir(Mapper.Map<GDC_Bancos>(custom.Banco));
@@ -93,6 +96,17 @@ namespace VendaDeAutomoveis.Controllers
             }
 
             return View(custom);
+        }
+
+        private double CalcularCustom(Performance custom)
+        {
+            double valorTotal = 0;
+
+            valorTotal = custom.Banco.Valor;
+            valorTotal += custom.Cor_Veiculo.Valor;
+            valorTotal += custom.Roda.Valor;
+
+            return valorTotal;
         }
     }
 }

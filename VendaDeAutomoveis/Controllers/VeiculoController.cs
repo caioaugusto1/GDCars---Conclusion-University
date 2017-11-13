@@ -14,6 +14,7 @@ using VendaDeAutomoveis.Repository.ConnectionContext;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
+    [RoutePrefix("administrativo/veiculo")]
     public class VeiculoController : Controller
     {
         private VeiculoRepository _veiculoRepository;
@@ -23,6 +24,7 @@ namespace VendaDeAutomoveis.Controllers
             this._veiculoRepository = _veiculoRepository;
         }
 
+        [Route("listar-veiculo")]
         public ActionResult Index()
         {
             var veiculosViewModel = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
@@ -30,6 +32,7 @@ namespace VendaDeAutomoveis.Controllers
             return View(veiculosViewModel);
         }
 
+        [Route("cadastrar-veiculo")]
         public ActionResult FormularioCadastro()
         {
             return View();
@@ -37,9 +40,6 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult AdicionarProduto(Veiculo veiculo)
         {
-            if (veiculo.IdUpload.ToString() == "{00000000-0000-0000-0000-000000000000}")
-                veiculo.IdUpload = null;
-
             if (ModelState.IsValid)
             {
                 foreach (string nomeArquivo in Request.Files)
@@ -61,7 +61,7 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
-
+        [Route("editar-veiculo/{id:guid}")]
         public ActionResult Editar(Guid id)
         {
             var veiculoViewModel = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(id));

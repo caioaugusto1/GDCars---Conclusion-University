@@ -4,7 +4,7 @@
 
 @{
     ViewBag.Title = "Cadastrar - Veículo";
-    Html.RenderPartial("_partial/_cabecalho_principal");
+    //Html.RenderPartial("_partial/_cabecalho_principal");
 }
 
 <div class="dashboard-wrapper">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-md-10 col-sm-9">
-                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm("AdicionarProduto", "administrativo/veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
                                 Html.AntiForgeryToken();
 
@@ -68,6 +68,8 @@
 </div>
 
 
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/CreateEditVeiculo.js")"></script>
 
 <script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>
 <script src="~/Scripts/fileinput.min.js"></script>

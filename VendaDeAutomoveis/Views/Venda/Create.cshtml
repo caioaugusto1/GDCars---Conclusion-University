@@ -45,7 +45,7 @@
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
-                                    <div class="col-md-10">
+                                    <div class="col-md-5">
                                         @Html.LabelFor(m => m.IdCliente, "Nome do Cliente*")
                                         @Html.DropDownListFor(m => m.IdCliente,
                                             new SelectList(Model.Clientes, "Id", "Nome"), "Nome do Cliente",
@@ -56,7 +56,7 @@
 
 
                                 <div class="form-group">
-                                    <div class="col-md-10">
+                                    <div class="col-md-5">
                                         @Html.LabelFor(m => m.IdVeiculo, "Modelo do Veículo*")
                                         @Html.DropDownListFor(m => m.IdVeiculo,
                                             new SelectList(Model.Veiculos, "Id", "Modelo"), "Modelo do Veículo",
@@ -81,3 +81,12 @@
 <script src="~/Content/bootstrap/js/bootstrap.js"></script>
 <script src="@Url.Content("~/Scripts/Utils/CreateEditVenda.js")"></script>
 <script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+
+<script>
+
+    @if (ViewBag.ExibirCampo != null)
+    {
+        @:pegarValorEndereco();
+    }
+
+</script>

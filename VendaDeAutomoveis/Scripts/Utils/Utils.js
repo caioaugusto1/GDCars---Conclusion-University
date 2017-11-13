@@ -1,5 +1,4 @@
-﻿
-$('#btnCadastrar').click(function () {
+﻿$('#btnCadastrar').click(function () {
     var isValid = validForm();
 
     if (isValid == false) {
@@ -10,7 +9,7 @@ $('#btnCadastrar').click(function () {
     }
 });
 
-$('#btnSalvarModal').click(function () {
+$('#btnCadastrar').click(function () {
     var isValid = validForm();
 
     if (isValid == false) {

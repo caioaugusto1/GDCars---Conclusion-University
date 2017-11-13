@@ -1,4 +1,15 @@
-﻿var msgs = [];
+﻿$('#btnConfirmarAlteracoes').click(function () {
+    var isValid = validForm();
+
+    if (isValid == false) {
+        saveLead();
+    }
+    else {
+        $('#modalConfirme').modal();
+    }
+});
+
+var msgs = [];
 function validForm() {
     msgs = [];
     var campo;
@@ -22,8 +33,8 @@ function validForm() {
         $('#RodaModelo').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $('#Aro').val();
-    if (!campo && campo.length <= 0) {
+    campo = $('#Aro option:selected').val();
+    if (!campo && campo.length <= 0 || campo < 16 || campo > 20) {
         isValid = false;
         $('#Aro').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher o <b>Tamanho do Aro</b>.");
