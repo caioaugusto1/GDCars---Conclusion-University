@@ -1,61 +1,53 @@
 ﻿var msgs = [];
 function validForm() {
-    debugger;
     msgs = [];
     var campo;
     var isValid = true;
 
-    campo = $("#Nome").val();
+    campo = $("#Fabricante").val();
     if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#Nome').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        $('#Fabricante').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher com o nome do <b>Cliente</b>.");
     } else {
-        $('#Nome').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#Fabricante').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $('#rg').val();
+    campo = $('#modelo').val();
     if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#rg').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        $('#modelo').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher com o <b>Modelo do veículo</b>.");
     } else {
-        $('#rg').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#modelo').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $('#Email').val();
+    //Input ano
+    campo = $('#disabledTextInput').val();
     if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#Email').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        $('#disabledTextInput').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher com <b>E-mail</b>.");
     } else {
-        $('#Email').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#disabledTextInput').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $('#dtnascimento').val();
+    campo = $("#qtportas option:selected").val();
     if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#dtnascimento').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-        msgs.push("É necessário preencher a <b>Data de Nascimento</b>.");
+        $('#qtportas').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        msgs.push("É necessário preencher o nome do <b>Cliente</b>.");
     } else {
-        $('#dtnascimento').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#qtportas').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
-    campo = $("#cpf").val();
-    campo = campo.replace(/[^\d]+/g, '')
-    var cpfValido = validarCPF(campo);
-    if (!campo && campo.length <= 0 || !cpfValido) {
+    campo = $('#Valor').val();
+    if (!campo && campo.length <= 0) {
         isValid = false;
-        $('#cpf').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
-
-        if (!cpfValido) {
-            msgs.push("<b>CPF inválido!</b>");
-        }
-        else {
-            msgs.push("<b>CPF não preenchido!</b>");
-        }
+        $('#Valor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
+        msgs.push("É necessário preencher a <b>Data de Nascimento</b>.");
     } else {
-        $('#cpf').css({ "background-color": "#fff", "border-color": "#ccc" });
+        $('#Valor').css({ "background-color": "#fff", "border-color": "#ccc" });
     }
 
     return isValid;

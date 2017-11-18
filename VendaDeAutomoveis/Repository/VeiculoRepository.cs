@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
+using System;
 
 namespace VendaDeAutomoveis.Repository
 {
@@ -52,6 +53,17 @@ namespace VendaDeAutomoveis.Repository
                     Modelo = obj.Modelo,
                     Valor = obj.Valor,
                     Tipo = obj.Tipo
+                });
+        }
+
+        public override void Delete(Guid id)
+        {
+            var sql = "Delete GDC_Veiculos where Id = @id ";
+
+            var e = _context.Database.Connection.Query<GDC_Veiculos>(sql,
+                param: new
+                {
+                    Id = id
                 });
         }
     }

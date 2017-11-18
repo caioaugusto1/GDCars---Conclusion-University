@@ -33,8 +33,6 @@ namespace VendaDeAutomoveis.Repository
                     email = email,
                     senha = senha
                 }).FirstOrDefault();
-
-            //return _context.Logins.Where(a => a.Email == email && a.Senha == senha).FirstOrDefault();
         }
     }
 }

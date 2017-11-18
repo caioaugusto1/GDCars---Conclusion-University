@@ -27,7 +27,7 @@
 
 <div class="form-group">
     <div class="col-md-3">
-        <label for="disabledTextInput">Ano</label>
+        <label for="disabledTextInput">Ano Fabricação*</label>
         <input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@anoAtual" value="@anoAtual" disabled>
         @Html.ValidationMessageFor(u => u.Ano)
     </div>
@@ -36,19 +36,30 @@
 <div class="form-group">
     <div class="col-md-3">
         @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de Portas*")
-        @Html.TextBoxFor(u => u.QuantidadeDePortas, new { @id = "qtportas", @class = "form-control" })
-        @Html.ValidationMessageFor(u => u.QuantidadeDePortas)
+        <select class="form-control" data-val="true" data-val-number="The field Aro must be a number." data-val-required="O campo Aro é obrigatório." id="qtportas"
+                name="Roda.Aro" style="background-color: rgb(255, 255, 255); border-color: rgb(204, 204, 204);">
+            <option>Selecione</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+        </select>
     </div>
 </div>
 
-<label style="float:none !important;">Valor</label>
 <div class="form-group">
-    <div class="col-md-5">
-        <div class="input-group">
-            <span class="input-group-addon">R$</span>
-            <input type="text" id="Valor" name="Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
-            <span class="input-group-addon">.00</span>
-            @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
-        </div>
+    <div class="col-md-3">
+        @Html.LabelFor(model => model.Tipo, "Tipo*")
+        @Html.EnumDropDownListFor(model => model.Tipo, "Selecione", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
     </div>
 </div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Valor, "Valor*")
+    <div class="input-group col-md-3">
+        <span class="input-group-addon">R$</span>
+        <input type="text" id="Valor" name="Valor" class="form-control valor" data-val="true" data-val-required="O campo Valor é obrigatório.">
+        <span class="input-group-addon">.00</span>
+        @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
+    </div>
+</div>
+

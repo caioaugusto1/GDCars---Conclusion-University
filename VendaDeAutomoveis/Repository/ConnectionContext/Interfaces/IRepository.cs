@@ -16,5 +16,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext.Interfaces
         void InsertRange(DBSet[] entities);
 
         void SaveChange();
+
+        void Delete(Guid id);
     }
 }

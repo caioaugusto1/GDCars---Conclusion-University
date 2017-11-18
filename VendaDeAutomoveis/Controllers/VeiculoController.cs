@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VendaDeAutomoveis.Entidades;
-using VendaDeAutomoveis.Factory.Base.Upload;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
 using VendaDeAutomoveis.Repository.ConnectionContext;
@@ -18,46 +16,48 @@ namespace VendaDeAutomoveis.Controllers
     public class VeiculoController : Controller
     {
         private VeiculoRepository _veiculoRepository;
+        private VendaRepository _vendaRepository;
 
-        public VeiculoController(VeiculoRepository _veiculoRepository)
+        public VeiculoController(VeiculoRepository _veiculoRepository, VendaRepository _vendaRepository)
         {
             this._veiculoRepository = _veiculoRepository;
+            this._vendaRepository = _vendaRepository;
         }
 
         [Route("listar-veiculo")]
         public ActionResult Index()
         {
             var veiculosViewModel = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
+            
+            foreach (Veiculo veiculo in veiculosViewModel)
+            {
+                veiculo.Venda = Mapper.Map<Venda>(_vendaRepository.ObterTodos().Where(a => a.IdVeiculo == veiculo.Id).FirstOrDefault());
+            }
 
             return View(veiculosViewModel);
         }
 
-        [Route("cadastrar-veiculo")]
+        [Route("cadastrar")]
         public ActionResult FormularioCadastro()
         {
             return View();
         }
 
+        [Route("cadastrar-veiculo")]
         public ActionResult AdicionarProduto(Veiculo veiculo)
         {
             if (ModelState.IsValid)
             {
-                foreach (string nomeArquivo in Request.Files)
-                {
-                    HttpPostedFileBase file = Request.Files[nomeArquivo];
-                    UploadArquivoFactory.Upload(file, nomeArquivo);
-                }
-
                 veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
 
                 var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
                 _veiculoRepository.Inserir(toDomain);
-                return RedirectToAction("Index");
+                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
             }
             else
             {
-                return View("FormularioCadastro", veiculo);
+                return View("cadastrar-veiculo", "administrativo/veiculo", veiculo);
             }
         }
 
@@ -71,6 +71,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
+        [Route("editar-veiculo/{id:guid}")]
         public ActionResult Editar(Veiculo veiculo)
         {
             if (ModelState.IsValid)
@@ -78,39 +79,21 @@ namespace VendaDeAutomoveis.Controllers
                 var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
                 _veiculoRepository.Editar(veiculoDomain);
-                return RedirectToAction("Index");
+                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
             }
             else
             {
-                return View("EditarProduto", veiculo);
+                return View("editar-veiculo", "administrativo/veiculo", veiculo);
             }
         }
 
         #region metodos de imagens
+        [Route("excluir-veiculo/{id:guid}")]
         public ActionResult Excluir(Guid id)
         {
-            //_veiculoRepository.Excluir(id)
+            _veiculoRepository.Delete(id);
 
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult VerImagem()
-        {
-            //Adicione quantas extensões você desejar!
-            //List<String> oListTiposImagens = new List<string>();
-            //oListTiposImagens.Add("*.gif");
-            //oListTiposImagens.Add("*.png");
-            //oListTiposImagens.Add("*.jpg");
-
-            //var ImagemNome = uploadArquivoDAO.pegarNomeImagemPorIdProduto(idProduto);
-
-            var nomecompleto = System.IO.Path.Combine(ConfigurationManager.AppSettings["caminhoRepositorioDeArmazenamento"], "uno" + ".png");
-
-            var arquivoInfo = new FileInfo(nomecompleto);
-
-            //string[] imagens2 = Directory.GetFiles(caminhoDiretorio, "*.png");
-
-            return base.File(nomecompleto, "uno.png");
+            return RedirectToAction("listar-veiculo", "administrativo/veiculo");
         }
 
         public ActionResult SalvarArquivo()
@@ -120,7 +103,7 @@ namespace VendaDeAutomoveis.Controllers
             foreach (string nomeArquivo in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[nomeArquivo];
-                UploadArquivoFactory.Upload(file, nomeArquivo);
+                //UploadArquivoFactory.Upload(file, nomeArquivo);
             }
 
             if (fazerUpload)

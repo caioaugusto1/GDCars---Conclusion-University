@@ -58,5 +58,13 @@ namespace VendaDeAutomoveis.Repository
         {
             _context.SaveChanges();
         }
+
+        public virtual void Delete(Guid id)
+        {
+            var obj = ObterPorId(id);
+
+            _context.Entry(obj).State = EntityState.Deleted;
+            SaveChange();
+        }
     }
 }

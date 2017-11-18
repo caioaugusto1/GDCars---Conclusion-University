@@ -8,7 +8,5 @@ namespace VendaDeAutomoveis.Entidades
         public EstiloCorVeiculo Estilo { get; set; }
 
         public double Valor { get; set; }
-
-        //public Guid IdPerformance { get; set; }
     }
 }

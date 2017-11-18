@@ -1,16 +1,58 @@
 ﻿@model VendaDeAutomoveis.Entidades.Veiculo
 
-@using (Html.BeginForm("Editar", "administrativo/veiculo", FormMethod.Post))
-{
-    @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
+@{
+    ViewBag.Title = "Editar - Cliente";
+    Html.RenderPartial("_partial/_cabecalho_principal");
+}
 
-    Html.RenderPartial("_partial/_CreateEdit", Model);
+<div class="dashboard-wrapper">
+    <div class="page-title clearfix">
+        <h2>
+            Editar
+            <small>
+                <ul>
+                    <li>Home</li>
+                    <li>/</li>
+                    <li>Editar</li>
+                    <li>/</li>
+                    <li>Veículo</li>
+                </ul>
+            </small>
+        </h2>
+    </div>
 
-    <div class="form_submit clearfix">
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-2">
-                <button class="btn btn-primary btn-lg">Salvar</button>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget no-margin">
+                <div class="widget-header">
+                    <div class="title">
+                        <span class="fs1" aria-hidden="true" data-icon="&#xe075;"></span> Editar
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-3">
+                            <div class="thumbnail">
+                                AQUI VAI UMA IMAGEM
+                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-sm-9">
+
+                            @using (Html.BeginForm("Editar", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.HiddenFor(u => u.Id, new { @class = "form-control" })
+
+                                Html.RenderPartial("_partial/_CreateEdit", Model);
+
+                                Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
+</div>

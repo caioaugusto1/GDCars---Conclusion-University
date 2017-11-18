@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
@@ -31,12 +30,7 @@ namespace VendaDeAutomoveis.Entidades
 
         public virtual Upload Upload { get; set; }
 
-        //public List<Veiculo> ListarAros()
-        //{
-        //    return new List<Veiculo>
-        //    {
-        //        new Veiculo  { Id = IdCli }
-        //    }
-        //}
-    }
+        [ScaffoldColumn(false)]
+        public virtual Venda Venda { get; set; }
+     }
 }

@@ -97,6 +97,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
+        [Route("cadastrar-venda")]
         public ActionResult Create(CadastrarVendaViewModel cadVenda)
         {
             if (cadVenda.Tipo_Entrega != EntregaVenda.Domiciliar && cadVenda.Tipo_Entrega != EntregaVenda.Loja)
@@ -141,6 +142,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpGet]
+        [Route("detalhes-venda")]
         public ActionResult DetailsConfirmar(CadastrarVendaViewModel cadVenda)
         {
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
@@ -159,6 +161,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
+        [Route("confirmar-venda")]
         public ActionResult Confirmar(DetailsDeleteVendaViewModel cadVenda)
         {
             var e = new GDC_Vendas()

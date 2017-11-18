@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="col-md-10 col-sm-9">
-                            @using (Html.BeginForm("AdicionarProduto", "administrativo/veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
+                            @using (Html.BeginForm("AdicionarProduto", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form", enctype = "multipart/form-data" }))
                             {
                                 Html.AntiForgeryToken();
 
@@ -48,14 +48,14 @@
 
                                 Html.RenderPartial("_partial/_CreateEdit", Model);
 
-                                <div class="form-group">
+                                @*<div class="form-group">
                                     <div class="col-md-10">
                                         <div class="file-loading">
                                             <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
                                                    data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload..." />
                                         </div>
                                     </div>
-                                </div>
+                                </div>*@
                                 
                                 Html.RenderPartial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml");
                             }
@@ -71,13 +71,21 @@
 <script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
 <script src="@Url.Content("~/Scripts/Utils/CreateEditVeiculo.js")"></script>
 
-<script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>
-<script src="~/Scripts/fileinput.min.js"></script>
+@*<script src="@Url.Content("~/Scripts/Utils/UploadInputFile.js")"></script>*@
+@*<script src="~/Scripts/fileinput.min.js"></script>
 
 <link href="~/Content/bootstrap/css/fileinput.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.css" rel="stylesheet" />
 <link href="~/Content/bootstrap/css/fileinput.rtl.css" rel="stylesheet" />
-<link href="~/Content/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/fileinput-rtl.min.css" rel="stylesheet" />*@
+<script src="~/Content/bootstrap/js/jquery.mask_igorescobar.js"></script>
+
+<script>
+
+    $('.valor').mask('#.##0,00', { reverse: true });
+
+</script>
+
 
 
 
