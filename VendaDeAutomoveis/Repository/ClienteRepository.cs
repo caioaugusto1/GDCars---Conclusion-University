@@ -1,6 +1,8 @@
-﻿using Dapper;
+﻿using AutoMapper;
+using Dapper;
 using System;
 using System.Linq;
+using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Repository.ConnectionContext;
 using VendaDeAutomoveis.Repository.ConnectionContext.Interfaces;
 
@@ -98,5 +100,20 @@ namespace VendaDeAutomoveis.Repository
 
             return e.FirstOrDefault();
         }
+
+        //public override void Delete(Guid id)
+        //{
+        //    var sql = "DECLARE @idEndereco varchar(max); DECLARE @idCliente varchar(max);"
+        //        + "SET @idCliente = @id; SET @idEndereco = (SELECT IdEndereco FROM GDC_Clientes WHERE Id = @idCliente)"
+        //        + "SELECT @idCliente BEGIN TRANSACTION BEGIN TRY delete from GDC_Clientes where Id = @idCliente"
+        //        + "IF(@idEndereco is not null) delete from GDC_Enderecos where Id = @idEndereco"
+        //        + "COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH";
+
+        //    var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
+        //       param: new
+        //       {
+        //           id = id
+        //       });
+        //}
     }
 }

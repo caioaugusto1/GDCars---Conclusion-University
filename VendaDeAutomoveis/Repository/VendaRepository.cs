@@ -27,18 +27,18 @@ namespace VendaDeAutomoveis.Repository
             return e.FirstOrDefault();
         }
 
-        public override GDC_Vendas ObterPorId(Guid id)
-        {
-            var sql = "SELECT * FROM GDC_Vendas where Id = @id ";
+        //public override GDC_Vendas ObterPorId(Guid id)
+        //{
+        //    var sql = "SELECT * FROM GDC_Vendas where Id = @id ";
             
-            var e = _context.Database.Connection.Query(sql,
-                param: new
-                {
-                    id = id
-                });
+        //    var e = _context.Database.Connection.Query(sql,
+        //        param: new
+        //        {
+        //            id = id
+        //        });
 
-            return e.FirstOrDefault();
-        }
+        //    return e.FirstOrDefault();
+        //}
 
         public override IList<GDC_Vendas> ObterTodos()
         {

@@ -1,4 +1,5 @@
-﻿using VendaDeAutomoveis.Entidades;
+﻿using System.ComponentModel.DataAnnotations;
+using VendaDeAutomoveis.Entidades;
 
 namespace VendaDeAutomoveis.Models
 {

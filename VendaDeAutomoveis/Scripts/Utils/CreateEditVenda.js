@@ -1,6 +1,8 @@
 ﻿$(function () {
     $('#parcialEndereco').hide();
+    $("#cep").mask("99999-999");
 });
+
 
 $('#IdVeiculo').change(function () {
     if ($('#IdVeiculo').val() == "") {

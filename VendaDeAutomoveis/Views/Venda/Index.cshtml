@@ -44,8 +44,9 @@
                                             <th style="width:20%">Veículo</th>
                                             <th style="width:20%">Modelo</th>
                                             <th style="width:10%">Ano</th>
-                                            <th style="width:10%">Valor Total</th>
-                                            <th style="width:20%" class="hidden-phone">Ação</th>                                       
+                                            <th style="width:10%">Valor Veículo</th>
+                                            <th style="width:10%" class="hidden-phone">Valor Total</th>
+                                            <th style="width:10%" class="hidden-phone">Ação</th>                                       
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,7 +69,10 @@
                                                     @item.Vendas.Valor.ToString()
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("Details", "Venda", new { Id = item.Vendas.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    @item.Vendas.Valor.ToString()
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("detalhes-venda", "administrativo-vendas", new { id = item.Vendas.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
                                                     <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Vendas.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>

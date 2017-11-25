@@ -13,6 +13,10 @@ namespace VendaDeAutomoveis.Repository
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Cliente>().HasOptional(e => e.Endereco)
+                .WithMany().WillCascadeOnDelete(true);
+
+
             base.OnModelCreating(modelBuilder);
         }
 

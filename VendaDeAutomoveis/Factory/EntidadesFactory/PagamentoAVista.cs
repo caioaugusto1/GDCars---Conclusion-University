@@ -9,6 +9,12 @@ namespace VendaDeAutomoveis.Factory.EntidadesFactory
     {
         public double CalcularDesconto(double ValorTotal)
         {
+            double resultado = (ValorTotal - 0.06);
+            return resultado;
+        }
+
+        public double CalcularValorParcela(double ValorTotal)
+        {
             throw new NotImplementedException();
         }
 

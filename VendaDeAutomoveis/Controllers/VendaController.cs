@@ -48,7 +48,7 @@ namespace VendaDeAutomoveis.Controllers
             this._bancoRepository = _bancoRepository;
             this._corRepository = _corRepository;
         }
-        
+
         #endregion
 
         [Route("listar-vendas")]
@@ -56,7 +56,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             try
             {
-                var vendaViewModel = new ListarVendasViewModel();
+                ListarVendasViewModel vendaViewModel;
                 List<ListarVendasViewModel> vendasViewModel = new List<ListarVendasViewModel>();
 
                 var vendas = Mapper.Map<List<Venda>>(_vendaRepository.ObterTodos());
@@ -74,11 +74,11 @@ namespace VendaDeAutomoveis.Controllers
 
                 return View(vendasViewModel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Error", "Base");
             }
-            
+
         }
 
         [HttpGet]
@@ -88,7 +88,7 @@ namespace VendaDeAutomoveis.Controllers
             CadastrarVendaViewModel vendaViewModel = new CadastrarVendaViewModel();
 
             vendaViewModel.Clientes = Mapper.Map<IList<GDC_Clientes>, IList<Cliente>>(_clienteRepository.ObterTodos());
-            vendaViewModel.FormasDePagamentos = new List<FormaDePagamento>();
+            vendaViewModel.FormasDePagamentos = new List<FormaDePagamento>().OrderBy(a => a.Modelo).ToList();
             vendaViewModel.Veiculos = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
             vendaViewModel.Performance = Mapper.Map<IList<GDC_Perfomances>, IList<Performance>>(_perfomanceRepository.ObterTodos());
             vendaViewModel.Endereco = new Endereco();
@@ -145,9 +145,49 @@ namespace VendaDeAutomoveis.Controllers
         [Route("detalhes-venda")]
         public ActionResult DetailsConfirmar(CadastrarVendaViewModel cadVenda)
         {
+            ViewBag.IsDetailsFinish = true;
+
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
 
             detailsDeleteVendaViewModel.Venda = cadVenda.Venda;
+
+            detailsDeleteVendaViewModel = PreencherViewModelDetails(detailsDeleteVendaViewModel, ref cadVenda);
+
+            return View(detailsDeleteVendaViewModel);
+        }
+
+        [HttpGet]
+        [Route("detalhes-venda/{id:guid}")]
+        public ActionResult Details(Guid id)
+        {
+            try
+            {
+                ViewBag.IsDetails = false;
+
+                CadastrarVendaViewModel cadVenda = new CadastrarVendaViewModel();
+                DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
+
+                detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(_vendaRepository.ObterPorId(id));
+
+                cadVenda.IdVenda = detailsDeleteVendaViewModel.Venda.Id;
+                cadVenda.IdCliente = detailsDeleteVendaViewModel.Venda.IdCliente;
+                cadVenda.IdFormaDePagamento = detailsDeleteVendaViewModel.Venda.IdFormaDePagamento;
+                cadVenda.IdPerformance = detailsDeleteVendaViewModel.Venda.IdPerfomance;
+                cadVenda.IdVeiculo = detailsDeleteVendaViewModel.Venda.IdVeiculo;
+
+                detailsDeleteVendaViewModel = PreencherViewModelDetails(detailsDeleteVendaViewModel, ref cadVenda);
+
+                return View("DetailsConfirmar", detailsDeleteVendaViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
+        }
+
+        private DetailsDeleteVendaViewModel PreencherViewModelDetails(DetailsDeleteVendaViewModel detailsDeleteVendaViewModel,
+            ref CadastrarVendaViewModel cadVenda)
+        {
             detailsDeleteVendaViewModel.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(cadVenda.IdCliente));
             detailsDeleteVendaViewModel.Performance = Mapper.Map<Performance>(_perfomanceRepository.ObterPorId(cadVenda.IdPerformance));
             detailsDeleteVendaViewModel.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(detailsDeleteVendaViewModel.Performance.IdRoda));
@@ -156,8 +196,8 @@ namespace VendaDeAutomoveis.Controllers
             detailsDeleteVendaViewModel.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
             detailsDeleteVendaViewModel.Endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(cadVenda.IdEndereco));
             detailsDeleteVendaViewModel.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
-            
-            return View(detailsDeleteVendaViewModel);
+
+            return detailsDeleteVendaViewModel;
         }
 
         [HttpPost]
@@ -166,6 +206,7 @@ namespace VendaDeAutomoveis.Controllers
         {
             var e = new GDC_Vendas()
             {
+                Id = Guid.NewGuid(),
                 IdCliente = cadVenda.Cliente.Id,
                 IdVeiculo = cadVenda.Veiculo.Id,
                 IdFormaPagamento = cadVenda.FormaDePagamento.Id,
@@ -179,9 +220,9 @@ namespace VendaDeAutomoveis.Controllers
             _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
 
             MudarClienteComunParaVip(cadVenda.Cliente);
-            
-            return View("Index");
-           }
+
+            return View("listar-vendas", "administrativo-vendas");
+        }
 
         public ActionResult HistoricoPedidos()
         {
@@ -245,16 +286,23 @@ namespace VendaDeAutomoveis.Controllers
 
         public ActionResult PegarFormaDePagamento(Guid IdCliente)
         {
-            var vendaViewModel = new CadastrarVendaViewModel();
+            try
+            {
+                var vendaViewModel = new CadastrarVendaViewModel();
 
-            var cliente = _clienteRepository.ObterPorId(IdCliente);
+                var cliente = _clienteRepository.ObterPorId(IdCliente);
 
-            if (cliente.Tipo == TipoCliente.Vip.ToString())
-                vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip().ToList());
-            else
-                vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum().ToList());
+                if (cliente.Tipo == TipoCliente.Vip.ToString())
+                    vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterListarFormaPagamentoVip().ToList());
+                else
+                    vendaViewModel.FormasDePagamentos = Mapper.Map<List<GDC_Formas_Pagamentos>, List<FormaDePagamento>>(_formaPagamentoRepository.ObterFormaPagamentoComum().ToList());
 
-            return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
+                return PartialView("_ParcialViewFormaDePagamento", vendaViewModel.FormasDePagamentos);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         [HttpPost]
@@ -271,48 +319,55 @@ namespace VendaDeAutomoveis.Controllers
             return PartialView("_ParcialviewEndereco", cliente.Endereco);
         }
 
-        public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa, 
+        public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa,
             string CEP, string Cidade, string Estado, string Complemento)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var infoCliente = _clienteRepository.ObterPorId(idCliente);
-                
-                var newEndereco = new GDC_Enderecos()
+                if (ModelState.IsValid)
                 {
-                    Endereco = Endereco,
-                    Bairro = Bairro,
-                    Numero = NumeroDaCasa,
-                    CEP = CEP,
-                    Cidade = Cidade,
-                    Estado = Estado,
-                    Complemento = Complemento
-                };
+                    var infoCliente = _clienteRepository.ObterPorId(idCliente);
 
-                var endereco = new Endereco();
-
-                if (infoCliente.IdEndereco.HasValue)
-                {
-                    endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(infoCliente.IdEndereco.Value));
-                    
-                    if (endereco != null)
+                    var newEndereco = new GDC_Enderecos()
                     {
-                        _enderecoRepository.Editar(newEndereco);
+                        Endereco = Endereco,
+                        Bairro = Bairro,
+                        Numero = NumeroDaCasa,
+                        CEP = CEP,
+                        Cidade = Cidade,
+                        Estado = Estado,
+                        Complemento = Complemento
+                    };
+
+                    var endereco = new Endereco();
+
+                    if (infoCliente.IdEndereco.HasValue)
+                    {
+                        endereco = Mapper.Map<Endereco>(_enderecoRepository.ObterPorId(infoCliente.IdEndereco.Value));
+
+                        if (endereco != null)
+                        {
+                            _enderecoRepository.Editar(newEndereco);
+                        }
                     }
+                    else
+                    {
+                        newEndereco.Id = Guid.NewGuid();
+
+                        _enderecoRepository.Inserir(newEndereco);
+                        _clienteRepository.Atualizar(newEndereco.Id, idCliente);
+                    }
+
+                    return Content("OK");
                 }
                 else
                 {
-                    newEndereco.Id = Guid.NewGuid();
-
-                    _enderecoRepository.Inserir(newEndereco);
-                    _clienteRepository.Atualizar(newEndereco.Id, idCliente);
+                    return Content("Campo errado");
                 }
-
-                return Content("OK");
             }
-            else
+            catch
             {
-                return Content("Campo errado");
+                return RedirectToAction("Error", "Base");
             }
         }
     }

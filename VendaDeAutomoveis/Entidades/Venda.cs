@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using VendaDeAutomoveis.Factory.EntidadesFactory;
 using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.Entidades
@@ -45,41 +46,47 @@ namespace VendaDeAutomoveis.Entidades
 
         public static Venda CalcularPagamento(Venda venda)
         {
+            double parcela;
+            double juros;
             string recebendoObservacao = venda.Observacoes;
 
-            if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAVista.ToString())
+            switch (venda.FormaDePagamento.Modelo)
             {
-                double desconto = 0.06;
-                venda.Valor = (venda.Valor - desconto);
-                venda.Observacoes = recebendoObservacao + " Pagamento à vista";
-            }
-            else if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAPrazo12xComJuros.ToString())
-            {
-                double juros = 0.03;
-                venda.Valor = (venda.Valor * juros) + venda.Valor;
-                double parcela = venda.Valor;
-                parcela = parcela / 12;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-            }
-            else if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAPrazo12xSemJuros.ToString())
-            {
-                double parcela = venda.Valor;
-                parcela = parcela / 60;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-            }
-            else if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAPrazo60xComJuros.ToString())
-            {
-                double juros = 0.3;
-                venda.Valor = (venda.Valor * juros) + venda.Valor;
-                double parcela = venda.Valor;
-                parcela = parcela / 12;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
-            }
-            else if (venda.FormaDePagamento.Modelo == ModelosDePagamento.PagamentoAPrazo60xSemJuros.ToString())
-            {
-                double parcela = venda.Valor;
-                parcela = parcela / 60;
-                venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                case "À Vista":
+                    PagamentoAVista pagamentoAVista = new PagamentoAVista();
+                    venda.Valor = pagamentoAVista.CalcularDesconto(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Pagamento à vista";
+                    break;
+
+                case "Prazo 12x com Juros":
+                    PagamentoAPrazo12xComJuros pagamentoAPrazo12XComJuros = new PagamentoAPrazo12xComJuros();
+                    venda.Valor = pagamentoAPrazo12XComJuros.CalculaValor(venda.Valor);
+                    parcela = pagamentoAPrazo12XComJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    break;
+
+                case "Prazo 12x sem Juros":
+                    PagamentoAPrazo12xSemJuros pagamentoAPrazo12XSemJuros = new PagamentoAPrazo12xSemJuros();
+                    parcela = pagamentoAPrazo12XSemJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    break;
+
+                case "Prazo 60x com Juros":
+                    PagamentoAPrazo60xComJuros pagamentoAPrazo60XComJuros = new PagamentoAPrazo60xComJuros();
+                    venda.Valor = pagamentoAPrazo60XComJuros.CalculaValor(venda.Valor);
+                    parcela = pagamentoAPrazo60XComJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    break;
+
+                case "Prazo 60x sem Juros":
+                    PagamentoAPrazo60xSemJuros pagamentoAPrazo60XSemJuros = new PagamentoAPrazo60xSemJuros();
+                    parcela = pagamentoAPrazo60XSemJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    break;
+
+                default:
+                    venda.Observacoes = "Por favor, selecione a forma de pagamento";
+                    break;
             }
             
             return venda;

@@ -4,7 +4,6 @@
     <title>Lista de Clientes</title>
 
     @{
-        //Html.RenderPartial("_partial/_cabecalho_principal");
         Html.RenderPartial("_partial/_cabecalho_list");
     }
 
@@ -77,8 +76,13 @@
                                                     </a>
                                                     <a href="@Url.Action("editar-cliente", "administrativo/cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
-                                                    @*<a href="@Url.Action("Delete", "Jogadores", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                    </a>*@
+                                                    @if (item.Venda == null && item.Custom == null)
+                                                    {
+                                                        <a href="javascript:confirmarDelete('@item.Id', '@item.Nome');" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                            </a>
+                                                        @*<a href="@Url.Action("Excluir", "Cliente", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                        </a>*@
+                                                    }
                                                 </td>
                                             </tr>
                                         }
@@ -94,4 +98,5 @@
     </div>
 </body>
 
-
+<script src="@Url.Content("~/Scripts/Utils/ListarClientes.js")"></script>
+<script src="~/Content/bootstrap/js/bootstrap.js"></script>

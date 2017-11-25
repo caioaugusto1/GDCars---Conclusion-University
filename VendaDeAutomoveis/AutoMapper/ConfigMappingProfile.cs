@@ -22,7 +22,12 @@ namespace VendaDeAutomoveis.AutoMapper
                .ForMember(e => e.Endereco, map => map.MapFrom(y => y.EnderecoNome));
 
             CreateMap<GDC_Logins, Login>().ReverseMap();
-            CreateMap<GDC_Vendas, Venda>().ReverseMap();
+
+            CreateMap<GDC_Vendas, Venda>()
+                .ForMember(f => f.IdFormaDePagamento, map => map.MapFrom(y => y.IdFormaPagamento))
+                .ForMember(f => f.IdPerfomance, map => map.MapFrom(y => y.IdPerformance))
+                .ReverseMap();
+
             CreateMap<GDC_Veiculos, Veiculo>().ReverseMap();
             CreateMap<GDC_Formas_Pagamentos, FormaDePagamento>().ReverseMap();
 

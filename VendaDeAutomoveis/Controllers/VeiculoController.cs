@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VendaDeAutomoveis.Controllers.Base;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Repository;
@@ -13,7 +14,7 @@ namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
     [RoutePrefix("administrativo/veiculo")]
-    public class VeiculoController : Controller
+    public class VeiculoController : BaseController
     {
         private VeiculoRepository _veiculoRepository;
         private VendaRepository _vendaRepository;
@@ -27,14 +28,21 @@ namespace VendaDeAutomoveis.Controllers
         [Route("listar-veiculo")]
         public ActionResult Index()
         {
-            var veiculosViewModel = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
-            
-            foreach (Veiculo veiculo in veiculosViewModel)
+            try
             {
-                veiculo.Venda = Mapper.Map<Venda>(_vendaRepository.ObterTodos().Where(a => a.IdVeiculo == veiculo.Id).FirstOrDefault());
-            }
+                var veiculosViewModel = Mapper.Map<IList<GDC_Veiculos>, IList<Veiculo>>(_veiculoRepository.ObterTodos());
 
-            return View(veiculosViewModel);
+                foreach (Veiculo veiculo in veiculosViewModel)
+                {
+                    veiculo.Venda = Mapper.Map<Venda>(_vendaRepository.ObterTodos().Where(a => a.IdVeiculo == veiculo.Id).FirstOrDefault());
+                }
+
+                return View(veiculosViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         [Route("cadastrar")]
@@ -46,18 +54,25 @@ namespace VendaDeAutomoveis.Controllers
         [Route("cadastrar-veiculo")]
         public ActionResult AdicionarProduto(Veiculo veiculo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
+                if (ModelState.IsValid)
+                {
+                    veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
 
-                var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
+                    var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
-                _veiculoRepository.Inserir(toDomain);
-                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                    _veiculoRepository.Inserir(toDomain);
+                    return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                }
+                else
+                {
+                    return View("cadastrar-veiculo", "administrativo/veiculo", veiculo);
+                }
             }
-            else
+            catch
             {
-                return View("cadastrar-veiculo", "administrativo/veiculo", veiculo);
+                return RedirectToAction("Error", "Base");
             }
         }
 
@@ -65,25 +80,39 @@ namespace VendaDeAutomoveis.Controllers
         [Route("editar-veiculo/{id:guid}")]
         public ActionResult Editar(Guid id)
         {
-            var veiculoViewModel = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(id));
+            try
+            {
+                var veiculoViewModel = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(id));
 
-            return View(veiculoViewModel);
+                return View(veiculoViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         [HttpPost]
         [Route("editar-veiculo/{id:guid}")]
         public ActionResult Editar(Veiculo veiculo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
+                if (ModelState.IsValid)
+                {
+                    var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
-                _veiculoRepository.Editar(veiculoDomain);
-                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                    _veiculoRepository.Editar(veiculoDomain);
+                    return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                }
+                else
+                {
+                    return View("editar-veiculo", "administrativo/veiculo", veiculo);
+                }
             }
-            else
+            catch
             {
-                return View("editar-veiculo", "administrativo/veiculo", veiculo);
+                return RedirectToAction("Error", "Base");
             }
         }
 
@@ -91,9 +120,16 @@ namespace VendaDeAutomoveis.Controllers
         [Route("excluir-veiculo/{id:guid}")]
         public ActionResult Excluir(Guid id)
         {
-            _veiculoRepository.Delete(id);
+            try
+            {
+                _veiculoRepository.Delete(id);
 
-            return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         public ActionResult SalvarArquivo()

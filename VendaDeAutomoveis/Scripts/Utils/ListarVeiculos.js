@@ -1,6 +1,8 @@
-﻿function confirmarDelete(id)
+﻿function confirmarDelete(id, veiculoNome)
 {
     $('#modalDelete').modal();
+
+    $('#textoExclusao').html('Você tem certeza que deseja excluir esse veículo: ', veiculoNome);
 
     $('#idObj').val(id);
 }
@@ -21,3 +23,4 @@ $('#confirmarDelete').click(function () {
         }
     })
 });
+ 

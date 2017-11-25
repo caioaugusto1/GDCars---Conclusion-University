@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using VendaDeAutomoveis.Controllers.Base;
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Filters;
 using VendaDeAutomoveis.Models;
@@ -13,7 +14,7 @@ namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
     [RoutePrefix("administrativo/custom")]
-    public class PerformanceController : Controller
+    public class PerformanceController : BaseController
     {
         #region Instâncias de Repositorys
 
@@ -44,25 +45,32 @@ namespace VendaDeAutomoveis.Controllers
         [Route("listar-custom")]
         public ActionResult Index()
         {
-            var obterCustomns = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
-
-            var custom = new ListarCustomsViewModel();
-
-            List<ListarCustomsViewModel> customViewModel = new List<ListarCustomsViewModel>();
-
-            foreach (var itemCustom in obterCustomns)
+            try
             {
-                custom = new ListarCustomsViewModel();
+                var obterCustomns = Mapper.Map<List<GDC_Perfomances>, List<Performance>>(_perfoRepository.ObterTodos().ToList());
 
-                custom.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemCustom.IdCliente));
-                custom.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemCustom.IdRoda));
-                custom.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemCustom.IdBanco));
-                custom.Cor_Veiculo = Mapper.Map<Cor_Veiculo>(_corVeiculoRepository.ObterPorId(itemCustom.IdCorVeiculo));
+                var custom = new ListarCustomsViewModel();
 
-                customViewModel.Add(custom);
+                List<ListarCustomsViewModel> customViewModel = new List<ListarCustomsViewModel>();
+
+                foreach (var itemCustom in obterCustomns)
+                {
+                    custom = new ListarCustomsViewModel();
+
+                    custom.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(itemCustom.IdCliente));
+                    custom.Roda = Mapper.Map<Roda>(_rodaRepository.ObterPorId(itemCustom.IdRoda));
+                    custom.Banco = Mapper.Map<Banco>(_bancoRepository.ObterPorId(itemCustom.IdBanco));
+                    custom.Cor_Veiculo = Mapper.Map<Cor_Veiculo>(_corVeiculoRepository.ObterPorId(itemCustom.IdCorVeiculo));
+
+                    customViewModel.Add(custom);
+                }
+
+                return View(customViewModel);
             }
-
-            return View(customViewModel);
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         [HttpGet]
@@ -79,28 +87,35 @@ namespace VendaDeAutomoveis.Controllers
         [HttpPost]
         public ActionResult Create(Performance custom)
         {
-            ViewBag.Cliente = _clienteRepository.ObterTodos();
-
-            if (ModelState.IsValid)
+            try
             {
-                custom.Id = Guid.NewGuid();
-                custom.IdBanco = custom.Banco.Id;
-                custom.IdRoda = custom.Roda.Id;
-                custom.IdCorVeiculo = custom.Cor_Veiculo.Id;
+                ViewBag.Cliente = _clienteRepository.ObterTodos();
 
-                custom.ValorTotal = CalcularCustom(custom);
+                if (ModelState.IsValid)
+                {
+                    custom.Id = Guid.NewGuid();
+                    custom.IdBanco = custom.Banco.Id;
+                    custom.IdRoda = custom.Roda.Id;
+                    custom.IdCorVeiculo = custom.Cor_Veiculo.Id;
 
-                _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(custom.Roda));
-                _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(custom.Cor_Veiculo));
-                _bancoRepository.Inserir(Mapper.Map<GDC_Bancos>(custom.Banco));
+                    custom.ValorTotal = CalcularCustom(custom);
 
-                _perfoRepository.Inserir(Mapper.Map<GDC_Perfomances>(custom));
+                    _rodaRepository.Inserir(Mapper.Map<GDC_Rodas>(custom.Roda));
+                    _corVeiculoRepository.Inserir(Mapper.Map<GDC_Cor_Veiculos>(custom.Cor_Veiculo));
+                    _bancoRepository.Inserir(Mapper.Map<GDC_Bancos>(custom.Banco));
 
-                return View();
+                    _perfoRepository.Inserir(Mapper.Map<GDC_Perfomances>(custom));
 
+                    return View();
+
+                }
+
+                return View(custom);
             }
-
-            return View(custom);
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
         #endregion
 

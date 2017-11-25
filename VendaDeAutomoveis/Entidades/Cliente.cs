@@ -31,6 +31,12 @@ namespace VendaDeAutomoveis.Entidades
 
         public virtual Endereco Endereco { get; set; }
 
+        [ScaffoldColumn(false)]
+        public virtual Venda Venda { get; set; }
+
+        [ScaffoldColumn(false)]
+        public virtual Performance Custom { get; set; }
+
         public static Cliente MudarClienteParaVip(Cliente cliente)
         {
             if (cliente.Tipo == TipoCliente.Comum)

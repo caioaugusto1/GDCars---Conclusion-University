@@ -24,7 +24,8 @@
     <td>
         <strong>CPF</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Cliente.CPF)</td>
+    @*<td>@Html.DisplayFor(item => Model.Cliente.CPF)</td>*@
+    <td>@Html.DisplayFor(item => item.Cliente.CPF)</td>
 </tr>
 
 <tr>
@@ -38,14 +39,14 @@
     <td>
         <strong>Fabricante</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Veiculo.Fabricante)</td>
+    <td>@Html.DisplayFor(item => item.Veiculo.Fabricante)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Modelo</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Veiculo.Modelo)</td>
+    <td>@Html.DisplayFor(item => item.Veiculo.Modelo)</td>
 </tr>
 
 <tr>
@@ -59,7 +60,7 @@
     <td>
         <strong>Forma de Pagamento</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.FormaDePagamento.Modelo)</td>
+    <td>@Html.DisplayFor(item => item.FormaDePagamento.Modelo)</td>
 </tr>
 
 <tr>
@@ -73,21 +74,21 @@
     <td>
         <strong>Modelo</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Roda.Modelo)</td>
+    <td>@Html.DisplayFor(item => item.Roda.Modelo)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Aro</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Roda.Aro)</td>
+    <td>@Html.DisplayFor(item => item.Roda.Aro)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Cor</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Roda.Cor)</td>
+    <td>@Html.DisplayFor(item => item.Roda.Cor)</td>
 </tr>
 
 <tr>
@@ -101,21 +102,21 @@
     <td>
         <strong>Modelo</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.Modelo)</td>
+    <td>@Html.DisplayFor(item => item.Performance.Banco.Modelo)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Cor</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.Cor)</td>
+    <td>@Html.DisplayFor(item => item.Performance.Banco.Cor)</td>
 </tr>
 
 <tr>
     <td>
         <strong>Multimidia</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Venda.Perfomance.Banco.Multimidia)</td>
+    <td>@Html.DisplayFor(item => item.Performance.Banco.Multimidia)</td>
 </tr>
 
 <tr>
@@ -129,7 +130,7 @@
     <td>
         <strong>Observação</strong>
     </td>
-    <td>@Html.DisplayFor(item => Model.Venda.Observacoes)</td>
+    <td>@Html.DisplayFor(item => item.Venda.Observacoes)</td>
 </tr>
 
 

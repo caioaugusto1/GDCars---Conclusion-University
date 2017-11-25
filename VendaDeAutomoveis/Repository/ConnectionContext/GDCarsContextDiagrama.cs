@@ -69,7 +69,7 @@ namespace VendaDeAutomoveis.Repository.ConnectionContext
                 .HasMany(e => e.GDC_Perfomances)
                 .WithRequired(e => e.GDC_Clientes)
                 .HasForeignKey(e => e.IdCliente)
-                .WillCascadeOnDelete(false);
+                .WillCascadeOnDelete(true);
 
             modelBuilder.Entity<GDC_Clientes>()
                 .HasMany(e => e.GDC_Vendas)

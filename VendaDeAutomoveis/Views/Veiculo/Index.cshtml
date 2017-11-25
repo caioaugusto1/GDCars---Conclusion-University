@@ -4,7 +4,6 @@
     <title>Lista de Veículos</title>
 
     @{
-        //Html.RenderPartial("_partial/_cabecalho_principal");
         Html.RenderPartial("_partial/_cabecalho_list");
     }
 
@@ -71,15 +70,10 @@
                                                 <td>
                                                     <a href="@Url.Action("editar-veiculo", "administrativo/veiculo", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
-                                                    @*<a href="@Url.Action("Detales", "Cliente", new { Id = item.Id})" title="Detales" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
-                                                    </a>*@
                                                     @if (item.Venda == null)
                                                     {
-
-                                                        <a href="@Url.Action("Excluir", "Veiculo", new { Id = item.Id })" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                            </a>
-                                                        @*<a href="javascript:confirmarDelete('@item.Id');" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                        </a>*@
+                                                        <a href="javascript:confirmarDelete('@item.Id', '@item.Modelo');" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
+                                                        </a>
                                                     }
                                                     
                                                 </td>
