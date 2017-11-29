@@ -85,6 +85,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
+        [Route("detalhes-cadastrar-custom")]
         public ActionResult Create(Performance custom)
         {
             try

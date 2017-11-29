@@ -24,7 +24,7 @@ function validForm() {
 
     //Input ano
     campo = $('#disabledTextInput').val();
-    if (!campo && campo.length <= 0) {
+    if (!campo && campo <= 0) {
         isValid = false;
         $('#disabledTextInput').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher com <b>E-mail</b>.");
@@ -33,7 +33,7 @@ function validForm() {
     }
 
     campo = $("#qtportas option:selected").val();
-    if (!campo && campo.length <= 0) {
+    if (!campo) {
         isValid = false;
         $('#qtportas').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher o nome do <b>Cliente</b>.");
@@ -42,7 +42,7 @@ function validForm() {
     }
 
     campo = $('#Valor').val();
-    if (!campo && campo.length <= 0) {
+    if (!campo && campo <= 0) {
         isValid = false;
         $('#Valor').css({ "background-color": "#f8dbdb", "border-color": "#e77776" });
         msgs.push("É necessário preencher a <b>Data de Nascimento</b>.");

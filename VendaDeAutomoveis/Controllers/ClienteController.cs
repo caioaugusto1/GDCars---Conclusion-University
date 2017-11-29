@@ -13,7 +13,7 @@ using static VendaDeAutomoveis.Enums.EnumsExtensions;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("administrativo/cliente")]
+    //[RoutePrefix("administrativo/cliente")]
     public class ClienteController : BaseController
     {
         #region Instâncias Repositorys
@@ -40,7 +40,7 @@ namespace VendaDeAutomoveis.Controllers
 
         #region Cliente
 
-        [Route("listar-clientes")]
+        //[Route("listar-clientes")]
         public ActionResult Index()
         {
             try
@@ -64,13 +64,14 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
-        [Route("cadastrar-cliente")]
+        //[Route("cadastrar-cliente")]
         public ActionResult FormularioCadastro()
         {
             return View();
         }
 
         [HttpPost]
+        //[Route("confirmar-cadastrar-cliente")]
         public ActionResult AdicionarCliente(Cliente cliente)
         {
             try
@@ -92,23 +93,23 @@ namespace VendaDeAutomoveis.Controllers
                             _clienteRepository.Inserir(clienteToDomain);
                             ViewBag.IdCliente = cliente.Id;
 
-                            return RedirectToAction("detalhes-cliente", new { idCliente = cliente.Id });
+                            return RedirectToAction("CadastrarEndereco", "Cliente", new { idCliente = cliente.Id });
                         }
                         else
                         {
                             ModelState.AddModelError("CPF", "O CPF já existe no sistema!");
-                            return View("cadastrar-cliente", cliente);
+                            return RedirectToAction("FormularioCadastro", cliente);
                         }
                     }
                     else
                     {
                         ModelState.AddModelError("Data_Nascimento", "Cliente com idade menor que 21 anos!");
-                        return View("cadastrar-cliente", cliente);
+                        return RedirectToAction("FormularioCadastro", "Cliente", new { cliente = cliente });
                     }
                 }
                 else
                 {
-                    return View("cadastrar-cliente", cliente);
+                    return View("FormularioCadastro", cliente);
                 }
             }
             catch (Exception ex)
@@ -119,7 +120,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpGet]
-        [Route("editar-cliente/{id:guid}")]
+        //[Route("editar-cliente/{id:guid}")]
         public ActionResult EditarCliente(Guid id)
         {
             try
@@ -138,7 +139,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
-        [Route("editar-cliente")]
+        //[Route("editar-cliente")]
         public ActionResult EditarCliente(Cliente cliente)
         {
             try
@@ -147,11 +148,11 @@ namespace VendaDeAutomoveis.Controllers
                 {
                     _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));
 
-                    return RedirectToAction("detalhes-cliente", "administrativo/cliente", new { cliente.Id });
+                    return RedirectToAction("Details", "Cliente", new { cliente.Id });
                 }
                 else
                 {
-                    return View("editar-cliente", "administrativo/cliente", cliente.Id);
+                    return View("EditarCliente", "Cliente", cliente.Id);
                 }
             }catch
             {
@@ -160,7 +161,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpGet]
-        [Route("detalhes-cliente/{id:guid}")]
+        //[Route("detalhes-cliente/{id:guid}")]
         public ActionResult Details(Guid id)
         {
             try
@@ -178,14 +179,14 @@ namespace VendaDeAutomoveis.Controllers
             }
         }
 
-        [Route("excluir-cliente/{id:guid}")]
+        //[Route("excluir-cliente/{id:guid}")]
         public ActionResult Excluir(Guid id)
         {
             try
             {
                 _clienteRepository.Delete(id);
 
-                return RedirectToAction("listar-clientes", "administrativo/cliente");
+                return RedirectToAction("Index", "Cliente");
             }
             catch
             {
@@ -198,7 +199,7 @@ namespace VendaDeAutomoveis.Controllers
         #region Endereco
 
         [HttpGet]
-        [Route("detalhes-cliente/cadastrar-endereco/{id:guid}")]
+        //[Route("detalhes-cliente/cadastrar-endereco/{id:guid}")]
         public ActionResult CadastrarEndereco(Guid idCliente)
         {
             try
@@ -215,7 +216,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
-        [Route("detalhes-cliente/cadastrar-endereco")]
+        //[Route("detalhes-cliente/cadastrar-endereco")]
         public ActionResult AdicionarEndereco(Endereco endereco)
         {
             try
@@ -228,7 +229,7 @@ namespace VendaDeAutomoveis.Controllers
                     _clienteRepository.Atualizar(endereco.Id, endereco.IdCliente);
                 }
 
-                return RedirectToAction("listar-clientes", "administrativo/cliente");
+                return RedirectToAction("Index", "Cliente");
             }
             catch
             {
@@ -237,7 +238,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpGet]
-        [Route("editar-cliente/endereco/{id:guid}")]
+        //[Route("editar-cliente/endereco/{id:guid}")]
         public ActionResult EditarEndereco(Guid id)
         {
             try
@@ -256,7 +257,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
-        [Route("editar-cliente/endereco")]
+        //[Route("editar-cliente/endereco")]
         public ActionResult EditarEndereco(Endereco endereco)
         {
             try
@@ -266,11 +267,11 @@ namespace VendaDeAutomoveis.Controllers
                     var cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorIdEndereco(endereco.Id));
                     _enderecoRepository.Editar(Mapper.Map<GDC_Enderecos>(endereco));
 
-                    return RedirectToAction("detalhes-cliente", "administrativo/cliente", new { cliente.Id });
+                    return RedirectToAction("Details", "Cliente", new { cliente.Id });
                 }
                 else
                 {
-                    return View("editar-cliente", "administrativo/cliente", endereco);
+                    return View("Edit", "Cliente", endereco);
                 }
             }
             catch

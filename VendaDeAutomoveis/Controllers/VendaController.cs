@@ -211,7 +211,7 @@ namespace VendaDeAutomoveis.Controllers
                 IdVeiculo = cadVenda.Veiculo.Id,
                 IdFormaPagamento = cadVenda.FormaDePagamento.Id,
                 IdPerformance = cadVenda.Performance.Id,
-                Valor = cadVenda.Veiculo.Valor,
+                Valor = Convert.ToDouble(cadVenda.Veiculo.Valor),
                 Observacao = cadVenda.Venda.Observacoes,
                 Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
                 Status = cadVenda.Venda.Status.ToString(),

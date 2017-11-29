@@ -3,7 +3,7 @@
 <div class="form-group">
     <div class="col-md-10">
         @Html.LabelFor(u => u.Nome, "Nome*")
-        @Html.TextBoxFor(u => u.Nome, new { @class = "form-control" })
+        @Html.TextBoxFor(u => u.Nome, new { @class = "form-control", @maxlength = "100" })
         @Html.ValidationMessageFor(u => u.Nome)
     </div>
 </div>
@@ -19,7 +19,7 @@
 <div class="form-group">
     <div class="col-md-5">
         @Html.LabelFor(u => u.RG, "RG*")
-        @Html.TextBoxFor(u => u.RG, new { @id = "rg", @class = "form-control" })
+        @Html.TextBoxFor(u => u.RG, new { @id = "rg", @class = "form-control", @maxlength = "20" })
         @Html.ValidationMessageFor(u => u.RG)
     </div>
 </div>
@@ -35,7 +35,7 @@
 <div class="form-group">
     <div class="col-md-5">
         @Html.LabelFor(u => u.Email, "E-mail*")
-        @Html.TextBoxFor(u => u.Email, new { @class = "form-control" })
+        @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @maxlength = "50" })
         @Html.ValidationMessageFor(u => u.Email)
 
     </div>

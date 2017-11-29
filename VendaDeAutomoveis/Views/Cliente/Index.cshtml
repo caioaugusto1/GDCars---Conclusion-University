@@ -72,17 +72,15 @@
                                                     @item.Email
                                                 </td>
                                                 <td>
-                                                    <a href="@Url.Action("detalhes-cliente", "administrativo/cliente", new { Id = item.Id })" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
+                                                    <a href="@Url.Action("Details", "Cliente", new { Id = item.Id })" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("editar-cliente", "administrativo/cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
                                                     </a>
-                                                    @if (item.Venda == null && item.Custom == null)
+                                                    @*@if (item.Venda == null && item.Custom == null)
                                                     {
                                                         <a href="javascript:confirmarDelete('@item.Id', '@item.Nome');" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
                                                             </a>
-                                                        @*<a href="@Url.Action("Excluir", "Cliente", new { Id = item.Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
-                                                        </a>*@
-                                                    }
+                                                    }*@
                                                 </td>
                                             </tr>
                                         }

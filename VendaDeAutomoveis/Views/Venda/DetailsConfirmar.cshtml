@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="widget-body">
-                            @using (Html.BeginForm("Confirmar", "Venda", FormMethod.Post, new { id = "form", @class = "form-horizontal" }))
+                            @using (Html.BeginForm("confirmar-venda", "administrativo-vendas", FormMethod.Post, new { id = "form", @class = "form-horizontal" }))
                             {
                                 <table class="table table-striped table-hover">
                                     <tbody>
@@ -74,7 +74,7 @@
                                     </tbody>
                                 </table>
 
-                                if (ViewBag.IsDetails == true)
+                                if (ViewBag.IsDetailsFinish == true)
                                 {
                                     @Html.Partial("~/Views/Shared/_partial/_btn_submit_cadastrar.cshtml")
                                 }

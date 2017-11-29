@@ -32,14 +32,11 @@
                 <div class="widget-body">
                     <div class="row">
                         <div class="col-md-2 col-sm-3">
-                            <div class="thumbnail">
-                                AQUI VAI UMA IMAGEM
-                                @*<img src="~/Content/bootstrap/img/ccn.png" />*@
-                            </div>
+
                         </div>
                         <div class="col-md-10 col-sm-9">
 
-                            @using (Html.BeginForm("Editar", "Veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
+                            @using (Html.BeginForm("editar-veiculo", "administrativo/veiculo", FormMethod.Post, new { @class = "form-horizontal", @id = "form" }))
                             {
                                 @Html.AntiForgeryToken()
 
@@ -56,3 +53,12 @@
         </div>
     </div>
 </div>
+
+
+<script src="@Url.Content("~/Scripts/Utils/Utils.js")"></script>
+<script src="@Url.Content("~/Scripts/Utils/CreateEditVeiculo.js")"></script>
+<script src="~/Content/bootstrap/js/jquery.mask_igorescobar.js"></script>
+
+<script>
+    $('.valor').mask('#.##0,00', { reverse: true });
+</script>

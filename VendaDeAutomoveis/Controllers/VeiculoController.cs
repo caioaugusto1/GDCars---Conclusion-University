@@ -56,10 +56,10 @@ namespace VendaDeAutomoveis.Controllers
         {
             try
             {
+                veiculo.Ano = ObterAnoVeiculo();
+
                 if (ModelState.IsValid)
                 {
-                    veiculo.Ano = Convert.ToInt32(DateTime.Now.Year);
-
                     var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
                     _veiculoRepository.Inserir(toDomain);
@@ -67,7 +67,7 @@ namespace VendaDeAutomoveis.Controllers
                 }
                 else
                 {
-                    return View("cadastrar-veiculo", "administrativo/veiculo", veiculo);
+                    return RedirectToAction("FormularioCadastro", "Veiculo", veiculo);
                 }
             }
             catch
@@ -93,11 +93,13 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         [HttpPost]
-        [Route("editar-veiculo/{id:guid}")]
+        [Route("editar-veiculo")]
         public ActionResult Editar(Veiculo veiculo)
         {
             try
             {
+                veiculo.Ano = ObterAnoVeiculo();
+
                 if (ModelState.IsValid)
                 {
                     var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
@@ -107,7 +109,7 @@ namespace VendaDeAutomoveis.Controllers
                 }
                 else
                 {
-                    return View("editar-veiculo", "administrativo/veiculo", veiculo);
+                    return RedirectToAction("Editar", "Veiculo", veiculo.Id);
                 }
             }
             catch
@@ -118,6 +120,7 @@ namespace VendaDeAutomoveis.Controllers
 
         #region metodos de imagens
         [Route("excluir-veiculo/{id:guid}")]
+        [HttpPost]
         public ActionResult Excluir(Guid id)
         {
             try
@@ -147,6 +150,19 @@ namespace VendaDeAutomoveis.Controllers
             else
                 return Content("Erro");
 
+        }
+
+
+        private int ObterAnoVeiculo()
+        {
+            var anoAtual = DateTime.Now.Year;
+
+            if (DateTime.Now.Month > 9)
+            {
+                anoAtual = DateTime.Now.Year + 1;
+            }
+
+            return anoAtual;
         }
 
         #endregion

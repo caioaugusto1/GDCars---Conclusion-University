@@ -28,7 +28,7 @@
 <div class="form-group">
     <div class="col-md-3">
         <label for="disabledTextInput">Ano Fabricação*</label>
-        <input name="Ano" type="text" id="disabledTextInput" class="form-control" placeholder="@anoAtual" value="@anoAtual" disabled>
+        @Html.TextBoxFor(u => u.Ano, new { id = "disabledTextInput",  @class = "form-control", placeholder = anoAtual, @Value = anoAtual, disabled = "disable" })
         @Html.ValidationMessageFor(u => u.Ano)
     </div>
 </div>
@@ -36,8 +36,8 @@
 <div class="form-group">
     <div class="col-md-3">
         @Html.LabelFor(u => u.QuantidadeDePortas, "Quantidade de Portas*")
-        <select class="form-control" data-val="true" data-val-number="The field Aro must be a number." data-val-required="O campo Aro é obrigatório." id="qtportas"
-                name="Roda.Aro" style="background-color: rgb(255, 255, 255); border-color: rgb(204, 204, 204);">
+        <select class="form-control" data-val="true" data-val-number="The field Aro must be a number." data-val-required="O campo Quantidade De Portas é obrigatório." id="qtportas"
+                name="QuantidadeDePortas" style="background-color: rgb(255, 255, 255); border-color: rgb(204, 204, 204);">
             <option>Selecione</option>
             <option value="3">3</option>
             <option value="5">5</option>
@@ -53,13 +53,19 @@
     </div>
 </div>
 
+@Html.LabelFor(model => model.Valor, "Valor*")
 <div class="form-group">
-    @Html.LabelFor(model => model.Valor, "Valor*")
     <div class="input-group col-md-3">
         <span class="input-group-addon">R$</span>
-        <input type="text" id="Valor" name="Valor" class="form-control valor" data-val="true" data-val-required="O campo Valor é obrigatório.">
+        @Html.TextBoxFor(u => u.Valor, new { @class = "form-control valor" })
         <span class="input-group-addon">.00</span>
         @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
     </div>
 </div>
+
+<script src="~/Content/bootstrap/js/jquery.mask_igorescobar.js"></script>
+
+<script>
+    $('.valor').mask('#.##0,00', { reverse: true });
+</script>
 
