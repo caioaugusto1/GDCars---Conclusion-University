@@ -5,7 +5,7 @@
         <strong>Nome Completo</strong>
     </td>
     <td>
-        <span class="label label-primary" style="font-size: 100% !important;">@Html.DisplayFor(model => model.Nome)</span>
+        <span class="label label-primary" style="font-size: 100% !important;">@Model.Nome</span>
     </td>
 </tr>
 
@@ -13,27 +13,27 @@
     <td>
         <strong>RG</strong>
     </td>
-    <td>@Html.DisplayFor(model => model.RG)</td>
+    <td>@Model.RG)</td>
 </tr>
 
 <tr>
     <td>
         <strong>CPF</strong>
     </td>
-    <td>@Html.DisplayFor(model => model.CPF)</td>
+    <td>@Model.CPF</td>
 </tr>
 <tr>
     <td>
         <strong>Data de Nascimento</strong>
     </td>
-    <td>@Html.DisplayFor(model => model.Data_Nascimento)</td>
+    <td>@Model.Data_Nascimento.ToString("dd/MM/yyyy")</td>
 </tr>
 <tr>
     <td>
         <strong>E-mail</strong>
     </td>
     <td>
-        <span class="text-error">@Html.DisplayFor(model => model.Email)</em></span>
+        <span class="text-danger">@Model.Email</em></span>
     </td>
 </tr>
 

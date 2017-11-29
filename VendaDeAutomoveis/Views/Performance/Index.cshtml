@@ -41,15 +41,15 @@
                                 <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
                                     <thead>
                                         <tr>
-                                            <th style="width:10%">Nome</th>
-                                            <th style="width:10%">CPF</th>
-                                            <th style="width:10%">Data de Nascimento</th>
-                                            <th style="width:10%">Tipo do Cliente</th>
-                                            <th style="width:10%">Banco Modelo</th>
-                                            <th style="width:10%">Veiculo Cor</th>
-                                            <th style="width:10%">Roda Aro</th>
-                                            <th style="width:10%">Roda Cor</th>
-                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                            <th>Nome</th>
+                                            <th>CPF</th>
+                                            <th>Data de Nascimento</th>
+                                            <th>Tipo do Cliente</th>
+                                            <th>Banco Modelo</th>
+                                            <th>Veiculo Cor</th>
+                                            <th>Roda Aro</th>
+                                            <th>Roda Cor</th>
+                                            <th class="hidden-phone">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,13 +57,13 @@
                                         {
                                             <tr class="gradeX">
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                                                    @item.Cliente.Nome
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Cliente.RG)
+                                                    @item.Cliente.RG
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Cliente.Data_Nascimento)
+                                                    @item.Cliente.Data_Nascimento.ToString("dd/MM/yyyy")
                                                 </td>
                                                 <td>
                                                     @item.Cliente.Tipo
