@@ -9,11 +9,11 @@
 
 $(function () {
     $('#confirmarDelete').click(function () {
-
+        debugger;
         $.ajax({
-            url: 'Excluir/Cliente',
-            type: "post",
-            dataType: "html",
+            url: 'Cliente/Excluir',
+            type: 'POST',
+            dataType: 'html',
             data: {
                 id: $('#idObj').val(),
             },

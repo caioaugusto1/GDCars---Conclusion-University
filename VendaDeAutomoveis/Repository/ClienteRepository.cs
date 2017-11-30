@@ -76,7 +76,13 @@ namespace VendaDeAutomoveis.Repository
 
         public override GDC_Clientes ObterPorId(Guid id)
         {
-            var cliente = base.ObterPorId(id);
+            var sql = "SELECT * FROM GDC_Clientes where id = @id ";
+
+            var cliente = _context.Database.Connection.Query<GDC_Clientes>(sql,
+                param: new
+                {
+                    id = id
+                }).FirstOrDefault();
 
             EnderecoRepository end = new EnderecoRepository(this._context);
 
@@ -101,19 +107,19 @@ namespace VendaDeAutomoveis.Repository
             return e.FirstOrDefault();
         }
 
-        //public override void Delete(Guid id)
-        //{
-        //    var sql = "DECLARE @idEndereco varchar(max); DECLARE @idCliente varchar(max);"
-        //        + "SET @idCliente = @id; SET @idEndereco = (SELECT IdEndereco FROM GDC_Clientes WHERE Id = @idCliente)"
-        //        + "SELECT @idCliente BEGIN TRANSACTION BEGIN TRY delete from GDC_Clientes where Id = @idCliente"
-        //        + "IF(@idEndereco is not null) delete from GDC_Enderecos where Id = @idEndereco"
-        //        + "COMMIT TRANSACTION END TRY BEGIN CATCH ROLLBACK TRANSACTION END CATCH";
+        public override void Delete(Guid id)
+        {
+            var cliente = ObterPorId(id);
+            
+            var sql = "BEGIN TRY BEGIN TRANSACTION DELETE FROM GDC_CLIENTES WHERE Id = @id DELETE FROM GDC_Enderecos WHERE Id = @idEndereco COMMIT TRANSACTION "
+                + "END TRY BEGIN CATCH IF @@TRANCOUNT > 0 BEGIN ROLLBACK TRANSACTION END END CATCH";
 
-        //    var e = _context.Database.Connection.Query<GDC_Clientes>(sql,
-        //       param: new
-        //       {
-        //           id = id
-        //       });
-        //}
+            var e = _context.Database.Connection.Execute(sql,
+               param: new
+               {
+                   id = id,
+                   idEndereco = cliente.IdEndereco
+               });
+        }
     }
 }

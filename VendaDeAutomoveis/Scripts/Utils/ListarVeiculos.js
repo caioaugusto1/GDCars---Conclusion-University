@@ -9,12 +9,11 @@
 
 $(function () {
     $('#confirmarDelete').click(function () {
-
         $('#modalDelete').modal('toggle');
         
         $.ajax({
-            url: 'excluir-veiculo',
-            type: "post",
+            url: "/administrativo-veiculo/Excluir-Veiculo",
+            type: "POST",
             dataType: "html",
             data: {
                 id: $('#idObj').val(),

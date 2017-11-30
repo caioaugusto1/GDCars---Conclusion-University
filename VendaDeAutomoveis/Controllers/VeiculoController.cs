@@ -13,7 +13,7 @@ using VendaDeAutomoveis.Repository.ConnectionContext;
 namespace VendaDeAutomoveis.Controllers
 {
     [AutorizacaoFilter]
-    [RoutePrefix("administrativo/veiculo")]
+    [RoutePrefix("administrativo-veiculo")]
     public class VeiculoController : BaseController
     {
         private VeiculoRepository _veiculoRepository;
@@ -63,16 +63,16 @@ namespace VendaDeAutomoveis.Controllers
                     var toDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
                     _veiculoRepository.Inserir(toDomain);
-                    return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                    return RedirectToAction("listar-veiculo", "administrativo-veiculo");
                 }
                 else
                 {
-                    return RedirectToAction("FormularioCadastro", "Veiculo", veiculo);
+                    return View("FormularioCadastro", veiculo);
                 }
             }
             catch
             {
-                return RedirectToAction("Error", "Base");
+                return RedirectToAction("FormularioCadastro", veiculo);
             }
         }
 
@@ -105,7 +105,7 @@ namespace VendaDeAutomoveis.Controllers
                     var veiculoDomain = Mapper.Map<Veiculo, GDC_Veiculos>(veiculo);
 
                     _veiculoRepository.Editar(veiculoDomain);
-                    return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                    return RedirectToAction("listar-veiculo", "administrativo-veiculo");
                 }
                 else
                 {
@@ -119,7 +119,7 @@ namespace VendaDeAutomoveis.Controllers
         }
 
         #region metodos de imagens
-        [Route("excluir-veiculo/{id:guid}")]
+        [Route("Excluir-Veiculo")]
         [HttpPost]
         public ActionResult Excluir(Guid id)
         {
@@ -127,7 +127,7 @@ namespace VendaDeAutomoveis.Controllers
             {
                 _veiculoRepository.Delete(id);
 
-                return RedirectToAction("listar-veiculo", "administrativo/veiculo");
+                return RedirectToAction("listar-veiculo", "administrativo-veiculo");
             }
             catch
             {

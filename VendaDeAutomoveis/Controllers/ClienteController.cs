@@ -98,13 +98,13 @@ namespace VendaDeAutomoveis.Controllers
                         else
                         {
                             ModelState.AddModelError("CPF", "O CPF já existe no sistema!");
-                            return RedirectToAction("FormularioCadastro", cliente);
+                            return View("FormularioCadastro", cliente);
                         }
                     }
                     else
                     {
                         ModelState.AddModelError("Data_Nascimento", "Cliente com idade menor que 21 anos!");
-                        return RedirectToAction("FormularioCadastro", "Cliente", new { cliente = cliente });
+                        return View("FormularioCadastro", cliente);
                     }
                 }
                 else
@@ -116,7 +116,7 @@ namespace VendaDeAutomoveis.Controllers
             {
                 return Error();
             }
-           
+
         }
 
         [HttpGet]
@@ -154,7 +154,8 @@ namespace VendaDeAutomoveis.Controllers
                 {
                     return View("EditarCliente", "Cliente", cliente.Id);
                 }
-            }catch
+            }
+            catch
             {
                 return RedirectToAction("Error", "Base");
             }
@@ -186,11 +187,11 @@ namespace VendaDeAutomoveis.Controllers
             {
                 _clienteRepository.Delete(id);
 
-                return RedirectToAction("Index", "Cliente");
+                return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return RedirectToAction("Error", "Base");
+                return RedirectToAction("Index", "Cliente");
             }
         }
 

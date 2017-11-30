@@ -28,7 +28,7 @@
 <div class="form-group">
     <div class="col-md-3">
         <label for="disabledTextInput">Ano Fabricação*</label>
-        @Html.TextBoxFor(u => u.Ano, new { id = "disabledTextInput",  @class = "form-control", placeholder = anoAtual, @Value = anoAtual, disabled = "disable" })
+        @Html.TextBoxFor(u => u.Ano, new { id = "disabledTextInput",  @class = "form-control", placeholder = anoAtual, Value = anoAtual, disabled = "disable" })
         @Html.ValidationMessageFor(u => u.Ano)
     </div>
 </div>
@@ -53,19 +53,15 @@
     </div>
 </div>
 
-@Html.LabelFor(model => model.Valor, "Valor*")
 <div class="form-group">
+    @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2", @style = "float: none !important; text-align: left;" })
     <div class="input-group col-md-3">
         <span class="input-group-addon">R$</span>
-        @Html.TextBoxFor(u => u.Valor, new { @class = "form-control valor" })
+        <input type="text" id="Valor" name="Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
         <span class="input-group-addon">.00</span>
         @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
     </div>
 </div>
 
-<script src="~/Content/bootstrap/js/jquery.mask_igorescobar.js"></script>
 
-<script>
-    $('.valor').mask('#.##0,00', { reverse: true });
-</script>
 
