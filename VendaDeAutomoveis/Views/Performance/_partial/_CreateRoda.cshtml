@@ -26,9 +26,9 @@
 
 <div class="form-group">
     @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2", @style = "float: none !important;" })
-    <div class="input-group col-md-3">
+    <div class="input-group col-md-3 elementoValor" style="padding-left: 0;">
         <span class="input-group-addon">R$</span>
-        <input type="text" id="RodaValor" name="Roda.Valor" class="form-control valor" data-val="true" data-val-required="O campo Valor é obrigatório.">
+        <input type="text" id="RodaValor" name="Roda.Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
         <span class="input-group-addon">.00</span>
         @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
     </div>

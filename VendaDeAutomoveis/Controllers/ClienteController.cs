@@ -112,7 +112,7 @@ namespace VendaDeAutomoveis.Controllers
                     return View("FormularioCadastro", cliente);
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return Error();
             }
@@ -189,7 +189,7 @@ namespace VendaDeAutomoveis.Controllers
 
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch 
             {
                 return RedirectToAction("Index", "Cliente");
             }

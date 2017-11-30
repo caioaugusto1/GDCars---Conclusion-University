@@ -107,8 +107,7 @@ namespace VendaDeAutomoveis.Controllers
 
                     _perfoRepository.Inserir(Mapper.Map<GDC_Perfomances>(custom));
 
-                    return View();
-
+                    return RedirectToAction("Index");
                 }
 
                 return View(custom);
@@ -123,13 +122,13 @@ namespace VendaDeAutomoveis.Controllers
         #region Métodos Privados
         private double CalcularCustom(Performance custom)
         {
-            double valorTotal = 0;
+            decimal valorTotal = 0;
 
             valorTotal = custom.Banco.Valor;
             valorTotal += custom.Cor_Veiculo.Valor;
             valorTotal += custom.Roda.Valor;
 
-            return valorTotal;
+            return Convert.ToDouble(valorTotal);
         }
 
         #endregion

@@ -43,45 +43,48 @@ namespace VendaDeAutomoveis.Entidades
         public Guid IdPerfomance { get; set; }
 
         public virtual Performance Perfomance { get; set; }
-
+        
+        [ScaffoldColumn(false)]
+        public double? Parcela { get; set; }
+        
         public static Venda CalcularPagamento(Venda venda)
         {
-            double parcela;
-            double juros;
             string recebendoObservacao = venda.Observacoes;
 
             switch (venda.FormaDePagamento.Modelo)
             {
                 case "À Vista":
                     PagamentoAVista pagamentoAVista = new PagamentoAVista();
-                    venda.Valor = pagamentoAVista.CalcularDesconto(venda.Valor);
+                    venda.Valor += pagamentoAVista.CalcularDesconto(venda.Valor);
                     venda.Observacoes = recebendoObservacao + " Pagamento à vista";
                     break;
 
                 case "Prazo 12x com Juros":
                     PagamentoAPrazo12xComJuros pagamentoAPrazo12XComJuros = new PagamentoAPrazo12xComJuros();
-                    venda.Valor = pagamentoAPrazo12XComJuros.CalculaValor(venda.Valor);
-                    parcela = pagamentoAPrazo12XComJuros.CalcularValorParcela(venda.Valor);
-                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    venda.Valor += pagamentoAPrazo12XComJuros.CalculaValor(venda.Valor);
+                    venda.Parcela = pagamentoAPrazo12XComJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + venda.Parcela.Value.ToString("c") + " /mês";
                     break;
 
                 case "Prazo 12x sem Juros":
                     PagamentoAPrazo12xSemJuros pagamentoAPrazo12XSemJuros = new PagamentoAPrazo12xSemJuros();
-                    parcela = pagamentoAPrazo12XSemJuros.CalcularValorParcela(venda.Valor);
-                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    venda.Valor += pagamentoAPrazo12XSemJuros.CalculaValor(venda.Valor);
+                    venda.Parcela = pagamentoAPrazo12XSemJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + venda.Parcela.Value.ToString("c") + " /mês";
                     break;
 
                 case "Prazo 60x com Juros":
                     PagamentoAPrazo60xComJuros pagamentoAPrazo60XComJuros = new PagamentoAPrazo60xComJuros();
                     venda.Valor = pagamentoAPrazo60XComJuros.CalculaValor(venda.Valor);
-                    parcela = pagamentoAPrazo60XComJuros.CalcularValorParcela(venda.Valor);
-                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    venda.Parcela = pagamentoAPrazo60XComJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + venda.Parcela.Value.ToString("c") + " /mês";
                     break;
 
                 case "Prazo 60x sem Juros":
                     PagamentoAPrazo60xSemJuros pagamentoAPrazo60XSemJuros = new PagamentoAPrazo60xSemJuros();
-                    parcela = pagamentoAPrazo60XSemJuros.CalcularValorParcela(venda.Valor);
-                    venda.Observacoes = recebendoObservacao + " Parcelas :" + parcela.ToString("c") + " /mês";
+                    venda.Valor = pagamentoAPrazo60XSemJuros.CalculaValor(venda.Valor);
+                    venda.Parcela = pagamentoAPrazo60XSemJuros.CalcularValorParcela(venda.Valor);
+                    venda.Observacoes = recebendoObservacao + " Parcelas :" + venda.Parcela.Value.ToString("c") + " /mês";
                     break;
 
                 default:
@@ -94,10 +97,13 @@ namespace VendaDeAutomoveis.Entidades
 
         public static Venda CalcularVeiculoEsportivo(Venda venda)
         {
+            venda.Valor = venda.Veiculo.Valor;
+            venda.Valor += venda.Perfomance.ValorTotal;
+
             if (venda.Veiculo.Tipo == TipoVeiculo.Esportivo)
             {
                 string recebendoObservacao = venda.Observacoes;
-                venda.Valor = (venda.Valor + 12000);
+                venda.Valor += (venda.Valor + 12000);
                 venda.Observacoes = recebendoObservacao + " / Veiculo Esportivo : Acréscimo de R$12.000,00 referente ao período de 12 meses de seguro obrigatório";
             }
 

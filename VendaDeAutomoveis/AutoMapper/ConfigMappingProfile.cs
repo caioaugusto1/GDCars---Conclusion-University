@@ -2,6 +2,7 @@
 using VendaDeAutomoveis.Entidades;
 using VendaDeAutomoveis.Models;
 using VendaDeAutomoveis.Repository.ConnectionContext;
+using static VendaDeAutomoveis.Enums.EnumsExtensions;
 
 namespace VendaDeAutomoveis.AutoMapper
 {
@@ -29,7 +30,12 @@ namespace VendaDeAutomoveis.AutoMapper
                 .ReverseMap();
 
             CreateMap<GDC_Veiculos, Veiculo>().ReverseMap();
-            CreateMap<GDC_Formas_Pagamentos, FormaDePagamento>().ReverseMap();
+
+            CreateMap<GDC_Formas_Pagamentos, FormaDePagamento>()
+                .ForMember(f => f.Modelo, map => map.MapFrom(y => y.Modelo))
+                .ForMember(f => f.Tipo_Cliente, map => map.MapFrom(y => y.Tipo_Cliente))
+                .ForMember(f => f.Id, map => map.MapFrom(y => y.Id))
+                .ReverseMap();
 
             CreateMap<GDC_Perfomances, Performance>()
                 .ForMember(e => e.IdCorVeiculo, map => map.MapFrom(y => y.IdCor_Veiculo))
@@ -54,6 +60,7 @@ namespace VendaDeAutomoveis.AutoMapper
                 .ForMember(map => map.FormasDePagamentos, map => map.MapFrom(y => y.FormaDePagamento))
                  .ForMember(map => map.Performance, map => map.MapFrom(y => y.Perfomance))
                  .ForMember(map => map.Veiculos, map => map.MapFrom(y => y.Veiculo))
+                 .ForMember(map => map.Venda, map => map.MapFrom(y => Mapper.Map<Venda, CadastrarVendaViewModel>(y)))
                  .ReverseMap();
 
             CreateMap<CadastrarVendaViewModel, Veiculo>()

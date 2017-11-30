@@ -35,6 +35,8 @@ namespace VendaDeAutomoveis.Models
 
         public double Valor { get; set; }
 
+        public double Parcela { get; set; }
+
         public EntregaVenda Tipo_Entrega { get; set; }
 
         public StatusVenda Status { get; set; }

@@ -10,7 +10,6 @@
 @Html.HiddenFor(item => Model.Venda.Status)
 @Html.HiddenFor(item => Model.Venda.Observacoes)
 
-
 <tr>
     <td>
         <strong>Cliente</strong>
@@ -24,7 +23,6 @@
     <td>
         <strong>CPF</strong>
     </td>
-    @*<td>@Html.DisplayFor(item => Model.Cliente.CPF)</td>*@
     <td>@Html.DisplayFor(item => item.Cliente.CPF)</td>
 </tr>
 
@@ -62,6 +60,24 @@
     </td>
     <td>@Html.DisplayFor(item => item.FormaDePagamento.Modelo)</td>
 </tr>
+
+
+<tr>
+    <td>
+        <strong>Valor Total</strong>
+    </td>
+    <td>@Html.DisplayFor(item => item.Venda.Valor)</td>
+</tr>
+
+<tr>
+    <td>
+        <strong>Valor Parcela</strong>
+    </td>
+    <td>
+        @Html.DisplayFor(item => item.Venda.Parcela)
+    </td>
+</tr>
+
 
 <tr>
     <td>

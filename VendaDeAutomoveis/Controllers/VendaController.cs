@@ -74,7 +74,7 @@ namespace VendaDeAutomoveis.Controllers
 
                 return View(vendasViewModel);
             }
-            catch (Exception ex)
+            catch 
             {
                 return RedirectToAction("Error", "Base");
             }
@@ -110,11 +110,12 @@ namespace VendaDeAutomoveis.Controllers
             {
                 if (cadVenda.Tipo_Entrega == EntregaVenda.Domiciliar)
                 {
-                    if (cadVenda.Endereco == null || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Numero) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Estado)
-                        || !string.IsNullOrWhiteSpace(cadVenda.Endereco.Cidade) || !string.IsNullOrWhiteSpace(cadVenda.Endereco.CEP))
+                    if (cadVenda.Endereco == null || string.IsNullOrWhiteSpace(cadVenda.Endereco.Numero) || string.IsNullOrWhiteSpace(cadVenda.Endereco.Estado)
+                        || string.IsNullOrWhiteSpace(cadVenda.Endereco.Cidade) || string.IsNullOrWhiteSpace(cadVenda.Endereco.CEP))
                     {
                         ModelState.AddModelError("TipoEntrega", " Para concluir a compra informe seu endereço na tela de clientes");
                         ViewBag.ExibirCampo = true;
+                        
                         return View("Create", cadVenda);
                     }
                 }
@@ -123,9 +124,15 @@ namespace VendaDeAutomoveis.Controllers
 
                 cadVenda.Venda.Veiculo = Mapper.Map<Veiculo>(_veiculoRepository.ObterPorId(cadVenda.IdVeiculo));
                 cadVenda.Venda.FormaDePagamento = Mapper.Map<FormaDePagamento>(_formaPagamentoRepository.ObterPorId(cadVenda.IdFormaDePagamento));
+                cadVenda.Venda.Perfomance = Mapper.Map<Performance>(_perfomanceRepository.ObterPorId(cadVenda.IdPerformance));
 
                 cadVenda.Venda = Venda.CalcularVeiculoEsportivo(cadVenda.Venda);
                 cadVenda.Venda = Venda.CalcularPagamento(cadVenda.Venda);
+                
+                if(cadVenda.Venda.Parcela.HasValue)
+                    cadVenda.Parcela = cadVenda.Venda.Parcela.Value;
+
+                cadVenda.Valor = cadVenda.Venda.Valor;
 
                 return RedirectToAction("DetailsConfirmar", cadVenda);
             }
@@ -149,7 +156,7 @@ namespace VendaDeAutomoveis.Controllers
 
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
 
-            detailsDeleteVendaViewModel.Venda = cadVenda.Venda;
+            detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(cadVenda);
 
             detailsDeleteVendaViewModel = PreencherViewModelDetails(detailsDeleteVendaViewModel, ref cadVenda);
 
@@ -211,13 +218,15 @@ namespace VendaDeAutomoveis.Controllers
                 IdVeiculo = cadVenda.Veiculo.Id,
                 IdFormaPagamento = cadVenda.FormaDePagamento.Id,
                 IdPerformance = cadVenda.Performance.Id,
-                Valor = Convert.ToDouble(cadVenda.Veiculo.Valor),
+                //Valor = Convert.ToDouble(cadVenda.Veiculo.Valor += cadVenda.Performance.ValorTotal += cadVenda.Venda.Valor),
                 Observacao = cadVenda.Venda.Observacoes,
                 Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
                 Status = cadVenda.Venda.Status.ToString(),
             };
 
             _vendaRepository.Inserir(Mapper.Map<GDC_Vendas>(e));
+
+            cadVenda.Cliente = Mapper.Map<Cliente>(_clienteRepository.ObterPorId(e.IdCliente));
 
             MudarClienteComunParaVip(cadVenda.Cliente);
 
@@ -246,9 +255,9 @@ namespace VendaDeAutomoveis.Controllers
             {
                 //var calcularGastoCliente = _vendaRepository.GastosPorCliente(cliente.Id);
 
-                var calcularGastoCliente = _vendaRepository.ObterPorId(cliente.Id);
+                var obterVendaPorCliente = _vendaRepository.ObterTodos().Where(v => v.IdCliente == cliente.Id).FirstOrDefault();
 
-                if (calcularGastoCliente.Valor >= 200000)
+                if (obterVendaPorCliente.Valor >= 200000)
                     MudarClienteParaVip(cliente);
 
                 _clienteRepository.Editar(Mapper.Map<GDC_Clientes>(cliente));

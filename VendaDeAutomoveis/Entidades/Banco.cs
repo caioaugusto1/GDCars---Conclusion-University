@@ -11,6 +11,6 @@ namespace VendaDeAutomoveis.Entidades
 
         public bool Multimidia { get; set; }
 
-        public double Valor { get; set; }
+        public decimal Valor { get; set; }
     }
 }

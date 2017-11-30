@@ -1,7 +1,7 @@
 ﻿@model VendaDeAutomoveis.Entidades.Banco
 
 <label class="control-label col-md-2">Com Multimidia?</label>
-@Html.CheckBoxFor(model => model.Multimidia, new { htmlAttributes = new { @class = "form-control", @name = "Banco.Multimidia" } })
+<input data-val-required="O campo Multimidia é obrigatório." id="Multimidia" name="Banco.Multimidia" type="checkbox" value="true">
 @Html.ValidationMessageFor(model => model.Multimidia, "", new { @class = "text-danger" })
 
 <br />
@@ -21,9 +21,9 @@
 
 <div class="form-group">
     @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2", @style = "float: none !important;" })
-    <div class="input-group col-md-3">
+    <div class="input-group col-md-3 elementoValor" style="padding-left: 0;">
         <span class="input-group-addon">R$</span>
-        <input type="text" id="BancoValor" name="Banco.Valor" class="form-control valor" data-val="true" data-val-required="O campo Valor é obrigatório.">
+        <input type="text" id="BancoValor" name="Banco.Valor" class="form-control" data-val="true" data-val-required="O campo Valor é obrigatório.">
         <span class="input-group-addon">.00</span>
     </div>
 </div>
