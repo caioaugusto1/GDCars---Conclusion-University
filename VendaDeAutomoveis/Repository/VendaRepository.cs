@@ -30,7 +30,7 @@ namespace VendaDeAutomoveis.Repository
         //public override GDC_Vendas ObterPorId(Guid id)
         //{
         //    var sql = "SELECT * FROM GDC_Vendas where Id = @id ";
-            
+
         //    var e = _context.Database.Connection.Query(sql,
         //        param: new
         //        {

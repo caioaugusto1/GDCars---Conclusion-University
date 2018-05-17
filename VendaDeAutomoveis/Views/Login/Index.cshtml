@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="bodyLogin">
+<body class="bodyLogin img-responsive">
     <div class="slider_overlay"></div>
     <div class="main-container">
         <div class="row">
@@ -21,7 +21,7 @@
             {
                 <div class="header">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-10 col-xs-12 col-lg-8 col-xl-6">
                             <h3 style="color: #337ab7;">Login</h3>
                             <p>Digite o usuário e senha</p>
                             @if (ViewBag.Error == true)
@@ -33,13 +33,13 @@
                 </div>
                     <div class="content">
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-10 col-xs-12 col-lg-8 col-xl-6">
                                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "examplo@examplo.com.br", @class = "input col-md-12 col-sm-12 email" } })
                                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
+                            <div class="col-md-10 col-xs-12 col-lg-8 col-xl-6">
                                 @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @placeholder = "senha", @class = "input col-md-12 col-sm-12 password" } })
                                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
                             </div>

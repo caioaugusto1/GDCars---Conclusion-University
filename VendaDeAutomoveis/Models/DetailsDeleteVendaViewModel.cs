@@ -23,5 +23,8 @@ namespace VendaDeAutomoveis.Models
 
         public Cor_Veiculo Cor_Veiculo { get; set; }
 
+        [ScaffoldColumn(false)]
+        public double Valor { get; set; }
+
     }
 }

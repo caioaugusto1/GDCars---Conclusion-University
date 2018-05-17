@@ -14,7 +14,7 @@
         <div class="dashboard-wrapper">
             <div class="page-title clearfix">
                 <h2>
-                    Clientes
+                    Vendas
                     <small>
                         <ul>
                             <li>Home</li>
@@ -45,8 +45,9 @@
                                             <th style="width:20%">Modelo</th>
                                             <th style="width:10%">Ano</th>
                                             <th style="width:10%">Valor Veículo</th>
+                                            <th style="width:10%">Valor Venda</th>
                                             <th style="width:10%" class="hidden-phone">Valor Total</th>
-                                            <th style="width:10%" class="hidden-phone">Ação</th>                                       
+                                                                                
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -66,16 +67,16 @@
                                                     @item.Veiculos.Ano.ToString()
                                                 </td>
                                                 <td>
-                                                    @item.Vendas.Valor.ToString()
+                                                    @item.Veiculos.Valor.ToString()
                                                 </td>
                                                 <td>
-                                                    @item.Vendas.Valor.ToString()
+                                                    @item.Vendas.Valor
                                                 </td>
                                                 <td>
                                                     <a href="@Url.Action("detalhes-venda", "administrativo-vendas", new { id = item.Vendas.Id})" title="Detalhes" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-search actions-icons">
                                                     </a>
-                                                    <a href="@Url.Action("EditarCliente", "Cliente", new { Id = item.Vendas.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
-                                                    </a>
+                                                    @*<a href="@Url.Action("Editar", "Venda", new { Id = item.Vendas.Id})" title="Editar" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-edit actions-icons">
+                                                    </a>*@
                                                     @*<a href="@Url.Action("Delete", "Jogadores", new { Id = item.Vendas  .Id})" title="Excluir" data-toggle="tooltip" data-placement="bottom" class="glyphicon glyphicon-trash actions-icons">
                                                     </a>*@
                                                 </td>

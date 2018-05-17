@@ -157,6 +157,7 @@ namespace VendaDeAutomoveis.Controllers
             DetailsDeleteVendaViewModel detailsDeleteVendaViewModel = new DetailsDeleteVendaViewModel();
 
             detailsDeleteVendaViewModel.Venda = Mapper.Map<Venda>(cadVenda);
+            detailsDeleteVendaViewModel.Valor = cadVenda.Valor;
 
             detailsDeleteVendaViewModel = PreencherViewModelDetails(detailsDeleteVendaViewModel, ref cadVenda);
 
@@ -211,6 +212,8 @@ namespace VendaDeAutomoveis.Controllers
         [Route("confirmar-venda")]
         public ActionResult Confirmar(DetailsDeleteVendaViewModel cadVenda)
         {
+            var perf = Mapper.Map<Performance>(_perfomanceRepository.ObterPorId(cadVenda.Performance.Id));
+            
             var e = new GDC_Vendas()
             {
                 Id = Guid.NewGuid(),
@@ -218,7 +221,7 @@ namespace VendaDeAutomoveis.Controllers
                 IdVeiculo = cadVenda.Veiculo.Id,
                 IdFormaPagamento = cadVenda.FormaDePagamento.Id,
                 IdPerformance = cadVenda.Performance.Id,
-                //Valor = Convert.ToDouble(cadVenda.Veiculo.Valor += cadVenda.Performance.ValorTotal += cadVenda.Venda.Valor),
+                Valor = Convert.ToDouble(cadVenda.Veiculo.Valor += perf.ValorTotal += cadVenda.Venda.Valor),
                 Observacao = cadVenda.Venda.Observacoes,
                 Tipo_Entrega = cadVenda.Venda.Tipo_Entrega.ToString(),
                 Status = cadVenda.Venda.Status.ToString(),
@@ -230,7 +233,7 @@ namespace VendaDeAutomoveis.Controllers
 
             MudarClienteComunParaVip(cadVenda.Cliente);
 
-            return View("listar-vendas", "administrativo-vendas");
+            return RedirectToAction("listar-vendas", "administrativo-vendas");
         }
 
         public ActionResult HistoricoPedidos()
@@ -326,6 +329,48 @@ namespace VendaDeAutomoveis.Controllers
                 cliente.Endereco = new Endereco();
 
             return PartialView("_ParcialviewEndereco", cliente.Endereco);
+        }
+
+        [Route("Editar")]
+        [HttpGet]
+        public ActionResult Editar(Guid id)
+        {
+            try
+            {
+                var vendaViewModel = Mapper.Map<Venda>(_vendaRepository.ObterPorId(id));
+                
+                if (vendaViewModel == null)
+                    return Error();
+
+                return View(vendaViewModel);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
+        }
+
+        [HttpPost]
+        [Route("Editar")]
+        public ActionResult Editar(Venda venda)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _vendaRepository.Editar(Mapper.Map<GDC_Vendas>(venda));
+
+                    return RedirectToAction("Index", "Venda", new { venda.Id });
+                }
+                else
+                {
+                    return View("Editar", "Venda", venda.Id);
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Base");
+            }
         }
 
         public ActionResult AtualizarEnderecos(Guid idCliente, string Endereco, string Bairro, string NumeroDaCasa,

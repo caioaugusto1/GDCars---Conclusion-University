@@ -465,6 +465,7 @@
     <Content Include="Views\Cliente\EditarEndereco.cshtml" />
     <Content Include="Views\Shared\_partial\_modal_error.cshtml" />
     <Content Include="Views\Base\Error.cshtml" />
+    <Content Include="Views\Venda\Editar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -499,8 +500,7 @@
           <IISUrl>http://localhost:58849/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://192.168.3.63:58849</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

@@ -2,7 +2,8 @@
 
 <head>
     <title>Lista de Clientes</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     @{
         Html.RenderPartial("_partial/_cabecalho_list");
     }
@@ -36,23 +37,23 @@
                             </div>
                         </div>
                         <div class="widget-body">
-                            <div id="dt_example" class="example_alt_pagination">
+                            <div id="dt_example" class="table-responsive example_alt_pagination">
                                 <table class="table table-condensed table-striped table-hover table-bordered pull-left" id="data-table">
                                     <thead>
                                         <tr>
-                                            <th style="width:15%">Nome</th>
-                                            <th style="width:15%">RG</th>
-                                            <th style="width:15%">CPF</th>
-                                            <th style="width:15%">Data de Nascimento</th>
-                                            <th style="width:15%">Tipo do Cliente</th>
-                                            <th style="width:15%">E-mail</th>
-                                            <th style="width:20%" class="hidden-phone">Ação</th>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">RG</th>
+                                            <th scope="col">CPF</th>
+                                            <th scope="col">Data de Nascimento</th>
+                                            <th scope="col">Tipo do Cliente</th>
+                                            <th scope="col">E-mail</th>
+                                            <th scope="col" class="hidden-phone">Ação</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            <tr class="gradeX">
+                                            <tr scope="row" class="gradeX">
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Nome)
                                                 </td>
